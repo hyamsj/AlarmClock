@@ -1,0 +1,13 @@
+doc/*
+!doc/*/*.pdf
+!doc/*/*.tex
+!doc/script
+
+out/*
+*.swp
+*.iml
+*.xml
+
+
+
+
