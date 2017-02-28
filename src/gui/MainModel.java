@@ -22,4 +22,5 @@ public class MainModel {
         value = 0;
         view.update();
     }
+
 }
