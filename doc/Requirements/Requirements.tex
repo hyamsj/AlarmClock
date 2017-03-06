@@ -1,20 +1,40 @@
 %\documentclass[a4paper,10pt]{report}
-\documentclass[11pt]{scrreprt}
+\documentclass[11pt,titelpage]{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
 
 % Title Page
 \title{Projekt 1}
 \author{Jonathan Hyams \\Pascal Schmalz}
+\titlehead{\centering\includegraphics[width=6cm]{img/clock.png}}
+
+%Make the Header
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+\rhead{\runauthor}
+\chead{\runtitle}
+\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[width=1cm]{img/bfh.gif}} \end{picture}}
+
 
 
 \begin{document}
+
+\thispagestyle{empty}
 \maketitle
 \tableofcontents
+
+\pagestyle{fancy}
+
 
 \begin{abstract}
 \end{abstract}
 \section{Zweck des Dokument}
+
 \section{Kurzbeschreibung}
 Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
 Das Program kAlarm erlaubt es den User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
