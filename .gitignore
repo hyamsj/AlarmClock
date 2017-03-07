@@ -1,20 +1,18 @@
-#only the folowing may pass: tex .pdf script/ img/ 
-doc/* 
-!doc/*/ 
-doc/*/* 
+.gitignore
+doc/*
+!doc/*/*.pdf
+!doc/*/*.tex
+!doc/script/**
 
-!doc/script/* 
-!doc/uml/* 
-!doc/*/img/ 
-!doc/*/*.pdf 
-!doc/*/*.tex 
-!doc/*/glossary/
-doc/*/glossary/*
-doc/*/glossary/*.tex
+!doc/Requirements/img/bfh.png
+!doc/Requirements/img/clock.png
+!doc/Requirements/img/test.png
 
 
-out/
-*.iml
-/.idea/
+out/*
 *.swp
+*.iml
+*.xml
+!/.idea/
+/.idea/
 
