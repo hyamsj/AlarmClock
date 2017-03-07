@@ -1,7 +1,13 @@
+.gitignore
 doc/*
 !doc/*/*.pdf
 !doc/*/*.tex
-!doc/script
+!doc/script/**
+
+!doc/Requirements/img/bfh.png
+!doc/Requirements/img/clock.png
+!doc/Requirements/img/test.png
+
 
 out/*
 *.swp
@@ -9,12 +15,4 @@ out/*
 *.xml
 !/.idea/
 /.idea/
-!/doc/Requirements/
-/doc/Requirements/Requirements.toc
-/doc/Requirements/Requirements.synctex.gz
-/doc/Requirements/Requirements.fls
-/doc/Requirements/Requirements.fdb_latexmk
-/doc/Requirements/Requirements.lot
-/doc/Requirements/Requirements.log
-/doc/Requirements/Requirements.aux
-/doc/Requirements/Requirements.lof
+
