@@ -28,14 +28,14 @@ public class MainController {
 
     }
 
-    public void createTimer(){
+    public void createTimer() {
         this.timer = new Timer();
         this.task = new TimerTask() {
             @Override
             public void run() {
                 secondsPassed++;
                 System.out.println("Seconds passed " + secondsPassed);
-                if (secondsPassed == max){
+                if (secondsPassed == max) {
                     timer.cancel();
                     int i = Integer.MAX_VALUE;
                     System.out.println(i);
@@ -44,9 +44,7 @@ public class MainController {
         };
     }
 
-
-
-    public void startTimer(){
+    public void startTimer() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
