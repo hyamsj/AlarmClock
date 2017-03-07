@@ -1,29 +1,57 @@
-\documentclass[a4paper,10pt]{report}
+%\documentclass[a4paper,10pt]{report}
+\documentclass[11pt,titelpage]{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+
 
 % Title Page
-\title{Projekt 1}
+\title{Alarm Clock }
 \author{Jonathan Hyams \\Pascal Schmalz}
+\titlehead{\centering\includegraphics[width=6cm]{img/clock.png}}
+
+%Make the Header
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+\rhead{\runauthor}
+\chead{\runtitle}
+\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{img/bfh.png}} \end{picture}}
+
 
 
 \begin{document}
+
+\thispagestyle{empty}
 \maketitle
 \tableofcontents
+
+\pagestyle{fancy}
+
 
 \begin{abstract}
 \end{abstract}
 \section{Zweck des Dokument}
+TODO
+
 \section{Kurzbeschreibung}
 Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
 Das Program kAlarm erlaubt es den User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
 Im gegensatz zu kAlarm soll das zu erstellende Produkt Platformübergreifend verfügbar sein. Wie kAlarm soll dieses Produkt unter einer Open Source Lizenz entwickelt werden.
 \section{Projektziele}
-Es soll ein Timer erstellt werden, welcher auf den 3 grossen Computerbetriebssystemen (Windows, OSX, Linux)  läuft.
+Es soll ein Timer erstellt werden, welcher auf den 3 grossen Computerbetriebssystemen (Windows, OSX, Linux)  läuft. 
 Wiederkehrende Events sollen definiert werden können.
 Es soll Eventkategorien geben.
 Das Programm soll durch den Benuzer mittels  eines externen Configfile an seine Bedürfnisse angepasst werden können.
-Das Programm soll Datenbankunabhänig sein. (Abklären mit dem Stakeholder!!)
+Das Programm soll Datenbankunabhänig sein. ( Abklären mit dem Stakeholder!!)
+\section{Stakeholders}
+\begin{itemize}
+\item{Auftragsgeber: Prof. Claude Furrer}
+\item{Auftragsnehmer: Jonathan Hyams, Pascal Schmalz}
+\item{Benutzer: FOSS Communitiy}
+\end{itemize}
 \section {Systemabgrenzung}
 \subsection{Prozessumfeld}
 \subsection{Systemumfeld}
@@ -42,15 +70,25 @@ Das Programm soll Datenbankunabhänig sein. (Abklären mit dem Stakeholder!!)
 \subsection{Abstimmung der Anforderungen}
 \subsection{Definition of Ready - Checklist}
 \section{Versionskontrolle}
-Version 0.0.1
-%\immediate\write18{/usr/local/bin/my-shell-script.sh > scriptoutput.tex}
+Manuelle Version: 0.0.1
+\\
+
+\noindent
+Automatische Versionierung:
+%\immediate\write18{../script/printGitVersionNumber.sh} 
+%\input{automaticGitVersionNumber}
 %git rev-list --count --first-parent HEAD
 %9	Literaturverzeichnis	4
 
+\immediate\write18{../script/versionInfo.sh} 
+\input{../script/version}
+\immediate\write18{../script/cleanup.sh} 
+%\immediate\write18{../script/clean.sh} 
 
 
 
 
 
 
-\end{document}
+
+\end{document}          
