@@ -1,16 +1,8 @@
-.gitignore
-doc/Requirements/Requirements.aux
-doc/Requirements/Requirements.fdb_latexmk
-doc/Requirements/Requirements.fls
-doc/Requirements/Requirements.lof
-doc/Requirements/Requirements.log
-doc/Requirements/Requirements.lot
-doc/Requirements/Requirements.tex.backup
-doc/Requirements/Requirements.toc
+doc/*
+!**/*.pdf
+!**/*.tex
+!doc/script
 out/*
-*.swp
 *.iml
-*.xml
-!/.idea/
 /.idea/
 
