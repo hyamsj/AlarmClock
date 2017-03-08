@@ -3,6 +3,7 @@ doc/*
 !doc/*/ 
 doc/*/* 
 !doc/script/* 
+!doc/uml/* 
 !doc/*/img/ 
 !doc/*/*.pdf 
 !doc/*/*.tex 
@@ -11,4 +12,5 @@ doc/*/*
 out/*
 *.iml
 /.idea/
+*.swp
 
