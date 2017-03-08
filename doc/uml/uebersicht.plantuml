@@ -1,0 +1,57 @@
+@startuml
+class OS
+package "View" {}
+package "Control" {}
+package "Helpers" {
+
+class ConfigFileReader{
+getLanguage()
+setLanguage()
+getDateFormat()
+setDateFormat()
+}
+
+}
+
+package "Model" {
+class OsAdapter{
+setDate()
+getDate()
+osPopUp()
+}
+OsAdapter -- OS
+
+class Reminder{
+date/time
+}
+class JPA{
+readDb
+writeDb
+}
+Reminder --OsAdapter
+Reminder -- JPA
+
+Remider --Notification
+JavaFxPopUp--|>Notification
+SystemPopUp--|>Notification
+Email--|>Notification
+IFTTTEvent--|>Notification
+ShellScript--|>Notification
+
+SystemPopUp -- OsAdapter
+}
+View -- Model
+Model-- Control
+Control -- View
+
+class ConfigFile{
+language
+timeFormat/localization
+Db?
+MailConfig?
+}
+ConfigFile--ConfigFileReader
+View--ConfigFileReader
+Reminder--ConfigFileReader
+JPA -- DB
+@enduml
