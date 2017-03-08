@@ -1,7 +1,13 @@
-doc/*
-!**/*.pdf
-!**/*.tex
-!doc/script
+#only the folowing may pass: tex .pdf script/ img/ 
+doc/* 
+!doc/*/ 
+doc/*/* 
+!doc/script/* 
+!doc/*/img/ 
+!doc/*/*.pdf 
+!doc/*/*.tex 
+
+
 out/*
 *.iml
 /.idea/
