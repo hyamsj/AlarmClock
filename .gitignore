@@ -9,7 +9,7 @@ doc/*/*
 !doc/*/*.tex 
 
 
-out/*
+out/
 *.iml
 /.idea/
 *.swp
