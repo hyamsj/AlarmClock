@@ -1,5 +1,7 @@
 @startuml
 class OS
+package "System" {
+
 package "View" {}
 package "Control" {}
 package "Helpers" {
@@ -19,14 +21,16 @@ setDate()
 getDate()
 osPopUp()
 }
+
 OsAdapter -- OS
+
 
 class Reminder{
 date/time
 }
 class JPA{
-readDb
-writeDb
+readDb()
+writeDb()
 }
 Reminder --OsAdapter
 Reminder -- JPA
@@ -53,5 +57,19 @@ MailConfig?
 ConfigFile--ConfigFileReader
 View--ConfigFileReader
 Reminder--ConfigFileReader
+Reminder--Notification
+}
 JPA -- DB
+DB <|.. Derby
+DB <|.. MySQL
+DB <|.. otherDB
+
+
+OS--"cronjob/schtasks"
+OS<|.. OSx
+OS<|.. Windows10
+OS<|.. Linux
+Linux<|.. LinuxMint
+Linux<|.. LinuxMintKDE
+Linux<|.. Others
 @enduml
