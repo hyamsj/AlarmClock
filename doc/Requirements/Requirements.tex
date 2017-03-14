@@ -4,6 +4,10 @@
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{fancyref}
+\usepackage{lscape}
+
+  
 
 
 % Title Page
@@ -64,12 +68,23 @@ Es existieren keine vor\- oder nachgelagerten Prozesse. Unsere Lösung lässt si
 \subsection{Systeme}
 Unser System wirkt mit Datebanken zusammen. Es baut auf Betriebsystemskomponenten auf. Namentlich Cronjob /Schtasks.
 %TODO uml einbinden
+\begin{landscape}
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{../uml/uebersicht.png}
+  \caption{Systemübersicht und Abgrenzung}
+  \label{fig:overview}
+\end{figure}
+\end{landscape}
+Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikationvollständig einzuhalten.
+\pageref{fig:overview}
+ 
 
 
 
 
 
-Je nach gewünschter Notification Möglichkeiten kann mit E-Mails, SMS und Systemnotifications gearbeitet werden.
+Je nach gewünschter Notification Möglichkeiten kann mit E-Mails, SMS und Systemnotifications gearbeitet werden.Dies Bedingut, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittschtelle erreichbar sind.
 \subsection{Randbedingungen}
 Die Entwicklung soll mittls Java und JavaFX erfolgen.
 Das Prgoramm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz veröffentlicht werden.
