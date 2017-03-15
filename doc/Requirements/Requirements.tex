@@ -8,7 +8,20 @@
 \usepackage{lscape}
 
   
+%must be before gloassary stuff\usepackage{hyperref} 
+\usepackage[toc]{glossaries} 
+\glsaddall
+\makeglossaries
 
+\newglossaryentry{computer}
+{
+  name=computerLST,
+  description={is a programmable machine that receives input,
+               stores and manipulates data, and provides
+               output in a useful format}
+} 
+
+  
 
 % Title Page
 \title{Alarm Clock }
@@ -39,6 +52,8 @@
 \end{abstract}
 \section{Zweck des Dokument}
 TODO this is new text
+\gls{computer}
+%makes sure the whole glossary gets printed even when acronyms are not defined
 
 \section{Kurzbeschreibung}
 Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
@@ -97,6 +112,8 @@ Die Dokumentation muss in \LaTeX erstellt werden.
 \section{Anforderungen}
 Basisfaktoren:
 \begin{itemize}
+
+\
  \item Es soll ein Timer erstellt werden, welcher auf den 3 grossen Computerbetriebssystemen (Windows, OSX, Linux)  läuft. ( Aleinstellungsmerkmal)
  \item Das Programm soll Datenbankagnostisch sein. (Aleinstellungsmerkmal)
  \item Einzelevents sollen definiert werden können.
@@ -149,6 +166,7 @@ Besondere folgende Fragen gilt es abzuklären:
 \item Was soll mit der Eventkategorisierung erreicht werden, welche wieteren Anforderungen ergeben sich daraus.
 \item Abgrenzung des Programmes gegenüber eines Kalenders und gegenüber des Cronjobs.
 \end{itemize}
+Da unser Auftraggeber als Professor der Informatik, 
 Als weitere Diskusionsgrundlage sind wir daran neben diesem Dokument einen Prototyp des GUI zu erstellen.
 
 
@@ -157,6 +175,7 @@ Die Angegebenen Informationen,insbesonder die abzuklärenden Punkte, sind dement
 
 Als weitere Qullen können wir die Dokumentation und Code Basis von kAlarm nutzen. 
 Da wir selber der potentiellen Nutzergrupp des Programmes angehören, könneten wir auch uns selber als Quelle nutzen, als Entwickler hat man jedoch oft einen anderen Blickwinkel als ein normaler Benutzer.
+
 
 Im sinne einer Agilen Entwicklung wollen wir möglichst rasch präsentierbare Artefakte generieren, damit der Auftraggeber frühstmöglich Einfluss nehmen kann und Fehlentwicklungen vermieden werden. Treffen werden bei bei bedarf mit dem Auftraggeber ausgemacht.
 
@@ -168,6 +187,7 @@ Im sinne einer Agilen Entwicklung wollen wir möglichst rasch präsentierbare Ar
 \listoftables
 %TODO bibography
 
+\printglossary
 \section{Anhang}
 
 \subsection{Abstimmung der Anforderungen}
