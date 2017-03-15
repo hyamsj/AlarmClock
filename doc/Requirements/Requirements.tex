@@ -10,18 +10,11 @@
   
 %must be before gloassary stuff\usepackage{hyperref} 
 \usepackage[toc]{glossaries} 
-\glsaddall
 \makeglossaries
 
-\newglossaryentry{computer}
-{
-  name=computerLST,
-  description={is a programmable machine that receives input,
-               stores and manipulates data, and provides
-               output in a useful format}
-} 
+\input{glossary/Glossary.tex}
 
-  
+
 
 % Title Page
 \title{Alarm Clock }
@@ -52,7 +45,6 @@
 \end{abstract}
 \section{Zweck des Dokument}
 TODO this is new text
-\gls{computer}
 %makes sure the whole glossary gets printed even when acronyms are not defined
 
 \section{Kurzbeschreibung}
@@ -110,41 +102,84 @@ Die Dokumentation muss in \LaTeX erstellt werden.
 \subsection{Systemumfeld}
 \subsection{Randbedingungen}
 \section{Anforderungen}
-Basisfaktoren:
+\subsection{Basisfaktoren}
 \begin{itemize}
 
-\
- \item Es soll ein Timer erstellt werden, welcher auf den 3 grossen Computerbetriebssystemen (Windows, OSX, Linux)  läuft. ( Aleinstellungsmerkmal)
- \item Das Programm soll Datenbankagnostisch sein. (Aleinstellungsmerkmal)
- \item Einzelevents sollen definiert werden können.
- \item Wiederkehrende Events sollen definiert werden können.
- \item Die Verwaltung der Events soll über eine GUI vorgenommen werden können.
- \item Auf die Events soll mittels einer Notification hingewisen werden
- \item Das Programm soll durch den Benutzer mittels  eines externen Configfile an seine Bedürfnisse angepasst werden können.
+\item Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige gängige Datenabank genutzt werden kann.
+
+\item
+Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige Standard Datenabank genutzt werden kann.
+
+\item
+Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes,sondern wird von den Datenbankherstellern oder von drittten vorgenommen.
+
+\item
+Das System muss dem Benutzer die Möglichkeit bieten in dem GUI ein Einzelevent zu erfassen.
+Das System sollt dem Benutzer die Möglichkeit bieten über das GUI ein Einzelevent zu erfassen.
+
+\item
+Das System muss dem Benutzer die Möglichkeit bieten in dem GUI wiederkehrende Events zu erfassen.
+Das System sollte dem Benutzer die Möglichkeit bieten über das CLI wiederkehrende Events zu erfassen.
+
+\item
+Das System kann anderen Programmen über eine API ermöglichen Einzelevents zu erfassen.
+Das System kann anderen Programmen über eine API ermöglichen wiederkehrende Events zu erfassen.
+
+\item
+Das löschen und anpassen von Events soll wie oben beschrieben ebenfalls möglich sein.
+
+\item
+Das System muss den Benutzer mittels einer Notification rechtzeitig auf ein Event hinweisen.
+
+\item
+Das Programm muss beim Programmstart seine Konfiguration mittels eines Configsfiles vorunehmen.
+
+
+
+\item
+Das Programm kann dem Benutzer die Möglichkeit bieten die Konfiguration über die GUI vorzunehmen und im Configfile zu speichern.
+
+
 \end{itemize}
 
-Leistungsfaktoren:
+\subsection{Leistungsfaktoren}
 \begin{itemize}
-%TODD nachfragen bei Auftragsgeber
- \item Events sollen kategorisert werden können.
- \item SMS Notification.
- \item Email Notification.
- \item Script wird bei Notificatin ausgeführt.
- \item GUI soll Benutzerzentriert und Ergonomisch sein.
+\item
+Der Benutzer soll  neue Kategorien hinzufügen,anpassen und löschen können.
+\item
+Events sollen durch den Benutzer in Kategorien eingeteilt werden können.
+\item
+Der Benutzer soll Events nach Kategorien gruppieren und filtern können.
+
+\item
+Das Programm soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein Notifications   als SMS und Emails  zu versenden.
+
+\item
+Das Programm soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein anstelle einer Notification ein Script laufen zu lassen.
+
+\item
+Die GUI soll Nenutzerzentriert und Ergonomisch sein ( Wie kann man dies sinvoll als Anforderung formulieren?)
 \end{itemize}
 
-Begeisterungsfaktoren:
+\subsection{Begeisterungsfaktoren}
+
 
 \begin{itemize}
-  
- \item IFTTT aktionen mittels Events auslösen.  (Alleinstellungsmerkmal)
- \item  Eine Lauffähige Version auf Android.
- \item  Events Geräteübergreiffend verwalten.
- \item Notification mit Betriebsystem eigenen Notifications anstelle von JavaFX Notification
- \item GUI an die jeweiligen Betriebssystem Design Richtlinien angepasst.
- 
+\item
+Das Programm  soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein anstelle einer Notification  ein IFTT Event auszulösen.
 
- 
+\item
+Das Programm soll zusätzlich zu den gängigen Computer Betriebssystem auch auf Android lauffähig sein.
+
+\item
+Events sollen zwischen allen registrieren Geräten eines Registrierten Benutzers synchronisiert werden.Dazu muss der Benutzer in der Lage sein sich und seine Geräte,welche das Programm installiert haben, zu Registrieren.
+
+\item
+Das Programm soll auf den Betriebssystemen, welche eine Notificationinfrastruktur bereitstellen  in der Lage sein die Notifications über diese Notificationinfrastruktur vorzunehmen.(BSP KDE)
+
+\item
+Das Programm soll sich vom Loock and Feel in die jeweilige Desktop Environment anpassen.
+
 \end{itemize}
 
 
@@ -187,6 +222,7 @@ Im sinne einer Agilen Entwicklung wollen wir möglichst rasch präsentierbare Ar
 \listoftables
 %TODO bibography
 
+\glsaddall
 \printglossary
 \section{Anhang}
 
