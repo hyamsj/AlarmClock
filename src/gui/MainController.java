@@ -7,11 +7,11 @@ public class MainController {
 
     private MainModel model;
 
-    Timer timer;
-    TimerTask task;
+    private Timer timer;
+    private TimerTask task;
 
-    int secondsPassed = 0;
-    int max = 5;
+    private int secondsPassed = 0;
+    private int max = 3;
 
     public MainController(MainModel m) {
         model = m;
@@ -23,10 +23,6 @@ public class MainController {
         model.inc();
     }
 
-    public void reset() {
-        model.reset();
-
-    }
 
     public void createTimer() {
         this.timer = new Timer();
@@ -37,8 +33,7 @@ public class MainController {
                 System.out.println("Seconds passed " + secondsPassed);
                 if (secondsPassed == max) {
                     timer.cancel();
-                    int i = Integer.MAX_VALUE;
-                    System.out.println(i);
+                    System.out.println("done");
                 }
             }
         };
@@ -48,4 +43,6 @@ public class MainController {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
+
+
 }
