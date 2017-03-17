@@ -3,9 +3,7 @@ package gui;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -19,23 +17,42 @@ public class MainView extends Stage {
     public MainView(MainModel m, MainController c) {
         model = m;
         controller = c;
+        TextField hours = new NumberTextField();
+        TextField mins = new NumberTextField();
+        TextField secs = new NumberTextField();
+        hours.setPromptText("hh");
+        mins.setPromptText("mm");
+        secs.setPromptText("ss");
+        hours.setPrefWidth(60);
+        hours.setMaxWidth(60);
+        hours.setMinWidth(60);
+        mins.setPrefWidth(60);
+        mins.setMaxWidth(60);
+        mins.setMinWidth(60);
+        secs.setPrefWidth(60);
+        secs.setMaxWidth(60);
+        secs.setMinWidth(60);
+
         Button start = new Button("Start");
+        start.setPrefWidth(120);
+        start.setMaxWidth(120);
+        start.setMinWidth(120);
         start.setOnAction(e -> controller.increment());
-        Button stop = new Button("Stop");
-        stop.setOnAction(e -> controller.reset());
-        label = new Label("Value: " + model.getValue());
+        label = new Label();
+
         BorderPane layout = new BorderPane();
-        HBox hBox = new HBox(10, start, stop, label);
+        DatePicker date = new DatePicker();
+        HBox hBox = new HBox(10, hours, mins, secs, date, start, label);
         hBox.setAlignment(Pos.CENTER);
         hBox.setPadding(new Insets(10));
         MenuBar menuBar = new MyMenu();
         layout.setTop(menuBar);
         layout.setCenter(hBox);
         layout.setStyle("-fx-font: 24 Arial");
-        Scene scene = new Scene(layout, 600, 150);
+        Scene scene = new Scene(layout);
+        this.sizeToScene();
         setScene(scene);
         show();
-
         model.addObserver(this);
     }
 

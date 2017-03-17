@@ -7,9 +7,9 @@
 \usepackage{fancyref}
 \usepackage{lscape}
 
-  
-%must be before gloassary stuff\usepackage{hyperref} 
-\usepackage[toc]{glossaries} 
+
+%must be before gloassary stuff\usepackage{hyperref}
+\usepackage[toc]{glossaries}
 \makeglossaries
 
 \input{glossary/Glossary.tex}
@@ -56,11 +56,11 @@ Unser Auftraggeber ist kein Unternehmen. Es werden somit auch keine Ziele innerh
 Ziele welche ein Benuzer unsere Aplikaiton verfolgen könnte wären Beispielsweise:
 \begin{itemize}
  \item Wiederkehrende Events nicht zu vergessen.
- \item An den Wäscheta erinnert weden.
+ \item An den Wäschetag erinnert weden.
  \item Die Wäsche rechtzeitig aus de Wäscheküche holen.
 \item Den Kuchen nicht im Backofen verbrennen lassen.
  \item Der Sekretärin zum Geburtstag Blumen schicken.
- 
+
 \end{itemize}
 
 \section{Stakeholders}
@@ -85,16 +85,16 @@ Unser System wirkt mit Datebanken zusammen. Es baut auf Betriebsystemskomponente
 \end{landscape}
 Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikationvollständig einzuhalten.
 \pageref{fig:overview}
- 
 
 
 
 
 
-Je nach gewünschter Notification Möglichkeiten kann mit E-Mails, SMS und Systemnotifications gearbeitet werden.Dies Bedingut, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittschtelle erreichbar sind.
+
+Je nach gewünschter Notification Möglichkeiten kann mit E-Mails, SMS und Systemnotifications gearbeitet werden. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind.
 \subsection{Randbedingungen}
-Die Entwicklung soll mittls Java und JavaFX erfolgen.
-Das Prgoramm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz veröffentlicht werden.
+Die Entwicklung soll mittels Java und JavaFX erfolgen.
+Das Programm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz veröffentlicht werden.
 Die Dokumentation muss in \LaTeX erstellt werden.
 
 
@@ -108,25 +108,25 @@ Die Dokumentation muss in \LaTeX erstellt werden.
 \item Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige gängige Datenabank genutzt werden kann.
 
 \item
-Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige Standard Datenabank genutzt werden kann.
+Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige Standard Datenbank genutzt werden kann.
 
 \item
-Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes,sondern wird von den Datenbankherstellern oder von drittten vorgenommen.
+Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes, sondern wird von den Datenbankherstellern oder von dritten vorgenommen.
 
 \item
-Das System muss dem Benutzer die Möglichkeit bieten in dem GUI ein Einzelevent zu erfassen.
-Das System sollt dem Benutzer die Möglichkeit bieten über das GUI ein Einzelevent zu erfassen.
+Das System muss dem Benutzer die Möglichkeit bieten, in dem GUI ein Einzelevent zu erfassen.
+Das System sollte dem Benutzer die Möglichkeit bieten, über das GUI ein Einzelevent zu erfassen.
 
 \item
-Das System muss dem Benutzer die Möglichkeit bieten in dem GUI wiederkehrende Events zu erfassen.
-Das System sollte dem Benutzer die Möglichkeit bieten über das CLI wiederkehrende Events zu erfassen.
+Das System muss dem Benutzer die Möglichkeit bieten, in dem GUI wiederkehrende Events zu erfassen.
+Das System sollte dem Benutzer die Möglichkeit bieten, über das CLI wiederkehrende Events zu erfassen.
 
 \item
-Das System kann anderen Programmen über eine API ermöglichen Einzelevents zu erfassen.
-Das System kann anderen Programmen über eine API ermöglichen wiederkehrende Events zu erfassen.
+Das System kann anderen Programmen über eine API ermöglichen, Einzelevents zu erfassen.
+Das System kann anderen Programmen über eine API ermöglichen, wiederkehrende Events zu erfassen.
 
 \item
-Das löschen und anpassen von Events soll wie oben beschrieben ebenfalls möglich sein.
+Das löschen und anpassen von Events soll wie oben beschrieben, ebenfalls möglich sein.
 
 \item
 Das System muss den Benutzer mittels einer Notification rechtzeitig auf ein Event hinweisen.
@@ -134,10 +134,8 @@ Das System muss den Benutzer mittels einer Notification rechtzeitig auf ein Even
 \item
 Das Programm muss beim Programmstart seine Konfiguration mittels eines Configsfiles vorunehmen.
 
-
-
 \item
-Das Programm kann dem Benutzer die Möglichkeit bieten die Konfiguration über die GUI vorzunehmen und im Configfile zu speichern.
+Das Programm kann dem Benutzer die Möglichkeit bieten, die Konfiguration über die GUI vorzunehmen und im Configfile zu speichern.
 
 
 \end{itemize}
@@ -145,20 +143,17 @@ Das Programm kann dem Benutzer die Möglichkeit bieten die Konfiguration über d
 \subsection{Leistungsfaktoren}
 \begin{itemize}
 \item
-Der Benutzer soll  neue Kategorien hinzufügen,anpassen und löschen können.
+Der Benutzer soll neue Kategorien hinzufügen, anpassen und löschen können.
 \item
 Events sollen durch den Benutzer in Kategorien eingeteilt werden können.
 \item
 Der Benutzer soll Events nach Kategorien gruppieren und filtern können.
-
 \item
-Das Programm soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein Notifications   als SMS und Emails  zu versenden.
-
+Das Programm soll vorkonfigurierte Dienste vorausgesetzt, in der Lage sein Notifications als SMS und Emails zu versenden.
 \item
-Das Programm soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein anstelle einer Notification ein Script laufen zu lassen.
-
+Das Programm soll vorkonfigurierte Dienste vorausgesetzt, in der Lage sein anstelle einer Notification ein Script laufen zu lassen.
 \item
-Die GUI soll Nenutzerzentriert und Ergonomisch sein ( Wie kann man dies sinvoll als Anforderung formulieren?)
+Die GUI soll Benutzerzentriert und Ergonomisch sein (Wie kann man dies sinvoll als Anforderung formulieren?)
 \end{itemize}
 
 \subsection{Begeisterungsfaktoren}
@@ -166,7 +161,7 @@ Die GUI soll Nenutzerzentriert und Ergonomisch sein ( Wie kann man dies sinvoll 
 
 \begin{itemize}
 \item
-Das Programm  soll, vorkonfigurierte Dienste vorausgesetzt,  in der Lage sein anstelle einer Notification  ein IFTT Event auszulösen.
+Das Programm soll vorkonfigurierte Dienste vorausgesetzt, in der Lage sein anstelle einer Notification  ein IFTT Event auszulösen.
 
 \item
 Das Programm soll zusätzlich zu den gängigen Computer Betriebssystem auch auf Android lauffähig sein.
@@ -187,7 +182,6 @@ Das Programm soll sich vom Loock and Feel in die jeweilige Desktop Environment a
 
 
 
-
  %IFTTT
 \subsection{Quellen und Vorgehen}
 Unsere wichtigste Quelle ist unser Auftraggeber Prof. Furrer. Um die Fragen, welche bei der Erstellung der Anforderungen aufgetaucht sind zu klären, werden wir uns mit ihm treffen.
@@ -201,14 +195,14 @@ Besondere folgende Fragen gilt es abzuklären:
 \item Was soll mit der Eventkategorisierung erreicht werden, welche wieteren Anforderungen ergeben sich daraus.
 \item Abgrenzung des Programmes gegenüber eines Kalenders und gegenüber des Cronjobs.
 \end{itemize}
-Da unser Auftraggeber als Professor der Informatik, 
+Da unser Auftraggeber als Professor der Informatik,
 Als weitere Diskusionsgrundlage sind wir daran neben diesem Dokument einen Prototyp des GUI zu erstellen.
 
 
 Die Angegebenen Informationen,insbesonder die abzuklärenden Punkte, sind dementsprechend lediglich eine Work in Progress.
 
 
-Als weitere Qullen können wir die Dokumentation und Code Basis von kAlarm nutzen. 
+Als weitere Qullen können wir die Dokumentation und Code Basis von kAlarm nutzen.
 Da wir selber der potentiellen Nutzergrupp des Programmes angehören, könneten wir auch uns selber als Quelle nutzen, als Entwickler hat man jedoch oft einen anderen Blickwinkel als ein normaler Benutzer.
 
 
