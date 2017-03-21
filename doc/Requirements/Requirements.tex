@@ -14,7 +14,7 @@
 
 \input{glossary/Glossary.tex}
 
-
+%TODO 1.0 20 anstatt 0.2
 
 % Title Page
 \title{Alarm Clock }
@@ -52,8 +52,8 @@ Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
 Das Program kAlarm erlaubt es den User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
 Im gegensatz zu kAlarm soll das zu erstellende Produkt Platformübergreifend verfügbar sein. Wie kAlarm soll dieses Produkt unter einer Open Source Lizenz entwickelt werden.
 \section{Projektziele}
-Unser Auftraggeber ist kein Unternehmen. Es werden somit auch keine Ziele innerhalb einer Unternehmens verfolgt.
-Ziele welche ein Benuzer unsere Aplikaiton verfolgen könnte wären Beispielsweise:
+Unser Auftraggeber ist kein Unternehmen. Es werden somit auch keine Ziele innerhalb eines Unternehmens verfolgt.
+Ziele welche ein Benutzer unsere Aplikation verfolgen könnte wären beispielsweise:
 \begin{itemize}
  \item Wiederkehrende Events nicht zu vergessen.
  \item An den Wäschetag erinnert weden.
@@ -73,7 +73,9 @@ Ziele welche ein Benuzer unsere Aplikaiton verfolgen könnte wären Beispielswei
 \subsection{Geschäftsprozesse}
 Es existieren keine vor\- oder nachgelagerten Prozesse. Unsere Lösung lässt sich in beliebige viele Prozesse integrieren.
 \subsection{Systeme}
-Unser System wirkt mit Datebanken zusammen. Es baut auf Betriebsystemskomponenten auf. Namentlich Cronjob /Schtasks.
+Unser System wirkt mit Datebanken zusammen, um die Events persistent zu speichern.  Unser System beihnaltet die komponente bis und mit dem JPA, die konfiguration der Datenbank gehört somit nicht mehr zum Projekt.
+
+Das Program baut auf Betriebsystemskomponenten auf. Namentlich auf  Cronjob /Schtasks um zur gegebenen Zeit eine Notification zu erzeugen.
 %TODO uml einbinden
 \begin{landscape}
 \begin{figure}
@@ -83,19 +85,18 @@ Unser System wirkt mit Datebanken zusammen. Es baut auf Betriebsystemskomponente
   \label{fig:overview}
 \end{figure}
 \end{landscape}
-Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikationvollständig einzuhalten.
+Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikationvollständig einzuhalten. Die Komponenten innerhalb des Kasten``System'', insbesondere ihre Beziehung zueinander,  sind nicht Teil der Anforderungen, und somit nicht bindend sie veranschaulichen lediglich was noch innerhalb des Systems liegt und was ausserhalb angesiedelt ist. 
 \pageref{fig:overview}
 
 
 
 
+Falls die Funktionalität vom Auftraggeber verlangt wird, muss das Programm den Nutzer mit E-Mails, SMS und Systemnotifications erinnern. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind, was nicht mehr teil des Projektes ist.
 
-
-Je nach gewünschter Notification Möglichkeiten kann mit E-Mails, SMS und Systemnotifications gearbeitet werden. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind.
 \subsection{Randbedingungen}
 Die Entwicklung soll mittels Java und JavaFX erfolgen.
 Das Programm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz veröffentlicht werden.
-Die Dokumentation muss in \LaTeX erstellt werden.
+Die Dokumentation muss in \LaTeX ~erstellt werden.
 
 
 \subsection{Prozessumfeld}
@@ -129,7 +130,7 @@ Das System kann anderen Programmen über eine API ermöglichen, wiederkehrende E
 Das löschen und anpassen von Events soll wie oben beschrieben, ebenfalls möglich sein.
 
 \item
-Das System muss den Benutzer mittels einer Notification rechtzeitig auf ein Event hinweisen.
+Das System muss den Benutzer mittels einer Notification rechtzeitig, zur voreingestellten Zeit, auf ein Event hinweisen.
 
 \item
 Das Programm muss beim Programmstart seine Konfiguration mittels eines Configsfiles vorunehmen.
@@ -193,7 +194,7 @@ Besondere folgende Fragen gilt es abzuklären:
 \item Kategoriserung der Anforderungen.
 \item Priorisierung der Anforderungen.
 \item Was soll mit der Eventkategorisierung erreicht werden, welche wieteren Anforderungen ergeben sich daraus.
-\item Abgrenzung des Programmes gegenüber eines Kalenders und gegenüber des Cronjobs.
+\item Abgrenzung des Programmes gegenüber eines kAlarm, Kalenders und gegenüber des Cronjobs.
 \end{itemize}
 Da unser Auftraggeber als Professor der Informatik,
 Als weitere Diskusionsgrundlage sind wir daran neben diesem Dokument einen Prototyp des GUI zu erstellen.
@@ -210,7 +211,29 @@ Im sinne einer Agilen Entwicklung wollen wir möglichst rasch präsentierbare Ar
 
 
 \subsection{Technische Anforderungen}
+TODO redundanz wirklich gewollt?
+
+\begin{itemize}
+ \item Das Programm muss auf Linux, Windows und OSx lauffähig sein.
+ \item Das Programm muss Datenbankagnostisch sein.
+ \item Das Programm muss auf dem Buildsystem kompiliert werden können.
+ \item Das Programm muss auf dem Referenzsystem ohne weitere installationen  kompiliert werden können.
+\end{itemize}
+
+
+
 \subsection{Qualitätsanforderungen}
+\begin{itemize}
+\item 80\% der Benuter sollen in der Lage sein ohne vorgänige Schlung, bei der ersten Benutzung, folgend Aktionen, jeweils innert 5 Minuten nach erfolgtem Programmstart, auszuführen:
+\begin{itemize}
+\item Erstellen eines Events.
+\item Löschen eines vorhandenen Events.
+\item Editieren eines Events (Zeit, Datum, Notificationtext).
+\end{itemize}
+
+\item 60\% der Benutzer soll in der Lage sein die Konfiguration des Programmes mittels des ConfigFiles Vorzunhemen.
+\end{itemize}
+
 \section{Glossar}
 \listoffigures
 \listoftables
