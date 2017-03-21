@@ -2,11 +2,15 @@
 doc/* 
 !doc/*/ 
 doc/*/* 
+
 !doc/script/* 
 !doc/uml/* 
 !doc/*/img/ 
 !doc/*/*.pdf 
 !doc/*/*.tex 
+!doc/*/glossary/
+doc/*/glossary/*
+doc/*/glossary/*.tex
 
 
 out/
