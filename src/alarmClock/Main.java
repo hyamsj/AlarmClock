@@ -1,4 +1,4 @@
-package sample;
+package alarmClock;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +11,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("Alarm Clock \u00a9");
+        Scene scene = new Scene(root);
+        //scene.getStylesheets().add("alarmClock/styles.css");
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
