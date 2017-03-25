@@ -12,10 +12,6 @@ public class Reminder {
     private SimpleStringProperty time = new SimpleStringProperty("");
     private SimpleStringProperty date = new SimpleStringProperty("");
 
-    public Reminder() {
-        this("", "", "", "");
-    }
-
     public Reminder(String subject, String description, String time, String date) {
         setSubject(subject);
         setDescription(description);

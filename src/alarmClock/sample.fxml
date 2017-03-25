@@ -19,18 +19,30 @@
         <RowConstraints/>
     </rowConstraints>
     <children>
-        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="25.0"
-                prefWidth="71.0" text="Add" GridPane.rowIndex="2">
+        <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject">
             <GridPane.margin>
-                <Insets bottom="10.0" top="10.0"/>
+                <Insets left="10.0" top="10.0"/>
             </GridPane.margin>
-        </Button>
+        </TextField>
         <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="115.0" promptText="Description"
                    GridPane.columnIndex="1">
             <GridPane.margin>
                 <Insets top="10.0"/>
             </GridPane.margin>
         </TextField>
+        <TextField fx:id="timeField" promptText="HH:MM:SS" GridPane.columnIndex="2">
+            <GridPane.margin>
+                <Insets top="10.0"/>
+            </GridPane.margin>
+        </TextField>
+        <DatePicker fx:id="datePickerField" promptText="DD/MM/YYYY" GridPane.columnIndex="3">
+            <GridPane.margin>
+                <Insets right="10.0" top="10.0"/>
+            </GridPane.margin>
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </DatePicker>
         <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.rowIndex="1">
             <columns>
                 <TableColumn fx:id="subjectColumn" prefWidth="115.0" text="Subject">
@@ -51,35 +63,23 @@
                 </TableColumn>
             </columns>
         </TableView>
-        <Label fx:id="currentTimeLabel" prefHeight="17.0" prefWidth="110.0" text="Current Time" GridPane.columnIndex="3"
-               GridPane.rowIndex="2">
+        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="25.0"
+                prefWidth="71.0" text="Add" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets right="10.0" top="10.0"/>
+                <Insets bottom="10.0" top="10.0"/>
             </GridPane.margin>
-        </Label>
+        </Button>
         <Button fx:id="rmButton" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0"
                 text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets bottom="10.0" top="10.0"/>
             </GridPane.margin>
         </Button>
-        <DatePicker fx:id="datePickerField" promptText="DD/MM/YYYY" GridPane.columnIndex="3">
+        <Label fx:id="currentTimeLabel" prefHeight="17.0" prefWidth="110.0" text="Current Time" GridPane.columnIndex="3"
+               GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" top="10.0"/>
             </GridPane.margin>
-            <padding>
-                <Insets right="10.0"/>
-            </padding>
-        </DatePicker>
-        <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject">
-            <GridPane.margin>
-                <Insets left="10.0" top="10.0"/>
-            </GridPane.margin>
-        </TextField>
-        <TextField fx:id="timeField" promptText="HH:MM:SS" GridPane.columnIndex="2">
-            <GridPane.margin>
-                <Insets top="10.0"/>
-            </GridPane.margin>
-        </TextField>
+        </Label>
     </children>
 </GridPane>
