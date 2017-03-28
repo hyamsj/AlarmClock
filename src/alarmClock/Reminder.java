@@ -66,4 +66,5 @@ public class Reminder {
     public void setDate(String date) {
         this.date.set(date);
     }
+
 }
