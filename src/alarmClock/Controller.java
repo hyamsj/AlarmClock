@@ -30,17 +30,10 @@ public class Controller implements Initializable{
 
     private String subject, description, time, date;
 
-    // TODO add Model via constructor Parameters. JavaFX makes this a bit difficult
-    public Controller() {
-        Model model = new Model();
-        this.model = model.getModel();
-    }
-
     public void addButtonPressed() {
         subject = subjectField.getText();
         description = descriptionField.getText();
         time = timeField.getText();
-        date = datePickerField.getConverter().toString(); //TODO
         model.addData(reminderTable.getItems(), subject, description, time);
         subjectField.setText("");
         descriptionField.setText("");
@@ -58,6 +51,9 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Model model = new Model();
+        this.model = model.getModel();
+
         reminderTable.setItems(model.getReminders());
         System.out.println();
     }
