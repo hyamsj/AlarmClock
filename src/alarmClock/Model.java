@@ -1,5 +1,6 @@
 package alarmClock;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -20,5 +21,14 @@ public class Model {
 
     public ObservableList<Reminder> getData() {
         return data;
+    }
+
+    public ObservableList<Reminder> getReminders() {
+        ObservableList<Reminder> reminders = FXCollections.observableArrayList();
+        reminders.add(new Reminder("One", "Four", "Eight", ""));
+        reminders.add(new Reminder("Two", "Five", "Nine", ""));
+        reminders.add(new Reminder("Three", "Six", "Ten", ""));
+        reminders.add(new Reminder("Four", "Seven", "Eleven", ""));
+        return reminders;
     }
 }

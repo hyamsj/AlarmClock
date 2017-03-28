@@ -2,9 +2,13 @@ package alarmClock;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable{
     @FXML
     private TableView<Reminder> reminderTable;
     @FXML
@@ -36,6 +40,7 @@ public class Controller {
         subject = subjectField.getText();
         description = descriptionField.getText();
         time = timeField.getText();
+        date = datePickerField.getConverter().toString(); //TODO
         model.addData(reminderTable.getItems(), subject, description, time);
         subjectField.setText("");
         descriptionField.setText("");
@@ -51,4 +56,9 @@ public class Controller {
         reminderSelected.forEach(allReminders::remove);
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        reminderTable.setItems(model.getReminders());
+        System.out.println();
+    }
 }
