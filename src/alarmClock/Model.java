@@ -27,10 +27,13 @@ public class Model {
 
     public ObservableList<Reminder> getReminders() {
         ObservableList<Reminder> reminders = FXCollections.observableArrayList();
+        /*
         reminders.add(new Reminder("One", "Four", "Eight", ""));
         reminders.add(new Reminder("Two", "Five", "Nine", ""));
         reminders.add(new Reminder("Three", "Six", "Ten", ""));
         reminders.add(new Reminder("Four", "Seven", "Eleven", ""));
+        */
+        reminders.add(new Reminder("subject-comes-here","descritpion-comes-here","time",null));
         return reminders;
     }
 }
