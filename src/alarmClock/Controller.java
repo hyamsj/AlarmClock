@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
+import java.time.LocalDate;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,13 +28,15 @@ public class Controller implements Initializable{
 
     private Model model;
 
-    private String subject, description, time, date;
+    private String subject, description, time;
+    private LocalDate date;
 
     public void addButtonPressed() {
         subject = subjectField.getText();
         description = descriptionField.getText();
         time = timeField.getText();
-        model.addData(reminderTable.getItems(), subject, description, time);
+        date = datePickerField.getValue();
+        model.addData(reminderTable.getItems(), subject, description, time,date);
         subjectField.setText("");
         descriptionField.setText("");
         timeField.setText("");

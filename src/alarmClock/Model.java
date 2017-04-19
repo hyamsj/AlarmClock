@@ -3,6 +3,8 @@ package alarmClock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 /**
  * Created by joni on 25/03/17.
  */
@@ -14,9 +16,9 @@ public class Model {
         return this;
     }
 
-    public void addData(ObservableList<Reminder> data, String subject, String description, String time) {
+    public void addData(ObservableList<Reminder> data, String subject, String description, String time,LocalDate date) {
         this.data = data;
-        data.add(new Reminder(subject, description, time, ""));
+        data.add(new Reminder(subject, description, time, date));
     }
 
     public ObservableList<Reminder> getData() {

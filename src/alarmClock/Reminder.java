@@ -1,6 +1,9 @@
 package alarmClock;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+
+import java.time.LocalDate;
 
 /**
  * Created by joni on 24/03/17.
@@ -10,9 +13,9 @@ public class Reminder {
     private SimpleStringProperty subject = new SimpleStringProperty("");
     private SimpleStringProperty description = new SimpleStringProperty("");
     private SimpleStringProperty time = new SimpleStringProperty("");
-    private SimpleStringProperty date = new SimpleStringProperty("");
+    private SimpleObjectProperty<LocalDate> date = new SimpleObjectProperty<LocalDate>();
 
-    public Reminder(String subject, String description, String time, String date) {
+    public Reminder(String subject, String description, String time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
         setTime(time);
@@ -55,15 +58,15 @@ public class Reminder {
         this.time.set(time);
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date.get();
     }
 
-    public SimpleStringProperty dateProperty() {
+    public SimpleObjectProperty<LocalDate> dateProperty () {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date.set(date);
     }
 
