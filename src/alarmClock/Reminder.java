@@ -13,7 +13,7 @@ public class Reminder {
     private SimpleStringProperty subject = new SimpleStringProperty("");
     private SimpleStringProperty description = new SimpleStringProperty("");
     private SimpleStringProperty time = new SimpleStringProperty("");
-    private SimpleObjectProperty<LocalDate> date = new SimpleObjectProperty<LocalDate>();
+    private SimpleObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
     public Reminder(String subject, String description, String time, LocalDate date) {
         setSubject(subject);
@@ -62,7 +62,7 @@ public class Reminder {
         return date.get();
     }
 
-    public SimpleObjectProperty<LocalDate> dateProperty () {
+    public SimpleObjectProperty<LocalDate> dateProperty() {
         return date;
     }
 
