@@ -17,5 +17,3 @@ out/
 *.iml
 /.idea/
 *.swp
-
-/src/.idea/
