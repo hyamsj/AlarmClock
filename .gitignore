@@ -1,4 +1,5 @@
 #only the folowing may pass: tex .pdf script/ img/ 
+reminders.ser
 doc/* 
 !doc/*/ 
 doc/*/* 

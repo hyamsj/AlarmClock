@@ -3,10 +3,7 @@ package alarmClock;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -21,20 +18,31 @@ public class Model implements Serializable{
 
     public Model() throws IOException, ClassNotFoundException {
         String filename = "reminders.ser";
-        if (Files.exists(Paths.get(filename)))
-            try (ObjectInputStream in =
-                         new ObjectInputStream(new FileInputStream(filename))) {
-//                data = (ObservableList<Reminder>) in.readObject();
-                ArrayList<Reminder> alist = new ArrayList<>();
-                alist = (ArrayList<Reminder>) in.readObject();
-                data.addAll(alist);
-//                System.out.println(value);
-            }
+        if (Files.exists(Paths.get(filename))){
+            dezerialize(filename);
+        }
         else {
             this.data = FXCollections.observableArrayList();
         }
     }
 
+    private void dezerialize(String path)throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in =
+                     new ObjectInputStream(new FileInputStream(path))) {
+            ArrayList<serializableReminder> alist = new ArrayList<>();
+            alist = (ArrayList<serializableReminder>) in.readObject();
+            ArrayList<Reminder> reminderList = new ArrayList<>();
+            for (serializableReminder sr : alist) {
+                reminderList.add(sr.getReminder());
+//                System.out.println(value);
+            }
+            data = FXCollections.observableArrayList();
+            data.addAll(reminderList);
+        }
+
+
+
+    }
 
     public void addData(ObservableList<Reminder> data, String subject, String description, String time, LocalDate date) {
         this.data = data;
@@ -46,16 +54,22 @@ public class Model implements Serializable{
     }
 
     public ObservableList<Reminder> getReminders() {
-        ObservableList<Reminder> reminders = FXCollections.observableArrayList();
-        reminders.add(new Reminder("subject-comes-here","descritpion-comes-here","time",null));
-        return reminders;
+       // ObservableList<Reminder> reminders = FXCollections.observableArrayList();
+        //reminders.add(new Reminder("subject-comes-here","descritpion-comes-here","time",null));
+        return data;
+
+
+        //return reminders;
     }
 
-    public ArrayList<Reminder> getEditableReminders() {
-        ArrayList<Reminder> aList = new ArrayList<>();
+    public ArrayList<serializableReminder> getEditableReminders() {
+        ArrayList<serializableReminder> aList = new ArrayList<>();
         for (Reminder r : data){
-            aList.add(r);
+            serializableReminder sr = r.getSerializable();
+            aList.add(sr);
         }
         return aList;
     }
+
+
 }

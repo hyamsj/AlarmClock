@@ -70,5 +70,8 @@ public class Reminder implements Serializable{
     public void setDate(LocalDate date) {
         this.date.set(date);
     }
+    public serializableReminder getSerializable(){
+        return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
+    }
 
 }
