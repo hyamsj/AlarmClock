@@ -1,5 +1,6 @@
 package noSceneBuilder;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.Serializable;
@@ -11,16 +12,8 @@ public class Model implements Serializable{
 
     private View view;
     Reminder reminder = new Reminder();
+    ObservableList<Reminder> data = FXCollections.observableArrayList();
 
-    public Model() {
-
-    }
-
-    public ObservableList<Reminder> getReminders() {
-
-        reminder.getReminders();
-        return reminder.getReminders();
-    }
 
     public void addObserver(View view) {
         this.view = view;
@@ -41,4 +34,11 @@ public class Model implements Serializable{
         reminderSelected = view.getTable().getSelectionModel().getSelectedItems();
         reminderSelected.forEach(allReminders::remove);
     }
+
+    public ObservableList<Reminder> getReminders() {
+        this.data = FXCollections.observableArrayList();
+        return data;
+    }
+
+
 }

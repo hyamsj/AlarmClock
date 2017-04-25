@@ -20,4 +20,5 @@ public class Controller {
     public void deleteButtonClicked() {
         model.removeReminder();
     }
+
 }

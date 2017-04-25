@@ -1,8 +1,5 @@
 package noSceneBuilder;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.io.Serializable;
 
 /**
@@ -57,8 +54,4 @@ public class Reminder implements Serializable {
         this.date = date;
     }
 
-    public ObservableList<Reminder> getReminders() {
-        ObservableList<Reminder> products = FXCollections.observableArrayList();
-        return products;
-    }
 }
