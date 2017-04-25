@@ -20,3 +20,13 @@ out/
 *.swp
 
 /src/.idea/
+target/Alarmclock-1.0-SNAPSHOT.jar
+target/classes/noSceneBuilder/
+target/classes/styles.css
+target/generated-sources/
+target/generated-test-sources/
+target/maven-archiver/
+target/maven-status/
+target/site/
+target/surefire-reports/
+target/test-classes/

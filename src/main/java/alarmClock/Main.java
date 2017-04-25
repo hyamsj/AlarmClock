@@ -18,7 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
         primaryStage.setTitle("Alarm Clock \u00a9");
         Scene scene = new Scene(root);
-//        scene.getStylesheets().add("alarmClock/styles.css");
+        scene.getStylesheets().add("styles.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
