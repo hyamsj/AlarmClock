@@ -4,12 +4,20 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
+    @FXML
+    private GridPane pane;
     @FXML
     private TableView<Reminder> reminderTable;
     @FXML
@@ -24,6 +32,8 @@ public class Controller implements Initializable{
     private Button addButton;
     @FXML
     private Button rmButton;
+    @FXML
+    private Button saveButton;
     @FXML
     private Label currentTimeLabel;
 
@@ -54,10 +64,30 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Model model = new Model();
-        this.model = model.getModel();
+        Model model = null;
+        try {
+            model = new Model();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        this.model = model;
 
         reminderTable.setItems(model.getReminders());
-        System.out.println();
+
     }
+
+    public void save(){
+        System.out.println("saving");
+        try (ObjectOutputStream out =
+                     new ObjectOutputStream(new FileOutputStream("reminders.ser"))) {
+            out.writeObject(model.getEditableReminders());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

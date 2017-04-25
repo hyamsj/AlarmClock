@@ -3,12 +3,13 @@ package alarmClock;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * Created by joni on 24/03/17.
  */
-public class Reminder {
+public class Reminder implements Serializable{
 
     private SimpleStringProperty subject = new SimpleStringProperty("");
     private SimpleStringProperty description = new SimpleStringProperty("");
@@ -68,6 +69,9 @@ public class Reminder {
 
     public void setDate(LocalDate date) {
         this.date.set(date);
+    }
+    public serializableReminder getSerializable(){
+        return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
     }
 
 }
