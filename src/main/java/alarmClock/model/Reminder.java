@@ -1,4 +1,4 @@
-package alarmClock;
+package alarmClock.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

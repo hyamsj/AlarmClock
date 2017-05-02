@@ -1,4 +1,4 @@
-package alarmClock;
+package alarmClock.model;
 
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -61,7 +61,7 @@ public class Model implements Serializable {
         return aList;
     }
 
-    public void bindData(Controller controller) {
+    public void bindData() {
         reminders.addListener((Observable obs) -> {
             System.out.println("something changed");
             save();

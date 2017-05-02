@@ -1,7 +1,7 @@
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
-import alarmClock.Reminder;
+import alarmClock.model.Reminder;
 import org.junit.Test;
 
 import java.time.LocalDate;
