@@ -27,7 +27,7 @@ public class Reminder implements Serializable{
         return subject.get();
     }
 
-    public SimpleStringProperty subjectProperty() {
+    public SimpleStringProperty getSubjectProperty() {
         return subject;
     }
 
@@ -39,7 +39,7 @@ public class Reminder implements Serializable{
         return description.get();
     }
 
-    public SimpleStringProperty descriptionProperty() {
+    public SimpleStringProperty getDescriptionProperty() {
         return description;
     }
 
@@ -51,7 +51,7 @@ public class Reminder implements Serializable{
         return time.get();
     }
 
-    public SimpleStringProperty timeProperty() {
+    public SimpleStringProperty getTimeProperty() {
         return time;
     }
 
@@ -63,7 +63,7 @@ public class Reminder implements Serializable{
         return date.get();
     }
 
-    public SimpleObjectProperty<LocalDate> dateProperty() {
+    public SimpleObjectProperty<LocalDate> getDateProperty() {
         return date;
     }
 
