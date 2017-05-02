@@ -70,7 +70,7 @@
         </TableView>
         <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Add" GridPane.rowIndex="2">
             <GridPane.margin>
-                <Insets bottom="10.0" top="10.0" />
+                <Insets bottom="10.0" left="10.0" top="10.0" />
             </GridPane.margin>
         </Button>
         <Button fx:id="rmButton" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">

@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 public class Controller implements Initializable {
     @FXML
@@ -56,19 +57,30 @@ public class Controller implements Initializable {
         ObservableList<Reminder> reminderSelected, allReminders;
         allReminders = reminderTable.getItems();
         reminderSelected = reminderTable.getSelectionModel().getSelectedItems();
-        reminderSelected.forEach(allReminders::remove);
+        allReminders.removeAll(reminderSelected);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
         // timeField should only allow a pattern like this: HH:MM
         timeField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                timeField.setText(newValue.replaceAll("[^\\d]", ""));
+                timeField.setText(newValue.replaceAll("[^\\d:]", ""));
+            }
+            if (timeField.getText().length() > 5) {
+                timeField.setText(timeField.getText().substring(0, 5));
+            }
+            if (newValue.matches("\\d{4}")) {
+                String[] input = newValue.split("");
+                timeField.setText(String.format("%s%s:%s%s", input[0], input[1], input[2], input[3]));
             }
         });
+
+
+        reminderTable.getSelectionModel().setSelectionMode(
+                SelectionMode.MULTIPLE
+        );
+
         Model model = null;
         try {
             model = new Model();
@@ -81,18 +93,6 @@ public class Controller implements Initializable {
         model.bindData(this);
         reminderTable.setItems(model.getReminders());
 
-    }
-
-    public void save() {
-        System.out.println("saving");
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream("reminders.ser"))) {
-            out.writeObject(model.getEditableReminders());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
