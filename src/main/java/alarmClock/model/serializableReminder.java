@@ -12,7 +12,7 @@ public class serializableReminder implements Serializable{
     private String time = "";
     private LocalDate date;
 
-    public serializableReminder(String subject, String description, String time, LocalDate date) {
+    serializableReminder(String subject, String description, String time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
         setTime(time);
@@ -23,51 +23,33 @@ public class serializableReminder implements Serializable{
         return subject;
     }
 
-    public String getSubjectProperty() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public String getDescriptionProperty() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getTime() {
         return time;
     }
 
-    public String getTimeProperty() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
-    public LocalDate getDateProperty() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public Reminder getReminder(){
+    Reminder getReminder(){
         return new Reminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
+    }
+
+    private void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    private void setDescription(String description) {
+        this.description = description;
+    }
+    private void setTime(String time) {
+        this.time = time;
+    }
+    private void setDate(LocalDate date) {
+        this.date = date;
     }
 }

@@ -31,9 +31,6 @@ public class Reminder implements Serializable{
         return subject;
     }
 
-    private void setSubject(String subject) {
-        this.subject.set(subject);
-    }
 
     public String getDescription() {
         return description.get();
@@ -41,10 +38,6 @@ public class Reminder implements Serializable{
 
     public SimpleStringProperty getDescriptionProperty() {
         return description;
-    }
-
-    private void setDescription(String description) {
-        this.description.set(description);
     }
 
     public String getTime() {
@@ -55,10 +48,6 @@ public class Reminder implements Serializable{
         return time;
     }
 
-    private void setTime(String time) {
-        this.time.set(time);
-    }
-
     public LocalDate getDate() {
         return date.get();
     }
@@ -67,11 +56,25 @@ public class Reminder implements Serializable{
         return date;
     }
 
-    private void setDate(LocalDate date) {
-        this.date.set(date);
-    }
     public serializableReminder getSerializable(){
         return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
     }
+    private void setSubject(String subject) {
+        this.subject.set(subject);
+    }
+
+    private void setDescription(String description) {
+        this.description.set(description);
+    }
+    private void setTime(String time) {
+        this.time.set(time);
+    }
+
+    private void setDate(LocalDate date) {
+        this.date.set(date);
+    }
+
+
+
 
 }
