@@ -12,7 +12,7 @@ public class serializableReminder implements Serializable{
     private String time = "";
     private LocalDate date;
 
-    serializableReminder(String subject, String description, String time, LocalDate date) {
+    public serializableReminder(String subject, String description, String time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
         setTime(time);
@@ -35,7 +35,7 @@ public class serializableReminder implements Serializable{
         return date;
     }
 
-    Reminder getReminder(){
+    public Reminder getReminder(){
         return new Reminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
     }
 
