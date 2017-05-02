@@ -30,3 +30,4 @@ target/maven-status/
 target/site/
 target/surefire-reports/
 target/test-classes/
+!/doc/Requirements/glossary/Glossary.tex
