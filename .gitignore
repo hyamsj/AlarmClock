@@ -2,7 +2,9 @@
 reminders.ser
 doc/*
 !doc/*/ 
-doc/*/* 
+doc/*/*
+!doc/*/*/
+
 
 !doc/script/* 
 !doc/uml/* 
@@ -12,6 +14,7 @@ doc/*/*
 !doc/*/glossary/
 doc/*/glossary/*
 !doc/*/glossary/*.tex
+!/doc/Requirements/glossary/Glossary.tex
 
 
 out/
@@ -30,4 +33,3 @@ target/maven-status/
 target/site/
 target/surefire-reports/
 target/test-classes/
-!/doc/Requirements/glossary/Glossary.tex
