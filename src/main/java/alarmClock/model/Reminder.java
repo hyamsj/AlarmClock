@@ -31,7 +31,7 @@ public class Reminder implements Serializable{
         return subject;
     }
 
-    public void setSubject(String subject) {
+    private void setSubject(String subject) {
         this.subject.set(subject);
     }
 
@@ -43,7 +43,7 @@ public class Reminder implements Serializable{
         return description;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description.set(description);
     }
 
@@ -55,7 +55,7 @@ public class Reminder implements Serializable{
         return time;
     }
 
-    public void setTime(String time) {
+    private void setTime(String time) {
         this.time.set(time);
     }
 
@@ -67,7 +67,7 @@ public class Reminder implements Serializable{
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    private void setDate(LocalDate date) {
         this.date.set(date);
     }
     public serializableReminder getSerializable(){
