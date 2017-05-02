@@ -83,6 +83,5 @@
                 <Insets right="10.0" top="10.0" />
             </GridPane.margin>
         </Label>
-      <Button fx:id="saveButton" mnemonicParsing="false" onAction="#save" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="2" />
     </children>
 </GridPane>

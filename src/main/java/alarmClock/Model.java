@@ -2,12 +2,19 @@ package alarmClock;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.net.URL;
+import javafx.beans.Observable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Created by joni on 25/03/17.
@@ -19,14 +26,14 @@ public class Model implements Serializable{
     public Model() throws IOException, ClassNotFoundException {
         String filename = "reminders.ser";
         if (Files.exists(Paths.get(filename))){
-            dezerialize(filename);
+            deserialize(filename);
         }
         else {
             this.data = FXCollections.observableArrayList();
         }
     }
 
-    private void dezerialize(String path)throws IOException, ClassNotFoundException {
+    private void deserialize(String path)throws IOException, ClassNotFoundException {
         try (ObjectInputStream in =
                      new ObjectInputStream(new FileInputStream(path))) {
             ArrayList<serializableReminder> alist = new ArrayList<>();
@@ -71,5 +78,12 @@ public class Model implements Serializable{
         return aList;
     }
 
+    public void bindData(Controller controller) {
+        data.addListener((Observable obs) -> {
+            System.out.println("something changed");
+            controller.save();
+        });
+
+    }
 
 }

@@ -15,7 +15,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable{
+public class Controller implements Initializable {
     @FXML
     private GridPane pane;
     @FXML
@@ -33,8 +33,6 @@ public class Controller implements Initializable{
     @FXML
     private Button rmButton;
     @FXML
-    private Button saveButton;
-    @FXML
     private Label currentTimeLabel;
 
     private Model model;
@@ -47,7 +45,7 @@ public class Controller implements Initializable{
         description = descriptionField.getText();
         time = timeField.getText();
         date = datePickerField.getValue();
-        model.addData(reminderTable.getItems(), subject, description, time,date);
+        model.addData(reminderTable.getItems(), subject, description, time, date);
         subjectField.setText("");
         descriptionField.setText("");
         timeField.setText("");
@@ -73,12 +71,12 @@ public class Controller implements Initializable{
             e.printStackTrace();
         }
         this.model = model;
-
+        model.bindData(this);
         reminderTable.setItems(model.getReminders());
 
     }
 
-    public void save(){
+    public void save() {
         System.out.println("saving");
         try (ObjectOutputStream out =
                      new ObjectOutputStream(new FileOutputStream("reminders.ser"))) {
