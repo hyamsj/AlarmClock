@@ -11,7 +11,7 @@ doc/*/*
 !doc/*/*.tex 
 !doc/*/glossary/
 doc/*/glossary/*
-doc/*/glossary/*.tex
+!doc/*/glossary/*.tex
 
 
 out/
