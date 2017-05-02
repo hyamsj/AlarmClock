@@ -36,8 +36,7 @@ public class Model implements Serializable{
     private void deserialize(String path)throws IOException, ClassNotFoundException {
         try (ObjectInputStream in =
                      new ObjectInputStream(new FileInputStream(path))) {
-            ArrayList<serializableReminder> alist = new ArrayList<>();
-            alist = (ArrayList<serializableReminder>) in.readObject();
+            ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
             ArrayList<Reminder> reminderList = new ArrayList<>();
             for (serializableReminder sr : alist) {
                 reminderList.add(sr.getReminder());
