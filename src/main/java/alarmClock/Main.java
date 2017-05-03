@@ -1,5 +1,7 @@
 package alarmClock;
 
+import alarmClock.model.Model;
+import alarmClock.model.Poller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +18,16 @@ public class Main extends Application {
         scene.getStylesheets().add("styles.css");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
+        // otherwise get sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
+
+        Poller p = new Poller(new Model());
+        try {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {

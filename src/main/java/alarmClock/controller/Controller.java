@@ -1,6 +1,7 @@
 package alarmClock.controller;
 
 import alarmClock.model.Model;
+import alarmClock.model.Poller;
 import alarmClock.model.Reminder;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,25 +17,27 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    @FXML
-    private GridPane pane;
-    @FXML
-    private TableView<Reminder> reminderTable;
-    @FXML
-    private TextField subjectField;
-    @FXML
-    private TextField descriptionField;
-    @FXML
-    private TextField timeField;
-    @FXML
-    private DatePicker datePickerField;
-    @FXML
-    private Button addButton;
-    @FXML
-    private Button rmButton;
+@FXML
+private GridPane pane;
+@FXML
+private TableView<Reminder> reminderTable;
+@FXML
+private TextField subjectField;
+@FXML
+private TextField descriptionField;
+@FXML
+private TextField timeField;
+@FXML
+private DatePicker datePickerField;
+@FXML
+private Button addButton;
+@FXML
+private Button rmButton;
 
-    private Model model;
-    private InputChecker helper = new InputChecker();
+private Model model;
+private InputChecker helper = new InputChecker();
+
+
 
     private String subject;
     private String description;
@@ -48,7 +51,8 @@ public class Controller implements Initializable {
             //TODO  controller may only accept parsable timeFild inputs, could do so by adding a LocalDateTimePicker
             //time = LocalDateTime.parse(timeField.getText());
             //TODO remove after the above is fixed
-            time = LocalDateTime.MAX;
+            LocalDateTime later = LocalDateTime.now().plusMinutes(3);
+            time = later;
             date = datePickerField.getValue();
             model.addReminder(new Reminder(subject, description, time, date));
             subjectField.setText("");
@@ -91,5 +95,6 @@ public class Controller implements Initializable {
         reminderTable.setItems(model.getReminders());
 
     }
+
 
 }

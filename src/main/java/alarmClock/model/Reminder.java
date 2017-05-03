@@ -16,6 +16,7 @@ public class Reminder implements Serializable{
     private SimpleStringProperty subject = new SimpleStringProperty("");
     private SimpleStringProperty description = new SimpleStringProperty("");
     private SimpleObjectProperty <LocalDateTime> time = new SimpleObjectProperty<>();
+    //TODO date is not needed anymore since we have LocalDateTime which has a Date and a Time
     private SimpleObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
     public Reminder(String subject, String description, LocalDateTime time, LocalDate date) {

@@ -17,15 +17,18 @@ import java.util.List;
 public class Model implements Serializable {
 
     ObservableList<Reminder> reminders;
+    private Poller p;
 
-    public Model() throws IOException, ClassNotFoundException {
+    public Model() throws IOException, ClassNotFoundException{
         String filename = "reminders.ser";
         if (Files.exists(Paths.get(filename))) {
             deserialize(filename);
         } else {
             this.reminders = FXCollections.observableArrayList();
         }
+
     }
+
 
     private void deserialize(String path) throws IOException, ClassNotFoundException {
         try (ObjectInputStream in =
