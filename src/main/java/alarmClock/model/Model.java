@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by joni on 25/03/17.
@@ -42,17 +43,17 @@ public class Model implements Serializable {
 
     }
 
-    public void addData(ObservableList<Reminder> data, String subject, String description, String time, LocalDate date) {
-        this.reminders = data;
-        data.add(new Reminder(subject, description, time, date));
+    public void addReminder(Reminder reminder) {
+        //this.reminders = data;
+        reminders.add(reminder);
     }
 
     public ObservableList<Reminder> getReminders() {
+        //TODO return only a copy of reminders instead of a reference
         return reminders;
-
     }
 
-    public ArrayList<serializableReminder> getEditableReminders() {
+    private ArrayList<serializableReminder> getEditableReminders() {
         ArrayList<serializableReminder> aList = new ArrayList<>();
         for (Reminder r : reminders) {
             serializableReminder sr = r.getSerializable();
@@ -69,7 +70,7 @@ public class Model implements Serializable {
 
     }
 
-    public void save() {
+    private void save() {
         System.out.println("saving");
         try (ObjectOutputStream out =
                      new ObjectOutputStream(new FileOutputStream("reminders.ser"))) {
@@ -81,4 +82,11 @@ public class Model implements Serializable {
         }
     }
 
+    public void removeReminders(ObservableList<Reminder> reminderSelected) {
+         reminders.removeAll(reminderSelected);
+    }
+
+    public void removeReminder(Reminder reminder) {
+        reminders.remove(reminder);
+    }
 }

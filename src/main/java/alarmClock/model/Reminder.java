@@ -2,9 +2,11 @@ package alarmClock.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by joni on 24/03/17.
@@ -13,10 +15,10 @@ public class Reminder implements Serializable{
 
     private SimpleStringProperty subject = new SimpleStringProperty("");
     private SimpleStringProperty description = new SimpleStringProperty("");
-    private SimpleStringProperty time = new SimpleStringProperty("");
+    private SimpleObjectProperty <LocalDateTime> time = new SimpleObjectProperty<>();
     private SimpleObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
 
-    public Reminder(String subject, String description, String time, LocalDate date) {
+    public Reminder(String subject, String description, LocalDateTime time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
         setTime(time);
@@ -40,11 +42,11 @@ public class Reminder implements Serializable{
         return description;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time.get();
     }
 
-    public SimpleStringProperty getTimeProperty() {
+    public SimpleObjectProperty<LocalDateTime> getTimeProperty() {
         return time;
     }
 
@@ -59,6 +61,7 @@ public class Reminder implements Serializable{
     public serializableReminder getSerializable(){
         return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
     }
+
     private void setSubject(String subject) {
         this.subject.set(subject);
     }
@@ -66,7 +69,7 @@ public class Reminder implements Serializable{
     private void setDescription(String description) {
         this.description.set(description);
     }
-    private void setTime(String time) {
+    private void setTime(LocalDateTime time) {
         this.time.set(time);
     }
 

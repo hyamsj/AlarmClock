@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -35,16 +36,21 @@ public class Controller implements Initializable {
     private Model model;
     private InputChecker helper = new InputChecker();
 
-    private String subject, description, time;
+    private String subject;
+    private String description;
+    private LocalDateTime time;
     private LocalDate date;
 
     public void addButtonPressed() {
         if (!Objects.equals(subjectField.getText(), "") && !Objects.equals(timeField.getText(), "") && datePickerField.getValue() != null) {
             subject = subjectField.getText();
             description = descriptionField.getText();
-            time = timeField.getText();
+            //TODO  controller may only accept parsable timeFild inputs, could do so by adding a LocalDateTimePicker
+            //time = LocalDateTime.parse(timeField.getText());
+            //TODO remove after the above is fixed
+            time = LocalDateTime.MAX;
             date = datePickerField.getValue();
-            model.addData(reminderTable.getItems(), subject, description, time, date);
+            model.addReminder(new Reminder(subject, description, time, date));
             subjectField.setText("");
             descriptionField.setText("");
             timeField.setText("");
@@ -54,10 +60,12 @@ public class Controller implements Initializable {
     }
 
     public void rmButtonPressed() {
-        ObservableList<Reminder> reminderSelected, allReminders;
-        allReminders = reminderTable.getItems();
+        ObservableList<Reminder> reminderSelected;
+        //ObservableList<Reminder>  allReminders;
+        //allReminders = reminderTable.getItems();
         reminderSelected = reminderTable.getSelectionModel().getSelectedItems();
-        allReminders.removeAll(reminderSelected);
+        // allReminders.removeAll(reminderSelected);
+        model.removeReminders(reminderSelected);
     }
 
     @Override

@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import org.junit.Before;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import static junit.framework.TestCase.assertEquals;
 
 /**
@@ -13,20 +15,20 @@ import static junit.framework.TestCase.assertEquals;
 public class SerializableReminderTest {
 
     SimpleStringProperty descriptionProperty;
-    SimpleStringProperty timeProperty;
+    SimpleObjectProperty<LocalDateTime> timeProperty;
     SimpleObjectProperty<LocalDate> dateProperty;
     SimpleStringProperty subjectProperty;
     Reminder reminder;
     String subject = "titel";
     String description = "description fo the Reminder";
-    String time = "12:22";
+    LocalDateTime time = LocalDateTime.now();
     LocalDate date = LocalDate.of(2017, 3, 4);
     serializableReminder sReminder;
 
     @Before
     public void beforeTest(){
         descriptionProperty = new SimpleStringProperty(description);
-        timeProperty = new SimpleStringProperty(time);
+        timeProperty = new SimpleObjectProperty<>(time);
         dateProperty = new SimpleObjectProperty<>(date);
         subjectProperty = new SimpleStringProperty(subject);
         reminder = new Reminder(subject, description, time, date);

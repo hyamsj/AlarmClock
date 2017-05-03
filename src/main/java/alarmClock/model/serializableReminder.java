@@ -2,17 +2,18 @@ package alarmClock.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by pascal on 4/25/17.
  */
 public class serializableReminder implements Serializable{
     private String subject =  "";
-    private  String description = "";
-    private String time = "";
+                        private  String description = "";
+    private LocalDateTime time =LocalDateTime.now();
     private LocalDate date;
 
-    public serializableReminder(String subject, String description, String time, LocalDate date) {
+    public serializableReminder(String subject, String description, LocalDateTime time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
         setTime(time);
@@ -27,7 +28,7 @@ public class serializableReminder implements Serializable{
         return description;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
@@ -46,7 +47,7 @@ public class serializableReminder implements Serializable{
     private void setDescription(String description) {
         this.description = description;
     }
-    private void setTime(String time) {
+    private void setTime(LocalDateTime time) {
         this.time = time;
     }
     private void setDate(LocalDate date) {

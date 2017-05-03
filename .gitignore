@@ -4,6 +4,7 @@ doc/*
 !doc/*/ 
 doc/*/*
 !doc/*/*/
+target
 
 
 !doc/script/* 

@@ -16,19 +16,19 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class ReminderTest {
     SimpleStringProperty descriptionProperty;
-    SimpleStringProperty timeProperty;
+    SimpleObjectProperty<LocalDateTime> timeProperty;
     SimpleObjectProperty<LocalDate> dateProperty;
     SimpleStringProperty subjectProperty;
     Reminder reminder;
     String subject = "titel";
     String description = "description fo the Reminder";
-    String time = "12:22";
+    LocalDateTime time = LocalDateTime.now();
     LocalDate date = LocalDate.of(2017, 3, 4);
 
     @Before
     public void beforeTest(){
         descriptionProperty = new SimpleStringProperty(description);
-        timeProperty = new SimpleStringProperty(time);
+        timeProperty = new SimpleObjectProperty<>(time);
         dateProperty = new SimpleObjectProperty<>(date);
         subjectProperty = new SimpleStringProperty(subject);
         reminder = new Reminder(subject, description, time, date);
@@ -51,8 +51,8 @@ public class ReminderTest {
 
     @Test
     public void gettersReturnSameTime(){
-        String getProperty= reminder.getTimeProperty().get();
-        String get= reminder.getTime();
+        LocalDateTime getProperty= reminder.getTimeProperty().get();
+        LocalDateTime get= reminder.getTime();
         assertEquals(get,getProperty);
     }
 
@@ -78,7 +78,7 @@ public class ReminderTest {
 
     @Test
     public void getTimeProperty() throws Exception {
-        SimpleStringProperty timeFromPropertyGetter = reminder.getTimeProperty();
+        SimpleObjectProperty<LocalDateTime> timeFromPropertyGetter = reminder.getTimeProperty();
         assertEquals(timeProperty.get(), timeFromPropertyGetter.get());
     }
 
@@ -112,7 +112,7 @@ public class ReminderTest {
 
     @Test
     public void getTime() {
-        String timeFromGetter = reminder.getTime();
+        LocalDateTime timeFromGetter = reminder.getTime();
         assertEquals(time, timeFromGetter);
     }
 
