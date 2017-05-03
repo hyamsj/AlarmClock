@@ -2,7 +2,7 @@
 class OS
 package "System" {
 
-package "View" {}
+package "View JavaFx" {}
 package "Control" {}
 package "Helpers" {
 
@@ -46,7 +46,7 @@ SystemPopUp -- OsAdapter
 }
 View -- Model
 Model-- Control
-Control -- View
+Control -- "View JavaFx"
 
 class ConfigFile{
 language
