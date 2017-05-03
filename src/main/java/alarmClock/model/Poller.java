@@ -52,6 +52,8 @@ public class Poller {
                         && later.isAfter(reminderTime)
                         && !notifiedReminders.contains(r)
                    ){
+                    Notification n = new ConsoleNotification(r);
+                    n.note();
                     System.out.print("Notify");
                     notifiedReminders.addAll(r);
                 }
