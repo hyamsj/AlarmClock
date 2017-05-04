@@ -3,13 +3,10 @@ package alarmClock.model;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by joni on 25/03/17.
@@ -31,25 +28,6 @@ public class Model implements Serializable {
 
 
     private void deserialize(String path) throws IOException, ClassNotFoundException {
-        /**TODO remove after  serializableReminder is removoed
-        try (ObjectInputStream in =
-                     new ObjectInputStream(new FileInputStream(path))) {
-            //TODO remove after  serializableReminder is removoed
-            //ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
-            ArrayList<Reminder> alist = (ArrayList<Reminder>) in.readObject();
-
-            ArrayList<Reminder> reminderList = new ArrayList<>();
-            //TODO remove after  serializableReminder is removoed
-            //ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
-            for (Reminder sr : alist) {
-                //TODO remove after  serializableReminder is removoed
-                //reminderList.add(sr.getReminder());
-                reminderList.add(sr);
-//                System.out.println(value);
-            }
-            reminders = FXCollections.observableArrayList();
-            reminders.addAll(reminderList);
-            */
         ArrayList<Reminder> reminderList;
          try (ObjectInputStream in =
          new ObjectInputStream(new FileInputStream(path))) {
@@ -73,9 +51,6 @@ public class Model implements Serializable {
         //TODO change return value to Observable<Reminder> ?
         ArrayList<Reminder> aList = new ArrayList<>();
         for (Reminder r : reminders) {
-            //TODO remove after serializableReminders is not here anymore
-            //Reminder sr = r.getSerializable();
-            //aList.add(sr);
             aList.add(r);
         }
         return aList;

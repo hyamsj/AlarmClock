@@ -87,17 +87,7 @@ public class ReminderTest {
         assertTrue(dateProperty.get().isEqual(dateFromPropertyGetter.get()));
     }
 
-    @Test
-    //TODO implement getSerializable Test test each value for equality
-    public void getSerializable() throws Exception {
-        /*
-        serializableReminder sr = reminder.getSerializable();
-        assertEquals(reminder.getDate(),sr.getDate());
-        assertEquals(reminder.getDescription(),sr.getDescription());
-        assertEquals(reminder.getSubject(),sr.getSubject());
-        assertEquals(reminder.getTime(),sr.getTime());
-        */
-    }
+
 
     @Test
     public void getSubject() {
