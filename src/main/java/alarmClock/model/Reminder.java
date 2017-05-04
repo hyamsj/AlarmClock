@@ -3,6 +3,7 @@ package alarmClock.model;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import jdk.nashorn.internal.objects.annotations.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;

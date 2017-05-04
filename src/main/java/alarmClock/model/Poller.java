@@ -53,7 +53,7 @@ public class Poller {
                         && !notifiedReminders.contains(r)
                    ){
                     Notification n = new ConsoleNotification(r);
-                    n.note();
+                    n.send();
                     System.out.print("Notify");
                     notifiedReminders.addAll(r);
                 }
