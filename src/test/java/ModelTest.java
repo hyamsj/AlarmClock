@@ -68,10 +68,11 @@ public class ModelTest {
     //tests Persistence
     @Test
     public void bindData() throws Exception {
-        //TODO implement  .contains method for reminders and apply
+        //TODO more testcases
         m.addReminder(reminder);
         m.bindData();
         Model m2 = new Model();
+        m2.getReminders().contains(reminder);
     }
 
 
