@@ -31,19 +31,32 @@ public class Model implements Serializable {
 
 
     private void deserialize(String path) throws IOException, ClassNotFoundException {
+        /**TODO remove after  serializableReminder is removoed
         try (ObjectInputStream in =
                      new ObjectInputStream(new FileInputStream(path))) {
-            ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
+            //TODO remove after  serializableReminder is removoed
+            //ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
+            ArrayList<Reminder> alist = (ArrayList<Reminder>) in.readObject();
+
             ArrayList<Reminder> reminderList = new ArrayList<>();
-            for (serializableReminder sr : alist) {
-                reminderList.add(sr.getReminder());
+            //TODO remove after  serializableReminder is removoed
+            //ArrayList<serializableReminder> alist = (ArrayList<serializableReminder>) in.readObject();
+            for (Reminder sr : alist) {
+                //TODO remove after  serializableReminder is removoed
+                //reminderList.add(sr.getReminder());
+                reminderList.add(sr);
 //                System.out.println(value);
             }
             reminders = FXCollections.observableArrayList();
             reminders.addAll(reminderList);
+            */
+        ArrayList<Reminder> reminderList;
+         try (ObjectInputStream in =
+         new ObjectInputStream(new FileInputStream(path))) {
+             reminderList = (ArrayList<Reminder>) in.readObject();
         }
-
-
+        reminders = FXCollections.observableArrayList();
+        reminders.addAll(reminderList);
     }
 
     public void addReminder(Reminder reminder) {
@@ -56,11 +69,14 @@ public class Model implements Serializable {
         return reminders;
     }
 
-    private ArrayList<serializableReminder> getEditableReminders() {
-        ArrayList<serializableReminder> aList = new ArrayList<>();
+    private ArrayList<Reminder> getEditableReminders() {
+        //TODO change return value to Observable<Reminder> ?
+        ArrayList<Reminder> aList = new ArrayList<>();
         for (Reminder r : reminders) {
-            serializableReminder sr = r.getSerializable();
-            aList.add(sr);
+            //TODO remove after serializableReminders is not here anymore
+            //Reminder sr = r.getSerializable();
+            //aList.add(sr);
+            aList.add(r);
         }
         return aList;
     }

@@ -1,0 +1,15 @@
+Tests
+javadoc
+Interfaces anstatt Klasse
+LocalDateTime Picker
+Maven
+DB
+javaFxNotifier
+FastPoller
+Test Serialize and Deserialize
+boolean Reminder.equals(Reminder r){};
+poller singelton
+poller loads new reminders.ser list automatically
+poller using Notificaiton.isCandidate(now);
+boolean Notification.isCandiata(time);
+nice poller sleeps until next Notification is Ready

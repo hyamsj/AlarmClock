@@ -6,6 +6,9 @@ import javafx.beans.property.SimpleStringProperty;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.function.Function;
+
+import static java.util.Objects.hash;
 
 /**
  * Created by joni on 24/03/17.
@@ -70,9 +73,14 @@ public class Reminder implements Serializable{
         return new SimpleObjectProperty<>(date);
     }
 
-    public serializableReminder getSerializable(){
-        return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
+    public Reminder getSerializable(){
+
+        return this;
+       // return new serializableReminder(this.getSubject(),this.getDescription(),this.getTime(),this.getDate());
     }
+
+
+
 
     private void setSubject(String subject) {
         //this.subject.set(subject);

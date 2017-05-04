@@ -1,6 +1,5 @@
 import alarmClock.model.Model;
 import alarmClock.model.Reminder;
-import alarmClock.model.serializableReminder;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
