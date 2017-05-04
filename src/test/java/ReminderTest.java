@@ -8,12 +8,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by pascal on 5/2/17.
  */
 public class ReminderTest {
+
     SimpleStringProperty descriptionProperty;
     SimpleObjectProperty<LocalDateTime> timeProperty;
     SimpleObjectProperty<LocalDate> dateProperty;
@@ -33,6 +35,36 @@ public class ReminderTest {
         reminder = new Reminder(subject, description, time, date);
     }
 
+
+    @Test
+    public void equalsTest() throws Exception {
+        Reminder equalReminder= new Reminder(subject,description,time,date);
+        Reminder diffrentReminder = new Reminder(subject+1,description,time,date);
+        Reminder diffrentReminder2 = new Reminder(subject,description+1,time,date);
+        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1),date);
+        Reminder diffrentReminder4 = new Reminder(subject,description+1,time,date.plusMonths(1));
+
+        assertTrue(reminder.equals(reminder));
+        assertTrue(reminder.equals(equalReminder));
+        assertTrue(equalReminder.equals(reminder));
+
+        assertFalse(reminder.equals(diffrentReminder));
+        assertFalse(diffrentReminder.equals(reminder));
+
+        assertFalse(reminder.equals(diffrentReminder2));
+        assertFalse(diffrentReminder2.equals(reminder));
+
+        assertFalse(reminder.equals(diffrentReminder3));
+        assertFalse(diffrentReminder3.equals(reminder));
+
+        assertFalse(reminder.equals(diffrentReminder4));
+        assertFalse(diffrentReminder4.equals(reminder));
+    }
+
+    @Test
+    public void hashCodeTest() throws Exception {
+
+    }
     @Test
     public void gettersReturnSameSubject(){
         String subjectFromPropertyGetter = reminder.getSubjectProperty().get();

@@ -72,4 +72,34 @@ public class Reminder implements Serializable{
         this.date = date;
     }
 
+    @Override
+    public boolean equals(Object o){
+        Reminder r;
+        if(o instanceof  Reminder){
+            r=(Reminder) o;
+            boolean isSame =
+            r.getDate().equals(this.getDate())
+                    && r.getDescription().equals(this.getDescription())
+                    && r.getSubject().equals(this.getSubject())
+                    && r.getTime().equals(this.getTime())
+            ;
+
+            return isSame;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    @Override
+    public int hashCode(){
+        int h =1;
+        h *=description.hashCode() *13;
+        h *=subject.hashCode()*17;
+        h *=time.hashCode()*11;
+        h *=date.hashCode()*31;
+        return h;
+    }
+
 }
