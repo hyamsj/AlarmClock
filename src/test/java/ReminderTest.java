@@ -63,6 +63,28 @@ public class ReminderTest {
 
     @Test
     public void hashCodeTest() throws Exception {
+        Reminder equalReminder = new Reminder(subject,description,time,date);
+        Reminder diffrentReminder = new Reminder(subject+1,description,time,date);
+        Reminder diffrentReminder2 = new Reminder(subject,description+1,time,date);
+        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1),date);
+        Reminder diffrentReminder4 = new Reminder(subject,description+1,time,date.plusMonths(1));
+
+        assertTrue(reminder.hashCode() == reminder.hashCode());
+
+        assertTrue(reminder.hashCode() == equalReminder.hashCode());
+        assertTrue(equalReminder.hashCode() == equalReminder.hashCode());
+
+        assertFalse(reminder.hashCode() == diffrentReminder.hashCode());
+        assertFalse(diffrentReminder.hashCode() == reminder.hashCode());
+
+        assertFalse(reminder.hashCode() == diffrentReminder2.hashCode());
+        assertFalse(diffrentReminder2.hashCode() == reminder.hashCode());
+
+        assertFalse(reminder.hashCode() == diffrentReminder3.hashCode());
+        assertFalse(diffrentReminder3.hashCode() == reminder.hashCode());
+
+        assertFalse(reminder.hashCode() == diffrentReminder4.hashCode());
+        assertFalse(diffrentReminder4.hashCode() == reminder.hashCode());
 
     }
     @Test

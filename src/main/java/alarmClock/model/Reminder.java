@@ -78,7 +78,7 @@ public class Reminder implements Serializable{
         if(o instanceof  Reminder){
             r=(Reminder) o;
             boolean isSame =
-            r.getDate().equals(this.getDate())
+                    r.getDate().equals(this.getDate())
                     && r.getDescription().equals(this.getDescription())
                     && r.getSubject().equals(this.getSubject())
                     && r.getTime().equals(this.getTime())
