@@ -1,12 +1,15 @@
 import alarmClock.model.Model;
 import alarmClock.model.Poller;
 import alarmClock.model.Reminder;
+import javafx.collections.FXCollections;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Observable;
+import java.util.Observer;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
@@ -29,6 +32,7 @@ public class PollerTest {
     Reminder reminder4;
     Model m;
     Poller poller;
+    Poller poller2;
     @Before
     public void before() throws IOException, ClassNotFoundException {
         subject = "subject ";
@@ -47,12 +51,14 @@ public class PollerTest {
     }
 
     @Test
-    public void poll(){
+    public void poller(){
         m.addReminder(reminder1);
         m.addReminder(reminder2);
         m.addReminder(reminder3);
         m.addReminder(reminder4);
-        poller = new Poller(m);
+        poller = new Poller();
         //TODO test if  necessary and only necessary notifications  were made
     }
+
+
 }

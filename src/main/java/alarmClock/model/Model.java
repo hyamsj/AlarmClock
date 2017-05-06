@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Observer;
 
 /**
  * Created by joni on 25/03/17.
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 public class Model implements Serializable {
 
     ObservableList<Reminder> reminders;
-    private Poller p;
 
     public Model() throws IOException, ClassNotFoundException{
         String filename = "reminders.ser";
@@ -83,4 +83,13 @@ public class Model implements Serializable {
     public void removeReminder(Reminder reminder) {
         reminders.remove(reminder);
     }
+
+private ArrayList<Observer> observers = new ArrayList<>();
+public void  attach(Observer observer){
+    observers.add(observer);
+}
+public void detatch(Observer observer){
+    observers.remove(observer);
+}
+
 }
