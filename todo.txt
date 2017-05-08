@@ -13,3 +13,6 @@ poller loads new reminders.ser list automatically
 poller using Notificaiton.isCandidate(now);
 boolean Notification.isCandiata(time);
 nice poller sleeps until next Notification is Ready
+poller make sure that the thrad updates the reminders variable
+
+

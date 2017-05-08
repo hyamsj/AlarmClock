@@ -18,32 +18,10 @@ public class Model implements Serializable {
     private Poller p;
 
     public Model() throws IOException, ClassNotFoundException{
-
         reminders = new BinaryDBAdapter().load();
-        /*
-        String filename = "reminders.ser";
-        if (Files.exists(Paths.get(filename))) {
-            deserialize(filename);
-        } else {
-            this.reminders = FXCollections.observableArrayList();
-        }
-        */
-
-    }
-
-
-    private void deserialize(String path) throws IOException, ClassNotFoundException {
-        ArrayList<Reminder> reminderList;
-         try (ObjectInputStream in =
-         new ObjectInputStream(new FileInputStream(path))) {
-             reminderList = (ArrayList<Reminder>) in.readObject();
-        }
-        reminders = FXCollections.observableArrayList();
-        reminders.addAll(reminderList);
     }
 
     public void addReminder(Reminder reminder) {
-        //this.reminders = data;
         reminders.add(reminder);
     }
 
@@ -52,14 +30,6 @@ public class Model implements Serializable {
         return reminders;
     }
 
-    private ArrayList<Reminder> getEditableReminders() {
-        //TODO change return value to Observable<Reminder> ?
-        ArrayList<Reminder> aList = new ArrayList<>();
-        for (Reminder r : reminders) {
-            aList.add(r);
-        }
-        return aList;
-    }
 
     public void bindData() {
         reminders.addListener((Observable obs) -> {
@@ -67,19 +37,10 @@ public class Model implements Serializable {
             save();
         });
         reminders.addListener(new Poller()::onChanged);
-
     }
 
     private void save() {
-        System.out.println("saving");
-        try (ObjectOutputStream out =
-                     new ObjectOutputStream(new FileOutputStream("reminders.ser"))) {
-            out.writeObject(getEditableReminders());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new BinaryDBAdapter().save(reminders);
     }
 
     public void removeReminders(ObservableList<Reminder> reminderSelected) {
@@ -90,12 +51,5 @@ public class Model implements Serializable {
         reminders.remove(reminder);
     }
 
-private ArrayList<Observer> observers = new ArrayList<>();
-public void  attach(Observer observer){
-    observers.add(observer);
-}
-public void detatch(Observer observer){
-    observers.remove(observer);
-}
 
 }
