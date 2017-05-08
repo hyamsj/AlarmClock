@@ -9,9 +9,10 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="pane" alignment="center" hgap="10" prefHeight="301.0" prefWidth="503.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alarmClock.controller.Controller">
+<GridPane fx:id="pane" alignment="center" hgap="10" prefHeight="301.0" prefWidth="503.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alarmClock.controller.Controller">
     <columnConstraints>
         <ColumnConstraints maxWidth="111.0" minWidth="108.0" prefWidth="108.0" />
         <ColumnConstraints maxWidth="150.0" minWidth="86.0" prefWidth="128.0" />
@@ -72,10 +73,16 @@
                 <Insets bottom="10.0" left="10.0" top="10.0" />
             </GridPane.margin>
         </Button>
-        <Button fx:id="rmButton" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Button fx:id="rmButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets bottom="10.0" top="10.0" />
             </GridPane.margin>
         </Button>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <children>
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#undoButtonPressed" text="Undo" />
+            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#redoButtonPressed" text="Redo" />
+         </children>
+      </HBox>
     </children>
 </GridPane>
