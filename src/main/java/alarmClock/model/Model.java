@@ -11,9 +11,10 @@ import java.io.*;
 public class Model implements Serializable {
 
     ObservableList<Reminder> reminders;
+    DataBaseAdapter adapter = new BinaryDBAdapter();
 
     public Model() throws IOException, ClassNotFoundException{
-        reminders = new BinaryDBAdapter().load();
+        reminders = adapter.load();
     }
 
     public void addReminder(Reminder reminder) {
@@ -29,13 +30,9 @@ public class Model implements Serializable {
     public void bindData() {
         reminders.addListener((Observable obs) -> {
             System.out.println("something changed");
-            save();
+            adapter.save(reminders);
         });
         reminders.addListener(new Poller()::onChanged);
-    }
-
-    private void save() {
-        new BinaryDBAdapter().save(reminders);
     }
 
     public void removeReminders(ObservableList<Reminder> reminderSelected) {

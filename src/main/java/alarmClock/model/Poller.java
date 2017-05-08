@@ -64,7 +64,7 @@ public class Poller implements ListChangeListener {
                     ) {
                 Notification n = new ConsoleNotification(r);
                 n.send();
-                System.out.print("Notify");
+                System.out.println("Notify");
                 notifiedReminders.addAll(r);
             }
         }
