@@ -104,13 +104,13 @@ public class Reminder implements Serializable {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         Dictionary dic = new GermanDictionary();
-        String out="";
-        out = dic.getSubject() +": " + this.getSubject() + "\n";
-        out += dic.getDescription() +": "+ this.getDescription() + "\n";
-        out += dic.getTime()+": "  + this.getTime() + "\n";
-        out+= dic. getDate()+": " + this.getDate() + "\n";
+        String out = "";
+        out = dic.getSubject() + ": " + this.getSubject() + "\n";
+        out += dic.getDescription() + ": " + this.getDescription() + "\n";
+        out += dic.getTime() + ": " + this.getTime() + "\n";
+        out += dic.getDate() + ": " + this.getDate() + "\n";
         return out;
     }
 

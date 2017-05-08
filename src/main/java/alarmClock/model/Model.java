@@ -3,7 +3,8 @@ package alarmClock.model;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Created by joni on 25/03/17.
@@ -41,10 +42,12 @@ public class Model implements Serializable {
         reminders.addListener(new Poller()::onChanged);
         reminders.addOwnListener(new Poller()::onChanged);
     }
-    public void undo(){
+
+    public void undo() {
         reminders.undo();
     }
-    public void redo(){
+
+    public void redo() {
         reminders.redo();
     }
 

@@ -3,86 +3,104 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="pane" alignment="center" hgap="10" prefHeight="301.0" prefWidth="503.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alarmClock.controller.Controller">
-    <columnConstraints>
-        <ColumnConstraints maxWidth="111.0" minWidth="108.0" prefWidth="108.0" />
-        <ColumnConstraints maxWidth="150.0" minWidth="86.0" prefWidth="128.0" />
-        <ColumnConstraints maxWidth="147.0" minWidth="87.0" prefWidth="87.0" />
-        <ColumnConstraints maxWidth="154.0" minWidth="96.0" prefWidth="145.0" />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-        <RowConstraints />
-        <RowConstraints />
-    </rowConstraints>
-    <children>
-        <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject">
-            <GridPane.margin>
-                <Insets left="10.0" top="10.0" />
-            </GridPane.margin>
-        </TextField>
-        <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="115.0" promptText="Description" GridPane.columnIndex="1">
-            <GridPane.margin>
-                <Insets top="10.0" />
-            </GridPane.margin>
-        </TextField>
-        <TextField fx:id="timeField" promptText="HH:MM:SS" GridPane.columnIndex="2">
-            <GridPane.margin>
-                <Insets top="10.0" />
-            </GridPane.margin>
-        </TextField>
-        <DatePicker fx:id="datePickerField" promptText="DD/MM/YYYY" GridPane.columnIndex="3">
-            <GridPane.margin>
-                <Insets right="10.0" top="10.0" />
-            </GridPane.margin>
-            <padding>
-                <Insets right="10.0" />
-            </padding>
-        </DatePicker>
-        <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.rowIndex="1">
-            <columns>
-                <TableColumn fx:id="subjectColumn" prefWidth="115.0" text="Subject">
-                    <cellValueFactory><PropertyValueFactory property="subject" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="descriptionColumn" prefWidth="134.0" text="Description">
-                    <cellValueFactory><PropertyValueFactory property="description" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="timeColumn" prefWidth="97.0" text="Time">
-                    <cellValueFactory><PropertyValueFactory property="time" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="dateColumn" prefWidth="153.0" text="Date">
-                    <cellValueFactory><PropertyValueFactory property="date" />
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
-        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Add" GridPane.rowIndex="2">
-            <GridPane.margin>
-                <Insets bottom="10.0" left="10.0" top="10.0" />
-            </GridPane.margin>
-        </Button>
-        <Button fx:id="rmButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">
-            <GridPane.margin>
-                <Insets bottom="10.0" top="10.0" />
-            </GridPane.margin>
-        </Button>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-         <children>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#undoButtonPressed" text="Undo" />
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#redoButtonPressed" text="Redo" />
-         </children>
-      </HBox>
-    </children>
-</GridPane>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alarmClock.controller.Controller">
+   <center>
+      <GridPane fx:id="pane" alignment="center" hgap="10" prefHeight="301.0" prefWidth="503.0" vgap="10">
+          <columnConstraints>
+              <ColumnConstraints maxWidth="111.0" minWidth="108.0" prefWidth="108.0" />
+              <ColumnConstraints maxWidth="150.0" minWidth="86.0" prefWidth="128.0" />
+              <ColumnConstraints maxWidth="147.0" minWidth="87.0" prefWidth="87.0" />
+              <ColumnConstraints maxWidth="154.0" minWidth="96.0" prefWidth="145.0" />
+          </columnConstraints>
+          <rowConstraints>
+              <RowConstraints />
+              <RowConstraints />
+              <RowConstraints />
+          </rowConstraints>
+          <children>
+              <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject">
+                  <GridPane.margin>
+                      <Insets left="10.0" top="10.0" />
+                  </GridPane.margin>
+              </TextField>
+              <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="115.0" promptText="Description" GridPane.columnIndex="1">
+                  <GridPane.margin>
+                      <Insets top="10.0" />
+                  </GridPane.margin>
+              </TextField>
+              <TextField fx:id="timeField" promptText="HH:MM:SS" GridPane.columnIndex="2">
+                  <GridPane.margin>
+                      <Insets top="10.0" />
+                  </GridPane.margin>
+              </TextField>
+              <DatePicker fx:id="datePickerField" promptText="DD/MM/YYYY" GridPane.columnIndex="3">
+                  <GridPane.margin>
+                      <Insets right="10.0" top="10.0" />
+                  </GridPane.margin>
+                  <padding>
+                      <Insets right="10.0" />
+                  </padding>
+              </DatePicker>
+              <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                  <columns>
+                      <TableColumn fx:id="subjectColumn" prefWidth="115.0" text="Subject">
+                          <cellValueFactory>
+                        <PropertyValueFactory property="subject" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="descriptionColumn" prefWidth="134.0" text="Description">
+                          <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="timeColumn" prefWidth="97.0" text="Time">
+                          <cellValueFactory>
+                        <PropertyValueFactory property="time" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="dateColumn" prefWidth="153.0" text="Date">
+                          <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                          </cellValueFactory>
+                      </TableColumn>
+                  </columns>
+              </TableView>
+              <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="25.0" prefWidth="71.0" text="Add" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                  </GridPane.margin>
+              </Button>
+              <Button fx:id="rmButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#rmButtonPressed" prefHeight="25.0" prefWidth="81.0" text="Remove" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                      <Insets bottom="10.0" top="10.0" />
+                  </GridPane.margin>
+              </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abort" text="Abort" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+          </children>
+      </GridPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Actions">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#undoButtonPressed" text="Undo" />
+              <MenuItem mnemonicParsing="false" onAction="#redoButtonPressed" text="Redo" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

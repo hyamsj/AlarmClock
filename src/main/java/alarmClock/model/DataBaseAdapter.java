@@ -1,7 +1,5 @@
 package alarmClock.model;
 
-import javafx.collections.ObservableList;
-
 /**
  * Created by pascal on 5/6/17.
  */
