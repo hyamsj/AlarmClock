@@ -77,13 +77,13 @@ public class Controller implements Initializable {
     }
 
     public void undoButtonPressed() {
-        //model.undo();
+        model.undo();
         System.out.printf("undo");
     }
 
     public void redoButtonPressed() {
         System.out.println("redo");
-        //model.undo();
+        model.undo();
     }
 
     @Override

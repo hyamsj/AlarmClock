@@ -41,6 +41,7 @@ public class ReminderList implements ObservableList {
     }
 
     public void undo() {
+        System.out.println("Reminder.undo() is called");
         reminders = popState();
     }
 

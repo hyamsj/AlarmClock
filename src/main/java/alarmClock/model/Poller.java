@@ -54,21 +54,15 @@ public class Poller implements ListChangeListener {
             LocalDateTime reminderTime = r.getTime();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime later = now.plusMinutes(5);
-            System.out.println("Poller tests Conditions");
-            System.out.println("remindertime: " + reminderTime);
-            System.out.println("now is: " + now);
-
             if (
                     reminderTime.isAfter(now)
                            && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
-                System.out.println("starting Notification");
                 Notification n = new ConsoleNotification(r);
                 n.send();
                 System.out.println("Notify");
                 notifiedReminders.add(r);
-                //notifiedReminders.addAll(r);
             }
         }
     }
