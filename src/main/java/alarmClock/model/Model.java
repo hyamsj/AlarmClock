@@ -16,8 +16,6 @@ public class Model implements Serializable {
         reminders = new BinaryDBAdapter().load();
     }
 
-
-
     public void addReminder(Reminder reminder) {
         reminders.add(reminder);
     }

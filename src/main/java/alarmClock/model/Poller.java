@@ -11,29 +11,19 @@ import java.time.LocalDateTime;
  */
 public class Poller implements ListChangeListener {
     private ObservableList<Reminder> reminders;
-    //private AtomicReference<ObservableList<Reminder>> atomicReferenceReminders;
-
-    /*
-    public AtomicReference<ObservableList<Reminder>> getAtomicReferenceReminders() {
-        return atomicReferenceReminders;
-    }
-    public void setAtomicReferenceReminders(ObservableList<Reminder> reminders){
-        atomicReferenceReminders =  (AtomicReference) reminders;
-    }
-    */
-
     private ObservableList<Reminder> notifiedReminders;
     private Thread one;
     private int delay = 1000;
 
-    {
-        one = new Thread(() -> {
+    { one = new Thread(() -> {
             System.out.println("thread");
             try {
                 while (true) {
                     Thread.sleep(delay);
                     System.out.println("polling...");
+
                     //reminders = (ObservableList<Reminder>) getAtomicReferenceReminders();
+
                     poll();
                 }
             } catch (InterruptedException v) {
@@ -73,9 +63,13 @@ public class Poller implements ListChangeListener {
     @Override
     public void onChanged(Change c) {
         System.out.println("Poller got notified about change");
+        this.reminders = new  BinaryDBAdapter().load();
+        //TODO only update reminders when the proper cahnge c happesn
+        /*
         if (c instanceof ObservableList) {
             this.reminders = new BinaryDBAdapter().load();
         }
+        */
     }
 
 
