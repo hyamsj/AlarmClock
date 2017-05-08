@@ -28,11 +28,11 @@ public class Model implements Serializable {
 
 
     public void bindData() {
-        reminders.addOwnListener((Observable obs) -> {
+        reminders.addListener((Observable obs) -> {
             System.out.println("something changed");
             adapter.save(reminders);
         });
-        reminders.addOwnListener(new Poller()::onChanged);
+        reminders.addListener(new Poller()::onChanged);
     }
 
     public void undo() {
