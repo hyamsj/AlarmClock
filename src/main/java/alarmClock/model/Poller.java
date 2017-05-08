@@ -10,10 +10,26 @@ import java.time.LocalDateTime;
  * Created by pascal on 5/3/17.
  */
 public class Poller implements ListChangeListener {
+    private static Poller instance = null;
     private ObservableList<Reminder> reminders;
     private ObservableList<Reminder> notifiedReminders;
     private Thread one;
     private int delay = 1000;
+
+    protected Poller() {
+        this.reminders = new BinaryDBAdapter().load();
+        notifiedReminders = FXCollections.observableArrayList();
+        //setAtomicReferenceReminders(reminders);
+        one.start();
+    }
+
+    public static Poller getInstance(){
+        if(instance == null){
+            instance = new Poller();
+        }
+        return instance;
+    }
+
 
     { one = new Thread(() -> {
             System.out.println("thread");
@@ -35,12 +51,6 @@ public class Poller implements ListChangeListener {
     }
 
 
-    public Poller() {
-        this.reminders = new BinaryDBAdapter().load();
-        notifiedReminders = FXCollections.observableArrayList();
-        //setAtomicReferenceReminders(reminders);
-        one.start();
-    }
 
     public void poll() throws Exception {
         for (Reminder r : reminders) {

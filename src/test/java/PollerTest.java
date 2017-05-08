@@ -56,7 +56,7 @@ public class PollerTest {
         m.addReminder(reminder2);
         m.addReminder(reminder3);
         m.addReminder(reminder4);
-        poller = new Poller();
+        poller = Poller.getInstance();
         //TODO test if  necessary and only necessary notifications  were made
     }
 

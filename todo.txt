@@ -8,7 +8,6 @@ javaFxNotifier
 FastPoller
 Test Serialize and Deserialize
 boolean Reminder.equals(Reminder r){};
-poller singelton
 poller using Notificaiton.isCandidate(now);
 boolean Notification.isCandiata(time);
 nice poller sleeps until next Notification is Ready

@@ -20,8 +20,7 @@ public class Main extends Application {
 
         //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
         // otherwise get sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
-
-        Poller poller = new Poller();
+        Poller poller = Poller.getInstance();
 
         try {
         } catch (Exception e) {
