@@ -33,6 +33,12 @@ public class Model implements Serializable {
         });
         reminders.addOwnListener(new Poller()::onChanged);
     }
+    public void undo(){
+        reminders.undo();
+    }
+    public void redo(){
+        reminders.redo();
+    }
 
     public void removeReminders(ReminderList remindersSelected) {
         reminders.removeAll(remindersSelected);

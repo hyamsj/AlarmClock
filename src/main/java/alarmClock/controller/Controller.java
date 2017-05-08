@@ -33,6 +33,10 @@ public class Controller implements Initializable {
     private Button addButton;
     @FXML
     private Button rmButton;
+    @FXML
+    private Button undoButton;
+    @FXML
+    private Button redoDoButton;
 
     private Model model;
     private InputChecker helper = new InputChecker();
@@ -69,6 +73,14 @@ public class Controller implements Initializable {
         reminderSelected = new ReminderList(reminderTable.getSelectionModel().getSelectedItems());
         // allReminders.removeAll(reminderSelected);
         model.removeReminders(reminderSelected);
+    }
+
+    public void undoButtonPressed() {
+        model.undo();
+    }
+
+    public void redoButtonPressed() {
+        model.undo();
     }
 
     @Override
