@@ -1,6 +1,5 @@
 package alarmClock.model;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.*;
@@ -12,12 +11,12 @@ import java.util.ArrayList;
  * Created by pascal on 5/6/17.
  */
 public class BinaryDBAdapter implements DataBaseAdapter {
-    ObservableList<Reminder> reminders;
+    ReminderList reminders;
     String path = "reminders.ser";
 
-    public ObservableList<Reminder> load() {
+    public ReminderList load() {
         //TODO Errorhandling
-        this.reminders = FXCollections.observableArrayList();
+        this.reminders = new ReminderList();
         if (Files.exists(Paths.get(path))) {
             ArrayList<Reminder> reminderList;
             try (ObjectInputStream in =
@@ -26,8 +25,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
                 System.out.println("before Read");
                 reminderList = (ArrayList<Reminder>) in.readObject();
                 System.out.println("after Read");
-                this.reminders = FXCollections.observableArrayList();
-                System.out.println("reminders is FXCollections");
+                this.reminders = new ReminderList();
                 this.reminders.addAll(reminderList);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -41,7 +39,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
         return this.reminders;
     }
 
-    public void save(ObservableList<Reminder> reminders) {
+    public void save(ReminderList reminders) {
         //TODO Errorhandling
         System.out.println("saving");
         try (ObjectOutputStream out =

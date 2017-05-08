@@ -9,11 +9,10 @@ import java.io.*;
  * Created by joni on 25/03/17.
  */
 public class Model implements Serializable {
-
-    ObservableList<Reminder> reminders;
+    private ReminderList reminders;
     DataBaseAdapter adapter = new BinaryDBAdapter();
 
-    public Model() throws IOException, ClassNotFoundException{
+    public Model() throws IOException, ClassNotFoundException {
         reminders = adapter.load();
     }
 
@@ -28,15 +27,15 @@ public class Model implements Serializable {
 
 
     public void bindData() {
-        reminders.addListener((Observable obs) -> {
+        reminders.addOwnListener((Observable obs) -> {
             System.out.println("something changed");
             adapter.save(reminders);
         });
-        reminders.addListener(new Poller()::onChanged);
+        reminders.addOwnListener(new Poller()::onChanged);
     }
 
-    public void removeReminders(ObservableList<Reminder> reminderSelected) {
-        reminders.removeAll(reminderSelected);
+    public void removeReminders(ReminderList remindersSelected) {
+        reminders.removeAll(remindersSelected);
     }
 
     public void removeReminder(Reminder reminder) {

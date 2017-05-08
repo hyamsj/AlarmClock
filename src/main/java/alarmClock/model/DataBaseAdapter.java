@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 public interface DataBaseAdapter {
     //TODO Errorhandling load and save throwing DB not Found or similar stufrf.
     //TODO  test for the exceptions
-    ObservableList<Reminder> load();
+    ReminderList load();
 
-    void save(ObservableList<Reminder> reminders);
+    void save(ReminderList reminders);
 }

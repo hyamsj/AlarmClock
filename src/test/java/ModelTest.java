@@ -1,5 +1,6 @@
 import alarmClock.model.Model;
 import alarmClock.model.Reminder;
+import alarmClock.model.ReminderList;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -89,9 +90,9 @@ public class ModelTest {
         m.addReminder(reminder1);
         m.addReminder(reminder2);
         m.addReminder(reminder3);
-        ObservableList<Reminder> reminderObservableList;
+        ReminderList reminderObservableList;
 
-        reminderObservableList = FXCollections.observableArrayList();
+        reminderObservableList =  new ReminderList();
         reminderObservableList.add(reminder1);
         reminderObservableList.add(reminder2);
         reminderObservableList.add(reminder3);

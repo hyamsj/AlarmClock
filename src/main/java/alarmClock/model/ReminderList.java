@@ -1,6 +1,5 @@
 package alarmClock.model;
 
-import com.sun.org.apache.regexp.internal.RE;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -24,32 +23,35 @@ public class ReminderList extends ObservableListBase {
         reminders = FXCollections.observableArrayList();
     }
 
-    private  void pushState(){
+    public ReminderList(ObservableList<Reminder> r) {
+        this.reminders = r;
+    }
+
+    private void pushState() {
         history.push(reminders);
     }
-    private ObservableList popState(){
-        if(history.peek() != null) {
+
+    private ObservableList popState() {
+        if (history.peek() != null) {
             ObservableList rs = history.pop();
             undoneHisotry.push(rs);
             return rs;
-        }
-        else{
+        } else {
             return reminders;
         }
     }
 
-    public void undo(){
+    public void undo() {
         reminders = popState();
     }
 
-    public void redo(){
-        if(undoneHisotry.peek() != null) {
+    public void redo() {
+        if (undoneHisotry.peek() != null) {
             ObservableList rs = undoneHisotry.pop();
             history.push(rs);
             reminders = rs;
         }
     }
-
 
 
     @Override
@@ -89,7 +91,7 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public void remove(int from, int to) {
-        reminders.remove(from,to);
+        reminders.remove(from, to);
         pushState();
     }
 
@@ -122,7 +124,6 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public boolean add(Object o) {
-
         boolean r = reminders.add(o);
         pushState();
         return r;
@@ -145,7 +146,7 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public boolean addAll(int index, Collection c) {
-        boolean r = reminders.addAll(index,c);
+        boolean r = reminders.addAll(index, c);
         pushState();
         return r;
     }
@@ -163,14 +164,14 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public Object set(int index, Object element) {
-        Object o=reminders.set(index,element);
+        Object o = reminders.set(index, element);
         pushState();
         return o;
     }
 
     @Override
     public void add(int index, Object element) {
-        reminders.addAll(index,element);
+        reminders.addAll(index, element);
         pushState();
     }
 
@@ -183,7 +184,7 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public int indexOf(Object o) {
-        return  reminders.indexOf(o);
+        return reminders.indexOf(o);
     }
 
     @Override
@@ -203,7 +204,7 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public List subList(int fromIndex, int toIndex) {
-        return reminders.subList(fromIndex,toIndex);
+        return reminders.subList(fromIndex, toIndex);
     }
 
     @Override
@@ -230,15 +231,21 @@ public class ReminderList extends ObservableListBase {
         return reminders.toArray();
     }
 
-    /*
-    @Override
-    public void addListener(InvalidationListener listener) {
-
+    //TODO refactor until EOF
+    public void addOwnListener(InvalidationListener listener) {
+        reminders.addListener(listener);
     }
 
-    @Override
-    public void removeListener(InvalidationListener listener) {
-
+    public void addOwnListener(ListChangeListener listener) {
+        reminders.addListener(listener);
     }
-    */
+
+
+    public void removeOwnListener(InvalidationListener listener) {
+        reminders.removeListener(listener);
+    }
+
+    public void removeOwnListener(ListChangeListener listener) {
+        reminders.removeListener(listener);
+    }
 }

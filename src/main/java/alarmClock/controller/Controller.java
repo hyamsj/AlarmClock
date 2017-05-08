@@ -2,6 +2,7 @@ package alarmClock.controller;
 
 import alarmClock.model.Model;
 import alarmClock.model.Reminder;
+import alarmClock.model.ReminderList;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,10 +63,10 @@ public class Controller implements Initializable {
     }
 
     public void rmButtonPressed() {
-        ObservableList<Reminder> reminderSelected;
+        ReminderList reminderSelected;
         //ObservableList<Reminder>  allReminders;
         //allReminders = reminderTable.getItems();
-        reminderSelected = reminderTable.getSelectionModel().getSelectedItems();
+        reminderSelected = new ReminderList(reminderTable.getSelectionModel().getSelectedItems());
         // allReminders.removeAll(reminderSelected);
         model.removeReminders(reminderSelected);
     }

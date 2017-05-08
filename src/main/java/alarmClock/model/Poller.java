@@ -1,6 +1,5 @@
 package alarmClock.model;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
@@ -18,28 +17,25 @@ public class Poller implements ListChangeListener {
 
     protected Poller() {
         this.reminders = new BinaryDBAdapter().load();
-        notifiedReminders = FXCollections.observableArrayList();
-        //setAtomicReferenceReminders(reminders);
+        notifiedReminders = new ReminderList();
         one.start();
     }
 
-    public static Poller getInstance(){
-        if(instance == null){
+    public static Poller getInstance() {
+        if (instance == null) {
             instance = new Poller();
         }
         return instance;
     }
 
 
-    { one = new Thread(() -> {
+    {
+        one = new Thread(() -> {
             System.out.println("thread");
             try {
                 while (true) {
                     Thread.sleep(delay);
                     System.out.println("polling...");
-
-                    //reminders = (ObservableList<Reminder>) getAtomicReferenceReminders();
-
                     poll();
                 }
             } catch (InterruptedException v) {
@@ -49,7 +45,6 @@ public class Poller implements ListChangeListener {
             }
         });
     }
-
 
 
     public void poll() throws Exception {
@@ -73,7 +68,7 @@ public class Poller implements ListChangeListener {
     @Override
     public void onChanged(Change c) {
         System.out.println("Poller got notified about change");
-        this.reminders = new  BinaryDBAdapter().load();
+        this.reminders = new BinaryDBAdapter().load();
         //TODO only update reminders when the proper cahnge c happesn
         /*
         if (c instanceof ObservableList) {

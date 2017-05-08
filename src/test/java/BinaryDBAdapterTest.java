@@ -3,8 +3,7 @@
  */
 import alarmClock.model.BinaryDBAdapter;
 import alarmClock.model.Reminder;
-import com.sun.org.apache.regexp.internal.RE;
-import javafx.collections.FXCollections;
+import alarmClock.model.ReminderList;
 import javafx.collections.ObservableList;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,14 +11,11 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import static javafx.collections.FXCollections.observableArrayList;
-import static javafx.collections.FXCollections.replaceAll;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
 public class BinaryDBAdapterTest {
-    private ObservableList reminders1;
-    private ObservableList reminders2;
+    private ReminderList reminders1;
+    private  ReminderList reminders2;
     private BinaryDBAdapter adapter;
     @Before
     public void before() {
@@ -40,8 +36,8 @@ public class BinaryDBAdapterTest {
         Reminder reminder1 = new Reminder(subject,description,time,date);
         Reminder reminder2 = new Reminder(subject+1,description,time,date);
 
-        reminders1 = FXCollections.observableArrayList();
-        reminders2 = FXCollections.observableArrayList();
+        reminders1 = new ReminderList();
+        reminders2 = new ReminderList();
         reminders1.add(reminder1);
         reminders2.add(reminder2);
 
