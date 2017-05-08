@@ -11,13 +11,12 @@ import java.util.*;
 /**
  * Created by pascal on 5/8/17.
  */
-public class ReminderList extends ObservableListBase {
+public class ReminderList implements ObservableList {
     ObservableList reminders;
     private Stack<ObservableList> history;
     private Stack<ObservableList> undoneHisotry;
 
     public ReminderList() {
-        //history = new Stack<ObservableList<Reminder>>;
         history = new Stack<ObservableList>();
         undoneHisotry = new Stack<ObservableList>();
         reminders = FXCollections.observableArrayList();
@@ -53,6 +52,16 @@ public class ReminderList extends ObservableListBase {
         }
     }
 
+
+    @Override
+    public void addListener(ListChangeListener listener) {
+        reminders.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(ListChangeListener listener) {
+        reminders.removeListener(listener);
+    }
 
     @Override
     public boolean addAll(Object[] elements) {
@@ -124,8 +133,8 @@ public class ReminderList extends ObservableListBase {
 
     @Override
     public boolean add(Object o) {
-        boolean r = reminders.add(o);
         pushState();
+        boolean r = reminders.add(o);
         return r;
     }
 
@@ -247,5 +256,15 @@ public class ReminderList extends ObservableListBase {
 
     public void removeOwnListener(ListChangeListener listener) {
         reminders.removeListener(listener);
+    }
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+
+    }
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+
     }
 }
