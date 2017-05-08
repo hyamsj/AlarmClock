@@ -3,7 +3,7 @@ package alarmClock.controller;
 import alarmClock.model.Model;
 import alarmClock.model.Reminder;
 import alarmClock.model.ReminderList;
-import javafx.collections.ObservableList;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -90,6 +90,8 @@ public class Controller implements Initializable {
         // timeField should only allow a pattern like this: HH:MM
         helper.checkTimeInput(timeField);
 
+        BooleanBinding addBinding = subjectField.textProperty().isNotEmpty().and(timeField.textProperty().isNotEmpty()).and(datePickerField.valueProperty().isNotNull());
+        addButton.disableProperty().bind(addBinding.not());
 
         reminderTable.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE

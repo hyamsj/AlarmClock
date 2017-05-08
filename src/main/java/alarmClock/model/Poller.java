@@ -69,7 +69,7 @@ public class Poller implements ListChangeListener {
     public void onChanged(Change c) {
         System.out.println("Poller got notified about change");
         this.reminders = new BinaryDBAdapter().load();
-        //TODO only update reminders when the proper cahnge c happesn
+        //TODO only update reminders when the proper change happens
         /*
         if (c instanceof ObservableList) {
             this.reminders = new BinaryDBAdapter().load();
