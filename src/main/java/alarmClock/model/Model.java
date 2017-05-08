@@ -15,14 +15,19 @@ import java.util.Observer;
 public class Model implements Serializable {
 
     ObservableList<Reminder> reminders;
+    private Poller p;
 
     public Model() throws IOException, ClassNotFoundException{
+
+        reminders = new BinaryDBAdapter().load();
+        /*
         String filename = "reminders.ser";
         if (Files.exists(Paths.get(filename))) {
             deserialize(filename);
         } else {
             this.reminders = FXCollections.observableArrayList();
         }
+        */
 
     }
 
@@ -61,6 +66,7 @@ public class Model implements Serializable {
             System.out.println("something changed");
             save();
         });
+        reminders.addListener(new Poller()::onChanged);
 
     }
 
