@@ -2,6 +2,7 @@ package alarmClock.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,11 +10,11 @@ import java.time.LocalDateTime;
 /**
  * Created by joni on 24/03/17.
  */
-public class Reminder implements Serializable{
+public class Reminder implements Serializable {
 
     private String subject = "";
-    private String description ="";
-    private LocalDateTime  time;
+    private String description = "";
+    private LocalDateTime time;
     LocalDate date;
 
     public Reminder(String subject, String description, LocalDateTime time, LocalDate date) {
@@ -64,6 +65,7 @@ public class Reminder implements Serializable{
     private void setDescription(String description) {
         this.description = description;
     }
+
     private void setTime(LocalDateTime time) {
         this.time = time;
     }
@@ -73,32 +75,30 @@ public class Reminder implements Serializable{
     }
 
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         Reminder r;
-        if(o instanceof  Reminder){
-            r=(Reminder) o;
+        if (o instanceof Reminder) {
+            r = (Reminder) o;
             boolean isSame =
                     r.getDate().equals(this.getDate())
-                    && r.getDescription().equals(this.getDescription())
-                    && r.getSubject().equals(this.getSubject())
-                    && r.getTime().equals(this.getTime())
-            ;
+                            && r.getDescription().equals(this.getDescription())
+                            && r.getSubject().equals(this.getSubject())
+                            && r.getTime().equals(this.getTime());
 
             return isSame;
-        }
-        else{
+        } else {
             return false;
         }
 
     }
 
     @Override
-    public int hashCode(){
-        int h =1;
-        h *=description.hashCode() *13;
-        h *=subject.hashCode()*17;
-        h *=time.hashCode()*11;
-        h *=date.hashCode()*31;
+    public int hashCode() {
+        int h = 1;
+        h *= description.hashCode() * 13;
+        h *= subject.hashCode() * 17;
+        h *= time.hashCode() * 11;
+        h *= date.hashCode() * 31;
         return h;
     }
 

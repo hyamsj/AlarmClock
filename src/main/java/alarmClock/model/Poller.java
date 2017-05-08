@@ -4,12 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by pascal on 5/3/17.
@@ -32,26 +27,22 @@ public class Poller implements ListChangeListener {
     private int delay = 1000;
 
     {
-        one = new Thread() {
-
-            public void run() {
-                System.out.println("thread");
-                try {
-                    while (true) {
-                        sleep(delay);
-                        System.out.println("polling...");
-                        //reminders = (ObservableList<Reminder>) getAtomicReferenceReminders();
-                        poll();
-                    }
-                } catch (InterruptedException v) {
-                    System.out.println(v);
-                } catch (Exception e) {
-                    e.printStackTrace();
+        one = new Thread(() -> {
+            System.out.println("thread");
+            try {
+                while (true) {
+                    Thread.sleep(delay);
+                    System.out.println("polling...");
+                    //reminders = (ObservableList<Reminder>) getAtomicReferenceReminders();
+                    poll();
                 }
+            } catch (InterruptedException v) {
+                System.out.println(v);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        };
+        });
     }
-
 
 
     public Poller() {

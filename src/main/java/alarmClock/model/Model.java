@@ -3,6 +3,7 @@ package alarmClock.model;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,7 +18,7 @@ public class Model implements Serializable {
     ObservableList<Reminder> reminders;
     private Poller p;
 
-    public Model() throws IOException, ClassNotFoundException{
+    public Model() throws IOException, ClassNotFoundException {
 
         reminders = new BinaryDBAdapter().load();
         /*
@@ -34,9 +35,9 @@ public class Model implements Serializable {
 
     private void deserialize(String path) throws IOException, ClassNotFoundException {
         ArrayList<Reminder> reminderList;
-         try (ObjectInputStream in =
-         new ObjectInputStream(new FileInputStream(path))) {
-             reminderList = (ArrayList<Reminder>) in.readObject();
+        try (ObjectInputStream in =
+                     new ObjectInputStream(new FileInputStream(path))) {
+            reminderList = (ArrayList<Reminder>) in.readObject();
         }
         reminders = FXCollections.observableArrayList();
         reminders.addAll(reminderList);
@@ -83,19 +84,21 @@ public class Model implements Serializable {
     }
 
     public void removeReminders(ObservableList<Reminder> reminderSelected) {
-         reminders.removeAll(reminderSelected);
+        reminders.removeAll(reminderSelected);
     }
 
     public void removeReminder(Reminder reminder) {
         reminders.remove(reminder);
     }
 
-private ArrayList<Observer> observers = new ArrayList<>();
-public void  attach(Observer observer){
-    observers.add(observer);
-}
-public void detatch(Observer observer){
-    observers.remove(observer);
-}
+    private ArrayList<Observer> observers = new ArrayList<>();
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
 
 }
