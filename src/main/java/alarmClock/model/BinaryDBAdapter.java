@@ -12,12 +12,12 @@ public class BinaryDBAdapter implements DataBaseAdapter {
     ReminderList reminders;
     String path = "reminders.ser";
 
+
     public ReminderList load() {
         //TODO Errorhandling
         this.reminders = new ReminderList();
         if (Files.exists(Paths.get(path))) {
-            ArrayList reminderArrayList = new ArrayList();
-            ReminderList reminderList;
+            ArrayList reminderArrayList;
             try (ObjectInputStream in =
                          new ObjectInputStream(new FileInputStream(path))) {
                 //reminderList = (ArrayList<Reminder>) in.readObject();

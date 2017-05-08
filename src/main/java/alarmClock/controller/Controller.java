@@ -3,7 +3,6 @@ package alarmClock.controller;
 import alarmClock.model.Model;
 import alarmClock.model.Reminder;
 import alarmClock.model.ReminderList;
-import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -102,9 +101,7 @@ public class Controller implements Initializable {
         Model model = null;
         try {
             model = new Model();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         this.model = model;
@@ -112,11 +109,5 @@ public class Controller implements Initializable {
         reminderTable.setItems(model.getReminders());
 
     }
-
-    public void abort(){
-        //TODO remove, only for testing purposes
-        System.exit(0);
-    }
-
 
 }

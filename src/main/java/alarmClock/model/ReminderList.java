@@ -4,7 +4,6 @@ import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.util.*;
 
@@ -14,11 +13,11 @@ import java.util.*;
 public class ReminderList implements ObservableList {
     ObservableList reminders;
     private Stack<ObservableList> history;
-    private Stack<ObservableList> undoneHisotry;
+    private Stack<ObservableList> undoneHistory;
 
     public ReminderList() {
-        history = new Stack<ObservableList>();
-        undoneHisotry = new Stack<ObservableList>();
+        history = new Stack<>();
+        undoneHistory = new Stack<>();
         reminders = FXCollections.observableArrayList();
     }
 
@@ -33,7 +32,7 @@ public class ReminderList implements ObservableList {
     private ObservableList popState() {
         if (history.peek() != null) {
             ObservableList rs = history.pop();
-            undoneHisotry.push(rs);
+            undoneHistory.push(rs);
             return rs;
         } else {
             return reminders;
@@ -46,8 +45,8 @@ public class ReminderList implements ObservableList {
     }
 
     public void redo() {
-        if (undoneHisotry.peek() != null) {
-            ObservableList rs = undoneHisotry.pop();
+        if (undoneHistory.peek() != null) {
+            ObservableList rs = undoneHistory.pop();
             history.push(rs);
             reminders = rs;
         }
@@ -171,7 +170,7 @@ public class ReminderList implements ObservableList {
         //TODO solve type conversation on a better place
         ArrayList<Reminder> output= new ArrayList<>();
         for( Object r: reminders){
-            r = (Reminder) r;
+            r = r;
             output.add((Reminder) r );
         }
         return output;
