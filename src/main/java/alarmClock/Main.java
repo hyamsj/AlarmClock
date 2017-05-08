@@ -1,6 +1,5 @@
 package alarmClock;
 
-import alarmClock.model.Model;
 import alarmClock.model.Poller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
         primaryStage.setTitle("Alarm Clock \u00a9");
         Scene scene = new Scene(root);

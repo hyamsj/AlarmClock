@@ -1,13 +1,9 @@
 package alarmClock.model;
 
 import javafx.beans.Observable;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Observer;
 
 /**
  * Created by joni on 25/03/17.
@@ -15,11 +11,12 @@ import java.util.Observer;
 public class Model implements Serializable {
 
     ObservableList<Reminder> reminders;
-    private Poller p;
 
     public Model() throws IOException, ClassNotFoundException{
         reminders = new BinaryDBAdapter().load();
     }
+
+
 
     public void addReminder(Reminder reminder) {
         reminders.add(reminder);
@@ -44,12 +41,11 @@ public class Model implements Serializable {
     }
 
     public void removeReminders(ObservableList<Reminder> reminderSelected) {
-         reminders.removeAll(reminderSelected);
+        reminders.removeAll(reminderSelected);
     }
 
     public void removeReminder(Reminder reminder) {
         reminders.remove(reminder);
     }
-
 
 }
