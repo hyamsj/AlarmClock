@@ -1,7 +1,5 @@
 package alarmClock.model;
 
-import javafx.collections.ObservableList;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,15 +16,24 @@ public class BinaryDBAdapter implements DataBaseAdapter {
         //TODO Errorhandling
         this.reminders = new ReminderList();
         if (Files.exists(Paths.get(path))) {
-            ArrayList<Reminder> reminderList;
+            ArrayList reminderArrayList = new ArrayList();
+            ReminderList reminderList;
             try (ObjectInputStream in =
                          new ObjectInputStream(new FileInputStream(path))) {
                 //reminderList = (ArrayList<Reminder>) in.readObject();
                 System.out.println("before Read");
-                reminderList = (ArrayList<Reminder>) in.readObject();
-                System.out.println("after Read");
-                this.reminders = new ReminderList();
-                this.reminders.addAll(reminderList);
+                Object o = in.readObject();
+
+
+
+                System.out.println("before o->reminderArrayList");
+                reminderArrayList = (ArrayList<Reminder>)  o;
+
+                System.out.println("FXCollction init");
+                ReminderList rl = new ReminderList();
+                rl.addAll(reminderArrayList);
+                reminders =rl;
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -44,7 +51,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
         System.out.println("saving");
         try (ObjectOutputStream out =
                      new ObjectOutputStream(new FileOutputStream(path))) {
-            out.writeObject(new ArrayList<>(reminders));
+            out.writeObject(reminders.getSerializable());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

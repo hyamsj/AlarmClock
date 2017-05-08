@@ -4,14 +4,15 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * Created by pascal on 5/3/17.
  */
 public class Poller implements ListChangeListener {
     private static Poller instance = null;
-    private ObservableList<Reminder> reminders;
-    private ObservableList<Reminder> notifiedReminders;
+    private ReminderList reminders;
+    private ReminderList notifiedReminders;
     private Thread one;
     private int delay = 1000;
 
@@ -48,19 +49,26 @@ public class Poller implements ListChangeListener {
 
 
     public void poll() throws Exception {
-        for (Reminder r : reminders) {
+        ArrayList<Reminder> l = reminders.getSerializable();
+        for (Reminder r : l) {
             LocalDateTime reminderTime = r.getTime();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime later = now.plusMinutes(5);
+            System.out.println("Poller tests Conditions");
+            System.out.println("remindertime: " + reminderTime);
+            System.out.println("now is: " + now);
+
             if (
                     reminderTime.isAfter(now)
-                            && later.isAfter(reminderTime)
+                           && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
+                System.out.println("starting Notification");
                 Notification n = new ConsoleNotification(r);
                 n.send();
                 System.out.println("Notify");
-                notifiedReminders.addAll(r);
+                notifiedReminders.add(r);
+                //notifiedReminders.addAll(r);
             }
         }
     }

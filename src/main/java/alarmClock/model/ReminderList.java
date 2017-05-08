@@ -133,8 +133,8 @@ public class ReminderList implements ObservableList {
 
     @Override
     public boolean add(Object o) {
-        pushState();
         boolean r = reminders.add(o);
+        pushState();
         return r;
     }
 
@@ -166,6 +166,15 @@ public class ReminderList implements ObservableList {
         pushState();
     }
 
+    public ArrayList<Reminder> getSerializable(){
+        //TODO solve type conversation on a better place
+        ArrayList<Reminder> output= new ArrayList<>();
+        for( Object r: reminders){
+            r = (Reminder) r;
+            output.add((Reminder) r );
+        }
+        return output;
+    }
     @Override
     public Object get(int index) {
         return reminders.get(index);
@@ -260,11 +269,11 @@ public class ReminderList implements ObservableList {
 
     @Override
     public void addListener(InvalidationListener listener) {
-
+        reminders.addListener(listener);
     }
 
     @Override
     public void removeListener(InvalidationListener listener) {
-
+        reminders.addListener(listener);
     }
 }

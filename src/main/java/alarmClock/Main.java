@@ -19,7 +19,7 @@ public class Main extends Application {
         primaryStage.show();
 
         //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
-        // otherwise get sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
+        // otherwise getSerializable sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
         Poller poller = Poller.getInstance();
 
         try {

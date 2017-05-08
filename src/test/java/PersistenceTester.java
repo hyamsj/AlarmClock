@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import static junit.framework.TestCase.assertEquals;
 public class PersistenceTester {
     /*
-    //TODO test If Reminders get stored and restored
+    //TODO test If Reminders getSerializable stored and restored
 
     @Before
     public void initializeTests()throws Exception{
