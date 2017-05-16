@@ -1,12 +1,10 @@
 package alarmClock;
 
-import alarmClock.controller.AlertController;
 import alarmClock.model.Poller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,17 +18,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> System.exit(0));
-
-
-        // Alert Window
-//        Stage alertStage = new Stage();
-//        alertStage.initModality(Modality.APPLICATION_MODAL);
-//        Parent alert = FXMLLoader.load(getClass().getResource("../alert.fxml"));
-//        Scene alertScene = new Scene(alert);
-//        alertStage.setScene(alertScene);
-//        alertStage.show();
-
-
         //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
         // otherwise getSerializable sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
         Poller poller = Poller.getInstance();

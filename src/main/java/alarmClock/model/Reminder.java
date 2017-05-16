@@ -14,12 +14,13 @@ public class Reminder implements Serializable {
 
     private String subject = "";
     private String description = "";
-    private LocalDateTime date;
-    //LocalDate date;
+    private LocalDateTime time;
+    LocalDate date;
 
-    public Reminder(String subject, String description, LocalDateTime date) {
+    public Reminder(String subject, String description, LocalDateTime time, LocalDate date) {
         setSubject(subject);
         setDescription(description);
+        setTime(time);
         setDate(date);
     }
 
@@ -40,11 +41,19 @@ public class Reminder implements Serializable {
         return new SimpleStringProperty(description);
     }
 
-    public LocalDateTime getDate() {
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public SimpleObjectProperty<LocalDateTime> getTimeProperty() {
+        return new SimpleObjectProperty<>(time);
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public SimpleObjectProperty<LocalDateTime> getDateProperty() {
+    public SimpleObjectProperty<LocalDate> getDateProperty() {
         return new SimpleObjectProperty<>(date);
     }
 
@@ -57,7 +66,11 @@ public class Reminder implements Serializable {
         this.description = description;
     }
 
-    private void setDate(LocalDateTime date) {
+    private void setTime(LocalDateTime time) {
+        this.time = time;
+    }
+
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -70,7 +83,7 @@ public class Reminder implements Serializable {
                     r.getDate().equals(this.getDate())
                             && r.getDescription().equals(this.getDescription())
                             && r.getSubject().equals(this.getSubject())
-                            && r.getDate().equals(this.getDate());
+                            && r.getTime().equals(this.getTime());
 
             return isSame;
         } else {
@@ -84,6 +97,7 @@ public class Reminder implements Serializable {
         int h = 1;
         h *= description.hashCode() * 13;
         h *= subject.hashCode() * 17;
+        h *= time.hashCode() * 11;
         h *= date.hashCode() * 31;
         return h;
     }
@@ -95,6 +109,7 @@ public class Reminder implements Serializable {
         String out = "";
         out = dic.getSubject() + ": " + this.getSubject() + "\n";
         out += dic.getDescription() + ": " + this.getDescription() + "\n";
+        out += dic.getTime() + ": " + this.getTime() + "\n";
         out += dic.getDate() + ": " + this.getDate() + "\n";
         return out;
     }
