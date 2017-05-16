@@ -87,7 +87,7 @@ public class Reminder implements Serializable {
 
     @Override
     public String toString() {
-        String out = "";
+        String out;
         out = "Subject: " + this.getSubject() + "\n";
         out += "Description: " + this.getDescription() + "\n";
         out += "Date: " + this.getDate() + "\n";

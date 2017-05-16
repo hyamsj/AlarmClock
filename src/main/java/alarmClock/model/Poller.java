@@ -54,6 +54,7 @@ public class Poller implements ListChangeListener {
             LocalDateTime reminderTime = r.getDate();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime later = now.plusMinutes(EARLY_ALERT_TIME);
+            LocalDateTime almostNow = now.plusSeconds(60);
             if (
                     reminderTime.isAfter(now)
                             && later.isAfter(reminderTime)
@@ -66,6 +67,7 @@ public class Poller implements ListChangeListener {
                 });
                 notifiedReminders.add(r);
             }
+
         }
 
     }

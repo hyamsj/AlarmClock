@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -18,6 +19,7 @@ public class EarlyAlert extends Stage implements Notification{
     Label label;
 
     public EarlyAlert(Reminder reminder) {
+//        this.initModality(Modality.APPLICATION_MODAL);
         label = new Label("Hello: " + reminder.toString());
         Button okButton = new Button("Ok");
         okButton.setOnAction(e -> {
