@@ -25,8 +25,6 @@ public class Controller implements Initializable {
     private TextField subjectField;
     @FXML
     private TextField descriptionField;
-//    @FXML
-//    private TextField timeField;
     @FXML
     private DateTimePicker datePickerField;
     @FXML
@@ -57,6 +55,9 @@ public class Controller implements Initializable {
             LocalDateTime later = LocalDateTime.now().plusMinutes(3);
             time = datePickerField.getDateTimeValue();
             date = datePickerField.getValue();
+//            System.out.println("--------------- Time: " + time);
+//            System.out.println(time.getHour() + " " + time.getMinute());
+//            System.out.println("--------------- Date: " + date);
             model.addReminder(new Reminder(subject, description, time, date));
             subjectField.setText("");
             descriptionField.setText("");
