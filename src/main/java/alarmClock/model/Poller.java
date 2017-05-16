@@ -1,10 +1,7 @@
 package alarmClock.model;
 
-import alarmClock.alertView.EarlyAlert;
-import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -58,9 +55,15 @@ public class Poller implements ListChangeListener {
     private void HandleNotifications(){
         ArrayList<Reminder> l = reminders.getSerializable();
         for (Reminder r : l) {
-            //TODO or make the Reminder store if it did a notifications and test against the Reminder
+            //TODO or make the Reminder store if it did a notifications and isTrue against the Reminder
+
             if(  ! notifiedReminders.contains(r)){
-                boolean success = r.doNotifyIfSoon();
+                boolean success = r.notifyIf(new IsInNextMin());
+                if(success) notifiedReminders.add(r);
+            }
+
+            if(  ! notifiedReminders.contains(r)){
+                boolean success = r.notifyIf(new IsToday());
                 if(success) notifiedReminders.add(r);
             }
 

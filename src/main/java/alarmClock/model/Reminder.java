@@ -3,7 +3,6 @@ package alarmClock.model;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import javax.security.auth.login.Configuration;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -97,8 +96,8 @@ public class Reminder implements Serializable {
     }
 
 
-    public boolean doNotifyIfSoon(){
-        if(this.meetsCriteria()){
+    public boolean notifyIf(CriteriaTester criteria){
+        if(criteria.isTrue(this)){
             this.doNotify();
             return true;
         }
@@ -119,13 +118,6 @@ public class Reminder implements Serializable {
             n.setReminder(this);
             n.send();
         }
-
-    }
-
-    public boolean meetsCriteria(){
-        int delta = 15;
-        return date.isAfter(LocalDateTime.now())
-                && date.isBefore(LocalDateTime.now().plusMinutes(delta));
 
     }
 }

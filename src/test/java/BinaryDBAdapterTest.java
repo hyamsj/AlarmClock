@@ -31,7 +31,7 @@ public class BinaryDBAdapterTest {
     public void save(){
         String subject = "titel";
         String description = "description fo the Reminder";
-        //TODO do test with a fixed time
+        //TODO do isTrue with a fixed time
         LocalDateTime date = LocalDateTime.now();
         Reminder reminder1 = new Reminder(subject,description,date);
         Reminder reminder2 = new Reminder(subject+1,description,date);

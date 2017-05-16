@@ -16,9 +16,17 @@ import javafx.stage.Stage;
  */
 public class EarlyAlert extends Stage implements Notification{
 
+    private Reminder reminder;
     Label label;
 
     public EarlyAlert(Reminder reminder) {
+        this.reminder = reminder;
+    }
+    public void setReminder(Reminder reminder){
+        this.reminder = reminder;
+    }
+
+    public void send(){
 //        this.initModality(Modality.APPLICATION_MODAL);
         label = new Label("Hello: " + reminder.toString());
         Button okButton = new Button("Ok");

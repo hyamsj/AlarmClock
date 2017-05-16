@@ -5,7 +5,7 @@ package alarmClock.model;
  */
 public interface DataBaseAdapter {
     //TODO Errorhandling load and save throwing DB not Found or similar stufrf.
-    //TODO  test for the exceptions
+    //TODO  isTrue for the exceptions
     ReminderList load();
 
     void save(ReminderList reminders);
