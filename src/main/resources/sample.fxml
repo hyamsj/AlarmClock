@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import alarmClock.controller.DateTimePicker?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-
+<?import javafx.scene.layout.*?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alarmClock.controller.Controller">
    <center>
       <GridPane fx:id="pane" alignment="center" hgap="10" prefHeight="301.0" prefWidth="503.0" vgap="10">
@@ -40,19 +30,14 @@
                       <Insets top="10.0" />
                   </GridPane.margin>
               </TextField>
-              <TextField fx:id="timeField" promptText="HH:MM:SS" GridPane.columnIndex="2">
-                  <GridPane.margin>
-                      <Insets top="10.0" />
-                  </GridPane.margin>
-              </TextField>
-              <DatePicker fx:id="datePickerField" promptText="DD/MM/YYYY" GridPane.columnIndex="3">
+              <DateTimePicker fx:id="datePickerField" promptText="DD/MM/YYYY - HH:MM:SS" GridPane.columnIndex="2" GridPane.columnSpan="2">
                   <GridPane.margin>
                       <Insets right="10.0" top="10.0" />
                   </GridPane.margin>
                   <padding>
                       <Insets right="10.0" />
                   </padding>
-              </DatePicker>
+              </DateTimePicker>
               <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.rowIndex="1">
                   <columns>
                       <TableColumn fx:id="subjectColumn" prefWidth="115.0" text="Subject">
@@ -60,19 +45,14 @@
                         <PropertyValueFactory property="subject" />
                           </cellValueFactory>
                       </TableColumn>
-                      <TableColumn fx:id="descriptionColumn" prefWidth="134.0" text="Description">
+                      <TableColumn fx:id="descriptionColumn" prefWidth="135.0" text="Description">
                           <cellValueFactory>
                         <PropertyValueFactory property="description" />
                           </cellValueFactory>
                       </TableColumn>
-                      <TableColumn fx:id="timeColumn" prefWidth="97.0" text="Time">
+                      <TableColumn fx:id="timeColumn" prefWidth="247.0" text="Date">
                           <cellValueFactory>
                         <PropertyValueFactory property="time" />
-                          </cellValueFactory>
-                      </TableColumn>
-                      <TableColumn fx:id="dateColumn" prefWidth="153.0" text="Date">
-                          <cellValueFactory>
-                        <PropertyValueFactory property="date" />
                           </cellValueFactory>
                       </TableColumn>
                   </columns>

@@ -43,10 +43,10 @@ public class PollerTest {
         time4=LocalDateTime.now().plusMinutes(20);
         date = LocalDate.of(2017, 4, 23);
 
-        reminder1 = new Reminder(subject+"1",description,time1,date);
-        reminder2 = new Reminder(subject+"2",description,time2,date);
-        reminder3 = new Reminder(subject+"3",description,time3,date);
-        reminder4 = new Reminder(subject+"4",description,time4,date);
+//        reminder1 = new Reminder(subject+"1",description,time1,date);
+//        reminder2 = new Reminder(subject+"2",description,time2,date);
+//        reminder3 = new Reminder(subject+"3",description,time3,date);
+//        reminder4 = new Reminder(subject+"4",description,time4,date);
         m = new Model();
     }
 

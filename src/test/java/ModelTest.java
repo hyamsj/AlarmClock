@@ -43,10 +43,10 @@ public class ModelTest {
         date1 = LocalDate.of(2017, 4,1);
         date2 = LocalDate.of(2017, 4,2);
         date3 = LocalDate.of(2017, 4,3);
-        reminder = new Reminder(subject,description,time,date);
-        reminder1 = new Reminder(subject+"1",description,time,date1);
-        reminder2 = new Reminder(subject+"2",description,time,date2);
-        reminder3 = new Reminder(subject+"3",description,time,date3);
+//        reminder = new Reminder(subject,description,time,date);
+//        reminder1 = new Reminder(subject+"1",description,time,date1);
+//        reminder2 = new Reminder(subject+"2",description,time,date2);
+//        reminder3 = new Reminder(subject+"3",description,time,date3);
         m= new Model();
     }
 
