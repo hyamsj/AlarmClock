@@ -21,4 +21,5 @@ public class ConsoleNotification implements Notification {
     public void send() {
         System.out.println(reminder.toString());
     }
+
 }

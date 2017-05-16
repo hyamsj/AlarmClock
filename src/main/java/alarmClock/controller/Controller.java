@@ -47,10 +47,6 @@ public class Controller implements Initializable {
             //TODO remove after the above is fixed
             LocalDateTime later = LocalDateTime.now().plusMinutes(3);
             date = datePickerField.getDateTimeValue();
-            System.out.println("----------------------"+ date);
-//            System.out.println("--------------- Time: " + date);
-//            System.out.println(date.getHour() + " " + date.getMinute());
-//            System.out.println("--------------- Date: " + date);
             model.addReminder(new Reminder(subject, description, date));
             subjectField.setText("");
             descriptionField.setText("");

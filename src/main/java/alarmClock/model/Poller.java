@@ -1,5 +1,7 @@
 package alarmClock.model;
 
+import alarmClock.alertView.EarlyAlert;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
 import java.time.LocalDateTime;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
  * Tests regularly if a Reminder has to send a notification
  */
 public class Poller implements ListChangeListener {
+    public static final int EARLY_ALERT_TIME = 5;
     private static Poller instance = null;
     private ReminderList reminders;
     private ReminderList notifiedReminders;
@@ -65,18 +68,22 @@ public class Poller implements ListChangeListener {
             /*was pushed to the Reminder
             LocalDateTime reminderTime = r.getDate();
             LocalDateTime now = LocalDateTime.now();
-            LocalDateTime later = now.plusMinutes(5);
+            LocalDateTime later = now.plusMinutes(EARLY_ALERT_TIME);
+            LocalDateTime almostNow = now.plusSeconds(60);
             if (
                     reminderTime.isAfter(now)
                             && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
                 Notification n = new ConsoleNotification(r);
-                n.send();
                 System.out.println("Notify");
+                Platform.runLater(() -> {
+                    EarlyAlert earlyAlert = new EarlyAlert(r);
+                });
                 notifiedReminders.add(r);
             }
             */
+
         }
 
     }

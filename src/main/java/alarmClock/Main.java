@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../mainWindow.fxml"));
         primaryStage.setTitle("Alarm Clock \u00a9");
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("styles.css");
@@ -21,6 +21,8 @@ public class Main extends Application {
         //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
         // otherwise getSerializable sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
         Poller poller = Poller.getInstance();
+
+//        EarlyAlertController earlyAlertController = new EarlyAlertController();
 
         try {
         } catch (Exception e) {
