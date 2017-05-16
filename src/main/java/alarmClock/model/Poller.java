@@ -1,5 +1,7 @@
 package alarmClock.model;
 
+import alarmClock.alertView.EarlyAlert;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
 import java.time.LocalDateTime;
@@ -15,7 +17,7 @@ public class Poller implements ListChangeListener {
     private Thread one;
     private int delay = 1000;
 
-    protected Poller() {
+    private Poller() {
         this.reminders = new BinaryDBAdapter().load();
         notifiedReminders = new ReminderList();
         one.start();
@@ -53,16 +55,20 @@ public class Poller implements ListChangeListener {
             LocalDateTime later = now.plusMinutes(5);
             if (
                     reminderTime.isAfter(now)
-                           && later.isAfter(reminderTime)
+                            && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
                 Notification n = new ConsoleNotification(r);
                 n.send();
                 System.out.println("Notify");
+                Platform.runLater(() -> {
+                    EarlyAlert earlyAlert = new EarlyAlert();
+
+                });
                 notifiedReminders.add(r);
             }
         }
-        
+
     }
 
     @Override
