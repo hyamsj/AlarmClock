@@ -30,7 +30,6 @@ public class Controller implements Initializable {
     private Button addButton;
 
     private Model model;
-    private InputChecker helper = new InputChecker();
 
 
     private String subject;
