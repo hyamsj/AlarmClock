@@ -1,5 +1,7 @@
 package alarmClock.alertView;
 
+import alarmClock.model.Notification;
+import alarmClock.model.Reminder;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,12 +13,12 @@ import javafx.stage.Stage;
 /**
  * Created by joni on 16/05/17.
  */
-public class EarlyAlert extends Stage{
+public class EarlyAlert extends Stage implements Notification{
 
     Label label;
 
-    public EarlyAlert() {
-        label = new Label("Hello: ");
+    public EarlyAlert(Reminder reminder) {
+        label = new Label("Hello: " + reminder.toString());
         Button okButton = new Button("Ok");
         okButton.setOnAction(e -> {
             this.close();
@@ -28,4 +30,5 @@ public class EarlyAlert extends Stage{
         setScene(scene);
         show();
     }
+
 }

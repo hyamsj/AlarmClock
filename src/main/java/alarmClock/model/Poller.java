@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by pascal on 5/3/17.
  */
 public class Poller implements ListChangeListener {
+    public static final int EARLY_ALERT_TIME = 5;
     private static Poller instance = null;
     private ReminderList reminders;
     private ReminderList notifiedReminders;
@@ -52,18 +53,16 @@ public class Poller implements ListChangeListener {
         for (Reminder r : l) {
             LocalDateTime reminderTime = r.getDate();
             LocalDateTime now = LocalDateTime.now();
-            LocalDateTime later = now.plusMinutes(5);
+            LocalDateTime later = now.plusMinutes(EARLY_ALERT_TIME);
             if (
                     reminderTime.isAfter(now)
                             && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
                 Notification n = new ConsoleNotification(r);
-                n.send();
                 System.out.println("Notify");
                 Platform.runLater(() -> {
-                    EarlyAlert earlyAlert = new EarlyAlert();
-
+                    EarlyAlert earlyAlert = new EarlyAlert(r);
                 });
                 notifiedReminders.add(r);
             }

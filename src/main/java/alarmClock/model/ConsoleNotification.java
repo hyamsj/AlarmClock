@@ -8,9 +8,7 @@ public class ConsoleNotification implements Notification {
 
     public ConsoleNotification(Reminder reminder) {
         this.reminder = reminder;
-    }
-
-    public void send() {
         System.out.println(reminder.toString());
     }
+
 }
