@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -28,6 +29,9 @@ public class ReminderTest {
     String subject = "titel";
     String description = "description fo the Reminder";
     LocalDateTime time = LocalDateTime.now();
+    String tag = "bla";
+    String tag2 = "blub";
+    String tag3 = "blib";
 
     @Before
     public void beforeTest(){
@@ -49,32 +53,41 @@ public class ReminderTest {
 
     @Test
     public void setTags() throws Exception {
+        //TODO test for add tag double
+        Collection<String> tags=new ArrayList<String>();
+        tags.add(tag);
+        tags.add(tag2);
+        tags.add(tag3);
+        reminder.getTags().containsAll(tags);
     }
 
     @Test
     public void addTag() throws Exception {
-
+        reminder.addTag(tag);
+        assertTrue(reminder.getTags().contains(tag));
     }
 
     @Test
     public void removeTag() throws Exception {
+        reminder.addTag(tag);
+        reminder.removeTag(tag);
+        assertFalse(reminder.getTags().contains(tag));
     }
 
-    @Test
-    public void equals() throws Exception {
-    }
 
     @Test
     public void notifyIf() throws Exception {
+        reminder.addTag(tag);
+        boolean success = reminder.notifyIf(new hasTag(tag));
+        assertTrue(success);
     }
 
     @Test
     public void notifyIf1() throws Exception {
-        String tag = "important";
         reminder.addTag(tag);
         Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
-            boolean success = reminder.notifyIf(importantStuffThisMonth);
-            assertTrue(success);
+        boolean success = reminder.notifyIf(importantStuffThisMonth);
+        assertTrue(success);
     }
 
     @Test
