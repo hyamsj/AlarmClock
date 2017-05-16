@@ -1,7 +1,6 @@
 package alarmClock.model;
 
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -32,11 +31,9 @@ public class Poller implements ListChangeListener {
 
     {
         one = new Thread(() -> {
-            System.out.println("thread");
             try {
                 while (true) {
                     Thread.sleep(delay);
-                    System.out.println("polling...");
                     poll();
                 }
             } catch (InterruptedException v) {
@@ -51,7 +48,7 @@ public class Poller implements ListChangeListener {
     public void poll() throws Exception {
         ArrayList<Reminder> l = reminders.getSerializable();
         for (Reminder r : l) {
-            LocalDateTime reminderTime = r.getTime();
+            LocalDateTime reminderTime = r.getDate();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime later = now.plusMinutes(5);
             if (

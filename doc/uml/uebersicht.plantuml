@@ -26,7 +26,7 @@ OsAdapter -- OS
 
 
 class Reminder{
-date/time
+date/date
 }
 class JPA{
 readDb()

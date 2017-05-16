@@ -11,7 +11,6 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -29,12 +28,6 @@ public class Controller implements Initializable {
     private DateTimePicker datePickerField;
     @FXML
     private Button addButton;
-    @FXML
-    private Button rmButton;
-    @FXML
-    private Button undoButton;
-    @FXML
-    private Button redoDoButton;
 
     private Model model;
     private InputChecker helper = new InputChecker();
@@ -42,23 +35,23 @@ public class Controller implements Initializable {
 
     private String subject;
     private String description;
-    private LocalDateTime time;
-    private LocalDate date;
+    private LocalDateTime date;
+//    private LocalDate date;
 
     public void addButtonPressed() {
         if (!Objects.equals(subjectField.getText(), "") && datePickerField.getValue() != null) {
             subject = subjectField.getText();
             description = descriptionField.getText();
             //TODO  controller may only accept parsable timeFild inputs, could do so by adding a LocalDateTimePicker
-            //time = LocalDateTime.parse(timeField.getText());
+            //date = LocalDateTime.parse(timeField.getText());
             //TODO remove after the above is fixed
             LocalDateTime later = LocalDateTime.now().plusMinutes(3);
-            time = datePickerField.getDateTimeValue();
-            date = datePickerField.getValue();
-//            System.out.println("--------------- Time: " + time);
-//            System.out.println(time.getHour() + " " + time.getMinute());
+            date = datePickerField.getDateTimeValue();
+            System.out.println("----------------------"+ date);
+//            System.out.println("--------------- Time: " + date);
+//            System.out.println(date.getHour() + " " + date.getMinute());
 //            System.out.println("--------------- Date: " + date);
-            model.addReminder(new Reminder(subject, description, time, date));
+            model.addReminder(new Reminder(subject, description, date));
             subjectField.setText("");
             descriptionField.setText("");
             datePickerField.setChronology(null);

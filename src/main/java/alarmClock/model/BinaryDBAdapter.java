@@ -21,15 +21,8 @@ public class BinaryDBAdapter implements DataBaseAdapter {
             try (ObjectInputStream in =
                          new ObjectInputStream(new FileInputStream(path))) {
                 //reminderList = (ArrayList<Reminder>) in.readObject();
-                System.out.println("before Read");
                 Object o = in.readObject();
-
-
-
-                System.out.println("before o->reminderArrayList");
                 reminderArrayList = (ArrayList<Reminder>)  o;
-
-                System.out.println("FXCollction init");
                 ReminderList rl = new ReminderList();
                 rl.addAll(reminderArrayList);
                 reminders =rl;
@@ -48,7 +41,6 @@ public class BinaryDBAdapter implements DataBaseAdapter {
 
     public void save(ReminderList reminders) {
         //TODO Errorhandling
-        System.out.println("saving");
         try (ObjectOutputStream out =
                      new ObjectOutputStream(new FileOutputStream(path))) {
             out.writeObject(reminders.getSerializable());
