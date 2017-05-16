@@ -1,5 +1,6 @@
 package alarmClock.model;
 
+import alarmClock.alertView.EarlyAlert;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -144,13 +145,8 @@ public class Reminder implements Serializable {
 
 
     public void doNotify(){
-        //TODO lookup in configuration
-        //Helpers notificationTypes should be returned bey the ConfigAdapter
-        //Config config = new ConfigAdapter();
-        //notificationsTypes =  config.getNotificationsTypes():
-        //TODO if Reminder stores a notificationType notificationTypes.addAll(this.notificationTypes);
-        ArrayList<Notification> notificationTypes = new ArrayList<>();
-        notificationTypes.add(new ConsoleNotification());
+         //gets the notification Types from the config Reader / File
+        ArrayList<Notification> notificationTypes = new ConfigReader().getNotificationTypes();
 
         for(Notification n:notificationTypes){
             n.setReminder(this);

@@ -19,6 +19,10 @@ public class EarlyAlert extends Stage implements Notification{
     private Reminder reminder;
     Label label;
 
+    public EarlyAlert() {
+        super();
+    }
+
     public EarlyAlert(Reminder reminder) {
         this.reminder = reminder;
     }

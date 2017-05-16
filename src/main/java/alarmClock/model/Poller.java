@@ -56,16 +56,18 @@ public class Poller implements ListChangeListener {
     }
     private void HandleNotifications(){
         ArrayList<Reminder> l = reminders.getSerializable();
-        /*
-        l.stream()
-                .filter(r->new IsInNextMin().isTrue(r))
-                .filter(r-> !notifiedReminders.contains(r))
-                .map(r-> r.notifyIf(new IsToday()))
-                .map(r-> notifiedReminders.add(r))
-        ;
-        */
-
         for (Reminder r : l) {
+
+        // remove is only here to test tag filtering
+            String tag = "important";
+            r.addTag(tag);
+            Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
+            if(  ! notifiedReminders.contains(r)){
+                boolean success = r.notifyIf(importantStuffThisMonth);
+                if(success) notifiedReminders.add(r);
+            }
+        // end Remove
+
             //TODO or make the Reminder store if it did a notifications and isTrue against the Reminder
             /*
 
@@ -80,38 +82,6 @@ public class Poller implements ListChangeListener {
                 if(success) notifiedReminders.add(r);
             }
             */
-
-
-            //TODO remove is only here to test tag filtering
-            String tag = "important";
-            r.addTag(tag);
-            Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
-            if(  ! notifiedReminders.contains(r)){
-                boolean success = r.notifyIf(importantStuffThisMonth);
-                if(success) notifiedReminders.add(r);
-            }
-            //TODO end Remove
-
-
-            /*was pushed to the Reminder
-            LocalDateTime reminderTime = r.getDate();
-            LocalDateTime now = LocalDateTime.now();
-            LocalDateTime later = now.plusMinutes(EARLY_ALERT_TIME);
-            LocalDateTime almostNow = now.plusSeconds(60);
-            if (
-                    reminderTime.isAfter(now)
-                            && later.isAfter(reminderTime)
-                            && !notifiedReminders.contains(r)
-                    ) {
-                Notification n = new ConsoleNotification(r);
-                System.out.println("Notify");
-                Platform.runLater(() -> {
-                    EarlyAlert earlyAlert = new EarlyAlert(r);
-                });
-                notifiedReminders.add(r);
-            }
-            */
-
         }
 
     }
