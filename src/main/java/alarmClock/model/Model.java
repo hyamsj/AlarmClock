@@ -39,8 +39,8 @@ public class Model implements Serializable {
             System.out.println("something changed");
             adapter.save(reminders);
         });
-        reminders.addListener(new Poller()::onChanged);
-        reminders.addOwnListener(new Poller()::onChanged);
+        reminders.addListener(Poller.getInstance()::onChanged);
+        reminders.addOwnListener(Poller.getInstance()::onChanged);
     }
 
     public void undo() {

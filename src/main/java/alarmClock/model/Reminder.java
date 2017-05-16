@@ -3,8 +3,10 @@ package alarmClock.model;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import javax.security.auth.login.Configuration;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * Created by joni on 24/03/17.
@@ -94,4 +96,36 @@ public class Reminder implements Serializable {
         return out;
     }
 
+
+    public boolean doNotifyIfSoon(){
+        if(this.meetsCriteria()){
+            this.doNotify();
+            return true;
+        }
+        return false;
+    }
+
+
+    public void doNotify(){
+        //TODO lookup in configuration
+        //Helpers notificationTypes should be returned bey the ConfigAdapter
+        //Config config = new ConfigAdapter();
+        //notificationsTypes =  config.getNotificationsTypes():
+        //TODO if Reminder stores a notificationType notificationTypes.addAll(this.notificationTypes);
+        ArrayList<Notification> notificationTypes = new ArrayList<>();
+        notificationTypes.add(new ConsoleNotification());
+
+        for(Notification n:notificationTypes){
+            n.setReminder(this);
+            n.send();
+        }
+
+    }
+
+    public boolean meetsCriteria(){
+        int delta = 15;
+        return date.isAfter(LocalDateTime.now())
+                && date.isBefore(LocalDateTime.now().plusMinutes(delta));
+
+    }
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Created by pascal on 5/3/17.
+ * Is a Singelton
+ * Tests regularly if a Reminder has to send a notification
  */
 public class Poller implements ListChangeListener {
     private static Poller instance = null;
@@ -15,10 +17,12 @@ public class Poller implements ListChangeListener {
     private Thread one;
     private int delay = 1000;
 
-    protected Poller() {
+    private Poller() {
         this.reminders = new BinaryDBAdapter().load();
         notifiedReminders = new ReminderList();
+        System.out.print(" poller was initialized");
         one.start();
+
     }
 
     public static Poller getInstance() {
@@ -46,14 +50,25 @@ public class Poller implements ListChangeListener {
 
 
     public void poll() throws Exception {
+        HandleNotifications();
+    }
+    private void HandleNotifications(){
         ArrayList<Reminder> l = reminders.getSerializable();
         for (Reminder r : l) {
+            //TODO or make the Reminder store if it did a notifications and test against the Reminder
+            if(  ! notifiedReminders.contains(r)){
+                boolean success = r.doNotifyIfSoon();
+                if(success) notifiedReminders.add(r);
+            }
+
+
+            /*was pushed to the Reminder
             LocalDateTime reminderTime = r.getDate();
             LocalDateTime now = LocalDateTime.now();
             LocalDateTime later = now.plusMinutes(5);
             if (
                     reminderTime.isAfter(now)
-                           && later.isAfter(reminderTime)
+                            && later.isAfter(reminderTime)
                             && !notifiedReminders.contains(r)
                     ) {
                 Notification n = new ConsoleNotification(r);
@@ -61,8 +76,9 @@ public class Poller implements ListChangeListener {
                 System.out.println("Notify");
                 notifiedReminders.add(r);
             }
+            */
         }
-        
+
     }
 
     @Override
@@ -70,11 +86,6 @@ public class Poller implements ListChangeListener {
         System.out.println("Poller got notified about change");
         this.reminders = new BinaryDBAdapter().load();
         //TODO only update reminders when the proper change happens
-        /*
-        if (c instanceof ObservableList) {
-            this.reminders = new BinaryDBAdapter().load();
-        }
-        */
     }
 
 
