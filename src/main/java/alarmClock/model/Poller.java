@@ -1,11 +1,13 @@
 package alarmClock.model;
 
+import alarmClock.model.Filter.CriteriaTester;
+import alarmClock.model.Filter.IsThisMonth;
+import alarmClock.model.Filter.hasTag;
 import javafx.collections.ListChangeListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Created by pascal on 5/3/17.

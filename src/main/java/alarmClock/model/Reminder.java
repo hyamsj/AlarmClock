@@ -1,8 +1,7 @@
 package alarmClock.model;
 
-import alarmClock.alertView.EarlyAlert;
+import alarmClock.model.Filter.CriteriaTester;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
