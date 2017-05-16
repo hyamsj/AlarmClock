@@ -1,11 +1,15 @@
 package alarmClock.model;
 
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+//import java.util.Set;
 
 /**
  * Created by joni on 24/03/17.
@@ -15,11 +19,35 @@ public class Reminder implements Serializable {
     private String subject = "";
     private String description = "";
     private LocalDateTime date;
+    //could be a Collection too.
+    private Collection<String> tags = new ArrayList<>();
 
     public Reminder(String subject, String description, LocalDateTime date) {
         setSubject(subject);
         setDescription(description);
         setDate(date);
+    }
+        public Reminder(String subject, String description, LocalDateTime date, Set<String> tags) {
+        setSubject(subject);
+        setDescription(description);
+        setDate(date);
+        setTags(tags);
+    }
+    public Collection<String> getTags(){
+        return tags;
+    }
+    public SimpleObjectProperty<Collection<String>> getTagsProperty(){
+        return new SimpleObjectProperty<Collection<String>>(tags);
+    }
+
+    public void setTags(Collection<String> tags){
+        this.tags = tags;
+    }
+    public void addTag(String tag){
+        tags.add(tag);
+    }
+    public void removeTag(String tag){
+        tags.remove(tag);
     }
 
     public String getSubject() {
@@ -102,6 +130,16 @@ public class Reminder implements Serializable {
             return true;
         }
         return false;
+    }
+     public boolean notifyIf(Collection<CriteriaTester> criterias){
+        Boolean allTrue = true;
+        for(CriteriaTester criteira:criterias){
+            allTrue &= criteira.isTrue(this);
+        }
+        if(allTrue){
+            this.doNotify();
+        }
+        return allTrue;
     }
 
 

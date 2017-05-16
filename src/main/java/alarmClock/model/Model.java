@@ -33,7 +33,6 @@ public class Model implements Serializable {
             adapter.save(reminders);
         });
         reminders.addListener(Poller.getInstance()::onChanged);
-        reminders.addOwnListener(Poller.getInstance()::onChanged);
     }
 
     public void undo() {

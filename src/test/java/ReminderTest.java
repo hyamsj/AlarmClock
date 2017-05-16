@@ -1,4 +1,7 @@
+import alarmClock.model.CriteriaTester;
+import alarmClock.model.IsThisMonth;
 import alarmClock.model.Reminder;
+import alarmClock.model.hasTag;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.junit.Before;
@@ -6,6 +9,8 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
@@ -15,8 +20,7 @@ import static junit.framework.TestCase.assertTrue;
  * Created by pascal on 5/2/17.
  */
 public class ReminderTest {
-
-    SimpleStringProperty descriptionProperty;
+        SimpleStringProperty descriptionProperty;
     SimpleObjectProperty<LocalDateTime> timeProperty;
     SimpleObjectProperty<LocalDate> dateProperty;
     SimpleStringProperty subjectProperty;
@@ -32,6 +36,52 @@ public class ReminderTest {
         subjectProperty = new SimpleStringProperty(subject);
         reminder = new Reminder(subject, description, time);
     }
+    @Test
+    public void getTags() throws Exception {
+        String tag = "bla";
+        reminder.addTag(tag);
+        assertTrue(reminder.getTags().contains(tag));
+    }
+
+    @Test
+    public void getTagsProperty() throws Exception {
+    }
+
+    @Test
+    public void setTags() throws Exception {
+    }
+
+    @Test
+    public void addTag() throws Exception {
+
+    }
+
+    @Test
+    public void removeTag() throws Exception {
+    }
+
+    @Test
+    public void equals() throws Exception {
+    }
+
+    @Test
+    public void notifyIf() throws Exception {
+    }
+
+    @Test
+    public void notifyIf1() throws Exception {
+        String tag = "important";
+        reminder.addTag(tag);
+        Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
+            boolean success = reminder.notifyIf(importantStuffThisMonth);
+            assertTrue(success);
+    }
+
+    @Test
+    public void doNotify() throws Exception {
+    }
+
+
 
 
     @Test

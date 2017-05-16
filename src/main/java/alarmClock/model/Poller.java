@@ -3,6 +3,9 @@ package alarmClock.model;
 import javafx.collections.ListChangeListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by pascal on 5/3/17.
@@ -20,7 +23,6 @@ public class Poller implements ListChangeListener {
     private Poller() {
         this.reminders = new BinaryDBAdapter().load();
         notifiedReminders = new ReminderList();
-        System.out.print(" poller was initialized");
         one.start();
 
     }
@@ -54,18 +56,41 @@ public class Poller implements ListChangeListener {
     }
     private void HandleNotifications(){
         ArrayList<Reminder> l = reminders.getSerializable();
+        /*
+        l.stream()
+                .filter(r->new IsInNextMin().isTrue(r))
+                .filter(r-> !notifiedReminders.contains(r))
+                .map(r-> r.notifyIf(new IsToday()))
+                .map(r-> notifiedReminders.add(r))
+        ;
+        */
+
         for (Reminder r : l) {
             //TODO or make the Reminder store if it did a notifications and isTrue against the Reminder
+            /*
 
             if(  ! notifiedReminders.contains(r)){
                 boolean success = r.notifyIf(new IsInNextMin());
                 if(success) notifiedReminders.add(r);
             }
 
+
             if(  ! notifiedReminders.contains(r)){
                 boolean success = r.notifyIf(new IsToday());
                 if(success) notifiedReminders.add(r);
             }
+            */
+
+
+            //TODO remove is only here to test tag filtering
+            String tag = "important";
+            r.addTag(tag);
+            Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
+            if(  ! notifiedReminders.contains(r)){
+                boolean success = r.notifyIf(importantStuffThisMonth);
+                if(success) notifiedReminders.add(r);
+            }
+            //TODO end Remove
 
 
             /*was pushed to the Reminder
