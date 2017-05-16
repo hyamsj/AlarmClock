@@ -10,6 +10,9 @@ poller using Notificaiton.isCandidate(now);
 boolean Notification.isCandiata(date);
 nice poller sleeps until next Notification is Ready
 do not close poller in release
+Enum for Colorscheme
+Enum for Notification Type
+push view from main to view
 
 
 

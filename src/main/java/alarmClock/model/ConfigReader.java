@@ -20,4 +20,7 @@ public class ConfigReader {
         }
         return notificationTypes;
     }
+    public String getColorScheme(){
+        return "nightmode";
+    }
 }
