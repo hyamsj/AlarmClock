@@ -31,10 +31,10 @@ public class BinaryDBAdapterTest {
     public void save(){
         String subject = "titel";
         String description = "description fo the Reminder";
-        LocalDateTime time = LocalDateTime.now();
-        LocalDate date = LocalDate.of(2017, 3, 4);
-        Reminder reminder1 = new Reminder(subject,description,time,date);
-        Reminder reminder2 = new Reminder(subject+1,description,time,date);
+        //TODO do test with a fixed time
+        LocalDateTime date = LocalDateTime.now();
+        Reminder reminder1 = new Reminder(subject,description,date);
+        Reminder reminder2 = new Reminder(subject+1,description,date);
 
         reminders1 = new ReminderList();
         reminders2 = new ReminderList();

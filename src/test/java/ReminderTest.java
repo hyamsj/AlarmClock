@@ -24,25 +24,24 @@ public class ReminderTest {
     String subject = "titel";
     String description = "description fo the Reminder";
     LocalDateTime time = LocalDateTime.now();
-    LocalDate date = LocalDate.of(2017, 3, 4);
 
     @Before
     public void beforeTest(){
         descriptionProperty = new SimpleStringProperty(description);
         timeProperty = new SimpleObjectProperty<>(time);
-        dateProperty = new SimpleObjectProperty<>(date);
         subjectProperty = new SimpleStringProperty(subject);
-        reminder = new Reminder(subject, description, time, date);
+        reminder = new Reminder(subject, description, time);
     }
 
 
     @Test
     public void equalsTest() throws Exception {
-        Reminder equalReminder= new Reminder(subject,description,time,date);
-        Reminder diffrentReminder = new Reminder(subject+1,description,time,date);
-        Reminder diffrentReminder2 = new Reminder(subject,description+1,time,date);
-        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1),date);
-        Reminder diffrentReminder4 = new Reminder(subject,description+1,time,date.plusMonths(1));
+        reminder = new Reminder(subject,description,time);
+        Reminder equalReminder= new Reminder(subject,description,time);
+        Reminder diffrentReminder = new Reminder(subject+1,description,time);
+        Reminder diffrentReminder2 = new Reminder(subject,description+1,time);
+        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1));
+        Reminder diffrentReminder4 = new Reminder(subject,description+1,time);
 
         assertTrue(reminder.equals(reminder));
         assertTrue(reminder.equals(equalReminder));
@@ -63,11 +62,11 @@ public class ReminderTest {
 
     @Test
     public void hashCodeTest() throws Exception {
-        Reminder equalReminder = new Reminder(subject,description,time,date);
-        Reminder diffrentReminder = new Reminder(subject+1,description,time,date);
-        Reminder diffrentReminder2 = new Reminder(subject,description+1,time,date);
-        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1),date);
-        Reminder diffrentReminder4 = new Reminder(subject,description+1,time,date.plusMonths(1));
+        Reminder equalReminder = new Reminder(subject,description,time);
+        Reminder diffrentReminder = new Reminder(subject+1,description,time);
+        Reminder diffrentReminder2 = new Reminder(subject,description+1,time);
+        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1));
+        Reminder diffrentReminder4 = new Reminder(subject,description+1,time.plusMonths(1));
 
         assertTrue(reminder.hashCode() == reminder.hashCode());
 
@@ -102,17 +101,11 @@ public class ReminderTest {
         assertEquals(get,getProperty);
     }
 
-    @Test
-    public void gettersReturnSameTime(){
-        LocalDateTime getProperty= reminder.getTimeProperty().get();
-        LocalDateTime get= reminder.getTime();
-        assertEquals(get,getProperty);
-    }
 
     @Test
     public void gettersReturnSameDate(){
-        LocalDate getProperty= reminder.getDateProperty().get();
-        LocalDate get= reminder.getDate();
+        LocalDateTime getProperty= reminder.getDateProperty().get();
+        LocalDateTime get= reminder.getDate();
         assertEquals(get,getProperty);
     }
 
@@ -129,16 +122,12 @@ public class ReminderTest {
         assertEquals(descriptionProperty.get(), descriptionFromPropertyGetter.get());
     }
 
-    @Test
-    public void getTimeProperty() throws Exception {
-        SimpleObjectProperty<LocalDateTime> timeFromPropertyGetter = reminder.getTimeProperty();
-        assertEquals(timeProperty.get(), timeFromPropertyGetter.get());
-    }
 
     @Test
     public void getDateProperty() throws Exception {
-        SimpleObjectProperty<LocalDate> dateFromPropertyGetter = reminder.getDateProperty();
-        assertTrue(dateProperty.get().isEqual(dateFromPropertyGetter.get()));
+        SimpleObjectProperty<LocalDateTime> dateFromPropertyGetter = reminder.getDateProperty();
+        assertTrue(dateFromPropertyGetter.get().isEqual(dateFromPropertyGetter.get()));
+        //assertTrue(dateProperty.get().isEqual(dateFromPropertyGetter.get()));
     }
 
 
@@ -155,37 +144,33 @@ public class ReminderTest {
         assertEquals(description, descriptionFromGetter);
     }
 
-    @Test
-    public void getTime() {
-        LocalDateTime timeFromGetter = reminder.getTime();
-        assertEquals(time, timeFromGetter);
-    }
 
     @Test
     public void getDate() {
-        LocalDate dateFromGetter = reminder.getDate();
-        assertEquals(date, dateFromGetter);
+        LocalDateTime dateFromGetter = reminder.getDate();
+        assertEquals(time, dateFromGetter);
     }
 
+    /*
     @Test
     public void getDateSpecialValues() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        LocalDate dateNow = currentTime.toLocalDate();
-        LocalDate dateMAX = LocalDate.MAX;
-        LocalDate dateMIN = LocalDate.MIN;
-        LocalDate dateManual = LocalDate.of(2017, 2, 13);
+        LocalDateTime dateNow= LocalDateTime.now();
+        LocalDateTime dateMAX = LocalDateTime.MAX;
+        LocalDateTime dateMIN = LocalDateTime.MIN;
+        LocalDateTime dateManual = LocalDateTime.of(2017, 2, 13,23,55);
 
-        assertTrue(isDateEqualsGetDate(dateNow));
+       assertTrue(isDateEqualsGetDate(dateNow));
         assertTrue(isDateEqualsGetDate(dateMAX));
         assertTrue(isDateEqualsGetDate(dateMIN));
         assertTrue(isDateEqualsGetDate(dateManual));
     }
 
     //gets called multiple times by TestMinMaxDate does NOT need a @Test annotation
-    public boolean isDateEqualsGetDate(LocalDate date) {
-        Reminder reminder = new Reminder(subject, description, time, date);
-        LocalDate dateFromGetter = reminder.getDate();
+    public boolean isDateEqualsGetDate(LocalDateTime date) {
+        Reminder reminder = new Reminder(subject, description, time);
+        LocalDateTime dateFromGetter = reminder.getDate();
         return (date.equals(dateFromGetter));
     }
+    */
 
 }

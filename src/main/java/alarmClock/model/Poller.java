@@ -62,6 +62,7 @@ public class Poller implements ListChangeListener {
                 notifiedReminders.add(r);
             }
         }
+        
     }
 
     @Override

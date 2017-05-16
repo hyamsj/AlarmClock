@@ -23,11 +23,11 @@ public class ModelTest {
 
     String subject;
     String description;
-    LocalDateTime time;
-    LocalDate date;
-    LocalDate date1;
-    LocalDate date2;
-    LocalDate date3;
+    LocalDateTime date;
+    LocalDateTime date1;
+    LocalDateTime date2;
+    LocalDateTime date3;
+
     Reminder reminder;
     Reminder reminder1;
     Reminder reminder2;
@@ -35,18 +35,24 @@ public class ModelTest {
     Model m;
     @Before
     public void init()throws Exception{
+
+        int year = 2017;
+        int month = 4;
+        int hour= 23;
+        int minute = 55;
+
+
         subject = "subject";
         description = "description";
-        time=LocalDateTime.now();
-        date = LocalDate.of(2017, 4, 23);
+        date = LocalDateTime.of(year,month,1,hour,minute);
+        date1 = LocalDateTime.of(year,month,2,hour,minute);
+        date2 = LocalDateTime.of(year,month,3,hour,minute);
+        date3 = LocalDateTime.of(year,month,4,hour,minute);
 
-        date1 = LocalDate.of(2017, 4,1);
-        date2 = LocalDate.of(2017, 4,2);
-        date3 = LocalDate.of(2017, 4,3);
-        reminder = new Reminder(subject,description,time,date);
-        reminder1 = new Reminder(subject+"1",description,time,date1);
-        reminder2 = new Reminder(subject+"2",description,time,date2);
-        reminder3 = new Reminder(subject+"3",description,time,date3);
+        reminder = new Reminder(subject,description,date);
+        reminder1 = new Reminder(subject+"1",description,date1);
+        reminder2 = new Reminder(subject+"2",description,date2);
+        reminder3 = new Reminder(subject+"3",description,date3);
         m= new Model();
     }
 

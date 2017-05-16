@@ -42,7 +42,7 @@ public class Reminder implements Serializable {
         return date;
     }
 
-    public SimpleObjectProperty<LocalDateTime> getTimeProperty() {
+    public SimpleObjectProperty<LocalDateTime> getDateProperty() {
         return new SimpleObjectProperty<>(date);
     }
 

@@ -1,15 +1,12 @@
 import alarmClock.model.Model;
 import alarmClock.model.Poller;
 import alarmClock.model.Reminder;
-import javafx.collections.FXCollections;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Observable;
-import java.util.Observer;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
@@ -21,10 +18,10 @@ import static org.junit.Assert.assertTrue;
 public class PollerTest {
     String subject;
     String description;
-    LocalDateTime time1;
-    LocalDateTime time2;
-    LocalDateTime time3;
-    LocalDateTime time4;
+    LocalDateTime date1;
+    LocalDateTime date2;
+    LocalDateTime date3;
+    LocalDateTime date5;
     LocalDate date;
     Reminder reminder1;
     Reminder reminder2;
@@ -37,16 +34,15 @@ public class PollerTest {
     public void before() throws IOException, ClassNotFoundException {
         subject = "subject ";
         description = "desc";
-        time1=LocalDateTime.now();
-        time2=LocalDateTime.now().minusMinutes(5);
-        time3=LocalDateTime.now().plusMinutes(5);
-        time4=LocalDateTime.now().plusMinutes(20);
-        date = LocalDate.of(2017, 4, 23);
+        date1 =LocalDateTime.now();
+        date2 =LocalDateTime.now().minusMinutes(5);
+        date3 =LocalDateTime.now().plusMinutes(5);
+        date5 =LocalDateTime.now().plusMinutes(20);
 
-        reminder1 = new Reminder(subject+"1",description,time1,date);
-        reminder2 = new Reminder(subject+"2",description,time2,date);
-        reminder3 = new Reminder(subject+"3",description,time3,date);
-        reminder4 = new Reminder(subject+"4",description,time4,date);
+        reminder1 = new Reminder(subject+"1",description, date1);
+        reminder2 = new Reminder(subject+"2",description, date2);
+        reminder3 = new Reminder(subject+"3",description, date3);
+        reminder4 = new Reminder(subject+"4",description, date5);
         m = new Model();
     }
 
@@ -59,6 +55,5 @@ public class PollerTest {
         poller = Poller.getInstance();
         //TODO test if  necessary and only necessary notifications  were made
     }
-
 
 }

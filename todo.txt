@@ -1,8 +1,7 @@
 Tests
 javadoc
 Interfaces anstatt Klasse
-LocalDateTime Picker
-Maven
+test Maven
 DB
 javaFxNotifier
 FastPoller
@@ -10,5 +9,7 @@ Test Serialize and Deserialize
 poller using Notificaiton.isCandidate(now);
 boolean Notification.isCandiata(date);
 nice poller sleeps until next Notification is Ready
+do not close poller in release
+
 
 
