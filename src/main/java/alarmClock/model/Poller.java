@@ -3,6 +3,7 @@ package alarmClock.model;
 import alarmClock.model.Filter.CriteriaTester;
 import alarmClock.model.Filter.IsThisMonth;
 import alarmClock.model.Filter.hasTag;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
 import java.util.ArrayList;
@@ -65,8 +66,13 @@ public class Poller implements ListChangeListener {
             r.addTag(tag);
             Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
             if(  ! notifiedReminders.contains(r)){
-                boolean success = r.notifyIf(importantStuffThisMonth);
-                if(success) notifiedReminders.add(r);
+                Platform.runLater(
+                        ()->{
+                            boolean success = r.notifyIf(importantStuffThisMonth);
+                            if(success) notifiedReminders.add(r);
+                        }
+
+                );
             }
         // end Remove
 

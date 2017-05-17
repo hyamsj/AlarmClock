@@ -14,13 +14,21 @@ public class ConfigReader {
         if (true/*should check value from the configfile*/) {
             notificationTypes.add(new ConsoleNotification());
         }
+        else{
+            notificationTypes.remove(new ConsoleNotification());
+        }
 
-        if (false/*should check value from the configfile*/) {
+        if (true/*should check value from the configfile*/) {
             notificationTypes.add(new EarlyAlert());
         }
+        else{
+            notificationTypes.remove(new EarlyAlert());
+        }
+
         return notificationTypes;
     }
     public String getColorScheme(){
+
         return "nightmode";
     }
 }
