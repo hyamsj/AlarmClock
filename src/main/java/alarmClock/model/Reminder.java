@@ -142,6 +142,15 @@ public class Reminder implements Serializable {
         return allTrue;
     }
 
+    public boolean meetsCriteria(Collection<CriteriaTester> criterias){
+        Boolean allTrue = true;
+        for(CriteriaTester criteira:criterias){
+            allTrue &= criteira.isTrue(this);
+        }
+        return allTrue;
+    }
+
+
 
     public void doNotify() {
         //gets the notification Types from the config Reader / File
