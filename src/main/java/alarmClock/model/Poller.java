@@ -1,10 +1,7 @@
 package alarmClock.model;
 
 import alarmClock.alertView.MultyReminderNotification;
-import alarmClock.model.Filter.CriteriaTester;
-import alarmClock.model.Filter.IsPassed;
-import alarmClock.model.Filter.IsThisMonth;
-import alarmClock.model.Filter.hasTag;
+import alarmClock.model.Filter.*;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
@@ -55,15 +52,13 @@ public class Poller implements ListChangeListener {
     }
 
 
-    //private  boolean notedPassed = false;
+    private  boolean notedPassed = false;
     public void poll() throws Exception {
         HandleNotifications();
-        /*
         if(!notedPassed){
             showPastEvents();
             notedPassed =true;
         }
-        */
     }
     private void HandleNotifications(){
         ArrayList<Reminder> l = reminders.getSerializable();
@@ -102,29 +97,44 @@ public class Poller implements ListChangeListener {
         }
 
     }
-    /*
     private void showPastEvents() {
         ArrayList<Reminder> l = reminders.getSerializable();
-        ArrayList<Reminder> noteWorthyReminders = reminders.getSerializable();
+        ArrayList<Reminder> passedReminders = new ArrayList<Reminder>();
         Collection<CriteriaTester> criteria = new ArrayList<CriteriaTester>();
         criteria.add(new IsPassed());
+        criteria.add(new IsThisYear());
+
+        //exampe how CriteraTester can be written on the fly
+        criteria.add(
+                r -> (!r.getTags().contains("hidden"))
+        );
+                //exampe how CriteraTester can be written on the fly
+        criteria.add(
+                // does not have Tag hidden
+                new CriteriaTester() {
+                    @Override
+                    public boolean isTrue(Reminder r) {
+                        return (!r.getTags().contains("hidden"));
+                    }
+                }
+        );
+
 
         for (Reminder r : l) {
             if(r.meetsCriteria(criteria))
-            noteWorthyReminders.add(r);
+            passedReminders.add(r);
         }
-        Reminder r =noteWorthyReminders.get(0);
+
+        //is needed for JavaFx
         Platform.runLater(
                 ()->{
-                    r.notifyIf(criteria);
-                    /*
-                    MultyReminderNotification multy = new MultyReminderNotification(noteWorthyReminders);
-                    multy.send();
+                    //r.notifyIf(criteria);
+                    if(passedReminders.size()!= 0) {
+                        new MultyReminderNotification(passedReminders).send();
+                    }
                 }
-
         );
     }
-                    */
 
     @Override
     public void onChanged(Change c) {
