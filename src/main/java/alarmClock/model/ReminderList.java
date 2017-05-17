@@ -33,6 +33,7 @@ public class ReminderList implements ObservableList {
         if (history.peek() != null) {
             ObservableList rs = history.pop();
             undoneHistory.push(rs);
+            System.out.print(reminders);
             return rs;
         } else {
             return reminders;
@@ -65,29 +66,29 @@ public class ReminderList implements ObservableList {
 
     @Override
     public boolean addAll(Object[] elements) {
-        boolean r = reminders.addAll(elements);
         pushState();
+        boolean r = reminders.addAll(elements);
         return r;
     }
 
     @Override
     public boolean setAll(Object[] elements) {
-        boolean r = reminders.setAll(elements);
         pushState();
+        boolean r = reminders.setAll(elements);
         return r;
     }
 
     @Override
     public boolean setAll(Collection col) {
-        boolean r = reminders.setAll(col);
         pushState();
+        boolean r = reminders.setAll(col);
         return r;
     }
 
     @Override
     public boolean removeAll(Object[] elements) {
-        boolean r = reminders.removeAll(elements);
         pushState();
+        boolean r = reminders.removeAll(elements);
         return r;
     }
 
@@ -100,8 +101,8 @@ public class ReminderList implements ObservableList {
 
     @Override
     public void remove(int from, int to) {
-        reminders.remove(from, to);
         pushState();
+        reminders.remove(from, to);
     }
 
 
@@ -241,7 +242,7 @@ public class ReminderList implements ObservableList {
 
     @Override
     public boolean containsAll(Collection c) {
-        return reminders.removeAll(c);
+        return reminders.containsAll(c);
     }
 
     @Override

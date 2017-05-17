@@ -70,7 +70,7 @@ public class Controller implements Initializable {
 
     public void redoButtonPressed() {
         System.out.println("redo");
-        model.undo();
+        model.redo();
     }
 
     @Override
