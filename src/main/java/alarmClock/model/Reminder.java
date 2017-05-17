@@ -1,8 +1,6 @@
 package alarmClock.model;
 
-import alarmClock.alertView.EarlyAlert;
 import alarmClock.model.Filter.CriteriaTester;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -151,9 +149,9 @@ public class Reminder implements Serializable {
 
         for (Notification n : notificationTypes) {
             /*
-            if (n instanceof EarlyAlert) {
+            if (n instanceof JavaFxNotification) {
                 Platform.runLater(() -> {
-                    EarlyAlert alert = new EarlyAlert(this);
+                    JavaFxNotification alert = new JavaFxNotification(this);
                     alert.setReminder(this);
                     alert.send();
                 });

@@ -14,16 +14,16 @@ import javafx.stage.Stage;
 /**
  * Created by joni on 16/05/17.
  */
-public class EarlyAlert extends Stage implements Notification{
+public class JavaFxNotification extends Stage implements Notification{
 
     private Reminder reminder;
     Label label;
 
-    public EarlyAlert() {
+    public JavaFxNotification() {
         super();
     }
 
-    public EarlyAlert(Reminder reminder) {
+    public JavaFxNotification(Reminder reminder) {
         this.reminder = reminder;
     }
     public void setReminder(Reminder reminder){

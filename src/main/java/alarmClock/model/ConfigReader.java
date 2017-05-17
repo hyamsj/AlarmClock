@@ -1,6 +1,6 @@
 package alarmClock.model;
 
-import alarmClock.alertView.EarlyAlert;
+import alarmClock.alertView.JavaFxNotification;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ public class ConfigReader {
         }
 
         if (true/*should check value from the configfile*/) {
-            notificationTypes.add(new EarlyAlert());
+            notificationTypes.add(new JavaFxNotification());
         }
         else{
-            notificationTypes.remove(new EarlyAlert());
+            notificationTypes.remove(new JavaFxNotification());
         }
 
         return notificationTypes;
