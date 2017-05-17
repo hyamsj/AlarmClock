@@ -21,8 +21,16 @@ public class ReminderList implements ObservableList {
         reminders = FXCollections.observableArrayList();
     }
 
+    /*
     public ReminderList(ObservableList<Reminder> r) {
         this.reminders = r;
+    }
+    */
+        public ReminderList(ObservableList<Reminder> r) {
+           // makes reminders not removable reminders = FXCollections.observableArrayList();
+        this.reminders = r;
+        history = new Stack<>();
+        undoneHistory = new Stack<>();
     }
 
     private void pushState() {
