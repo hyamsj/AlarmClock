@@ -1,7 +1,10 @@
-package alarmClock.model;
-import alarmClock.alertView.MultiReminderNotification;
+package alarmClock.notification;
+
+import alarmClock.model.Reminder;
+import alarmClock.model.ReminderList;
 import alarmClock.model.filtering.*;
 import javafx.application.Platform;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -14,40 +17,40 @@ public class NotificationHandler {
     private ReminderList notifiedReminders;
     private ReminderList notifiedRemindersImminent;
 
-    public NotificationHandler(ReminderList reminders){
+    public NotificationHandler(ReminderList reminders) {
         notifiedReminders = new ReminderList();
         notifiedRemindersImminent = new ReminderList();
         setReminders(reminders);
     }
 
-    public void setReminders(ReminderList reminders){
+    public void setReminders(ReminderList reminders) {
         this.reminders = reminders;
     }
 
-        public void handle(){
+    public void handle() {
         ArrayList<Reminder> l = reminders.getSerializable();
         for (Reminder r : l) {
 
-        // remove is only here to test tag filtering
+            // remove is only here to test tag filtering
             String tag = "important";
             r.addTag(tag);
-            Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
-            if(  ! notifiedReminders.contains(r)){
+            Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(), new hasTag(tag));
+            if (!notifiedReminders.contains(r)) {
                 Platform.runLater(
-                        ()->{
+                        () -> {
                             boolean success = r.notifyIf(importantStuffThisMonth);
-                            if(success) notifiedReminders.add(r);
+                            if (success) notifiedReminders.add(r);
                         }
                 );
             }
 
 
             Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
-            if(  ! notifiedRemindersImminent.contains(r)){
+            if (!notifiedRemindersImminent.contains(r)) {
                 Platform.runLater(
-                        ()->{
+                        () -> {
                             boolean success = r.notifyIf(imminent);
-                            if(success) notifiedRemindersImminent.add(r);
+                            if (success) notifiedRemindersImminent.add(r);
                         }
 
                 );
@@ -57,6 +60,7 @@ public class NotificationHandler {
         }
 
     }
+
     public void showPastEvents() {
         ArrayList<Reminder> l = reminders.getSerializable();
         ArrayList<Reminder> passedReminders = new ArrayList<Reminder>();
@@ -69,7 +73,7 @@ public class NotificationHandler {
         criteria.add(
                 r -> (!r.getTags().contains("hidden"))
         );
-                //exampe how CriteraTester can be written on the fly
+        //exampe how CriteraTester can be written on the fly
         criteria.add(
                 new CriteriaTester() {
                     @Override
@@ -81,13 +85,13 @@ public class NotificationHandler {
 
 
         for (Reminder r : l) {
-            if(r.meetsCriteria(criteria))
-            passedReminders.add(r);
+            if (r.meetsCriteria(criteria))
+                passedReminders.add(r);
         }
         Platform.runLater(
-                ()->{
+                () -> {
                     //r.notifyIf(criteria);
-                    if(passedReminders.size()!= 0) {
+                    if (passedReminders.size() != 0) {
                         new MultiReminderNotification(passedReminders).send();
                     }
                 }

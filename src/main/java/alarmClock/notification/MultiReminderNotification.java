@@ -1,4 +1,4 @@
-package alarmClock.alertView;
+package alarmClock.notification;
 
 import alarmClock.model.Reminder;
 import javafx.geometry.Insets;
@@ -51,7 +51,7 @@ public class MultiReminderNotification extends JavaFxNotification {
     }
 
     /**
-     *
+     * Creates the Popup the shows Reminders that occurred previously
      */
     @Override
     public void send() {
@@ -74,6 +74,7 @@ public class MultiReminderNotification extends JavaFxNotification {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Previously Occured Reminders: ");
+        stage.setResizable(false);
         stage.show();
     }
 

@@ -1,5 +1,6 @@
 package alarmClock.model;
 
+import alarmClock.notification.Notification;
 import alarmClock.model.filtering.CriteriaTester;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,6 +23,11 @@ public class Reminder implements Serializable {
     //could be a Collection too.
     private Collection<String> tags = new ArrayList<>();
 
+    /**
+     * @param subject
+     * @param description
+     * @param date
+     */
     public Reminder(String subject, String description, LocalDateTime date) {
         setSubject(subject);
         setDescription(description);
@@ -155,7 +161,6 @@ public class Reminder implements Serializable {
         }
         return allTrue;
     }
-
 
 
     public void doNotify() {

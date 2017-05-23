@@ -1,5 +1,5 @@
 import alarmClock.model.Model;
-import alarmClock.model.Poller;
+import alarmClock.controller.Poller;
 import alarmClock.model.Reminder;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,6 @@
 package alarmClock.model;
 
+import alarmClock.controller.Poller;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 
@@ -13,6 +14,12 @@ public class Model implements Serializable {
     private ReminderList reminders;
     DataBaseAdapter adapter = new BinaryDBAdapter();
 
+    /**
+     * Constructor loads the Data from the Database
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Model() throws IOException, ClassNotFoundException {
         reminders = adapter.load();
     }
@@ -27,6 +34,9 @@ public class Model implements Serializable {
     }
 
 
+    /**
+     * Creates binding with table that overwrites the DB, if anything has changed
+     */
     public void bindData() {
         reminders.addListener((Observable obs) -> {
             System.out.println("something changed");
