@@ -1,5 +1,5 @@
 %\documentclass[a4paper,10pt]{report}
-\documentclass[11pt,titelpage]{scrreprt}
+\documentclass[11pt,titelpage]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
@@ -43,19 +43,19 @@
 
 \begin{abstract}
 \end{abstract}
-\section{Zweck des Dokument}
-TODO this is new text
+%\section{Zweck des Dokument}
+\chapter{Zweck des Dokument}
+Dieses Dokument soll dazu dienen die Anforderungen an das Projekt AlarmClock zu definieren. Typische Leser sind die Entwickler und  Dozent im Requirements Engineering. Auch für den Projektbetreuer kann das Dokument von Interesse sein.
 %makes sure the whole glossary gets printed even when acronyms are not defined
 
 \section{Kurzbeschreibung}
 Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
-Das Program kAlarm erlaubt es den User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
+Das Programm kAlarm erlaubt es dem User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
 Im gegensatz zu kAlarm soll das zu erstellende Produkt Platformübergreifend verfügbar sein. Wie kAlarm soll dieses Produkt unter einer Open Source Lizenz entwickelt werden.
 \section{Projektziele}
 Unser Auftraggeber ist kein Unternehmen. Es werden somit auch keine Ziele innerhalb eines Unternehmens verfolgt.
 Ziele welche ein Benutzer unsere Aplikation verfolgen könnte wären beispielsweise:
 \begin{itemize}
- \item Wiederkehrende Events nicht zu vergessen.
  \item An den Wäschetag erinnert weden.
  \item Die Wäsche rechtzeitig aus de Wäscheküche holen.
 \item Den Kuchen nicht im Backofen verbrennen lassen.
@@ -70,12 +70,15 @@ Ziele welche ein Benutzer unsere Aplikation verfolgen könnte wären beispielswe
 \item{Benutzer: FOSS Communitiy}
 \end{itemize}
 \section {Systemabgrenzung}
+Es exisitert kein vordefiniertes System, welches mit unserem Programm interagiert.
+Das Programm soll auf einem Computer laufen, welcher Java 8.1 inklusive JavaFx installiert hat.
+ 
 \subsection{Geschäftsprozesse}
 Es existieren keine vor\- oder nachgelagerten Prozesse. Unsere Lösung lässt sich in beliebige viele Prozesse integrieren.
 \subsection{Systeme}
-Unser System wirkt mit Datebanken zusammen, um die Events persistent zu speichern.  Unser System beihnaltet die komponente bis und mit dem JPA, die konfiguration der Datenbank gehört somit nicht mehr zum Projekt.
+Unser System beinhaltet einen Persistenz Layer um nach einem Neustart den vorherigen Zustand wiederherstellen zu können.
+Die Persistenz soll an einem Zentralen Punkt sichergestellt werden, so dass mit wenig Aufwand eine andere Persistenzmethode, wie eine JPA Datenbank eingebunden werden kann.
 
-Das Program baut auf Betriebsystemskomponenten auf. Namentlich auf  Cronjob /Schtasks um zur gegebenen Zeit eine Notification zu erzeugen.
 %TODO uml einbinden
 \begin{landscape}
 \begin{figure}
@@ -99,9 +102,6 @@ Das Programm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss
 Die Dokumentation muss in \LaTeX ~erstellt werden.
 
 
-\subsection{Prozessumfeld}
-\subsection{Systemumfeld}
-\subsection{Randbedingungen}
 \section{Anforderungen}
 \subsection{Basisfaktoren}
 \begin{itemize}
@@ -124,16 +124,15 @@ Das System sollte dem Benutzer die Möglichkeit bieten, über das CLI wiederkehr
 
 \item
 Das System kann anderen Programmen über eine API ermöglichen, Einzelevents zu erfassen.
-Das System kann anderen Programmen über eine API ermöglichen, wiederkehrende Events zu erfassen.
 
 \item
-Das löschen und anpassen von Events soll wie oben beschrieben, ebenfalls möglich sein.
+Das Löschen und Anpassen von Events soll wie oben beschrieben, ebenfalls möglich sein.
 
 \item
 Das System muss den Benutzer mittels einer Notification rechtzeitig, zur voreingestellten Zeit, auf ein Event hinweisen.
 
 \item
-Das Programm muss beim Programmstart seine Konfiguration mittels eines Configsfiles vorunehmen.
+Das Programm muss an einem Zentralen Ort konfiguriert werden.
 
 \item
 Das Programm kann dem Benutzer die Möglichkeit bieten, die Konfiguration über die GUI vorzunehmen und im Configfile zu speichern.

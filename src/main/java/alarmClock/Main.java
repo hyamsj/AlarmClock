@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource(windowName));
         primaryStage.setTitle(title);
         Scene scene = new Scene(root);
-        if (new ConfigReader().getColorScheme() == "nightmode") {
+        if (new ConfigReader().isEnableDarkmode()) {
                scene.getStylesheets().add("dark.css");
         } else {
              scene.getStylesheets().add("styles.css");

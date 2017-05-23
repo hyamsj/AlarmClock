@@ -1,75 +1,54 @@
 @startuml
-class OS
-package "System" {
 
-package "View JavaFx" {}
-package "Control" {}
+package "System" {
+Model -- View
+View -- Control
+Control --Model
+
+package "View" {
+class MainWindow
+Interface Notification
+Remider --Notification
+JavaFxNotification--|>Notification
+ConsoleNotification--|>Notification
+}
+
+
+package "Control" {
+Class Controller
+}
 package "Helpers" {
 
 class ConfigFileReader{
-getLanguage()
-setLanguage()
-getDateFormat()
-setDateFormat()
+enableDarkMode
+enableJavaFxNotification
+enableConsoleNotification
+enablePastRemindersNotification
+enableImminentNotifications
+enableRemindersThisMonth
 }
 
 }
 
 package "Model" {
-class OsAdapter{
-setDate()
-getDate()
-osPopUp()
-}
 
-OsAdapter -- OS
 
 
 class Reminder{
-date/date
+subject
+description
+date
+tags
 }
-class JPA{
-readDb()
-writeDb()
-}
-Reminder --OsAdapter
-Reminder -- JPA
 
-Remider --Notification
-JavaFxPopUp--|>Notification
-SystemPopUp--|>Notification
-Email--|>Notification
-IFTTTEvent--|>Notification
-ShellScript--|>Notification
-
-SystemPopUp -- OsAdapter
+Interface DbAdapter{
+read()
+write()
 }
-View -- Model
-Model-- Control
-Control -- "View JavaFx"
-
-class ConfigFile{
-language
-timeFormat/localization
-Db?
-MailConfig?
-}
-ConfigFile--ConfigFileReader
-View--ConfigFileReader
-Reminder--ConfigFileReader
-Reminder--Notification
-}
-JPA -- DB
-DB <|.. Derby
-DB <|.. MySQL
-DB <|.. otherDB
+DbAdapter -- BinaryDbAdapter
 
 
-OS--"cronjob/schtasks"
-OS<|.. OSx
-OS<|.. Windows10
-OS<|.. Linux
-Linux<|.. LinuxMint
-Linux<|.. LinuxMintKDE
-Linux<|.. Others
+
+
+
 @enduml

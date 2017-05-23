@@ -14,7 +14,7 @@ public class ConfigReader {
     /**
      * @return the List with the notification types that are used to notify the user
      */
-    private boolean enableJavFxNotification=true;
+    private boolean enableJavFxNotification=false;
     private boolean enableConsoleNotification= true;
     private boolean enableDarkmode = true;
     private boolean enablePastReminders = true;
