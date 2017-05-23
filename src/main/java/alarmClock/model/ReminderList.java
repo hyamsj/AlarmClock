@@ -312,4 +312,19 @@ public class ReminderList implements ObservableList {
     public void removeListener(InvalidationListener listener) {
         reminders.addListener(listener);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ReminderList that = (ReminderList) o;
+
+        return reminders != null ? reminders.equals(that.reminders) : that.reminders == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return reminders != null ? reminders.hashCode() : 0;
+    }
 }

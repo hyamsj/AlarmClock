@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 /**
  * Created by joni on 16/05/17.
  */
-public class JavaFxNotification extends Stage implements Notification {
+public class JavaFxNotification implements Notification {
 
     private Reminder reminder;
     private Label label;
@@ -46,18 +46,19 @@ public class JavaFxNotification extends Stage implements Notification {
 
     @Override
     public void send() {
+        Stage stage = new Stage();
         label = new Label("Hello: " + reminder.toString());
         Button okButton = new Button("Ok");
         okButton.setOnAction(e -> {
-            this.close();
+            stage.close();
         });
         VBox pane = new VBox(10, label, okButton);
         pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10));
         Scene scene = new Scene(pane);
-        this.setTitle("Reminder");
-        setScene(scene);
-        show();
+        stage.setTitle("Reminder");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

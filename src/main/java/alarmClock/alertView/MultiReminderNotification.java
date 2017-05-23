@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.util.Collection;
 
@@ -61,19 +62,19 @@ public class MultiReminderNotification extends JavaFxNotification {
             remindersText += r.toString() + "\n";
             System.out.print("added" + r.toString());
         }
-
+        Stage stage = new Stage();
         label = new Label(remindersText);
         Button okButton = new Button("Ok");
         okButton.setOnAction(e -> {
-            this.close();
+            stage.close();
         });
         VBox pane = new VBox(10, label, okButton);
         pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10));
         Scene scene = new Scene(pane);
-        setScene(scene);
-        this.setTitle("Previously Occured Reminders: ");
-        show();
+        stage.setScene(scene);
+        stage.setTitle("Previously Occured Reminders: ");
+        stage.show();
     }
 
 }
