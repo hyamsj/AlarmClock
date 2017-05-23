@@ -6,7 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.util.Collection;
 
@@ -16,8 +16,8 @@ import java.util.Collection;
 //Does not need to extend JavaFxNotification
 public class MultiReminderNotification extends JavaFxNotification {
 
-    Collection<Reminder> reminders;
-    Label label;
+    private Collection<Reminder> reminders;
+    private Label label;
 
     /**
      *
@@ -43,6 +43,7 @@ public class MultiReminderNotification extends JavaFxNotification {
     /**
      * @param reminder
      */
+    @Override
     public void setReminder(Reminder reminder) {
         //TODO dirty hack
         this.reminders.add(reminder);
@@ -51,8 +52,8 @@ public class MultiReminderNotification extends JavaFxNotification {
     /**
      *
      */
+    @Override
     public void send() {
-//        this.initModality(Modality.APPLICATION_MODAL);
         String remindersText = "";
         int i = 0;
         for (Reminder r : reminders) {
@@ -66,11 +67,12 @@ public class MultiReminderNotification extends JavaFxNotification {
         okButton.setOnAction(e -> {
             this.close();
         });
-        HBox pane = new HBox(10, okButton, label);
+        VBox pane = new VBox(10, label, okButton);
         pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10));
-        Scene scene = new Scene(pane, 200, 50);
+        Scene scene = new Scene(pane);
         setScene(scene);
+        this.setTitle("Previously Occured Reminders: ");
         show();
     }
 

@@ -13,6 +13,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
     String path = "reminders.ser";
 
 
+    @Override
     public ReminderList load() {
         //TODO Errorhandling
         this.reminders = new ReminderList();
@@ -39,6 +40,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
         return this.reminders;
     }
 
+    @Override
     public void save(ReminderList reminders) {
         //TODO Errorhandling
         try (ObjectOutputStream out =

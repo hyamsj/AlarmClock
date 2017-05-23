@@ -12,15 +12,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("../mainWindow.fxml"));
         primaryStage.setTitle("Alarm Clock \u00a9");
         Scene scene = new Scene(root);
-        if(new ConfigReader().getColorScheme() == "nightmode"){
+        if (new ConfigReader().getColorScheme() == "nightmode") {
             //TODO generate a nightmode css
-         //   scene.getStylesheets().add("styles.css");
-        }
-        else {
-           // scene.getStylesheets().add("styles.css");
+            //   scene.getStylesheets().add("styles.css");
+        } else {
+            // scene.getStylesheets().add("styles.css");
         }
 
         primaryStage.setScene(scene);

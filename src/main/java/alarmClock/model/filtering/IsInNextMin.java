@@ -14,15 +14,16 @@ public class IsInNextMin implements CriteriaTester {
         setNextMinutes(nextMinutes);
     }
 
-    public IsInNextMin(){
+    public IsInNextMin() {
         setNextMinutes(15);
     }
 
-    public void setNextMinutes(int nextMinutes){
+    public void setNextMinutes(int nextMinutes) {
         this.nextMinutes = nextMinutes;
     }
 
-    public boolean isTrue(Reminder r){
+    @Override
+    public boolean isTrue(Reminder r) {
         return r.getDate().isAfter(LocalDateTime.now())
                 && r.getDate().isBefore(LocalDateTime.now().plusMinutes(nextMinutes));
     }

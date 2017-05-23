@@ -6,18 +6,21 @@ package alarmClock.model;
 public class ConsoleNotification implements Notification {
     private Reminder reminder;
 
-   public ConsoleNotification(){
+    public ConsoleNotification() {
 
-   }
+    }
 
     public ConsoleNotification(Reminder reminder) {
         this.reminder = reminder;
     }
-    public void setReminder(Reminder reminder){
+
+    @Override
+    public void setReminder(Reminder reminder) {
         this.reminder = reminder;
 
     }
 
+    @Override
     public void send() {
         System.out.println(reminder.toString());
     }

@@ -12,6 +12,6 @@ public class IsThisMonth implements CriteriaTester {
     public boolean isTrue(Reminder r) {
         LocalDateTime today = LocalDateTime.now();
         return r.getDate().getYear() == today.getYear()
-            &&r.getDate().getMonth() == today.getMonth();
+                && r.getDate().getMonth() == today.getMonth();
     }
 }

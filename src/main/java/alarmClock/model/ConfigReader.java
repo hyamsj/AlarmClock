@@ -13,21 +13,20 @@ public class ConfigReader {
         ArrayList<Notification> notificationTypes = new ArrayList<>();
         if (true/*should check value from the configfile*/) {
             notificationTypes.add(new ConsoleNotification());
-        }
-        else{
+        } else {
             notificationTypes.remove(new ConsoleNotification());
         }
 
         if (true/*should check value from the configfile*/) {
             notificationTypes.add(new JavaFxNotification());
-        }
-        else{
+        } else {
             notificationTypes.remove(new JavaFxNotification());
         }
 
         return notificationTypes;
     }
-    public String getColorScheme(){
+
+    public String getColorScheme() {
 
         return "nightmode";
     }
