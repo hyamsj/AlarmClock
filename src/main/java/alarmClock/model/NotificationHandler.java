@@ -44,7 +44,7 @@ public class NotificationHandler {
             if(  ! notifiedReminders.contains(r)){
                 Platform.runLater(
                         ()->{
-                            boolean success = r.notifyIf(importantStuffThisMonth);
+                            boolean success = r.notifyIf(notifyNext2to3);
                             if(success) notifiedReminders.add(r);
                         }
 
