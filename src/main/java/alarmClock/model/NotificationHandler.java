@@ -12,9 +12,11 @@ import java.util.Collection;
 public class NotificationHandler {
     private ReminderList reminders;
     private ReminderList notifiedReminders;
+    private ReminderList notifiedRemindersImminent;
 
     public NotificationHandler(ReminderList reminders){
         notifiedReminders = new ReminderList();
+        notifiedRemindersImminent = new ReminderList();
         setReminders(reminders);
     }
 
@@ -40,12 +42,12 @@ public class NotificationHandler {
             }
 
 
-            Collection<CriteriaTester> notifyNext2to3= Arrays.asList(new IsInNextMin(3));
-            if(  ! notifiedReminders.contains(r)){
+            Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
+            if(  ! notifiedRemindersImminent.contains(r)){
                 Platform.runLater(
                         ()->{
-                            boolean success = r.notifyIf(notifyNext2to3);
-                            if(success) notifiedReminders.add(r);
+                            boolean success = r.notifyIf(imminent);
+                            if(success) notifiedRemindersImminent.add(r);
                         }
 
                 );
