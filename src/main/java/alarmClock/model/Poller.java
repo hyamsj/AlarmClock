@@ -78,6 +78,19 @@ public class Poller implements ListChangeListener {
                 );
             }
 
+
+            Collection<CriteriaTester> notifyNext2to3= Arrays.asList(new IsInNextMin(3));
+            if(  ! notifiedReminders.contains(r)){
+                Platform.runLater(
+                        ()->{
+                            boolean success = r.notifyIf(importantStuffThisMonth);
+                            if(success) notifiedReminders.add(r);
+                        }
+
+                );
+            }
+
+
         // end Remove
 
             //TODO or make the Reminder store if it did a notifications and isTrue against the Reminder

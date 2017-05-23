@@ -13,6 +13,9 @@ do not close poller in release
 Enum for Colorscheme
 Enum for Notification Type
 push view from main to view
-
+LaTeX
+	chapter
+	section
+	subsection
 
 

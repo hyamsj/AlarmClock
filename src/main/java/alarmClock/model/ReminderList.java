@@ -34,30 +34,56 @@ public class ReminderList implements ObservableList {
     }
 
     private void pushState() {
-        history.push(reminders);
+        ObservableList<Reminder> old = FXCollections.observableArrayList();
+        old = reminders;
+        /*
+        for (Object o :reminders){
+            if (o instanceof  Reminder){
+                Reminder r = (Reminder) o;
+                old.add(r);
+            }
+        }
+        */
+        history.push(old);
+
     }
 
     private ObservableList popState() {
+        ObservableList<Reminder> newReminder= FXCollections.observableArrayList();
         if (history.peek() != null) {
             ObservableList rs = history.pop();
             undoneHistory.push(rs);
+            /*
             System.out.print(reminders);
-            return rs;
+            for (Object o :rs){
+                if (o instanceof  Reminder){
+                    Reminder r = (Reminder) o;
+                    newReminder.add(r);
+                }
+            }
+            */
+            return newReminder;
         } else {
             return reminders;
         }
     }
 
     public void undo() {
+            /*
         System.out.println("Reminder.undo() is called");
         reminders = popState();
+        System.out.println(r.toString());
+        for(Reminder r = reminders)
+            System.out.println(r.toString());
+            */
     }
 
     public void redo() {
         if (undoneHistory.peek() != null) {
-            ObservableList rs = undoneHistory.pop();
-            history.push(rs);
-            reminders = rs;
+            //ObservableList rs = undoneHistory.pop();
+            ObservableList rs = popState();
+            //history.push(rs);
+            this.reminders = rs;
         }
     }
 
