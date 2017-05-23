@@ -1,4 +1,4 @@
-package alarmClock.alertView;
+package alarmClock.notification;
 
 import alarmClock.model.Reminder;
 import javafx.geometry.Insets;

@@ -1,5 +1,7 @@
 package alarmClock.model;
 
+import alarmClock.notification.Notification;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 

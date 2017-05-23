@@ -1,7 +1,7 @@
 package alarmClock;
 
 import alarmClock.model.ConfigReader;
-import alarmClock.model.Poller;
+import alarmClock.controller.Poller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

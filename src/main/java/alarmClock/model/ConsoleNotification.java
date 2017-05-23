@@ -1,5 +1,7 @@
 package alarmClock.model;
 
+import alarmClock.notification.Notification;
+
 /**
  * Created by pascal on 5/3/17.
  */

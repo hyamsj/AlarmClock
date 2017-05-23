@@ -1,6 +1,5 @@
-package alarmClock.alertView;
+package alarmClock.notification;
 
-import alarmClock.model.Notification;
 import alarmClock.model.Reminder;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

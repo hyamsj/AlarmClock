@@ -1,5 +1,8 @@
-package alarmClock.model;
+package alarmClock.controller;
 
+import alarmClock.model.BinaryDBAdapter;
+import alarmClock.notification.NotificationHandler;
+import alarmClock.model.ReminderList;
 import javafx.collections.ListChangeListener;
 
 /**

@@ -1,5 +1,6 @@
 package alarmClock.model;
 
+import alarmClock.controller.Poller;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 

@@ -1,6 +1,7 @@
 package alarmClock.model;
 
-import alarmClock.alertView.JavaFxNotification;
+import alarmClock.notification.JavaFxNotification;
+import alarmClock.notification.Notification;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class ConfigReader {
      */
     private boolean enableJavFxNotification = true;
     private boolean enableConsoleNotification = true;
-    private boolean enableDarkmode = true;
+    private boolean enableDarkMode = true;
     private boolean enablePastReminders = true;
     private boolean enableImminentReminders = true;
     private boolean enableRemindersThisMonth = true;
@@ -40,8 +41,8 @@ public class ConfigReader {
         return "nightmode";
     }
 
-    public boolean isEnableDarkmode() {
-        return enableDarkmode;
+    public boolean isEnableDarkMode() {
+        return enableDarkMode;
     }
 
     public boolean isEnablePastReminders() {

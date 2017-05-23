@@ -1,6 +1,7 @@
-package alarmClock.model;
+package alarmClock.notification;
 
-import alarmClock.alertView.MultiReminderNotification;
+import alarmClock.model.Reminder;
+import alarmClock.model.ReminderList;
 import alarmClock.model.filtering.*;
 import javafx.application.Platform;
 
