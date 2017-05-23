@@ -14,8 +14,8 @@ public class ConfigReader {
      * It was planed to read a config File and set the boolean values according to the config File.
      * @return the List with the notification types that are used to notify the user
      */
-    boolean enableJavFxNotification= false;
-    boolean enableConsoleNotification= false;
+    boolean enableJavFxNotification= true;
+    boolean enableConsoleNotification= true;
 
     public ArrayList<Notification> getNotificationTypes() {
         ArrayList<Notification> notificationTypes = new ArrayList<>();

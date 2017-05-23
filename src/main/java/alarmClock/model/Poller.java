@@ -50,12 +50,10 @@ public class Poller implements ListChangeListener {
 
     public void poll() throws Exception {
         notificationHandler.handle();
-        /*
         if(!notedPassed){
             notificationHandler.showPastEvents();
             notedPassed =true;
         }
-        */
     }
 
 
