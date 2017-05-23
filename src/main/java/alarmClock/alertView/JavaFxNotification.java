@@ -8,29 +8,43 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
  * Created by joni on 16/05/17.
  */
-public class JavaFxNotification extends Stage implements Notification{
+public class JavaFxNotification extends Stage implements Notification {
 
     private Reminder reminder;
     Label label;
 
+    /**
+     *
+     */
     public JavaFxNotification() {
         super();
     }
 
+    /**
+     * @param reminder
+     */
     public JavaFxNotification(Reminder reminder) {
         this.reminder = reminder;
     }
-    public void setReminder(Reminder reminder){
+
+    /**
+     * @param reminder
+     */
+    public void setReminder(Reminder reminder) {
         this.reminder = reminder;
     }
 
-    public void send(){
+    /**
+     *
+     */
+
+    @Override
+    public void send() {
 //        this.initModality(Modality.APPLICATION_MODAL);
         label = new Label("Hello: " + reminder.toString());
         Button okButton = new Button("Ok");

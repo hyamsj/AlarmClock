@@ -17,15 +17,15 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         if(new ConfigReader().getColorScheme() == "nightmode"){
             //TODO generate a nightmode css
-            scene.getStylesheets().add("styles.css");
+         //   scene.getStylesheets().add("styles.css");
         }
         else {
-            scene.getStylesheets().add("styles.css");
+           // scene.getStylesheets().add("styles.css");
         }
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setOnCloseRequest(e -> System.exit(0));
+        //primaryStage.setOnCloseRequest(e -> System.exit(0));
         //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
         // otherwise getSerializable sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
         Poller poller = Poller.getInstance();

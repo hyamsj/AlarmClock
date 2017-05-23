@@ -1,6 +1,6 @@
 package alarmClock.model;
 
-import alarmClock.model.Filter.CriteriaTester;
+import alarmClock.model.filtering.CriteriaTester;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 

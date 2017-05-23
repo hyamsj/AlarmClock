@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * A DateTimePicker with configurable datetime format where both date and time can be changed
  * via the text field and the date can additionally be changed via the JavaFX default date picker.
+ * Taken from: http://stackoverflow.com/questions/28493097/is-there-any-date-and-time-picker-available-for-javafx
  */
 @SuppressWarnings("unused")
 public class DateTimePicker extends DatePicker {

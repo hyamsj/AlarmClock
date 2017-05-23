@@ -1,7 +1,7 @@
-import alarmClock.model.Filter.CriteriaTester;
-import alarmClock.model.Filter.IsThisMonth;
+import alarmClock.model.filtering.CriteriaTester;
+import alarmClock.model.filtering.IsThisMonth;
 import alarmClock.model.Reminder;
-import alarmClock.model.Filter.hasTag;
+import alarmClock.model.filtering.hasTag;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.junit.Before;
