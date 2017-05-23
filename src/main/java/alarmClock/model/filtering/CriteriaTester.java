@@ -1,4 +1,4 @@
-package alarmClock.model.Filter;
+package alarmClock.model.filtering;
 
 import alarmClock.model.Reminder;
 
@@ -6,5 +6,5 @@ import alarmClock.model.Reminder;
  * Created by pascal on 5/16/17.
  */
 public interface CriteriaTester {
-    public boolean isTrue(Reminder r);
+    boolean isTrue(Reminder r);
 }

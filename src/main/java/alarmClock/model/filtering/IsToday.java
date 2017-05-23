@@ -1,4 +1,4 @@
-package alarmClock.model.Filter;
+package alarmClock.model.filtering;
 
 import alarmClock.model.Reminder;
 

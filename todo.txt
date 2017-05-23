@@ -13,6 +13,7 @@ do not close poller in release
 Enum for Colorscheme
 Enum for Notification Type
 push view from main to view
-
+maven oder ant oder shell script muss nicht maven sein
+k
 
 

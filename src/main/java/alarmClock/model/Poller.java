@@ -1,7 +1,7 @@
 package alarmClock.model;
 
-import alarmClock.alertView.MultyReminderNotification;
-import alarmClock.model.Filter.*;
+import alarmClock.alertView.MultiReminderNotification;
+import alarmClock.model.filtering.*;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 
@@ -15,7 +15,7 @@ import java.util.Collection;
  * Tests regularly if a Reminder has to send a notification
  */
 public class Poller implements ListChangeListener {
-    public static final int EARLY_ALERT_TIME = 5;
+    public static final int EARLY_ALERT_TIME = 5; // minutes
     private static Poller instance = null;
     private ReminderList reminders;
     private ReminderList notifiedReminders;
@@ -130,7 +130,7 @@ public class Poller implements ListChangeListener {
                 ()->{
                     //r.notifyIf(criteria);
                     if(passedReminders.size()!= 0) {
-                        new MultyReminderNotification(passedReminders).send();
+                        new MultiReminderNotification(passedReminders).send();
                     }
                 }
         );
