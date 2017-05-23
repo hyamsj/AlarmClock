@@ -71,6 +71,9 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        // TODO
+        reminderTable.setEditable(true);
+
         //Binding for disabling addButton if input is invalid
         BooleanBinding addBinding = subjectField.textProperty().isNotEmpty().and(datePickerField.valueProperty().isNotNull());
         addButton.disableProperty().bind(addBinding.not());
