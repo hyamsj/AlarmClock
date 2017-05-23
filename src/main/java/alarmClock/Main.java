@@ -9,12 +9,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    //TODO wrong name?
+    String windowName = "../mainWindow.fxml";
+    String title =  "Alarm Clock \u00a9";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setResizable(false);
-        Parent root = FXMLLoader.load(getClass().getResource("../mainWindow.fxml"));
-        primaryStage.setTitle("Alarm Clock \u00a9");
+        Parent root = FXMLLoader.load(getClass().getResource(windowName));
+        primaryStage.setTitle(title);
         Scene scene = new Scene(root);
         if (new ConfigReader().getColorScheme() == "nightmode") {
             //TODO generate a nightmode css
