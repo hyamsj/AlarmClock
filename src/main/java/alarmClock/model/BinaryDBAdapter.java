@@ -23,10 +23,10 @@ public class BinaryDBAdapter implements DataBaseAdapter {
                          new ObjectInputStream(new FileInputStream(path))) {
                 //reminderList = (ArrayList<Reminder>) in.readObject();
                 Object o = in.readObject();
-                reminderArrayList = (ArrayList<Reminder>)  o;
+                reminderArrayList = (ArrayList<Reminder>) o;
                 ReminderList rl = new ReminderList();
                 rl.addAll(reminderArrayList);
-                reminders =rl;
+                reminders = rl;
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
