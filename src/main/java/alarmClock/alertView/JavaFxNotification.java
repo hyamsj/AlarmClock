@@ -41,9 +41,8 @@ public class JavaFxNotification implements Notification {
     }
 
     /**
-     *
+     * Creates the Reminder Popup
      */
-
     @Override
     public void send() {
         Stage stage = new Stage();
@@ -58,6 +57,7 @@ public class JavaFxNotification implements Notification {
         Scene scene = new Scene(pane);
         stage.setTitle("Reminder");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

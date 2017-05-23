@@ -45,14 +45,13 @@ public class Poller implements ListChangeListener {
     }
 
 
-
-    private  boolean notedPassed = false;
+    private boolean notedPassed = false;
 
     public void poll() throws Exception {
         notificationHandler.handle();
-        if(!notedPassed){
+        if (!notedPassed) {
             notificationHandler.showPastEvents();
-            notedPassed =true;
+            notedPassed = true;
         }
     }
 

@@ -33,20 +33,15 @@ public class Controller implements Initializable {
     private String subject;
     private String description;
     private LocalDateTime date;
-//    private LocalDate date;
 
     /**
-     * Handles addButton clicked event. Name is defined in mainWindow.fxml
+     * Handles addButton clicked event.
      */
     @FXML
     public void addButtonPressed() {
         if (!Objects.equals(subjectField.getText(), "") && datePickerField.getValue() != null) {
             subject = subjectField.getText();
             description = descriptionField.getText();
-            //TODO  controller may only accept parsable timeFild inputs, could do so by adding a LocalDateTimePicker
-            //date = LocalDateTime.parse(timeField.getText());
-            //TODO remove after the above is fixed
-            LocalDateTime later = LocalDateTime.now().plusMinutes(3);
             date = datePickerField.getDateTimeValue();
             model.addReminder(new Reminder(subject, description, date));
             subjectField.setText("");
@@ -57,42 +52,30 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Handles removeButton clicked event. Name is defined in mainWindow.fxml
+     * Handles removeButton clicked event.
      * Allows multiple items in the table to be selected and removed at the same time
      */
     @FXML
     public void rmButtonPressed() {
         ReminderList reminderSelected;
-        //ObservableList<Reminder>  allReminders;
-        //allReminders = reminderTable.getItems();
         reminderSelected = new ReminderList(reminderTable.getSelectionModel().getSelectedItems());
-        // allReminders.removeAll(reminderSelected);
         model.removeReminders(reminderSelected);
     }
 
-    //TODO remove?
-    public void undoButtonPressed() {
-        model.undo();
-        System.out.printf("undo");
-    }
-
-    //TODO remove?
-    public void redoButtonPressed() {
-        System.out.println("redo");
-        model.redo();
-    }
-
     /**
+     * Serves as the constructor. Is called before the JavaFX components are created
+     *
      * @param location
      * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //Binding for addButton
+        //Binding for disabling addButton if input is invalid
         BooleanBinding addBinding = subjectField.textProperty().isNotEmpty().and(datePickerField.valueProperty().isNotNull());
         addButton.disableProperty().bind(addBinding.not());
 
+        //Allows to select multiple items in the table
         reminderTable.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
@@ -104,7 +87,11 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         this.model = model;
+
+        // Creates binding with table that overwrites the DB, if anything has changed
         model.bindData();
+
+        // Puts items in the table
         reminderTable.setItems(model.getReminders());
 
     }

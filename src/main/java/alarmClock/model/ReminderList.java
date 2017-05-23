@@ -49,7 +49,7 @@ public class ReminderList implements ObservableList {
     }
 
     private ObservableList popState() {
-        ObservableList<Reminder> newReminder= FXCollections.observableArrayList();
+        ObservableList<Reminder> newReminder = FXCollections.observableArrayList();
         if (history.peek() != null) {
             ObservableList rs = history.pop();
             undoneHistory.push(rs);

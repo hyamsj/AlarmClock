@@ -8,11 +8,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The Main class launches the program
+ */
 public class Main extends Application {
-    //TODO wrong name?
-    String windowName = "../mainWindow.fxml";
-    String title =  "Alarm Clock \u00a9";
+    private String windowName = "../mainWindow.fxml";
+    private String title = "Alarm Clock";
 
+    /**
+     * The Application Class requires the start method.
+     * It launches the GUI and the programs beneath it
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setResizable(false);
@@ -20,20 +29,16 @@ public class Main extends Application {
         primaryStage.setTitle(title);
         Scene scene = new Scene(root);
         if (new ConfigReader().getColorScheme() == "nightmode") {
-               scene.getStylesheets().add("dark.css");
+            scene.getStylesheets().add("dark.css");
         } else {
-             scene.getStylesheets().add("styles.css");
+            scene.getStylesheets().add("styles.css");
         }
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        //primaryStage.setOnCloseRequest(e -> System.exit(0));
-        //TODO let Poller use the Model the other classes uses if it runs as part of the GUI
-        // otherwise getSerializable sure it gets cloesed when the gui is started and gets restarted when the GUI is closed
-        Poller poller = Poller.getInstance();
 
-        // Enable  ErlyAlertController in the ConfigRead.getNotificationType()
-//        EarlyAlertController earlyAlertController = new EarlyAlertController();
+        // Creates a poller
+        Poller.getInstance();
 
         try {
         } catch (Exception e) {
@@ -43,6 +48,11 @@ public class Main extends Application {
     }
 
 
+    /**
+     * Main method.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

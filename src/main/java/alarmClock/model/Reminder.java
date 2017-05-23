@@ -22,6 +22,11 @@ public class Reminder implements Serializable {
     //could be a Collection too.
     private Collection<String> tags = new ArrayList<>();
 
+    /**
+     * @param subject
+     * @param description
+     * @param date
+     */
     public Reminder(String subject, String description, LocalDateTime date) {
         setSubject(subject);
         setDescription(description);
@@ -155,7 +160,6 @@ public class Reminder implements Serializable {
         }
         return allTrue;
     }
-
 
 
     public void doNotify() {
