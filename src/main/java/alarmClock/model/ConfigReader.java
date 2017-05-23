@@ -41,9 +41,6 @@ public class ConfigReader {
         return "nightmode";
     }
 
-    public boolean isEnableDarkMode() {
-        return enableDarkMode;
-    }
 
     public boolean isEnablePastReminders() {
         return enablePastReminders;
@@ -55,5 +52,9 @@ public class ConfigReader {
 
     public boolean isEnableRemindersThisMonth() {
         return enableRemindersThisMonth;
+    }
+
+    public boolean isEnableDarkMode() {
+        return enableDarkMode;
     }
 }

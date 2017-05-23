@@ -88,13 +88,13 @@ Die Persistenz soll an einem Zentralen Punkt sichergestellt werden, so dass mit 
   \label{fig:overview}
 \end{figure}
 \end{landscape}
-Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikationvollständig einzuhalten. Die Komponenten innerhalb des Kasten``System'', insbesondere ihre Beziehung zueinander,  sind nicht Teil der Anforderungen, und somit nicht bindend sie veranschaulichen lediglich was noch innerhalb des Systems liegt und was ausserhalb angesiedelt ist. 
-\pageref{fig:overview}
+Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikation vollständig einzuhalten. Die Komponenten innerhalb des Kasten ``System'', insbesondere ihre Beziehung zueinander,  sind nicht Teil der Anforderungen, und somit nicht bindend. Sie veranschaulichen lediglich was noch innerhalb des Systems liegt und was ausserhalb angesiedelt ist. 
+Abbildung:\pageref{fig:overview}
 
 
 
 
-Falls die Funktionalität vom Auftraggeber verlangt wird, muss das Programm den Nutzer mit E-Mails, SMS und Systemnotifications erinnern. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind, was nicht mehr teil des Projektes ist.
+Falls die Funktionalität vom Auftraggeber verlangt wird, muss das Programm den Nutzer mit E-Mails, SMS und Systemnotifications erinnern. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind, was nicht mehr Teil des Projektes ist.
 
 \subsection{Randbedingungen}
 Die Entwicklung soll mittels Java und JavaFX erfolgen.
@@ -108,18 +108,14 @@ Die Dokumentation muss in \LaTeX ~erstellt werden.
 
 \item Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige gängige Datenabank genutzt werden kann.
 
-\item
-Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige Standard Datenbank genutzt werden kann.
 
 \item
-Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes, sondern wird von den Datenbankherstellern oder von dritten vorgenommen.
+Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes, sondern wird von den Datenbankherstellern oder von Dritten vorgenommen.
 
 \item
 Das System muss dem Benutzer die Möglichkeit bieten, in dem GUI ein Einzelevent zu erfassen.
-Das System sollte dem Benutzer die Möglichkeit bieten, über das GUI ein Einzelevent zu erfassen.
 
 \item
-Das System muss dem Benutzer die Möglichkeit bieten, in dem GUI wiederkehrende Events zu erfassen.
 Das System sollte dem Benutzer die Möglichkeit bieten, über das CLI wiederkehrende Events zu erfassen.
 
 \item
@@ -174,6 +170,8 @@ Das Programm soll auf den Betriebssystemen, welche eine Notificationinfrastruktu
 
 \item
 Das Programm soll sich vom Loock and Feel in die jeweilige Desktop Environment anpassen.
+\item
+Das System kann dem Benutzer die Möglichkeit bieten, in dem GUI wiederkehrende Events zu erfassen.
 
 \end{itemize}
 
