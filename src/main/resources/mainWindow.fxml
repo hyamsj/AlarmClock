@@ -48,7 +48,7 @@
                       <Insets right="10.0" />
                   </padding>
               </DateTimePicker>
-              <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.rowIndex="1">
+              <TableView fx:id="reminderTable" GridPane.columnSpan="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                   <columns>
                       <TableColumn fx:id="subjectColumn" prefWidth="115.0" text="Subject">
                           <cellValueFactory>
