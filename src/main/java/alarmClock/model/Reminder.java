@@ -27,26 +27,31 @@ public class Reminder implements Serializable {
         setDescription(description);
         setDate(date);
     }
-        public Reminder(String subject, String description, LocalDateTime date, Set<String> tags) {
+
+    public Reminder(String subject, String description, LocalDateTime date, Set<String> tags) {
         setSubject(subject);
         setDescription(description);
         setDate(date);
         setTags(tags);
     }
-    public Collection<String> getTags(){
+
+    public Collection<String> getTags() {
         return tags;
     }
-    public SimpleObjectProperty<Collection<String>> getTagsProperty(){
+
+    public SimpleObjectProperty<Collection<String>> getTagsProperty() {
         return new SimpleObjectProperty<Collection<String>>(tags);
     }
 
-    public void setTags(Collection<String> tags){
+    public void setTags(Collection<String> tags) {
         this.tags = tags;
     }
-    public void addTag(String tag){
+
+    public void addTag(String tag) {
         tags.add(tag);
     }
-    public void removeTag(String tag){
+
+    public void removeTag(String tag) {
         tags.remove(tag);
     }
 
@@ -124,32 +129,32 @@ public class Reminder implements Serializable {
     }
 
 
-    public boolean notifyIf(CriteriaTester criteria){
-        if(criteria.isTrue(this)){
+    public boolean notifyIf(CriteriaTester criteria) {
+        if (criteria.isTrue(this)) {
             this.doNotify();
             return true;
         }
         return false;
     }
-     public boolean notifyIf(Collection<CriteriaTester> criterias){
+
+    public boolean notifyIf(Collection<CriteriaTester> criterias) {
         Boolean allTrue = true;
-        for(CriteriaTester criteira:criterias){
+        for (CriteriaTester criteira : criterias) {
             allTrue &= criteira.isTrue(this);
         }
-        if(allTrue){
+        if (allTrue) {
             this.doNotify();
         }
         return allTrue;
     }
 
-    public boolean meetsCriteria(Collection<CriteriaTester> criterias){
+    public boolean meetsCriteria(Collection<CriteriaTester> criterias) {
         Boolean allTrue = true;
-        for(CriteriaTester criteira:criterias){
+        for (CriteriaTester criteira : criterias) {
             allTrue &= criteira.isTrue(this);
         }
         return allTrue;
     }
-
 
 
     public void doNotify() {
@@ -166,8 +171,8 @@ public class Reminder implements Serializable {
                 });
             } else {
             */
-                n.setReminder(this);
-                n.send();
+            n.setReminder(this);
+            n.send();
             //}
 
         }

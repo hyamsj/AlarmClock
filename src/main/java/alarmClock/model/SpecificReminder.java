@@ -1,7 +1,6 @@
 package alarmClock.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -15,16 +14,19 @@ public class SpecificReminder extends Reminder {
     }
 
     public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags) {
-        super(subject,description,date,tags);
+        super(subject, description, date, tags);
     }
-    public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags,Set<Notification> notifications) {
-        this(subject,description,date,tags);
-        this.notifications=notifications;
+
+    public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags, Set<Notification> notifications) {
+        this(subject, description, date, tags);
+        this.notifications = notifications;
     }
-    public void addNotification(Notification n){
+
+    public void addNotification(Notification n) {
         notifications.add(n);
     }
-    public  void removeNotification(Notification n){
+
+    public void removeNotification(Notification n) {
         notifications.remove(n);
     }
 

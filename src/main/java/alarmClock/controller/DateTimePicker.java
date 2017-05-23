@@ -19,12 +19,12 @@ import java.time.format.DateTimeFormatter;
  */
 @SuppressWarnings("unused")
 public class DateTimePicker extends DatePicker {
-//    public static final String DefaultFormat = "yyyy-MM-dd HH:mm";
     public static final String DefaultFormat = "dd-MM-yyyy HH:mm";
 
     private DateTimeFormatter formatter;
     private ObjectProperty<LocalDateTime> dateTimeValue = new SimpleObjectProperty<>(LocalDateTime.now());
     private ObjectProperty<String> format = new SimpleObjectProperty<String>() {
+        @Override
         public void set(String newValue) {
             super.set(newValue);
             formatter = DateTimeFormatter.ofPattern(newValue);
@@ -36,7 +36,7 @@ public class DateTimePicker extends DatePicker {
         setFormat(DefaultFormat);
         setConverter(new InternalConverter());
 
-        // Syncronize changes to the underlying date value back to the dateTimeValue
+        // Synchronize changes to the underlying date value back to the dateTimeValue
         valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 dateTimeValue.set(null);
@@ -50,7 +50,7 @@ public class DateTimePicker extends DatePicker {
             }
         });
 
-        // Syncronize changes to dateTimeValue back to the underlying date value
+        // Synchronize changes to dateTimeValue back to the underlying date value
         dateTimeValue.addListener((observable, oldValue, newValue) -> {
             setValue(newValue == null ? null : newValue.toLocalDate());
         });

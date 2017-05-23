@@ -26,8 +26,8 @@ public class ReminderList implements ObservableList {
         this.reminders = r;
     }
     */
-        public ReminderList(ObservableList<Reminder> r) {
-           // makes reminders not removable reminders = FXCollections.observableArrayList();
+    public ReminderList(ObservableList<Reminder> r) {
+        // makes reminders not removable reminders = FXCollections.observableArrayList();
         this.reminders = r;
         history = new Stack<>();
         undoneHistory = new Stack<>();
@@ -175,15 +175,16 @@ public class ReminderList implements ObservableList {
         pushState();
     }
 
-    public ArrayList<Reminder> getSerializable(){
+    public ArrayList<Reminder> getSerializable() {
         //TODO solve type conversation on a better place
-        ArrayList<Reminder> output= new ArrayList<>();
-        for( Object r: reminders){
+        ArrayList<Reminder> output = new ArrayList<>();
+        for (Object r : reminders) {
             r = r;
-            output.add((Reminder) r );
+            output.add((Reminder) r);
         }
         return output;
     }
+
     @Override
     public Object get(int index) {
         return reminders.get(index);
