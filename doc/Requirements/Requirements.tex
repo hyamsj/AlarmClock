@@ -10,8 +10,8 @@
 
 %must be before gloassary stuff\usepackage{hyperref}
 \usepackage[toc]{glossaries}
-\makeglossaries
 
+\makeglossaries
 \input{glossary/Glossary.tex}
 
 
@@ -231,16 +231,17 @@ jeweils innert 5 Minuten nach erfolgtem Programmstart, auszuführen:
 \end{itemize}
 
 \item 60\% der Benutzer solle in der Lage sein, die Konfiguration des Programmes mittels ConfigFiles Vorzunhemen.
-\end{itemize}
+\end{itemize}makeglossaries document
 
-\section{Glossar}
+\section{Anhang}
 \listoffigures
 \listoftables
+\glsaddall
+\printglossary
 %TODO bibography
 
 \glsaddall
 \printglossary
-\section{Anhang}
 \subsection{Qualitätsaspekt Inhalt}
 Folgende Punke sind vorhanden:
 \begin{itemize}
