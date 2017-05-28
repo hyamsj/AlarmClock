@@ -174,14 +174,16 @@ Das Programm soll zusätzlich zu den gängigen Computer-Betriebssystemen auch au
 
 
 \item
-Das Programm soll auf den Betriebssystemen, welche eine Notificationinfrastruktur bereitstellen  in der Lage sein die Notifications über diese vorzunehmen.(BSP KDE)
+Das Programm soll auf den Betriebssystemen, welche eine Notificationinfrastruktur bereitstellen  in der Lage sein die
+Notifications über diese vorzunehmen.(BSP KDE)
 
 \item
 Das Programm soll sich vom Look and Feel in die jeweilige Desktop Environment anpassen.
 \item
 Das System kann dem Benutzer die Möglichkeit bieten, in dem GUI wiederkehrende Events zu erfassen.
 \item
-Das Programm kann dem Benutzer die Möglichkeit bieten, die Konfiguration über die GUI vorzunehmen und im Configfile zu speichern.
+Das Programm kann dem Benutzer die Möglichkeit bieten, die Konfiguration über die GUI vorzunehmen und im Configfile zu
+speichern.
 
 \end{itemize}
 
@@ -203,17 +205,21 @@ Anforderungen aufgetaucht sind zu klären, werden wir uns mit ihm treffen. Beson
 \item Was soll mit der Eventkategorisierung erreicht werden, welche weiteren Anforderungen ergeben sich daraus.
 \item Abgrenzung des Programmes gegenüber eines kAlarm, Kalenders und gegenüber des Cronjobs.
 \end{itemize}
-Da unser Auftraggeber als Professor der Informatik tätig ist, ist das Glossar für unseren Auftraggeber obsoloet. Der Vollständigkeihthalber wird es dennoch erstellt.
+Da unser Auftraggeber als Professor der Informatik tätig ist, ist das Glossar für unseren Auftraggeber obsoloet. Der
+Vollständigkeihthalber wird es dennoch erstellt.
 Als weitere Diskusionsgrundlage sind wir daran neben diesem Dokument einen Prototyp des GUI zu erstellen.
-Da wir selber der potentiellen Nutzergruppe des Programmes angehören, könnten wir auch uns selber als Quelle nutzen, als Entwickler hat man jedoch oft einen anderen Blickwinkel als ein normaler Benutzer.
+Da wir selber der potentiellen Nutzergruppe des Programmes angehören, könnten wir auch uns selber als Quelle nutzen,
+als Entwickler hat man jedoch oft einen anderen Blickwinkel als ein normaler Benutzer.
 Auch das Feedback von Komilitonen war uns ein anhaltspunkt.
-Im Sinne einer agilen Entwicklung wollen wir möglichst rasch präsentierbare Artefakte generieren, damit der Auftraggeber frühstmöglich Einfluss nehmen kann und Fehlentwicklungen vermieden werden. Treffen werden bei Bedarf mit dem Auftraggeber ausgemacht.
+Im Sinne einer agilen Entwicklung wollen wir möglichst rasch präsentierbare Artefakte generieren, damit der
+Auftraggeber frühstmöglich Einfluss nehmen kann und Fehlentwicklungen vermieden werden. Treffen werden bei Bedarf mit
+dem Auftraggeber ausgemacht.
 
 
 \subsection{Technische Anforderungen}
 
 \begin{itemize}
- \item Das Programm muss auf Linux, Windows und OSx lauffähig sein.
+ \item Das Programm muss auf Linux, Windows und macOS lauffähig sein.
  \item Das Programm muss datenbankagnostisch sein.
  \item Das Programm muss auf dem Buildsystem kompiliert werden können.
  \item Das Programm muss auf dem Referenzsystem ohne weitere installationen kompiliert werden können.
@@ -250,38 +256,62 @@ Folgende Punke sind vorhanden:
  \item Korrektheit der Anforderungen.
  \item Konsistezn
  \item Keine vorzeitigen Entwurfentschee wurden vorgenommen.
- \item Die Überprüfbarkeit ist gegeben. Es werden jedoch nicht alle Anforderungen einzeln überprüft. Als Erfolgskriterien dienen verkürzten Userstotys mit genau angegebenen Metriken zur Überprüfbarkeit.
+ \item Die Überprüfbarkeit ist gegeben. Es werden jedoch nicht alle Anforderungen einzeln überprüft. Als
+ Erfolgskriterien dienen verkürzten Userstotys mit genau angegebenen Metriken zur Überprüfbarkeit.
  \item Notwendigkeit
 \end{itemize}
 \subsection{Qualitätsaspekt Dokumentation}
-Da wir nur einen Steakholder haben, ist es gegeben ,dass auch die relevanten Stakholder zugange sind. Laut Lehrbuch sollte es vermieden werden, dass die Anforderungen von den Erstellern überprüft werden. Da unser Betreuer sich aber verständlicherweise primär für die Artefakte des eigentlichen Entwicklungsprozesses interessierte, haben wir als Ersteller diese Dokumentation systematisch geprüft. Externe Überprüfer sind nicht angezeigt, da die Anforderungen keinem genügend hohen Qualitätsgrad genügen müssen.
+Da wir nur einen Steakholder haben, ist es gegeben ,dass auch die relevanten Stakholder zugange sind. Laut Lehrbuch
+sollte es vermieden werden, dass die Anforderungen von den Erstellern überprüft werden. Da unser Betreuer sich aber
+verständlicherweise primär für die Artefakte des eigentlichen Entwicklungsprozesses interessierte, haben wir als
+Ersteller diese Dokumentation systematisch geprüft. Externe Überprüfer sind nicht angezeigt, da die Anforderungen
+keinem genügend hohen Qualitätsgrad genügen müssen.
 
-Das Prinzip der Trennunb von Fhelersuche und Fehlerkorrektur haben wir nicht strikt eingehlten. Da die Fehlersucher und die Korrekture onehin dieselben Personen sind, war dies schwierig. Gerade bei kleinen Fehlern ist das korrigieren dieser rasch erledigt. Eine zusätzliche Dokumentation als Zwischenschritt hätte einen Mehraufwand bedeutet die angedeutete Gefahr beim Zusammenlegen der Schritte hielten wir in diesem Rahmen als überschaubar.
+Das Prinzip der Trennunb von Fhelersuche und Fehlerkorrektur haben wir nicht strikt eingehlten. Da die Fehlersucher und
+die Korrekture onehin dieselben Personen sind, war dies schwierig. Gerade bei kleinen Fehlern ist das korrigieren
+dieser rasch erledigt. Eine zusätzliche Dokumentation als Zwischenschritt hätte einen Mehraufwand bedeutet die
+angedeutete Gefahr beim Zusammenlegen der Schritte hielten wir in diesem Rahmen als überschaubar.
 
-Die überprüfung aus unterschiedlichen Sichten konnten wir zu zweit durchspielen, indem eine Person aus der Sicht eines potentiellen Users argumentierte.
-Für den grossteil dieser Dokumentation haben wir uns auf Texte als Dokumentationsform beschränkt. Lediglich die Abbildung ~\ref{fig:overview} auf Seite~\pageref{fig:overview} haben wir schematisch dargestellt.
+Die überprüfung aus unterschiedlichen Sichten konnten wir zu zweit durchspielen, indem eine Person aus der Sicht eines
+potentiellen Users argumentierte. Für den grossteil dieser Dokumentation haben wir uns auf Texte als Dokumentationsform
+beschränkt. Lediglich die Abbildung ~\ref{fig:overview} auf Seite~\pageref{fig:overview} haben wir schematisch
+dargestellt.
 
-Entwicklungsartefakte als teil es Anforderungsanalyse spielen vorallem in der Agilen Entwicklung eine wichtige Rolle. Diese werden dort aber vorallem als teil der Entwicklung  betrachtet. Dementsprechend haben wir hier auch keine solchen beigelgt, sondern verweisen auf unse Github Code Repository, welches wir gerne für Sie freischalten, wenn Sie uns ihren Github Username angeben.
+Entwicklungsartefakte als teil es Anforderungsanalyse spielen vorallem in der Agilen Entwicklung eine wichtige Rolle.
+Diese werden dort aber vorallem als teil der Entwicklung  betrachtet. Dementsprechend haben wir hier auch keine solchen
+beigelgt, sondern verweisen auf unse Github Code Repository, welches wir gerne für Sie freischalten, wenn Sie uns ihren
+Github Username angeben.
 
 
 \subsection{Qualitätsaspekt Abgestimmtheit der Anforderungen}
 Die Abstimmun der Anforderungen
-Unser Betreuer wollte uns im sinne einer Agilen Entwicklung eine grösstmögliche Freiheit lassen.Änderungswünsche an diesem Dokument wurden von ihm keine angebracht. Da es sich um keine Auftragsarbeit für ein komerzielles Unternehmen handelt, bildet dieses Dokument auch keine Vertragsgrundlage.
+Unser Betreuer wollte uns im sinne einer Agilen Entwicklung eine grösstmögliche Freiheit lassen.Änderungswünsche an
+diesem Dokument wurden von ihm keine angebracht. Da es sich um keine Auftragsarbeit für ein komerzielles Unternehmen
+handelt, bildet dieses Dokument auch keine Vertragsgrundlage.
 
-Obwohl wir Unterschiedliche Steakholder aufgelistet haben, gibt es in diesem Projekt einen klaren Entschiedungsträger, unser Betreuer. Prof. Furrer. Die Open Source Gemeinde selber ist so heterogen und verstreut, dass  eine Abstimmung der Wünsche mit der gesamten Comunity onehin zum scheitern verurteilt wäre.
+Obwohl wir Unterschiedliche Steakholder aufgelistet haben, gibt es in diesem Projekt einen klaren Entschiedungsträger,
+unser Betreuer. Prof. Furrer. Die Open Source Gemeinde selber ist so heterogen und verstreut, dass  eine Abstimmung der
+Wünsche mit der gesamten Comunity onehin zum scheitern verurteilt wäre.
 
-Ohne Zielkonflikte hatten wir auch keine Gelegenheit diese als Chance zu nutzen um neue Ideen zu entwickeln. Der Start der Entwicklungsphase dürfte laut dem Requirements Engineering Prozess erst erfolgen, nachdem die Abstimmung der Anforderungen erfolgt ist.
-Durch die Struktur des Unterrichts war es aber so gegeben, dass der Start der Entwicklungsphase  mit dem Start der Anforderungsanalyse zusammen fielen.Für eine rein agile Vorgehensweise ist dies kein Problem. Will man das Requirements Engineering jedoch wie gefordert vor der Entwicklungsphase abschliessen, müsste man die Entwicklungsphase in einem späteren Semester starten.
+Ohne Zielkonflikte hatten wir auch keine Gelegenheit diese als Chance zu nutzen um neue Ideen zu entwickeln. Der Start
+der Entwicklungsphase dürfte laut dem Requirements Engineering Prozess erst erfolgen, nachdem die Abstimmung der
+Anforderungen erfolgt ist. Durch die Struktur des Unterrichts war es aber so gegeben, dass der Start der
+Entwicklungsphase mit dem Start der Anforderungsanalyse zusammen fielen.Für eine rein agile Vorgehensweise ist dies kein
+Problem. Will man das Requirements Engineering jedoch wie gefordert vor der Entwicklungsphase abschliessen, müsste man
+die Entwicklungsphase in einem späteren Semester starten.
 
 
 
 Hier offenbart sich wohl ein Unterschied zwischen  einem agilen Entwicklungsprozess und dem System Engineering.
 \subsection{Definition of Ready - Checklist}
-Wie bereits erwähnt, passt unser Projekt nicht optimal zur Vorgehensweise, welche wir im Requirements Engineering betrachtet haben. Wir haben mit unserem Betreuer auch keine vollumfängliche Definitino of Ready für die Anforderung ausgearbeitet. Die drei oben erwähnten Qualitätsaspekte haben wir wie beschrieben abgehandelt.
+Wie bereits erwähnt, passt unser Projekt nicht optimal zur Vorgehensweise, welche wir im Requirements Engineering
+betrachtet haben. Wir haben mit unserem Betreuer auch keine vollumfängliche Definitino of Ready für die Anforderung
+ausgearbeitet. Die drei oben erwähnten Qualitätsaspekte haben wir wie beschrieben abgehandelt.
 
 
 \newline
-Eine eigentliche Checkliste / Definition of Ready für die Artefakte aus der Entwickungsphase ist bei unserem Projekt minimal gehalten.
+Eine eigentliche Checkliste / Definition of Ready für die Artefakte aus der Entwickungsphase ist bei unserem Projekt
+minimal gehalten.
 Folgende Punkte müssen vorhanden sein.
 \begin{itemize}
 \item Der Code muss auf Github vefügbar sein.
