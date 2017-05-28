@@ -45,25 +45,21 @@
 \end{abstract}
 %\section{Zweck des Dokument}
 \chapter{Zweck des Dokument}
-Dieses Dokument soll dazu dienen, die Anforderungen an das Projekt AlarmClock zu definieren. Typische Leser sind die
-Entwickler und der Dozent im Requirements Engineering. Auch für den Projektbetreuer kann das Dokument von Interesse sein.
+Dieses Dokument soll dazu dienen die Anforderungen an das Projekt AlarmClock zu definieren. Typische Leser sind die Entwickler und  Dozent im Requirements Engineering. Auch für den Projektbetreuer kann das Dokument von Interesse sein.
 %makes sure the whole glossary gets printed even when acronyms are not defined
 
 \section{Kurzbeschreibung}
 Das Ziel des Projektes ist einen Ersatz zum Programm kAlarm zu entwickeln.
-Das Programm kAlarm erlaubt es dem User benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der
-User dann zur gegebenen Zeit daran erinnert. Im Gegensatz zu kAlarm soll das zu erstellende Produkt
-platformübergreifend verfügbar sein. Wie kAlarm soll dieses Produkt unter einer Open Source Lizenz entwickelt werden.
-
+Das Programm kAlarm erlaubt es dem User Benutzerdefinierte Erinnerungen zu erstellen. Mittels Pop-Up Windows wird der User dann zur gegebenen Zeit daran erinnert.
+Im gegensatz zu kAlarm soll das zu erstellende Produkt Platformübergreifend verfügbar sein. Wie kAlarm soll dieses Produkt unter einer Open Source Lizenz entwickelt werden.
 \section{Projektziele}
 Unser Auftraggeber ist kein Unternehmen. Es werden somit auch keine Ziele innerhalb eines Unternehmens verfolgt.
-Ziele, welche ein Benutzer unsere Aplikation verfolgen könnte wären beispielsweise:
+Ziele welche ein Benutzer unsere Aplikation verfolgen könnte wären beispielsweise:
 \begin{itemize}
  \item An den Wäschetag erinnert weden.
- \item Die Wäsche rechtzeitig aus der Wäscheküche holen.
- \item Den Kuchen nicht im Backofen verbrennen lassen.
+ \item Die Wäsche rechtzeitig aus de Wäscheküche holen.
+\item Den Kuchen nicht im Backofen verbrennen lassen.
  \item Der Sekretärin zum Geburtstag Blumen schicken.
- \item usw.
 
 \end{itemize}
 
@@ -78,11 +74,10 @@ Es exisitert kein vordefiniertes System, welches mit unserem Programm interagier
 Das Programm soll auf einem Computer laufen, welcher Java 8.1 inklusive JavaFx installiert hat.
  
 \subsection{Geschäftsprozesse}
-Es existieren keine vor\- oder nachgelagerte Prozesse. Unsere Lösung lässt sich in beliebig viele Prozesse integrieren.
+Es existieren keine vor\- oder nachgelagerten Prozesse. Unsere Lösung lässt sich in beliebige viele Prozesse integrieren.
 \subsection{Systeme}
 Unser System beinhaltet einen Persistenz Layer um nach einem Neustart den vorherigen Zustand wiederherstellen zu können.
-Die Persistenz soll an einem zentralen Punkt sichergestellt werden, so dass mit wenig Aufwand eine andere
-Persistenzmethode, wie eine JPA Datenbank eingebunden werden kann.
+Die Persistenz soll an einem Zentralen Punkt sichergestellt werden, so dass mit wenig Aufwand eine andere Persistenzmethode, wie eine JPA Datenbank eingebunden werden kann.
 
 %TODO uml einbinden
 \begin{landscape}
@@ -93,24 +88,17 @@ Persistenzmethode, wie eine JPA Datenbank eingebunden werden kann.
   \label{fig:overview}
 \end{figure}
 \end{landscape}
-Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation,
-ohne die UML Spezifikation vollständig einzuhalten. Die Komponenten innerhalb des Kasten ``System'', insbesondere ihre
-Beziehung zueinander, sind nicht Teil der Anforderungen, und somit nicht bindend. Sie veranschaulichen lediglich was
-noch innerhalb des Systems liegt und was ausserhalb
-angesiedelt ist.
+Die Systemübersicht und Abgrenzung Abb.~\ref{fig:overview} Seite~\pageref{fig:overview} bedient sich der UML Notation, ohne die UML Spezifikation vollständig einzuhalten. Die Komponenten innerhalb des Kasten ``System'', insbesondere ihre Beziehung zueinander,  sind nicht Teil der Anforderungen, und somit nicht bindend. Sie veranschaulichen lediglich was noch innerhalb des Systems liegt und was ausserhalb angesiedelt ist. 
 Abbildung:\pageref{fig:overview}
 
 
 
 
-Falls die Funktionalität vom Auftraggeber verlangt wird, muss das Programm den Nutzer mit E-Mails, SMS und
-Systemnotifications erinnern. Dies bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte
-Schnittstelle erreichbar sind, was nicht mehr Teil des Projektes ist.
+Falls die Funktionalität vom Auftraggeber verlangt wird, muss das Programm den Nutzer mit E-Mails, SMS und Systemnotifications erinnern. Dies Bedingt, dass entsprechende Services / Server eingerichtet und über eine definierte Schnittstelle erreichbar sind, was nicht mehr Teil des Projektes ist.
 
 \subsection{Randbedingungen}
 Die Entwicklung soll mittels Java und JavaFX erfolgen.
-Das Programm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz
-veröffentlicht werden.
+Das Programm soll Betriebssystem und Datenbank agnostisch sein. Das Projekt muss unter einer Opensource Lizenz veröffentlicht werden.
 Die Dokumentation muss in \LaTeX ~erstellt werden.
 
 
@@ -118,13 +106,11 @@ Die Dokumentation muss in \LaTeX ~erstellt werden.
 \subsection{Basisfaktoren}
 \begin{itemize}
 
-\item Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen
-Aufwand eine beliebige gängige Datenabank genutzt werden kann.
+\item Die Schnittstelle zwischen dem Programmcode und der Datenbank soll so gestaltet sein, dass mit einem minimalen Aufwand eine beliebige gängige Datenabank genutzt werden kann.
 
 
 \item
-Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes, sondern wird von den
-Datenbankherstellern oder von Dritten vorgenommen.
+Die Bereitstellung eines JPA Drivers der Datenbank ist dabei nicht mehr im Scope des Projektes, sondern wird von den Datenbankherstellern oder von Dritten vorgenommen.
 
 \item
 Das System muss dem Benutzer die Möglichkeit bieten, in dem GUI ein Einzelevent zu erfassen.
@@ -171,7 +157,7 @@ Die GUI soll Benutzerzentriert und Ergonomisch sein.
 Das Programm soll vorkonfigurierte Dienste nutzen können um anstelle einer Notification  ein IFTTT Event auszulösen.
 
 \item
-Das Programm soll zusätzlich zu den gängigen Computer-Betriebssystemen auch auf Android lauffähig sein.
+Das Programm soll zusätzlich zu den gängigen Computer Betriebssystem auch auf Android lauffähig sein.
 
 
 \item
@@ -193,15 +179,15 @@ Das Programm kann dem Benutzer die Möglichkeit bieten, die Konfiguration über 
 
  %IFTTT
 \subsection{Quellen und Vorgehen}
-Unsere wichtigste Quelle ist unser Auftraggeber Prof. Furrer. Um die Fragen, welche bei der Erstellung der
-Anforderungen aufgetaucht sind zu klären, werden wir uns mit ihm treffen. Besondere folgende Fragen gilt es abzuklären:
+Unsere wichtigste Quelle ist unser Auftraggeber Prof. Furrer. Um die Fragen, welche bei der Erstellung der Anforderungen aufgetaucht sind zu klären, werden wir uns mit ihm treffen.
+Besondere folgende Fragen gilt es abzuklären:
 
 \begin{itemize}
 \item Entspricht die bisherige Ausarbeitung der Vorstellung des Auftraggebers.
-\item Vollständigkeit der Anforderungen.
+\item Vollständigkei der Anforderungen.
 \item Kategoriserung der Anforderungen.
 \item Priorisierung der Anforderungen.
-\item Was soll mit der Eventkategorisierung erreicht werden, welche weiteren Anforderungen ergeben sich daraus.
+\item Was soll mit der Eventkategorisierung erreicht werden, welche wieteren Anforderungen ergeben sich daraus.
 \item Abgrenzung des Programmes gegenüber eines kAlarm, Kalenders und gegenüber des Cronjobs.
 \end{itemize}
 Da unser Auftraggeber als Professor der Informatik tätig ist, ist das Glossar für unseren Auftraggeber obsoloet. Der Vollständigkeihthalber wird es dennoch erstellt. 
@@ -215,24 +201,23 @@ Im Sinne einer agilen Entwicklung wollen wir möglichst rasch präsentierbare Ar
 
 \begin{itemize}
  \item Das Programm muss auf Linux, Windows und OSx lauffähig sein.
- \item Das Programm muss datenbankagnostisch sein.
+ \item Das Programm muss Datenbankagnostisch sein.
  \item Das Programm muss auf dem Buildsystem kompiliert werden können.
- \item Das Programm muss auf dem Referenzsystem ohne weitere installationen kompiliert werden können.
+ \item Das Programm muss auf dem Referenzsystem ohne weitere installationen  kompiliert werden können.
 \end{itemize}
 
 
 
 \subsection{Qualitätsanforderungen}
 \begin{itemize}
-\item 80\% der Benutzer sollen in der Lage sein, ohne vorgänige Schulung, bei der ersten Benutzung, folgende Aktionen
-jeweils innert 5 Minuten nach erfolgtem Programmstart, auszuführen:
+\item 80\% der Benuter sollen in der Lage sein ohne vorgänige Schlung, bei der ersten Benutzung, folgend Aktionen, jeweils innert 5 Minuten nach erfolgtem Programmstart, auszuführen:
 \begin{itemize}
 \item Erstellen eines Events.
 \item Löschen eines vorhandenen Events.
 \item Editieren eines Events (Zeit, Datum, Notificationtext).
 \end{itemize}
 
-\item 60\% der Benutzer solle in der Lage sein, die Konfiguration des Programmes mittels ConfigFiles Vorzunhemen.
+\item 60\% der Benutzer soll in der Lage sein die Konfiguration des Programmes mittels des ConfigFiles Vorzunhemen.
 \end{itemize}
 
 \section{Glossar}
@@ -278,7 +263,7 @@ Durch die Struktur des Unterrichts war es aber so gegeben, dass der Start der En
 
 Hier offenbart sich wohl ein Unterschied zwischen  einem agilen Entwicklungsprozess und dem System Engineering.
 \subsection{Definition of Ready - Checklist}
-Wie bereits erwähnt, passt unser Projekt nicht optimal zur Vorgehensweise, welche wir im Requirements Engineering betrachtet haben. Wir haben mit unserem Betreuer auch keine vollumfängliche Definitino of Ready für die Anforderung ausgearbeitet. Die drei oben erwähnten Qualitätsaspekte haben wir wie beschrieben abgehandelt. 
+Wie bereits erwähnt, passt unser Projekt nicht optimal zur Vorgehensweise, welche wir im Requirements Engineering betrachtet haben. Wir haben mit unserem Betreuer auch keine vollumfängliche Definitino of Ready für die Anforderung ausgearbeitet. Die drei oben erwähnten Qualitätsaspekte haben wir wie beschrieben abgehandelt. Beim Inhlat haben wir die Punkte aufgelistet, 
 \section{Versionskontrolle}
 Manuelle Version: 0.1.0
 \\

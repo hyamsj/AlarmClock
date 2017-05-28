@@ -1,23 +1,5 @@
-blabla
 Tests
 javadoc
-Interfaces anstatt Klasse
-test Maven
-DB
-javaFxNotifier
-FastPoller
-Test Serialize and Deserialize
-poller using Notificaiton.isCandidate(now);
-boolean Notification.isCandiata(date);
-nice poller sleeps until next Notification is Ready
-Enum for Colorscheme
-Enum for Notification Type
-push view from main to view
-LaTeX
-	chapter
-	section
-	subsection
 maven oder ant oder shell script muss nicht maven sein
-k
-
+alert vom selben tag vorzeitig anzeigen. Nicht vom selben monat
 
