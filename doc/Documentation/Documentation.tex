@@ -8,19 +8,17 @@
 \usepackage{lscape}
 \usepackage{listings}
 
-
-
 %must be before gloassary stuff\usepackage{hyperref}
+\usepackage[toc]{glossaries}
 
-
-\makeglossaries
-
+%\makeglossaries
+%\input{glossary/Glossary.tex}
 
 
 % Title Page
-\title{Alarm Clock Dokumentation}
+\title{Alarm Clock }
 \author{Jonathan Hyams \\Pascal Schmalz}
-\titlehead{\centering\includegraphics[width=6cm]{../Requirements/img/clock.png}}
+%\titlehead{\centering\includegraphics[width=6cm]{img/clock.png}}
 
 %Make the Header
 \makeatletter
@@ -29,7 +27,7 @@
 \makeatother
 \rhead{\runauthor}
 \chead{\runtitle}
-\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{../Requirements/img/bfh.png}} \end{picture}}
+%\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{img/bfh.png}} \end{picture}}
 
 
 
@@ -48,15 +46,33 @@
 \pagebreak
 
 \section{Zweck des Dokument}
-Dieses Dokument soll dazu dienen, den Code des Projektes zu erklären für Leute, die sich damit auseinander setzen wollen.
-%makes sure the whole glossary gets printed even when acronyms are not defined
+\section{Architektur}
+\input{Text/Architektur}
+\section{Controller}
+\input{Text/Controller}
+\section{Filtering}
+\input{Text/Filtering}
+\section{Notification}
+\input{Text/Notification}
+\section{Resources}
+\input{Text/Resources}
+\section{Tests}
+\input{Text/Tests}
+\section{Tools}
+\input{Text/Tools}
+\section{Main}
+\input{Text/Main}
 
-\section{Main.java}
-Dies ist die Klasse die die Main methode enthält. Sie erbt von der Klasse Application, da Sie das JavaFX-GUI launched.
-\begin{lstlisting}
-   Parent root = FXMLLoader.load(getClass().getResource(windowName));
-\end{lstlisting}
-windowName ist der Name der fxml Datei (mainWindow.fxml), in der das Aussehen und der Controller definiert wird. "mainWindow.fxml" befindet sich im package "resources".
+\section{Versionskontrolle}
+Manuelle Version: 1.0.0
+\\
+
+\noindent
+Automatische Versionierung:
+%\immediate\write18{../script/versionInfo.sh}
+%\input{../script/version}
+%\immediate\write18{../script/cleanup.sh}
+%\immediate\write18{../script/clean.sh}
 
 
 
