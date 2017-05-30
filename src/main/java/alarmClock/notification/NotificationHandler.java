@@ -3,7 +3,6 @@ package alarmClock.notification;
 import alarmClock.model.Reminder;
 import alarmClock.model.ReminderList;
 import alarmClock.model.filtering.*;
-import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,8 +78,8 @@ public class NotificationHandler {
             if (r.meetsCriteria(criteria))
                 passedReminders.add(r);
         }
-                    if (passedReminders.size() != 0) {
-                        new MultiReminderNotification(passedReminders).send();
-                    }
+        if (passedReminders.size() != 0) {
+            new MultiReminderNotification(passedReminders).send();
+        }
     }
 }

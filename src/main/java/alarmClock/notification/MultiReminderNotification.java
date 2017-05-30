@@ -57,28 +57,28 @@ public class MultiReminderNotification extends JavaFxNotification {
     @Override
     public void send() {
         Platform.runLater(
-                ()->{
+                () -> {
                     String remindersText = "";
-        int i = 0;
-        for (Reminder r : reminders) {
-            remindersText += "Passed Event No " + ++i + ":\n";
-            remindersText += r.toString() + "\n";
-            System.out.print("added" + r.toString());
-        }
-        Stage stage = new Stage();
-        label = new Label(remindersText);
-        Button okButton = new Button("Ok");
-        okButton.setOnAction(e -> {
-            stage.close();
-        });
-        VBox pane = new VBox(10, label, okButton);
-        pane.setAlignment(Pos.CENTER);
-        pane.setPadding(new Insets(10));
-        Scene scene = new Scene(pane);
-        stage.setScene(scene);
-        stage.setTitle("Previously Occured Reminders: ");
-        stage.setResizable(false);
-        stage.show();
+                    int i = 0;
+                    for (Reminder r : reminders) {
+                        remindersText += "Passed Event No " + ++i + ":\n";
+                        remindersText += r.toString() + "\n";
+                        System.out.print("added" + r.toString());
+                    }
+                    Stage stage = new Stage();
+                    label = new Label(remindersText);
+                    Button okButton = new Button("Ok");
+                    okButton.setOnAction(e -> {
+                        stage.close();
+                    });
+                    VBox pane = new VBox(10, label, okButton);
+                    pane.setAlignment(Pos.CENTER);
+                    pane.setPadding(new Insets(10));
+                    Scene scene = new Scene(pane);
+                    stage.setScene(scene);
+                    stage.setTitle("Previously Occured Reminders: ");
+                    stage.setResizable(false);
+                    stage.show();
                 }
         );
 

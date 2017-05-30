@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
  */
 public class IsThisYear implements CriteriaTester {
     /**
-     *
      * @param r reminder that gets tested if its date is this year.
      * @return the answer if the reminder date is this year.
      */

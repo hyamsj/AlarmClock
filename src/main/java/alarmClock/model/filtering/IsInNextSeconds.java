@@ -6,14 +6,14 @@ import java.time.LocalDateTime;
 
 /**
  * Created by pascal on 5/23/17.
- * Decides if a reminder occures in the next seconds
+ * Decides if a reminder occurs in the next seconds
  */
-public class IsInNextSeconds implements  CriteriaTester{
+public class IsInNextSeconds implements CriteriaTester {
     int nextSeconds = 1;
 
     /**
-     *
      * constructor
+     *
      * @param nextSeconds the number of seconds to look ahead.
      */
     public IsInNextSeconds(int nextSeconds) {
@@ -22,7 +22,7 @@ public class IsInNextSeconds implements  CriteriaTester{
 
 
     /**
-     *Default constructor, looks 1 second ahead.
+     * Default constructor, looks 1 second ahead.
      */
     public IsInNextSeconds() {
         setNextSeconds(1);
@@ -30,6 +30,7 @@ public class IsInNextSeconds implements  CriteriaTester{
 
     /**
      * ordinary setter
+     *
      * @param nextSeconds the numbers of seconds to look ahead
      */
     public void setNextSeconds(int nextSeconds) {

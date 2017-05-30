@@ -49,7 +49,6 @@ public class JavaFxNotification implements Notification {
      */
     @Override
     public void send() {
-        System.out.println("boom");
         Platform.runLater(
                 () -> {
                     Stage stage = new Stage();

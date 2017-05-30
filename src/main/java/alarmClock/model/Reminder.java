@@ -28,10 +28,11 @@ public class Reminder implements Serializable {
 
     /**
      * Constructor
+     *
      * @param subject     The subject of the reminder
      * @param description The description of the reminder
      * @param date        The date of the reminder
-    */
+     */
 
     public Reminder(String subject, String description, LocalDateTime date) {
         setSubject(subject);

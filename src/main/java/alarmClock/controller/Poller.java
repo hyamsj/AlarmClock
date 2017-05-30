@@ -1,8 +1,8 @@
 package alarmClock.controller;
 
 import alarmClock.model.BinaryDBAdapter;
-import alarmClock.notification.NotificationHandler;
 import alarmClock.model.ReminderList;
+import alarmClock.notification.NotificationHandler;
 import javafx.collections.ListChangeListener;
 
 /**
@@ -30,6 +30,7 @@ public class Poller implements ListChangeListener {
 
     /**
      * Functions as the constructor
+     *
      * @return this poller.
      */
     public static Poller getInstance() {
@@ -42,8 +43,7 @@ public class Poller implements ListChangeListener {
 
     /**
      * Starts the thread
-     */
-    {
+     */ {
         thread = new Thread(() -> {
             try {
                 while (true) {
@@ -64,6 +64,7 @@ public class Poller implements ListChangeListener {
     /**
      * Wakes up the notificationHandler
      * Requests the notificationHandler to show passed events, only once
+     *
      * @throws Exception
      */
     public void poll() throws Exception {
@@ -77,6 +78,7 @@ public class Poller implements ListChangeListener {
 
     /**
      * Listener that gets called when the data in the reminderList changes
+     *
      * @param c the object that has changed.
      */
     @Override

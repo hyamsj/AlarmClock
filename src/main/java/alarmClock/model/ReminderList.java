@@ -90,6 +90,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * Add a listener to this observable list.
+     *
      * @param listener the listener for listening to the list changes
      */
     @Override
@@ -100,6 +101,7 @@ public class ReminderList implements ObservableList {
     /**
      * Tries to removed a listener from this observable list. If the listener is not
      * attached to this list, nothing happens.
+     *
      * @param listener a listener to remove
      */
     @Override
@@ -109,6 +111,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * A convenient method for var-arg adding of elements.
+     *
      * @param elements the elements to add
      * @return true (as specified by Collection.add(E))
      */
@@ -121,6 +124,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * Clears the ObservableList and add all the elements passed as var-args.
+     *
      * @param elements the elements to set
      * @return true (as specified by Collection.add(E))
      * @throws NullPointerException if the specified arguments contain one or more null elements
@@ -134,6 +138,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * Clears the ObservableList and add all elements from the collection.
+     *
      * @param col the collection with elements that will be added to this observableArrayList
      * @return true (as specified by Collection.add(E))
      * @throws NullPointerException if the specified collection contains one or more null elements
@@ -147,6 +152,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * A convenient method for var-arg usage of retain method.
+     *
      * @param elements the elements to be retained
      * @return true if list changed as a result of this call
      */
@@ -159,6 +165,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * A convenient method for var-arg usage of retain method.
+     *
      * @param elements the elements to be retained
      * @return true if list changed as a result of this call
      */
@@ -172,8 +179,9 @@ public class ReminderList implements ObservableList {
     /**
      * Basically a shortcut to sublist(from, to).clear()
      * As this is a common operation, ObservableList has this method for convenient usage.
+     *
      * @param from the start of the range to remove (inclusive)
-     * @param to the end of the range to remove (exclusive)
+     * @param to   the end of the range to remove (exclusive)
      * @throws IndexOutOfBoundsException if an illegal range is provided
      */
     @Override
@@ -201,12 +209,12 @@ public class ReminderList implements ObservableList {
      *
      * @param o element whose presence in this list is to be tested
      * @return <tt>true</tt> if this list contains the specified element
-     * @throws ClassCastException if the type of the specified element
-     *         is incompatible with this list
-     * (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws ClassCastException   if the type of the specified element
+     *                              is incompatible with this list
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified element is null and this
-     *         list does not permit null elements
-     * (<a href="Collection.html#optional-restrictions">optional</a>)
+     *                              list does not permit null elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     public boolean contains(Object o) {
@@ -238,17 +246,17 @@ public class ReminderList implements ObservableList {
     /**
      * Returns an array containing all of the elements in this list in proper
      * sequence (from first to last element).
-     *
+     * <p>
      * <p>The returned array will be "safe" in that no references to it are
      * maintained by this list.  (In other words, this method must
      * allocate a new array even if this list is backed by an array).
      * The caller is thus free to modify the returned array.
-     *
+     * <p>
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
      * @return an array containing all of the elements in this list in proper
-     *         sequence
+     * sequence
      * @see Arrays#asList(Object[])
      */
     @Override
@@ -257,11 +265,10 @@ public class ReminderList implements ObservableList {
     }
 
 
-
     /**
      * Appends the specified element to the end of this list (optional
      * operation).
-     *
+     * <p>
      * <p>Lists that support this operation may place limitations on what
      * elements may be added to this list.  In particular, some
      * lists will refuse to add null elements, and others will impose
@@ -272,13 +279,13 @@ public class ReminderList implements ObservableList {
      * @param o object to be appended to this list
      * @return <tt>true</tt> (as specified by {@link Collection#add})
      * @throws UnsupportedOperationException if the <tt>add</tt> operation
-     *         is not supported by this list
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this list
-     * @throws NullPointerException if the specified element is null and this
-     *         list does not permit null elements
-     * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being added to this list
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of the specified element
+     *                                       prevents it from being added to this list
+     * @throws NullPointerException          if the specified element is null and this
+     *                                       list does not permit null elements
+     * @throws IllegalArgumentException      if some property of this element
+     *                                       prevents it from being added to this list
      */
     @Override
     public boolean add(Object o) {
@@ -299,14 +306,14 @@ public class ReminderList implements ObservableList {
      *
      * @param o element to be removed from this list, if present
      * @return <tt>true</tt> if this list contained the specified element
-     * @throws ClassCastException if the type of the specified element
-     *         is incompatible with this list
-     * (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *         list does not permit null elements
-     * (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws ClassCastException            if the type of the specified element
+     *                                       is incompatible with this list
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException          if the specified element is null and this
+     *                                       list does not permit null elements
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
      * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-     *         is not supported by this list
+     *                                       is not supported by this list
      */
     @Override
     public boolean remove(Object o) {
@@ -318,6 +325,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * A convenient method for var-arg adding of elements.
+     *
      * @param c the elements to add
      * @return true (as specified by Collection.add(E))
      */
@@ -330,6 +338,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * TODO JAVADOC
+     *
      * @param index
      * @param c
      * @return
@@ -346,7 +355,7 @@ public class ReminderList implements ObservableList {
      * The list will be empty after this call returns.
      *
      * @throws UnsupportedOperationException if the <tt>clear</tt> operation
-     *         is not supported by this list
+     *                                       is not supported by this list
      */
     @Override
     public void clear() {
@@ -356,6 +365,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * TODO JAVADOC
+     *
      * @return
      */
     public ArrayList<Reminder> getSerializable() {
@@ -374,7 +384,7 @@ public class ReminderList implements ObservableList {
      * @param index index of the element to return
      * @return the element at the specified position in this list
      * @throws IndexOutOfBoundsException if the index is out of range
-     *         (<tt>index &lt; 0 || index &gt;= size()</tt>)
+     *                                   (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
     @Override
     public Object get(int index) {
@@ -385,19 +395,19 @@ public class ReminderList implements ObservableList {
      * Replaces the element at the specified position in this list with the
      * specified element (optional operation).
      *
-     * @param index index of the element to replace
+     * @param index   index of the element to replace
      * @param element element to be stored at the specified position
      * @return the element previously at the specified position
      * @throws UnsupportedOperationException if the <tt>set</tt> operation
-     *         is not supported by this list
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this list
-     * @throws NullPointerException if the specified element is null and
-     *         this list does not permit null elements
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *         (<tt>index &lt; 0 || index &gt;= size()</tt>)
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of the specified element
+     *                                       prevents it from being added to this list
+     * @throws NullPointerException          if the specified element is null and
+     *                                       this list does not permit null elements
+     * @throws IllegalArgumentException      if some property of the specified
+     *                                       element prevents it from being added to this list
+     * @throws IndexOutOfBoundsException     if the index is out of range
+     *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
      */
     @Override
     public Object set(int index, Object element) {
@@ -412,18 +422,18 @@ public class ReminderList implements ObservableList {
      * (if any) and any subsequent elements to the right (adds one to their
      * indices).
      *
-     * @param index index at which the specified element is to be inserted
+     * @param index   index at which the specified element is to be inserted
      * @param element element to be inserted
      * @throws UnsupportedOperationException if the <tt>add</tt> operation
-     *         is not supported by this list
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being added to this list
-     * @throws NullPointerException if the specified element is null and
-     *         this list does not permit null elements
-     * @throws IllegalArgumentException if some property of the specified
-     *         element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *         (<tt>index &lt; 0 || index &gt; size()</tt>)
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of the specified element
+     *                                       prevents it from being added to this list
+     * @throws NullPointerException          if the specified element is null and
+     *                                       this list does not permit null elements
+     * @throws IllegalArgumentException      if some property of the specified
+     *                                       element prevents it from being added to this list
+     * @throws IndexOutOfBoundsException     if the index is out of range
+     *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
     @Override
     public void add(int index, Object element) {
@@ -507,6 +517,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * Add a listener to this observable list.
+     *
      * @param listener the listener for listening to the list changes
      */
     @Override
@@ -517,6 +528,7 @@ public class ReminderList implements ObservableList {
     /**
      * Tries to removed a listener from this observable list. If the listener is not
      * attached to this list, nothing happens.
+     *
      * @param listener a listener to remove
      */
     @Override

@@ -13,6 +13,7 @@ public class IsInNextMin implements CriteriaTester {
 
     /**
      * constructor
+     *
      * @param nextMinutes the number of Minutes the filter looks ahead
      */
     public IsInNextMin(int nextMinutes) {
@@ -28,6 +29,7 @@ public class IsInNextMin implements CriteriaTester {
 
     /**
      * ordinary setter
+     *
      * @param nextMinutes the number of minutes to look ahead
      */
     public void setNextMinutes(int nextMinutes) {
@@ -35,7 +37,6 @@ public class IsInNextMin implements CriteriaTester {
     }
 
     /**
-     *
      * @param r the Reminder that gets tested if its date is in the next Minutes
      * @return the Answer if the reminder date is in the next x Minutes
      */

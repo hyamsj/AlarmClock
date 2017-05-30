@@ -39,7 +39,7 @@ public class Controller implements Initializable {
 
     /**
      * Handles addButton clicked event. Empties the fields after the button ist pressed
-     * Adds a reminder to the reminderlist, which is located in the model
+     * Adds a reminder to the reminderList, which is located in the model
      */
     @FXML
     public void addButtonPressed() {
@@ -71,7 +71,7 @@ public class Controller implements Initializable {
      * Serves as the constructor. Is called before the JavaFX components are created.
      * Doing this in the constructor would not work, as JavaFX components are loaded afterwards
      *
-     * @param location is not used. Requested by JavaFX
+     * @param location  is not used. Requested by JavaFX
      * @param resources is not used. Requested by JavaFX
      */
     @Override

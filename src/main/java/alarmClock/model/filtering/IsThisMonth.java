@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
  */
 public class IsThisMonth implements CriteriaTester {
     /**
-     *
      * @param r reminder that gets tested if its date is this month.
      * @return the Answer if the reminder date is this month.
      */

@@ -14,9 +14,10 @@ public class SpecificReminder extends Reminder {
 
     /**
      * Normal constructor of specificReminder
-     * @param subject subject of the reminder
+     *
+     * @param subject     subject of the reminder
      * @param description description of the reminder
-     * @param date date of the reminder
+     * @param date        date of the reminder
      */
     public SpecificReminder(String subject, String description, LocalDateTime date) {
         super(subject, description, date);
@@ -24,10 +25,11 @@ public class SpecificReminder extends Reminder {
 
     /**
      * Constructor with a set of tags
-     * @param subject subject of the reminder
+     *
+     * @param subject     subject of the reminder
      * @param description description of the reminder
-     * @param date date of the reminder
-     * @param tags set of tage of the reminder
+     * @param date        date of the reminder
+     * @param tags        set of tage of the reminder
      */
     public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags) {
         super(subject, description, date, tags);
@@ -35,10 +37,11 @@ public class SpecificReminder extends Reminder {
 
     /**
      * Constructor with a set of tags and notifications
-     * @param subject subject of the reminder
-     * @param description description of the reminder
-     * @param date date of the reminder
-     * @param tags tags of the reminder
+     *
+     * @param subject       subject of the reminder
+     * @param description   description of the reminder
+     * @param date          date of the reminder
+     * @param tags          tags of the reminder
      * @param notifications notifications of the reminder
      */
     public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags, Set<Notification> notifications) {
@@ -48,6 +51,7 @@ public class SpecificReminder extends Reminder {
 
     /**
      * Add a notification to the reminder
+     *
      * @param n notification to be added to the reminder
      */
     public void addNotification(Notification n) {
@@ -56,6 +60,7 @@ public class SpecificReminder extends Reminder {
 
     /**
      * Removes the Notification from the reminder
+     *
      * @param n notification to be removed from the reminder
      */
     public void removeNotification(Notification n) {

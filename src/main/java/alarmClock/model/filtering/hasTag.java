@@ -12,15 +12,15 @@ public class hasTag implements CriteriaTester {
 
     /**
      * constructor, that takes the tag to test against as
-     * @param  tag a String that represents the tag you want to filter by
+     *
+     * @param tag a String that represents the tag you want to filter by
      */
     public hasTag(String tag) {
         this.tag = tag;
     }
 
     /**
-     *
-     * @param  r The Remeinder that gets tested.
+     * @param r The Reminder that gets tested.
      * @return the Answer if the Reminder r has the tag that was specified in the constructor.
      */
     @Override

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class IsToday implements CriteriaTester {
 
     /**
-     *
      * @param r reminder that gets tested if its date is today.
      * @return the answer if the reminder is today.
      */
