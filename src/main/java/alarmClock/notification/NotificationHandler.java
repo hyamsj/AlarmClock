@@ -80,13 +80,8 @@ public class NotificationHandler {
             if (r.meetsCriteria(criteria))
                 passedReminders.add(r);
         }
-        Platform.runLater(
-                () -> {
-                    //r.notifyIf(criteria);
                     if (passedReminders.size() != 0) {
                         new MultiReminderNotification(passedReminders).send();
                     }
-                }
-        );
     }
 }

@@ -1,6 +1,7 @@
 package alarmClock.notification;
 
 import alarmClock.model.Reminder;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -55,7 +56,9 @@ public class MultiReminderNotification extends JavaFxNotification {
      */
     @Override
     public void send() {
-        String remindersText = "";
+        Platform.runLater(
+                ()->{
+                    String remindersText = "";
         int i = 0;
         for (Reminder r : reminders) {
             remindersText += "Passed Event No " + ++i + ":\n";
@@ -76,6 +79,9 @@ public class MultiReminderNotification extends JavaFxNotification {
         stage.setTitle("Previously Occured Reminders: ");
         stage.setResizable(false);
         stage.show();
+                }
+        );
+
     }
 
 }
