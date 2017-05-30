@@ -1,0 +1,67 @@
+%\documentclass[a4paper,10pt]{report}
+\documentclass[11pt,titelpage]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{fancyref}
+\usepackage{lscape}
+\usepackage{listings}
+
+
+
+%must be before gloassary stuff\usepackage{hyperref}
+
+
+\makeglossaries
+
+
+
+% Title Page
+\title{Alarm Clock Dokumentation}
+\author{Jonathan Hyams \\Pascal Schmalz}
+\titlehead{\centering\includegraphics[width=6cm]{../Requirements/img/clock.png}}
+
+%Make the Header
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
+\rhead{\runauthor}
+\chead{\runtitle}
+\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{../Requirements/img/bfh.png}} \end{picture}}
+
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\maketitle
+\pagebreak
+\tableofcontents
+
+\pagestyle{fancy}
+
+
+\begin{abstract}
+\end{abstract}
+\pagebreak
+
+\section{Zweck des Dokument}
+Dieses Dokument soll dazu dienen, den Code des Projektes zu erklären für Leute, die sich damit auseinander setzen wollen.
+%makes sure the whole glossary gets printed even when acronyms are not defined
+
+\section{Main.java}
+Dies ist die Klasse die die Main methode enthält. Sie erbt von der Klasse Application, da Sie das JavaFX-GUI launched.
+\begin{lstlisting}
+   Parent root = FXMLLoader.load(getClass().getResource(windowName));
+\end{lstlisting}
+windowName ist der Name der fxml Datei (mainWindow.fxml), in der das Aussehen und der Controller definiert wird. "mainWindow.fxml" befindet sich im package "resources".
+
+
+
+
+
+
+
+\end{document}
