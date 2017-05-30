@@ -265,21 +265,12 @@ public class Reminder implements Serializable {
 
         for (Notification n : notificationTypes) {
             if (n instanceof JavaFxNotification) {
-                System.out.println("before Platform run later");
-                System.out.println("running later");
                 JavaFxNotification alert = new JavaFxNotification(this);
-                System.out.println("created JavaFxNotification");
                 alert.setReminder(this);
-                System.out.println("JavaFxNotification added reminder");
-                //Platform.runLater(() -> {
                 alert.send();
-                System.out.println("sent notification");
-                //});
             } else {
-            /*
             n.setReminder(this);
             n.send();
-            */
             }
 
         }
