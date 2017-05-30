@@ -37,8 +37,8 @@ public class NotificationHandler {
             Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(), new hasTag(tag));
             if (!notifiedReminders.contains(r)) {
 
-                            boolean success = r.notifyIf(importantStuffThisMonth);
-                            if (success) notifiedReminders.add(r);
+                boolean success = r.notifyIf(importantStuffThisMonth);
+                if (success) notifiedReminders.add(r);
 
             }
 
@@ -46,9 +46,8 @@ public class NotificationHandler {
             Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
             if (!notifiedRemindersImminent.contains(r)) {
 
-                            boolean success = r.notifyIf(imminent);
-                            if (success) notifiedRemindersImminent.add(r);
-
+                boolean success = r.notifyIf(imminent);
+                if (success) notifiedRemindersImminent.add(r);
 
 
             }

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Created by pascal on 5/17/17.
- * This is the central place to configure the behavior of the Application. Instead of Hardcoding the boolean values.
- * It was planed to read a config File and set the boolean values according to the config File.
+ * This is the central place to configure the behavior of the application. Instead of hardcoding the boolean values.
+ * It was planned to read a config file and set the boolean values according to the config File.
  */
 public class ConfigReader {
 
@@ -20,7 +20,7 @@ public class ConfigReader {
     private boolean enableRemindersThisMonth = true; //TODO is this still here?
 
     /**
-     * @return the List with the notification types that are used to notify the user
+     * @return the list with the notification types that are used to notify the user
      */
     public ArrayList<Notification> getNotificationTypes() {
         ArrayList<Notification> notificationTypes = new ArrayList<>();
@@ -39,8 +39,9 @@ public class ConfigReader {
     }
 
     /**
-     * Returns the name of the ColorScheme
-     * @return the name of the ColorScheme
+     * Returns the name of the colorScheme
+     *
+     * @return the name of the colorScheme
      */
     public String getColorScheme() {
         return "nightmode";
@@ -48,7 +49,8 @@ public class ConfigReader {
 
 
     /**
-     * Getter to check if PastReminders are enabled
+     * Getter to check if pastReminders are enabled
+     *
      * @return true if it is enabled
      */
     public boolean isEnablePastReminders() {
@@ -56,7 +58,8 @@ public class ConfigReader {
     }
 
     /**
-     * Getter to check if ImminentReminders are enabled
+     * Getter to check if imminentReminders are enabled
+     *
      * @return true if it is enabled
      */
     public boolean isEnableImminentReminders() {
@@ -64,7 +67,8 @@ public class ConfigReader {
     }
 
     /**
-     * Getter to check if Reminders this month are enabled
+     * Getter to check if reminders this month are enabled
+     *
      * @return true if it is enabled
      */
     public boolean isEnableRemindersThisMonth() {
@@ -73,6 +77,7 @@ public class ConfigReader {
 
     /**
      * Getter to check if darkMode is enabled
+     *
      * @return true if it is enabled
      */
     public boolean isEnableDarkMode() {

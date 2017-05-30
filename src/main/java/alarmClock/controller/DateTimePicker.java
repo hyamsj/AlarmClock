@@ -75,7 +75,7 @@ public class DateTimePicker extends DatePicker {
 
     /**
      * Gets the DateTimeValue
-     * @return
+     * @return tje dateTimeValue
      */
     public LocalDateTime getDateTimeValue() {
         return dateTimeValue.get();
@@ -83,7 +83,7 @@ public class DateTimePicker extends DatePicker {
 
     /**
      * Sets the DateTimeValue
-     * @param dateTimeValue
+     * @param dateTimeValue the dateTimeValue (LocalDateTime.class)
      */
     public void setDateTimeValue(LocalDateTime dateTimeValue) {
         this.dateTimeValue.set(dateTimeValue);
@@ -91,7 +91,7 @@ public class DateTimePicker extends DatePicker {
 
     /**
      * Returns the dateTimeValueProperty
-     * @return
+     * @return dateTimeValueProperty
      */
     public ObjectProperty<LocalDateTime> dateTimeValueProperty() {
         return dateTimeValue;
@@ -99,7 +99,7 @@ public class DateTimePicker extends DatePicker {
 
     /**
      * Returns the format (eg. dd-MM-yyyy HH:mm)
-     * @return
+     * @return format
      */
     public String getFormat() {
         return format.get();
@@ -107,7 +107,7 @@ public class DateTimePicker extends DatePicker {
 
     /**
      * Returns the formatProperty
-     * @return
+     * @return formatProperty
      */
     public ObjectProperty<String> formatProperty() {
         return format;

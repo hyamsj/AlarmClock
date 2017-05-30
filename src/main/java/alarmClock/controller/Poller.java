@@ -8,23 +8,30 @@ import javafx.collections.ListChangeListener;
 /**
  * Created by pascal on 5/3/17.
  * Is a Singelton
- * Tests regularly if a Reminder has to send a notification.
- *
+ * Tests regularly if a Reminder has to send a notification
  */
 public class Poller implements ListChangeListener {
-    public static final int EARLY_ALERT_TIME = 5; // minutes
     private static Poller instance = null;
     private ReminderList reminders;
-    private Thread one;
-    private int delay = 1000;
+    private Thread thread;
+    private final int DELAY = 1000; // time between every poll
     private NotificationHandler notificationHandler;
 
+    /**
+     * Constructor. Is private because it follows the singleton pattern.
+     * Starts the thread, loads the data from the DB.
+     * Initializes the notification handler
+     */
     private Poller() {
         this.reminders = new BinaryDBAdapter().load();
         notificationHandler = new NotificationHandler(reminders);
-        one.start();
+        thread.start();
     }
 
+    /**
+     * Functions as the constructor
+     * @return this poller.
+     */
     public static Poller getInstance() {
         if (instance == null) {
             instance = new Poller();
@@ -33,11 +40,14 @@ public class Poller implements ListChangeListener {
     }
 
 
+    /**
+     * Starts the thread
+     */
     {
-        one = new Thread(() -> {
+        thread = new Thread(() -> {
             try {
                 while (true) {
-                    Thread.sleep(delay);
+                    Thread.sleep(DELAY);
                     poll();
                 }
             } catch (InterruptedException v) {
@@ -51,6 +61,11 @@ public class Poller implements ListChangeListener {
 
     private boolean notedPassed = false;
 
+    /**
+     * Wakes up the notificationHandler
+     * Requests the notificationHandler to show passed events, only once
+     * @throws Exception
+     */
     public void poll() throws Exception {
         notificationHandler.handle();
         if (!notedPassed) {
@@ -60,9 +75,12 @@ public class Poller implements ListChangeListener {
     }
 
 
+    /**
+     * Listener that gets called when the data in the reminderList changes
+     * @param c the object that has changed.
+     */
     @Override
     public void onChanged(Change c) {
-        System.out.println("Poller got notified about change");
         this.reminders = new BinaryDBAdapter().load();
         notificationHandler.setReminders(reminders);
     }

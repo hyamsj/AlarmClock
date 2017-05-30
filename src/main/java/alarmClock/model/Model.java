@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * Created by joni on 25/03/17.
+ * Handles usage of the data. Data in this case would be the reminders
  */
 public class Model implements Serializable {
     private ReminderList reminders; // list with all reminders
@@ -26,6 +27,7 @@ public class Model implements Serializable {
 
     /**
      * Adds a new reminder to our reminderList
+     *
      * @param reminder the reminder to be added to the list
      */
     public void addReminder(Reminder reminder) {
@@ -34,6 +36,7 @@ public class Model implements Serializable {
 
     /**
      * Returns the list with all reminders
+     *
      * @return list with all reminders
      */
     public ObservableList<Reminder> getReminders() {
@@ -69,6 +72,7 @@ public class Model implements Serializable {
 
     /**
      * Removes all reminders that have been selected
+     *
      * @param remindersSelected the selected reminders
      */
     public void removeReminders(ReminderList remindersSelected) {
@@ -77,6 +81,7 @@ public class Model implements Serializable {
 
     /**
      * Removes the reminder that have been selected
+     *
      * @param reminder the selected reminder
      */
     public void removeReminder(Reminder reminder) {

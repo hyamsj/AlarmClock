@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Created by pascal on 5/6/17.
+ * Loads and saves the Reminder to the Database
  */
 public class BinaryDBAdapter implements DataBaseAdapter {
     ReminderList reminders;
@@ -15,6 +16,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
 
     /**
      * Loads data from the database
+     *
      * @return a list with all reminders
      */
     @Override
@@ -45,6 +47,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
 
     /**
      * Saves the database and overwrites the old one
+     *
      * @param reminders all reminder that will be saved
      */
     @Override

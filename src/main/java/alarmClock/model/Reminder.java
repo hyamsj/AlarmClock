@@ -1,8 +1,8 @@
 package alarmClock.model;
 
+import alarmClock.model.filtering.CriteriaTester;
 import alarmClock.notification.JavaFxNotification;
 import alarmClock.notification.Notification;
-import alarmClock.model.filtering.CriteriaTester;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -11,10 +11,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
-//import java.util.Set;
+
 
 /**
  * Created by joni on 24/03/17.
+ * The heart of the program. Everything uses reminder objects.
+ * Reminders store the data such as subject, description, date
  */
 public class Reminder implements Serializable {
 
@@ -26,6 +28,7 @@ public class Reminder implements Serializable {
 
     /**
      * Constructor
+     *
      * @param subject
      * @param description
      * @param date
@@ -38,10 +41,11 @@ public class Reminder implements Serializable {
 
     /**
      * Constructor with tags
-     * @param subject The subject of the reminder
+     *
+     * @param subject     The subject of the reminder
      * @param description The description of the reminder
-     * @param date The date of the reminder
-     * @param tags The tags of the reminder
+     * @param date        The date of the reminder
+     * @param tags        The tags of the reminder
      */
     public Reminder(String subject, String description, LocalDateTime date, Set<String> tags) {
         setSubject(subject);
@@ -52,6 +56,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the tags of the reminder
+     *
      * @return the tags of the reminder
      */
     public Collection<String> getTags() {
@@ -60,6 +65,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the tags property of the reminder
+     *
      * @return the tag property of the reminder
      */
     public SimpleObjectProperty<Collection<String>> getTagsProperty() {
@@ -68,6 +74,7 @@ public class Reminder implements Serializable {
 
     /**
      * Sets the tags of the reminder
+     *
      * @param tags The tags of the reminder
      */
     public void setTags(Collection<String> tags) {
@@ -76,6 +83,7 @@ public class Reminder implements Serializable {
 
     /**
      * Adds a tag to the reminder
+     *
      * @param tag Adds the tag of the reminder
      */
     public void addTag(String tag) {
@@ -84,6 +92,7 @@ public class Reminder implements Serializable {
 
     /**
      * Removes tag from the reminder
+     *
      * @param tag The tag that should get removed
      */
     public void removeTag(String tag) {
@@ -92,6 +101,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the subject of the reminder
+     *
      * @return The subject of the reminder
      */
     public String getSubject() {
@@ -100,6 +110,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the subjectProperty
+     *
      * @return The subjectProperty
      */
     public SimpleStringProperty getSubjectProperty() {
@@ -108,6 +119,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the description of the reminder
+     *
      * @return the description of the reminder
      */
     public String getDescription() {
@@ -116,6 +128,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the descriptionProperty of the reminder
+     *
      * @return the descriptionProperty of the reminder
      */
     public SimpleStringProperty getDescriptionProperty() {
@@ -124,6 +137,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the date of the reminder
+     *
      * @return the date of the reminder
      */
     public LocalDateTime getDate() {
@@ -132,6 +146,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns the dateProperty of the Reminder
+     *
      * @return the dateProperty of the Reminder
      */
     public SimpleObjectProperty<LocalDateTime> getDateProperty() {
@@ -140,6 +155,7 @@ public class Reminder implements Serializable {
 
     /**
      * Sets the subject of the reminder
+     *
      * @param subject the subject that the reminder should have
      */
     private void setSubject(String subject) {
@@ -148,6 +164,7 @@ public class Reminder implements Serializable {
 
     /**
      * Sets the description of the reminder
+     *
      * @param description the description that the reminder should have
      */
     private void setDescription(String description) {
@@ -156,6 +173,7 @@ public class Reminder implements Serializable {
 
     /**
      * Sets the date of the reminder
+     *
      * @param date the date that the reminder should have
      */
     private void setDate(LocalDateTime date) {
@@ -164,6 +182,7 @@ public class Reminder implements Serializable {
 
     /**
      * Equals method
+     *
      * @param o any object
      * @return true if they are the same, false if they are not
      */
@@ -186,6 +205,7 @@ public class Reminder implements Serializable {
 
     /**
      * Creates hashes of the reminder object
+     *
      * @return the hash of the reminder object
      */
     @Override
@@ -200,6 +220,7 @@ public class Reminder implements Serializable {
 
     /**
      * Intended for debugging
+     *
      * @return the String value of this reminder object
      */
     @Override
@@ -214,6 +235,7 @@ public class Reminder implements Serializable {
 
     /**
      * Returns true if the criteria is fulfilled
+     *
      * @param criteria of the reminder
      * @return boolean
      */
@@ -228,6 +250,7 @@ public class Reminder implements Serializable {
     /**
      * Loops through all criteria checks if any are fulfilled. Only returns true if all are fulfilled.
      * If all are fulfilled, doNotify gets called
+     *
      * @param criterias List of criterias for the reminder
      * @return boolean, returns true only if all are fulfilled
      */
@@ -244,6 +267,7 @@ public class Reminder implements Serializable {
 
     /**
      * Loops through all criteria checks if any are fulfilled. Only returns true if all are fulfilled.
+     *
      * @param criterias List of criterias for the reminder
      * @return boolean, returns true only if all are fulfilled
      */
@@ -269,8 +293,8 @@ public class Reminder implements Serializable {
                 alert.setReminder(this);
                 alert.send();
             } else {
-            n.setReminder(this);
-            n.send();
+                n.setReminder(this);
+                n.send();
             }
 
         }

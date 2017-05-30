@@ -17,6 +17,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The Controller according to the MVC Pattern. It gets the FXML objects from the mainWindow.fxml
+ */
 public class Controller implements Initializable {
     @FXML
     private TableView<Reminder> reminderTable;
@@ -35,7 +38,8 @@ public class Controller implements Initializable {
     private LocalDateTime date;
 
     /**
-     * Handles addButton clicked event.
+     * Handles addButton clicked event. Empties the fields after the button ist pressed
+     * Adds a reminder to the reminderlist, which is located in the model
      */
     @FXML
     public void addButtonPressed() {
@@ -54,6 +58,7 @@ public class Controller implements Initializable {
     /**
      * Handles removeButton clicked event.
      * Allows multiple items in the table to be selected and removed at the same time
+     * Removes reminder from the reminder list
      */
     @FXML
     public void rmButtonPressed() {
@@ -63,15 +68,15 @@ public class Controller implements Initializable {
     }
 
     /**
-     * Serves as the constructor. Is called before the JavaFX components are created
+     * Serves as the constructor. Is called before the JavaFX components are created.
+     * Doing this in the constructor would not work, as JavaFX components are loaded afterwards
      *
-     * @param location is not used
-     * @param resources is not used
+     * @param location is not used. Requested by JavaFX
+     * @param resources is not used. Requested by JavaFX
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // TODO
         reminderTable.setEditable(true);
 
         //Binding for disabling addButton if input is invalid
