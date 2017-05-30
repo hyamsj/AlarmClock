@@ -9,12 +9,19 @@ import java.util.*;
 
 /**
  * Created by pascal on 5/8/17.
+ * List of Reminders who is observable has the ground ground funcionality, that can be used to implement undo /redo.
+ * this is basically a Wrapper around the observable reminders list.
  */
 public class ReminderList implements ObservableList {
     ObservableList reminders;
     private Stack<ObservableList> history;
     private Stack<ObservableList> undoneHistory;
 
+    /**
+     * constructor
+     * initialises the history and undo history that are used for the undo /redo.
+     * initialises  the Reminderlist.
+     */
     public ReminderList() {
         history = new Stack<>();
         undoneHistory = new Stack<>();
@@ -26,13 +33,24 @@ public class ReminderList implements ObservableList {
         this.reminders = r;
     }
     */
+
+
+    /**
+     * constructor
+     * initialises the history and undo history that are used for the undo /redo.
+     * initialises  the Reminderlist.
+     * @param r takes a list of Observable reminders. to wrap this ReminderList around it.
+     */
+
     public ReminderList(ObservableList<Reminder> r) {
-        // makes reminders not removable reminders = FXCollections.observableArrayList();
         this.reminders = r;
         history = new Stack<>();
         undoneHistory = new Stack<>();
     }
 
+    /**
+     * pushes the current state to the history every time ReminderList is changed.
+     */
     private void pushState() {
         ObservableList<Reminder> old = FXCollections.observableArrayList();
         old = reminders;
@@ -48,6 +66,10 @@ public class ReminderList implements ObservableList {
 
     }
 
+    /**
+     * pops the last state to enable the undo function.
+     * @return  a observable list of reminders, who represents the last state.
+     */
     private ObservableList popState() {
         ObservableList<Reminder> newReminder = FXCollections.observableArrayList();
         if (history.peek() != null) {
@@ -68,6 +90,9 @@ public class ReminderList implements ObservableList {
         }
     }
 
+    /**
+     * the undo functionality, that resets the state of the wrapped reminderlist to the the last state.
+     */
     public void undo() {
             /*
         System.out.println("Reminder.undo() is called");
@@ -78,6 +103,9 @@ public class ReminderList implements ObservableList {
             */
     }
 
+    /**
+     * the redo function that resets the undo operation.
+     */
     public void redo() {
         if (undoneHistory.peek() != null) {
             //ObservableList rs = undoneHistory.pop();
@@ -86,6 +114,7 @@ public class ReminderList implements ObservableList {
             this.reminders = rs;
         }
     }
+
 
 
     /**
@@ -441,6 +470,11 @@ public class ReminderList implements ObservableList {
         pushState();
     }
 
+    /**
+     * remove method to remove reminders from thw wrapped reminder list.
+     * @param index to the Reminder that will be removed.
+     * @return Rerminder that was at the index.
+     */
     @Override
     public Object remove(int index) {
         Object o = reminders.remove(index);
@@ -448,11 +482,44 @@ public class ReminderList implements ObservableList {
         return o;
     }
 
+    /**
+     *
+     * @param o Reminder forom which the index is returned.
+     * @return an int that is the index of the passed reminder.
+     */
     @Override
     public int indexOf(Object o) {
         return reminders.indexOf(o);
     }
 
+
+     /** From String Javadoc:
+     * Returns the index within this string of the last occurrence of
+     * the specified character. For values of {@code ch} in the
+     * range from 0 to 0xFFFF (inclusive), the index (in Unicode code
+     * units) returned is the largest value <i>k</i> such that:
+     * <blockquote><pre>
+     * this.charAt(<i>k</i>) == ch
+     * </pre></blockquote>
+     * is true. For other values of {@code ch}, it is the
+     * largest value <i>k</i> such that:
+     * <blockquote><pre>
+     * this.codePointAt(<i>k</i>) == ch
+     * </pre></blockquote>
+     * is true.  In either case, if no such character occurs in this
+     * string, then {@code -1} is returned.  The
+     * {@code String} is searched backwards starting at the last
+     * character.
+     *
+     * @param   ch   a character (Unicode code point).
+     * @return  the index of the last occurrence of the character in the
+     *          character sequence represented by this object, or
+     *          {@code -1} if the character does not occur.
+    /**
+     *
+     * @param o O
+     * @return
+     */
     @Override
     public int lastIndexOf(Object o) {
         return reminders.lastIndexOf(o);
