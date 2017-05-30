@@ -51,7 +51,7 @@ public class Poller implements ListChangeListener {
                     poll();
                 }
             } catch (InterruptedException v) {
-                System.out.println(v);
+                v.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }

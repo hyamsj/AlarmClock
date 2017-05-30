@@ -40,7 +40,6 @@ public class Model implements Serializable {
      * @return list with all reminders
      */
     public ObservableList<Reminder> getReminders() {
-        //TODO return only a copy of reminders instead of a reference
         return reminders;
     }
 
@@ -50,7 +49,6 @@ public class Model implements Serializable {
      */
     public void bindData() {
         reminders.addListener((Observable obs) -> {
-            System.out.println("something changed");
             adapter.save(reminders);
         });
         reminders.addListener(Poller.getInstance()::onChanged);

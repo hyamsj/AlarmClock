@@ -13,41 +13,46 @@ import javafx.stage.Stage;
 import java.util.Collection;
 
 /**
- * Created by pascal on 5/17/17.
+ * Created by pascal on 5/17/17. Popup that shows all Reminders that have already occured
  */
-//Does not need to extend JavaFxNotification
+
 public class MultiReminderNotification extends JavaFxNotification {
 
     private Collection<Reminder> reminders;
     private Label label;
 
     /**
-     *
+     * Empty constructor
      */
-//    public MultiReminderNotification() {
-//        super();
-//    }
+    public MultiReminderNotification() {
+        super();
+    }
 
     /**
-     * @param reminders
+     * Constructor that gets the list of all reminders
+     *
+     * @param reminders the list containing all reminders
      */
     public MultiReminderNotification(Collection<Reminder> reminders) {
         this.reminders = reminders;
     }
 
     /**
-     * @param reminders
+     * Setter for the remindersList
+     *
+     * @param reminders the list containing all reminders
      */
     public void setReminders(Collection<Reminder> reminders) {
         this.reminders = reminders;
     }
 
     /**
-     * @param reminder
+     * Adds a reminder to the remindersList
+     *
+     * @param reminder the reminder to be added to the list
      */
     @Override
     public void setReminder(Reminder reminder) {
-        //TODO dirty hack
         this.reminders.add(reminder);
     }
 
