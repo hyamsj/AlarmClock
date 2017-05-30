@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * Created by joni on 24/03/17.
  * The heart of the program. Everything uses reminder objects.
- * Reminders store the data such as subject, description, date
+ * Reminders store the data such as subject, description, date and optionally tags.
  */
 public class Reminder implements Serializable {
 
@@ -28,11 +28,11 @@ public class Reminder implements Serializable {
 
     /**
      * Constructor
-     *
-     * @param subject
-     * @param description
-     * @param date
-     */
+     * @param subject     The subject of the reminder
+     * @param description The description of the reminder
+     * @param date        The date of the reminder
+    */
+
     public Reminder(String subject, String description, LocalDateTime date) {
         setSubject(subject);
         setDescription(description);
@@ -57,14 +57,14 @@ public class Reminder implements Serializable {
     /**
      * Returns the tags of the reminder
      *
-     * @return the tags of the reminder
+     * @return a Collection with the  tags of the reminder
      */
     public Collection<String> getTags() {
         return tags;
     }
 
     /**
-     * Returns the tags property of the reminder
+     * Returns the tags property of the reminder, this is required by JavaFx
      *
      * @return the tag property of the reminder
      */
@@ -109,7 +109,7 @@ public class Reminder implements Serializable {
     }
 
     /**
-     * Returns the subjectProperty
+     * Returns the subjectProperty, is required by JavaFx
      *
      * @return The subjectProperty
      */
@@ -127,7 +127,7 @@ public class Reminder implements Serializable {
     }
 
     /**
-     * Returns the descriptionProperty of the reminder
+     * Returns the descriptionProperty of the reminder, is required by JavaFx
      *
      * @return the descriptionProperty of the reminder
      */
@@ -145,7 +145,7 @@ public class Reminder implements Serializable {
     }
 
     /**
-     * Returns the dateProperty of the Reminder
+     * Returns the dateProperty of the Reminder, is required by
      *
      * @return the dateProperty of the Reminder
      */

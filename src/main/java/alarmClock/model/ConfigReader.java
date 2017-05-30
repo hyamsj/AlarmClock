@@ -17,7 +17,7 @@ public class ConfigReader {
     private boolean enableDarkMode = true;
     private boolean enablePastReminders = true;
     private boolean enableImminentReminders = true;
-    private boolean enableRemindersThisMonth = true; //TODO is this still here?
+    private boolean enableRemindersThisMonth = true;
 
     /**
      * @return the list with the notification types that are used to notify the user
