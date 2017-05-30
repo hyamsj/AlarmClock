@@ -3,6 +3,7 @@ package alarmClock.notification;
 import alarmClock.model.Reminder;
 import alarmClock.model.ReminderList;
 import alarmClock.model.filtering.*;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,18 +36,17 @@ public class NotificationHandler {
             r.addTag(tag);
             Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(), new hasTag(tag));
             if (!notifiedReminders.contains(r)) {
-
-                boolean success = r.notifyIf(importantStuffThisMonth);
-                if (success) notifiedReminders.add(r);
-
+                            boolean success = r.notifyIf(importantStuffThisMonth);
+                            if (success) notifiedReminders.add(r);
             }
 
 
             Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
             if (!notifiedRemindersImminent.contains(r)) {
 
-                boolean success = r.notifyIf(imminent);
-                if (success) notifiedRemindersImminent.add(r);
+                            boolean success = r.notifyIf(imminent);
+                            if (success) notifiedRemindersImminent.add(r);
+
 
 
             }
@@ -74,12 +74,13 @@ public class NotificationHandler {
         );
 
 
+
         for (Reminder r : l) {
             if (r.meetsCriteria(criteria))
                 passedReminders.add(r);
         }
-        if (passedReminders.size() != 0) {
-            new MultiReminderNotification(passedReminders).send();
-        }
+                    if (passedReminders.size() != 0) {
+                        new MultiReminderNotification(passedReminders).send();
+                    }
     }
 }

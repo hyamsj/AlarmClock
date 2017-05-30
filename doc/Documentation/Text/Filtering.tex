@@ -1,0 +1,34 @@
+\subsection{ Higher Order Functions}
+  Die Marketingabteilung von Oracle behauptet gerne Java seie auch Funktional. Higer Order Functions werden aber nicht wirklich unterstützt. 
+  TODO wikipedia Higer Order function. 
+  Funktionen als Return Values oo
+  
+  Java unterstüzt leider keine Higher order functions. Man kann also keine Funktion als Inputparameter übergeben.
+  Mittels Lambdas ist es lediglich möglich, die eine Funktion ausführen zu lassen und den Rückgabewert als Inputparameter weiter zu verwenden. Dies erlaubt eine kompaktere Notation. Dies reicht uns aber nicht, da wir den Remindern eine Funktion übergeben möchten, mit welcher jeder Reminder selber testet ob er eine Notification absenden soll. 
+  
+  \subsection{echte Higher Order Functions in Java}
+  Um dies zu erreichen haben wir eine Form von Higher Order Functions mit Objekten nachgebaut. 
+  Ein CriteraTester ist ein Objekt, welches als Wrapper für eine Funtion dient. Anstelle dieser Funktion übergibt man nun diesen FunktionsWrapper als Inputparameter. Somit konnten wir Funktionen als Inputparameter mittels Objektorientierten prinzipien nachbauen.
+  Man muss nun für jede Funktion ein Objekt erstellen, welches das Interface CriteraTester implementiert.Und die Filterfunktion isTrue implementieren.
+  Funktionen als Rückgabewert kann man so aber noch nicht wirklich nachbauen. Für uns war das aber nicht nötig.
+  
+  Dank den oben erwähnten Lambdas kann man dies auch elegan on the Fly erledigen. Da es aber vorkommen kann dass man einen Filter mehrmals benutzt, habe wir uns entschieden die Filter jeweils als eigene Klassen zu implementieren.
+  \subsection{Code Beispiel}
+  
+       \begin{lstlisting}
+       Reminder r;
+       Collection<CriteriaTester> criteria = new ArrayList<>();
+        criteria.add(new IsPassed());
+         //     example how CriteraTester can be written on the fly
+        //pus this to documentation
+        criteria.add(
+                r -> (!r.getTags().contains("hidden"))
+        );
+        //This lets the Reminder send a notification if the Reminder meets the criterias 
+        //The first criteia it must pass it th IsPassed()
+        //the second criteria is defined on the fly on  line number TODO x. it tests if it contains the tag "hidden"
+        
+     
+        r.notifyIf(criteria);
+
+       \end{lstlisting}
