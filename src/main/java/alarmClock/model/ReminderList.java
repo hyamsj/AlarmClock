@@ -28,17 +28,12 @@ public class ReminderList implements ObservableList {
         reminders = FXCollections.observableArrayList();
     }
 
-    /*
-    public ReminderList(ObservableList<Reminder> r) {
-        this.reminders = r;
-    }
-    */
-
 
     /**
      * constructor
      * initialises the history and undo history that are used for the undo /redo.
      * initialises  the Reminderlist.
+     *
      * @param r takes a list of Observable reminders. to wrap this ReminderList around it.
      */
 
@@ -54,36 +49,21 @@ public class ReminderList implements ObservableList {
     private void pushState() {
         ObservableList<Reminder> old = FXCollections.observableArrayList();
         old = reminders;
-        /*
-        for (Object o :reminders){
-            if (o instanceof  Reminder){
-                Reminder r = (Reminder) o;
-                old.add(r);
-            }
-        }
-        */
         history.push(old);
 
     }
 
     /**
      * pops the last state to enable the undo function.
-     * @return  a observable list of reminders, who represents the last state.
+     *
+     * @return a observable list of reminders, who represents the last state.
      */
     private ObservableList popState() {
         ObservableList<Reminder> newReminder = FXCollections.observableArrayList();
         if (history.peek() != null) {
             ObservableList rs = history.pop();
             undoneHistory.push(rs);
-            /*
-            System.out.print(reminders);
-            for (Object o :rs){
-                if (o instanceof  Reminder){
-                    Reminder r = (Reminder) o;
-                    newReminder.add(r);
-                }
-            }
-            */
+
             return newReminder;
         } else {
             return reminders;
@@ -94,13 +74,7 @@ public class ReminderList implements ObservableList {
      * the undo functionality, that resets the state of the wrapped reminderlist to the the last state.
      */
     public void undo() {
-            /*
-        System.out.println("Reminder.undo() is called");
         reminders = popState();
-        System.out.println(r.toString());
-        for(Reminder r = reminders)
-            System.out.println(r.toString());
-            */
     }
 
     /**
@@ -108,13 +82,10 @@ public class ReminderList implements ObservableList {
      */
     public void redo() {
         if (undoneHistory.peek() != null) {
-            //ObservableList rs = undoneHistory.pop();
             ObservableList rs = popState();
-            //history.push(rs);
             this.reminders = rs;
         }
     }
-
 
 
     /**
@@ -365,12 +336,33 @@ public class ReminderList implements ObservableList {
         return r;
     }
 
+
     /**
-     * TODO JAVADOC
+     * Inserts all of the elements in the specified collection into this
+     * list at the specified position (optional operation).  Shifts the
+     * element currently at that position (if any) and any subsequent
+     * elements to the right (increases their indices).  The new elements
+     * will appear in this list in the order that they are returned by the
+     * specified collection's iterator.  The behavior of this operation is
+     * undefined if the specified collection is modified while the
+     * operation is in progress.  (Note that this will occur if the specified
+     * collection is this list, and it's nonempty.)
      *
-     * @param index
-     * @param c
-     * @return
+     * @param index index at which to insert the first element from the
+     *              specified collection
+     * @param c     collection containing elements to be added to this list
+     * @return <tt>true</tt> if this list changed as a result of the call
+     * @throws UnsupportedOperationException if the <tt>addAll</tt> operation
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of an element of the specified
+     *                                       collection prevents it from being added to this list
+     * @throws NullPointerException          if the specified collection contains one
+     *                                       or more null elements and this list does not permit null
+     *                                       elements, or if the specified collection is null
+     * @throws IllegalArgumentException      if some property of an element of the
+     *                                       specified collection prevents it from being added to this list
+     * @throws IndexOutOfBoundsException     if the index is out of range
+     *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
     @Override
     public boolean addAll(int index, Collection c) {
@@ -393,15 +385,13 @@ public class ReminderList implements ObservableList {
     }
 
     /**
-     * TODO JAVADOC
-     *
-     * @return
+     * Returns the reminders as ArrayList of reminders
+     * @return reminders as ArrayList of reminders
      */
     public ArrayList<Reminder> getSerializable() {
         //TODO solve type conversation on a better place
         ArrayList<Reminder> output = new ArrayList<>();
         for (Object r : reminders) {
-            r = r;
             output.add((Reminder) r);
         }
         return output;
@@ -472,6 +462,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * remove method to remove reminders from thw wrapped reminder list.
+     *
      * @param index to the Reminder that will be removed.
      * @return Rerminder that was at the index.
      */
@@ -483,7 +474,6 @@ public class ReminderList implements ObservableList {
     }
 
     /**
-     *
      * @param o Reminder forom which the index is returned.
      * @return an int that is the index of the passed reminder.
      */
@@ -493,53 +483,119 @@ public class ReminderList implements ObservableList {
     }
 
 
-     /** From String Javadoc:
-     * Returns the index within this string of the last occurrence of
-     * the specified character. For values of {@code ch} in the
-     * range from 0 to 0xFFFF (inclusive), the index (in Unicode code
-     * units) returned is the largest value <i>k</i> such that:
-     * <blockquote><pre>
-     * this.charAt(<i>k</i>) == ch
-     * </pre></blockquote>
-     * is true. For other values of {@code ch}, it is the
-     * largest value <i>k</i> such that:
-     * <blockquote><pre>
-     * this.codePointAt(<i>k</i>) == ch
-     * </pre></blockquote>
-     * is true.  In either case, if no such character occurs in this
-     * string, then {@code -1} is returned.  The
-     * {@code String} is searched backwards starting at the last
-     * character.
-     *
-     * @param   ch   a character (Unicode code point).
-     * @return  the index of the last occurrence of the character in the
-     *          character sequence represented by this object, or
-     *          {@code -1} if the character does not occur.
     /**
+     * Returns the index of the last occurrence of the specified element
+     * in this list, or -1 if this list does not contain the element.
+     * More formally, returns the highest index <tt>i</tt> such that
+     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
+     * or -1 if there is no such index.
      *
-     * @param o O
-     * @return
+     * @param o element to search for
+     * @return the index of the last occurrence of the specified element in
+     * this list, or -1 if this list does not contain the element
+     * @throws ClassCastException   if the type of the specified element
+     *                              is incompatible with this list
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException if the specified element is null and this
+     *                              list does not permit null elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
     public int lastIndexOf(Object o) {
         return reminders.lastIndexOf(o);
     }
 
+    /**
+     * Returns a list iterator over the elements in this list (in proper
+     * sequence).
+     *
+     * @return a list iterator over the elements in this list (in proper
+     * sequence)
+     */
     @Override
     public ListIterator listIterator() {
         return reminders.listIterator();
     }
 
+    /**
+     * Returns a list iterator over the elements in this list (in proper
+     * sequence), starting at the specified position in the list.
+     * The specified index indicates the first element that would be
+     * returned by an initial call to {@link ListIterator#next next}.
+     * An initial call to {@link ListIterator#previous previous} would
+     * return the element with the specified index minus one.
+     *
+     * @param index index of the first element to be returned from the
+     *              list iterator (by a call to {@link ListIterator#next next})
+     * @return a list iterator over the elements in this list (in proper
+     * sequence), starting at the specified position in the list
+     * @throws IndexOutOfBoundsException if the index is out of range
+     *                                   ({@code index < 0 || index > size()})
+     */
     @Override
     public ListIterator listIterator(int index) {
         return reminders.listIterator(index);
     }
 
+    /**
+     * Returns a view of the portion of this list between the specified
+     * <tt>fromIndex</tt>, inclusive, and <tt>toIndex</tt>, exclusive.  (If
+     * <tt>fromIndex</tt> and <tt>toIndex</tt> are equal, the returned list is
+     * empty.)  The returned list is backed by this list, so non-structural
+     * changes in the returned list are reflected in this list, and vice-versa.
+     * The returned list supports all of the optional list operations supported
+     * by this list.<p>
+     * <p>
+     * This method eliminates the need for explicit range operations (of
+     * the sort that commonly exist for arrays).  Any operation that expects
+     * a list can be used as a range operation by passing a subList view
+     * instead of a whole list.  For example, the following idiom
+     * removes a range of elements from a list:
+     * <pre>{@code
+     *      list.subList(from, to).clear();
+     * }</pre>
+     * Similar idioms may be constructed for <tt>indexOf</tt> and
+     * <tt>lastIndexOf</tt>, and all of the algorithms in the
+     * <tt>Collections</tt> class can be applied to a subList.<p>
+     * <p>
+     * The semantics of the list returned by this method become undefined if
+     * the backing list (i.e., this list) is <i>structurally modified</i> in
+     * any way other than via the returned list.  (Structural modifications are
+     * those that change the size of this list, or otherwise perturb it in such
+     * a fashion that iterations in progress may yield incorrect results.)
+     *
+     * @param fromIndex low endpoint (inclusive) of the subList
+     * @param toIndex   high endpoint (exclusive) of the subList
+     * @return a view of the specified range within this list
+     * @throws IndexOutOfBoundsException for an illegal endpoint index value
+     *                                   (<tt>fromIndex &lt; 0 || toIndex &gt; size ||
+     *                                   fromIndex &gt; toIndex</tt>)
+     */
     @Override
     public List subList(int fromIndex, int toIndex) {
         return reminders.subList(fromIndex, toIndex);
     }
 
+    /**
+     * Retains only the elements in this list that are contained in the
+     * specified collection (optional operation).  In other words, removes
+     * from this list all of its elements that are not contained in the
+     * specified collection.
+     *
+     * @param c collection containing elements to be retained in this list
+     * @return <tt>true</tt> if this list changed as a result of the call
+     * @throws UnsupportedOperationException if the <tt>retainAll</tt> operation
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of an element of this list
+     *                                       is incompatible with the specified collection
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException          if this list contains a null element and the
+     *                                       specified collection does not permit null elements
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>),
+     *                                       or if the specified collection is null
+     * @see #remove(Object)
+     * @see #contains(Object)
+     */
     @Override
     public boolean retainAll(Collection c) {
         boolean b = reminders.retainAll(c);
@@ -547,6 +603,24 @@ public class ReminderList implements ObservableList {
         return b;
     }
 
+    /**
+     * Removes from this list all of its elements that are contained in the
+     * specified collection (optional operation).
+     *
+     * @param c collection containing elements to be removed from this list
+     * @return <tt>true</tt> if this list changed as a result of the call
+     * @throws UnsupportedOperationException if the <tt>removeAll</tt> operation
+     *                                       is not supported by this list
+     * @throws ClassCastException            if the class of an element of this list
+     *                                       is incompatible with the specified collection
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException          if this list contains a null element and the
+     *                                       specified collection does not permit null elements
+     *                                       (<a href="Collection.html#optional-restrictions">optional</a>),
+     *                                       or if the specified collection is null
+     * @see #remove(Object)
+     * @see #contains(Object)
+     */
     @Override
     public boolean removeAll(Collection c) {
         boolean b = reminders.removeAll(c);
@@ -554,11 +628,45 @@ public class ReminderList implements ObservableList {
         return b;
     }
 
+    /**
+     * Returns <tt>true</tt> if this list contains all of the elements of the
+     * specified collection.
+     *
+     * @param c collection to be checked for containment in this list
+     * @return <tt>true</tt> if this list contains all of the elements of the
+     * specified collection
+     * @throws ClassCastException   if the types of one or more elements
+     *                              in the specified collection are incompatible with this
+     *                              list
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
+     * @throws NullPointerException if the specified collection contains one
+     *                              or more null elements and this list does not permit null
+     *                              elements
+     *                              (<a href="Collection.html#optional-restrictions">optional</a>),
+     *                              or if the specified collection is null
+     * @see #contains(Object)
+     */
     @Override
     public boolean containsAll(Collection c) {
         return reminders.containsAll(c);
     }
 
+    /**
+     * Returns an array containing all of the elements in this list in proper
+     * sequence (from first to last element).
+     * <p>
+     * <p>The returned array will be "safe" in that no references to it are
+     * maintained by this list.  (In other words, this method must
+     * allocate a new array even if this list is backed by an array).
+     * The caller is thus free to modify the returned array.
+     * <p>
+     * <p>This method acts as bridge between array-based and collection-based
+     * APIs.
+     *
+     * @return an array containing all of the elements in this list in proper
+     * sequence
+     * @see Arrays#asList(Object[])
+     */
     @Override
     public Object[] toArray(Object[] a) {
         return reminders.toArray();
@@ -603,6 +711,52 @@ public class ReminderList implements ObservableList {
         reminders.addListener(listener);
     }
 
+    /**
+     * Indicates whether some other object is "equal to" this one.
+     * <p>
+     * The {@code equals} method implements an equivalence relation
+     * on non-null object references:
+     * <ul>
+     * <li>It is <i>reflexive</i>: for any non-null reference value
+     * {@code x}, {@code x.equals(x)} should return
+     * {@code true}.
+     * <li>It is <i>symmetric</i>: for any non-null reference values
+     * {@code x} and {@code y}, {@code x.equals(y)}
+     * should return {@code true} if and only if
+     * {@code y.equals(x)} returns {@code true}.
+     * <li>It is <i>transitive</i>: for any non-null reference values
+     * {@code x}, {@code y}, and {@code z}, if
+     * {@code x.equals(y)} returns {@code true} and
+     * {@code y.equals(z)} returns {@code true}, then
+     * {@code x.equals(z)} should return {@code true}.
+     * <li>It is <i>consistent</i>: for any non-null reference values
+     * {@code x} and {@code y}, multiple invocations of
+     * {@code x.equals(y)} consistently return {@code true}
+     * or consistently return {@code false}, provided no
+     * information used in {@code equals} comparisons on the
+     * objects is modified.
+     * <li>For any non-null reference value {@code x},
+     * {@code x.equals(null)} should return {@code false}.
+     * </ul>
+     * <p>
+     * The {@code equals} method for class {@code Object} implements
+     * the most discriminating possible equivalence relation on objects;
+     * that is, for any non-null reference values {@code x} and
+     * {@code y}, this method returns {@code true} if and only
+     * if {@code x} and {@code y} refer to the same object
+     * ({@code x == y} has the value {@code true}).
+     * <p>
+     * Note that it is generally necessary to override the {@code hashCode}
+     * method whenever this method is overridden, so as to maintain the
+     * general contract for the {@code hashCode} method, which states
+     * that equal objects must have equal hash codes.
+     *
+     * @param o the reference object with which to compare.
+     * @return {@code true} if this object is the same as the obj
+     * argument; {@code false} otherwise.
+     * @see #hashCode()
+     * @see java.util.HashMap
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -613,6 +767,41 @@ public class ReminderList implements ObservableList {
         return reminders != null ? reminders.equals(that.reminders) : that.reminders == null;
     }
 
+    /**
+     * Returns a hash code value for the object. This method is
+     * supported for the benefit of hash tables such as those provided by
+     * {@link java.util.HashMap}.
+     * <p>
+     * The general contract of {@code hashCode} is:
+     * <ul>
+     * <li>Whenever it is invoked on the same object more than once during
+     * an execution of a Java application, the {@code hashCode} method
+     * must consistently return the same integer, provided no information
+     * used in {@code equals} comparisons on the object is modified.
+     * This integer need not remain consistent from one execution of an
+     * application to another execution of the same application.
+     * <li>If two objects are equal according to the {@code equals(Object)}
+     * method, then calling the {@code hashCode} method on each of
+     * the two objects must produce the same integer result.
+     * <li>It is <em>not</em> required that if two objects are unequal
+     * according to the {@link java.lang.Object#equals(java.lang.Object)}
+     * method, then calling the {@code hashCode} method on each of the
+     * two objects must produce distinct integer results.  However, the
+     * programmer should be aware that producing distinct integer results
+     * for unequal objects may improve the performance of hash tables.
+     * </ul>
+     * <p>
+     * As much as is reasonably practical, the hashCode method defined by
+     * class {@code Object} does return distinct integers for distinct
+     * objects. (This is typically implemented by converting the internal
+     * address of the object into an integer, but this implementation
+     * technique is not required by the
+     * Java&trade; programming language.)
+     *
+     * @return a hash code value for this object.
+     * @see java.lang.Object#equals(java.lang.Object)
+     * @see java.lang.System#identityHashCode
+     */
     @Override
     public int hashCode() {
         return reminders != null ? reminders.hashCode() : 0;
