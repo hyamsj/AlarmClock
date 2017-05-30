@@ -31,6 +31,9 @@ public class DateTimePicker extends DatePicker {
         }
     };
 
+    /**
+     * Constructor
+     */
     public DateTimePicker() {
         getStyleClass().add("datetime-picker");
         setFormat(DefaultFormat);
@@ -63,34 +66,64 @@ public class DateTimePicker extends DatePicker {
 
     }
 
+    /**
+     * Event Handler
+     */
     private void simulateEnterPressed() {
         getEditor().fireEvent(new KeyEvent(getEditor(), getEditor(), KeyEvent.KEY_PRESSED, null, null, KeyCode.ENTER, false, false, false, false));
     }
 
+    /**
+     * Gets the DateTimeValue
+     * @return
+     */
     public LocalDateTime getDateTimeValue() {
         return dateTimeValue.get();
     }
 
+    /**
+     * Sets the DateTimeValue
+     * @param dateTimeValue
+     */
     public void setDateTimeValue(LocalDateTime dateTimeValue) {
         this.dateTimeValue.set(dateTimeValue);
     }
 
+    /**
+     * Returns the dateTimeValueProperty
+     * @return
+     */
     public ObjectProperty<LocalDateTime> dateTimeValueProperty() {
         return dateTimeValue;
     }
 
+    /**
+     * Returns the format (eg. dd-MM-yyyy HH:mm)
+     * @return
+     */
     public String getFormat() {
         return format.get();
     }
 
+    /**
+     * Returns the formatProperty
+     * @return
+     */
     public ObjectProperty<String> formatProperty() {
         return format;
     }
 
+    /**
+     * Sets the format
+     * @param format
+     */
     public void setFormat(String format) {
         this.format.set(format);
     }
 
+    /**
+     * Converts the time to the correct format
+     */
     class InternalConverter extends StringConverter<LocalDate> {
         public String toString(LocalDate object) {
             LocalDateTime value = getDateTimeValue();

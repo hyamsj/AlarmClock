@@ -1,5 +1,6 @@
 package alarmClock.model;
 
+import alarmClock.notification.JavaFxNotification;
 import alarmClock.notification.Notification;
 import alarmClock.model.filtering.CriteriaTester;
 import javafx.beans.property.SimpleObjectProperty;
@@ -24,6 +25,7 @@ public class Reminder implements Serializable {
     private Collection<String> tags = new ArrayList<>();
 
     /**
+     * Constructor
      * @param subject
      * @param description
      * @param date
@@ -34,6 +36,13 @@ public class Reminder implements Serializable {
         setDate(date);
     }
 
+    /**
+     * Constructor with tags
+     * @param subject The subject of the reminder
+     * @param description The description of the reminder
+     * @param date The date of the reminder
+     * @param tags The tags of the reminder
+     */
     public Reminder(String subject, String description, LocalDateTime date, Set<String> tags) {
         setSubject(subject);
         setDescription(description);
@@ -41,63 +50,123 @@ public class Reminder implements Serializable {
         setTags(tags);
     }
 
+    /**
+     * Returns the tags of the reminder
+     * @return the tags of the reminder
+     */
     public Collection<String> getTags() {
         return tags;
     }
 
+    /**
+     * Returns the tags property of the reminder
+     * @return the tag property of the reminder
+     */
     public SimpleObjectProperty<Collection<String>> getTagsProperty() {
-        return new SimpleObjectProperty<Collection<String>>(tags);
+        return new SimpleObjectProperty<>(tags);
     }
 
+    /**
+     * Sets the tags of the reminder
+     * @param tags The tags of the reminder
+     */
     public void setTags(Collection<String> tags) {
         this.tags = tags;
     }
 
+    /**
+     * Adds a tag to the reminder
+     * @param tag Adds the tag of the reminder
+     */
     public void addTag(String tag) {
         tags.add(tag);
     }
 
+    /**
+     * Removes tag from the reminder
+     * @param tag The tag that should get removed
+     */
     public void removeTag(String tag) {
         tags.remove(tag);
     }
 
+    /**
+     * Returns the subject of the reminder
+     * @return The subject of the reminder
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     * Returns the subjectProperty
+     * @return The subjectProperty
+     */
     public SimpleStringProperty getSubjectProperty() {
         return new SimpleStringProperty(subject);
     }
 
-
+    /**
+     * Returns the description of the reminder
+     * @return the description of the reminder
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Returns the descriptionProperty of the reminder
+     * @return the descriptionProperty of the reminder
+     */
     public SimpleStringProperty getDescriptionProperty() {
         return new SimpleStringProperty(description);
     }
 
+    /**
+     * Returns the date of the reminder
+     * @return the date of the reminder
+     */
     public LocalDateTime getDate() {
         return date;
     }
 
+    /**
+     * Returns the dateProperty of the Reminder
+     * @return the dateProperty of the Reminder
+     */
     public SimpleObjectProperty<LocalDateTime> getDateProperty() {
         return new SimpleObjectProperty<>(date);
     }
 
+    /**
+     * Sets the subject of the reminder
+     * @param subject the subject that the reminder should have
+     */
     private void setSubject(String subject) {
         this.subject = subject;
     }
 
+    /**
+     * Sets the description of the reminder
+     * @param description the description that the reminder should have
+     */
     private void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Sets the date of the reminder
+     * @param date the date that the reminder should have
+     */
     private void setDate(LocalDateTime date) {
         this.date = date;
     }
 
+    /**
+     * Equals method
+     * @param o any object
+     * @return true if they are the same, false if they are not
+     */
     @Override
     public boolean equals(Object o) {
         Reminder r;
@@ -115,6 +184,10 @@ public class Reminder implements Serializable {
 
     }
 
+    /**
+     * Creates hashes of the reminder object
+     * @return the hash of the reminder object
+     */
     @Override
     public int hashCode() {
         int h = 1;
@@ -125,6 +198,10 @@ public class Reminder implements Serializable {
     }
 
 
+    /**
+     * Intended for debugging
+     * @return the String value of this reminder object
+     */
     @Override
     public String toString() {
         String out;
@@ -135,6 +212,11 @@ public class Reminder implements Serializable {
     }
 
 
+    /**
+     * Returns true if the criteria is fulfilled
+     * @param criteria of the reminder
+     * @return boolean
+     */
     public boolean notifyIf(CriteriaTester criteria) {
         if (criteria.isTrue(this)) {
             this.doNotify();
@@ -143,10 +225,16 @@ public class Reminder implements Serializable {
         return false;
     }
 
+    /**
+     * Loops through all criteria checks if any are fulfilled. Only returns true if all are fulfilled.
+     * If all are fulfilled, doNotify gets called
+     * @param criterias List of criterias for the reminder
+     * @return boolean, returns true only if all are fulfilled
+     */
     public boolean notifyIf(Collection<CriteriaTester> criterias) {
         Boolean allTrue = true;
-        for (CriteriaTester criteira : criterias) {
-            allTrue &= criteira.isTrue(this);
+        for (CriteriaTester criteria : criterias) {
+            allTrue &= criteria.isTrue(this);
         }
         if (allTrue) {
             this.doNotify();
@@ -154,6 +242,11 @@ public class Reminder implements Serializable {
         return allTrue;
     }
 
+    /**
+     * Loops through all criteria checks if any are fulfilled. Only returns true if all are fulfilled.
+     * @param criterias List of criterias for the reminder
+     * @return boolean, returns true only if all are fulfilled
+     */
     public boolean meetsCriteria(Collection<CriteriaTester> criterias) {
         Boolean allTrue = true;
         for (CriteriaTester criteira : criterias) {
@@ -163,23 +256,31 @@ public class Reminder implements Serializable {
     }
 
 
+    /**
+     * Every notification in the list is given this reminder and sends the notification
+     */
     public void doNotify() {
         //gets the notification Types from the config Reader / File
         ArrayList<Notification> notificationTypes = new ConfigReader().getNotificationTypes();
 
         for (Notification n : notificationTypes) {
-            /*
             if (n instanceof JavaFxNotification) {
-                Platform.runLater(() -> {
-                    JavaFxNotification alert = new JavaFxNotification(this);
-                    alert.setReminder(this);
-                    alert.send();
-                });
+                System.out.println("before Platform run later");
+                System.out.println("running later");
+                JavaFxNotification alert = new JavaFxNotification(this);
+                System.out.println("created JavaFxNotification");
+                alert.setReminder(this);
+                System.out.println("JavaFxNotification added reminder");
+                //Platform.runLater(() -> {
+                alert.send();
+                System.out.println("sent notification");
+                //});
             } else {
-            */
+            /*
             n.setReminder(this);
             n.send();
-            //}
+            */
+            }
 
         }
     }

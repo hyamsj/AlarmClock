@@ -1,6 +1,7 @@
 package alarmClock.notification;
 
 import alarmClock.model.Reminder;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,21 +19,25 @@ public class JavaFxNotification implements Notification {
     private Label label;
 
     /**
-     *
+     * Needed by JavaFx
      */
     public JavaFxNotification() {
         super();
     }
 
     /**
-     * @param reminder
+     * Constructor that is given the reminder that this class creates a popup for
+     *
+     * @param reminder the reminder that is given the notification
      */
     public JavaFxNotification(Reminder reminder) {
         this.reminder = reminder;
     }
 
     /**
-     * @param reminder
+     * Sets the reminder that gets the notification
+     *
+     * @param reminder the reminder that get's the popup attached to it
      */
     @Override
     public void setReminder(Reminder reminder) {
@@ -44,20 +49,27 @@ public class JavaFxNotification implements Notification {
      */
     @Override
     public void send() {
-        Stage stage = new Stage();
-        label = new Label("Hello: " + reminder.toString());
-        Button okButton = new Button("Ok");
-        okButton.setOnAction(e -> {
-            stage.close();
-        });
-        VBox pane = new VBox(10, label, okButton);
-        pane.setAlignment(Pos.CENTER);
-        pane.setPadding(new Insets(10));
-        Scene scene = new Scene(pane);
-        stage.setTitle("Reminder");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        System.out.println("boom");
+        Platform.runLater(
+                () -> {
+                    Stage stage = new Stage();
+                    label = new Label("Hello: " + reminder.toString());
+                    Button okButton = new Button("Ok");
+                    okButton.setOnAction(e -> {
+                        stage.close();
+                    });
+                    VBox pane = new VBox(10, label, okButton);
+                    pane.setAlignment(Pos.CENTER);
+                    pane.setPadding(new Insets(10));
+                    Scene scene = new Scene(pane);
+                    stage.setTitle("Reminder");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();
+
+                }
+        );
+
     }
 
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Created by joni on 25/03/17.
  */
 public class Model implements Serializable {
-    private ReminderList reminders;
+    private ReminderList reminders; // list with all reminders
     DataBaseAdapter adapter = new BinaryDBAdapter();
 
     /**
@@ -24,10 +24,18 @@ public class Model implements Serializable {
         reminders = adapter.load();
     }
 
+    /**
+     * Adds a new reminder to our reminderList
+     * @param reminder the reminder to be added to the list
+     */
     public void addReminder(Reminder reminder) {
         reminders.add(reminder);
     }
 
+    /**
+     * Returns the list with all reminders
+     * @return list with all reminders
+     */
     public ObservableList<Reminder> getReminders() {
         //TODO return only a copy of reminders instead of a reference
         return reminders;
@@ -45,18 +53,32 @@ public class Model implements Serializable {
         reminders.addListener(Poller.getInstance()::onChanged);
     }
 
+    /**
+     * Undoes what has been changed on the remindersList
+     */
     public void undo() {
         reminders.undo();
     }
 
+    /**
+     * Redoes what has been changed on the remindersList
+     */
     public void redo() {
         reminders.redo();
     }
 
+    /**
+     * Removes all reminders that have been selected
+     * @param remindersSelected the selected reminders
+     */
     public void removeReminders(ReminderList remindersSelected) {
         reminders.removeAll(remindersSelected);
     }
 
+    /**
+     * Removes the reminder that have been selected
+     * @param reminder the selected reminder
+     */
     public void removeReminder(Reminder reminder) {
         reminders.remove(reminder);
     }

@@ -36,24 +36,21 @@ public class NotificationHandler {
             r.addTag(tag);
             Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(), new hasTag(tag));
             if (!notifiedReminders.contains(r)) {
-                Platform.runLater(
-                        () -> {
+
                             boolean success = r.notifyIf(importantStuffThisMonth);
                             if (success) notifiedReminders.add(r);
-                        }
-                );
+
             }
 
 
             Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
             if (!notifiedRemindersImminent.contains(r)) {
-                Platform.runLater(
-                        () -> {
+
                             boolean success = r.notifyIf(imminent);
                             if (success) notifiedRemindersImminent.add(r);
-                        }
 
-                );
+
+
             }
 
 
@@ -63,24 +60,19 @@ public class NotificationHandler {
 
     public void showPastEvents() {
         ArrayList<Reminder> l = reminders.getSerializable();
-        ArrayList<Reminder> passedReminders = new ArrayList<Reminder>();
-        Collection<CriteriaTester> criteria = new ArrayList<CriteriaTester>();
+        ArrayList<Reminder> passedReminders = new ArrayList<>();
+        Collection<CriteriaTester> criteria = new ArrayList<>();
         criteria.add(new IsPassed());
         criteria.add(new IsThisYear());
 
-        //exampe how CriteraTester can be written on the fly
+        //example how CriteraTester can be written on the fly
         //Pus this to documentation
         criteria.add(
                 r -> (!r.getTags().contains("hidden"))
         );
-        //exampe how CriteraTester can be written on the fly
+        //example how CriteraTester can be written on the fly
         criteria.add(
-                new CriteriaTester() {
-                    @Override
-                    public boolean isTrue(Reminder r) {
-                        return (!r.getTags().contains("hidden"));
-                    }
-                }
+                r -> (!r.getTags().contains("hidden"))
         );
 
 

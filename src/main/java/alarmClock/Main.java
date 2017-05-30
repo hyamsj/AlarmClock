@@ -3,16 +3,20 @@ package alarmClock;
 import alarmClock.model.ConfigReader;
 import alarmClock.controller.Poller;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  * The Main class launches the program
  */
 public class Main extends Application {
-    private String windowName = "../mainWindow.fxml";
+    private String windowName = "/mainWindow.fxml";
     private String title = "Alarm Clock";
 
     /**
@@ -24,6 +28,7 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Platform.setImplicitExit(false);
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource(windowName));
         primaryStage.setTitle(title);

@@ -23,9 +23,9 @@ public class MultiReminderNotification extends JavaFxNotification {
     /**
      *
      */
-    public MultiReminderNotification() {
-        super();
-    }
+//    public MultiReminderNotification() {
+//        super();
+//    }
 
     /**
      * @param reminders

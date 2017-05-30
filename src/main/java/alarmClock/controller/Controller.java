@@ -65,8 +65,8 @@ public class Controller implements Initializable {
     /**
      * Serves as the constructor. Is called before the JavaFX components are created
      *
-     * @param location
-     * @param resources
+     * @param location is not used
+     * @param resources is not used
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -83,6 +83,7 @@ public class Controller implements Initializable {
                 SelectionMode.MULTIPLE
         );
 
+        // Initialize the Model
         Model model = null;
         try {
             model = new Model();

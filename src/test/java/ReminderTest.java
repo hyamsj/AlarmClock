@@ -75,20 +75,20 @@ public class ReminderTest {
     }
 
 
-    @Test
-    public void notifyIf() throws Exception {
-        reminder.addTag(tag);
-        boolean success = reminder.notifyIf(new hasTag(tag));
-        assertTrue(success);
-    }
-
-    @Test
-    public void notifyIf1() throws Exception {
-        reminder.addTag(tag);
-        Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
-        boolean success = reminder.notifyIf(importantStuffThisMonth);
-        assertTrue(success);
-    }
+//    @Test
+//    public void notifyIf() throws Exception {
+//        reminder.addTag(tag);
+//        boolean success = reminder.notifyIf(new hasTag(tag));
+//        assertTrue(success);
+//    }
+//
+//    @Test
+//    public void notifyIf1() throws Exception {
+//        reminder.addTag(tag);
+//        Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth(),new hasTag(tag));
+//        boolean success = reminder.notifyIf(importantStuffThisMonth);
+//        assertTrue(success);
+//    }
 
     @Test
     public void doNotify() throws Exception {

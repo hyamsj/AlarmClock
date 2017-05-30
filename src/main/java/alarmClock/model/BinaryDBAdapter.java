@@ -13,9 +13,12 @@ public class BinaryDBAdapter implements DataBaseAdapter {
     String path = "reminders.ser";
 
 
+    /**
+     * Loads data from the database
+     * @return a list with all reminders
+     */
     @Override
     public ReminderList load() {
-        //TODO Errorhandling
         this.reminders = new ReminderList();
         if (Files.exists(Paths.get(path))) {
             ArrayList reminderArrayList;
@@ -40,9 +43,12 @@ public class BinaryDBAdapter implements DataBaseAdapter {
         return this.reminders;
     }
 
+    /**
+     * Saves the database and overwrites the old one
+     * @param reminders all reminder that will be saved
+     */
     @Override
     public void save(ReminderList reminders) {
-        //TODO Errorhandling
         try (ObjectOutputStream out =
                      new ObjectOutputStream(new FileOutputStream(path))) {
             out.writeObject(reminders.getSerializable());
