@@ -47,8 +47,7 @@ public class ReminderList implements ObservableList {
      * pushes the current state to the history every time ReminderList is changed.
      */
     private void pushState() {
-        ObservableList<Reminder> old = FXCollections.observableArrayList();
-        old = reminders;
+        ObservableList<Reminder> old = reminders;
         history.push(old);
 
     }
