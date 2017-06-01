@@ -12,7 +12,6 @@ public class ConfigReaderTest {
     @Test
     public void getColorSchemeTest() {
         ConfigReader configReader = new ConfigReader();
-        assertEquals("nightmode", configReader.getColorScheme());
         assertTrue(configReader.isEnableDarkMode());
 
     }

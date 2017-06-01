@@ -21,6 +21,9 @@ public class ConfigReader {
 
     /**
      * @return the list with the notification types that are used to notify the user
+     * We use Objects of the Type Notification to the list instead of Strings. This gives some type safety, like enums would too.
+     * And makes it possible, that the Reminder can elegantly itterate throug all notifications it gets in his doNotify() Method
+     *
      */
     public ArrayList<Notification> getNotificationTypes() {
         ArrayList<Notification> notificationTypes = new ArrayList<>();
@@ -38,14 +41,6 @@ public class ConfigReader {
         return notificationTypes;
     }
 
-    /**
-     * Returns the name of the colorScheme
-     *
-     * @return the name of the colorScheme
-     */
-    public String getColorScheme() {
-        return "nightmode";
-    }
 
 
     /**
@@ -77,7 +72,7 @@ public class ConfigReader {
 
     /**
      * Getter to check if darkMode is enabled
-     *
+     * if its not enabled the JavaFx default is used.
      * @return true if it is enabled
      */
     public boolean isEnableDarkMode() {
