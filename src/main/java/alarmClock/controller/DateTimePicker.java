@@ -17,7 +17,6 @@ import java.time.format.DateTimeFormatter;
  * via the text field and the date can additionally be changed via the JavaFX default date picker.
  * Taken from: http://stackoverflow.com/questions/28493097/is-there-any-date-and-time-picker-available-for-javafx
  */
-@SuppressWarnings("unused")
 public class DateTimePicker extends DatePicker {
     public static final String DefaultFormat = "dd-MM-yyyy HH:mm";
 

@@ -7,8 +7,9 @@ import javafx.collections.ListChangeListener;
 
 /**
  * Created by pascal on 5/3/17.
- * Is a Singelton
- * Tests regularly if a Reminder has to send a notification
+ * Is a Singelton, see "Design Patterns. Elements of Reusable Object-Oriented Software"  by the Gang of Four
+ *
+ * Calls the NotificationHandler, every time the ReminderList is updated, and additional on a regularly period.
  */
 public class Poller implements ListChangeListener {
     private static Poller instance = null;
@@ -29,7 +30,7 @@ public class Poller implements ListChangeListener {
     }
 
     /**
-     * Functions as the constructor
+     * Functions as the constructor, this was implemented to the singelton pattern.
      *
      * @return this poller.
      */
@@ -60,7 +61,6 @@ public class Poller implements ListChangeListener {
 
 
     private boolean notedPassed = false;
-
     /**
      * Wakes up the notificationHandler
      * Requests the notificationHandler to show passed events, only once
@@ -85,5 +85,11 @@ public class Poller implements ListChangeListener {
     public void onChanged(Change c) {
         this.reminders = new BinaryDBAdapter().load();
         notificationHandler.setReminders(reminders);
+        /**
+         * since NotificationHandler.handle() is called periodically this would not really be neccessair.
+         * But if the DELAY is set to a  very big value, the Notifications appear directly if a Reminder that shoudld,
+         * immediatly send a notification. Without this, there could be a noticable time gap.
+         */
+        notificationHandler.handle();
     }
 }
