@@ -6,7 +6,7 @@ import alarmClock.model.Reminder;
  * Created by pascal on 5/17/17.
  * Decides if a specific tag  was added to a Reminder.
  */
-public class hasTag implements CriteriaTester {
+public class HasTag implements CriteriaTester {
 
     private String tag;
 
@@ -15,7 +15,7 @@ public class hasTag implements CriteriaTester {
      *
      * @param tag a String that represents the tag you want to filter by
      */
-    public hasTag(String tag) {
+    public HasTag(String tag) {
         this.tag = tag;
     }
 
