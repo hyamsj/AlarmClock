@@ -1,4 +1,4 @@
-##AlarmClock
+#AlarmClock
 AlarmClock lets you store reminders, and notifies you about them.
 
 ##Project Status
