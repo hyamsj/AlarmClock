@@ -1,5 +1,1 @@
-Tests
-javadoc
-maven oder ant oder shell script muss nicht maven sein
-alert vom selben tag vorzeitig anzeigen. Nicht vom selben monat
 
