@@ -11,7 +11,8 @@ To compile, run the maven "install" command. It will create a under
 on windows machines, or
 `~/.m2/repository/ch/bfh/ti/Alarmclock/Alarmclock/1.0-SNAPSHOT/`
 under Unix machines.
-Go to the 1.0-Snapshot folder in the terminal and write "java -jar Alarmclock-1.0-SNAPSHOT.jar" (without the quotes) to launch the Alarm Clock.
+Go to the 1.0-Snapshot folder in the terminal and write `java -jar Alarmclock-1.0-SNAPSHOT.jar` to launch the Alarm Clock.
+
 Have fun!
 
 
