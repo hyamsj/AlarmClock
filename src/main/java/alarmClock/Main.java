@@ -16,6 +16,15 @@ public class Main extends Application {
     private String title = "Alarm Clock";
 
     /**
+     * Main method.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    /**
      * The Application Class requires the start method.
      * It launches the GUI and the programs beneath it
      *
@@ -47,15 +56,5 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-    }
-
-
-    /**
-     * Main method.
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 }

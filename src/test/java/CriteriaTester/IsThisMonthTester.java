@@ -1,7 +1,8 @@
 package CriteriaTester;
+
 import alarmClock.model.Reminder;
-import alarmClock.model.filtering.IsThisMonth;
 import alarmClock.model.filtering.CriteriaTester;
+import alarmClock.model.filtering.IsThisMonth;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,37 +15,38 @@ import static org.junit.Assert.assertFalse;
  * Created by pascal on 6/1/17.
  */
 public class IsThisMonthTester {
-      Reminder thisMonthReminder;
-        Reminder lastMonthReminder;
-        Reminder nextMonthReminder;
-        CriteriaTester isThisMonth;
-        @Before
-        public void initialize(){
-            String subject = "titel";
-            String descritpion = "bla bla";
-            LocalDateTime today = LocalDateTime.now();
-            LocalDateTime lastYear = LocalDateTime.now().minusMonths(1);
-            LocalDateTime nextYear = LocalDateTime.now().plusMonths(1);
+    Reminder thisMonthReminder;
+    Reminder lastMonthReminder;
+    Reminder nextMonthReminder;
+    CriteriaTester isThisMonth;
 
-            thisMonthReminder = new Reminder(subject,descritpion,today);
-            lastMonthReminder = new Reminder(subject,descritpion,lastYear);
-            nextMonthReminder = new Reminder(subject,descritpion,nextYear);
-            isThisMonth = new IsThisMonth();
-        }
+    @Before
+    public void initialize() {
+        String subject = "titel";
+        String descritpion = "bla bla";
+        LocalDateTime today = LocalDateTime.now();
+        LocalDateTime lastYear = LocalDateTime.now().minusMonths(1);
+        LocalDateTime nextYear = LocalDateTime.now().plusMonths(1);
 
-        @Test
-        public void isTrueIfThisMonth(){
-            assertTrue(isThisMonth.isTrue(thisMonthReminder));
-        }
+        thisMonthReminder = new Reminder(subject, descritpion, today);
+        lastMonthReminder = new Reminder(subject, descritpion, lastYear);
+        nextMonthReminder = new Reminder(subject, descritpion, nextYear);
+        isThisMonth = new IsThisMonth();
+    }
 
-        @Test
-        public void isTrueRetunrsFalseIfReminderIsLastMonth(){
-            assertFalse(isThisMonth.isTrue(nextMonthReminder));
-        }
+    @Test
+    public void isTrueIfThisMonth() {
+        assertTrue(isThisMonth.isTrue(thisMonthReminder));
+    }
 
-        @Test
-        public void isTrueRetunrsFalseIfReminderIsNextMonth(){
-            assertFalse(isThisMonth.isTrue(lastMonthReminder));
-        }
+    @Test
+    public void isTrueRetunrsFalseIfReminderIsLastMonth() {
+        assertFalse(isThisMonth.isTrue(nextMonthReminder));
+    }
+
+    @Test
+    public void isTrueRetunrsFalseIfReminderIsNextMonth() {
+        assertFalse(isThisMonth.isTrue(lastMonthReminder));
+    }
 
 }

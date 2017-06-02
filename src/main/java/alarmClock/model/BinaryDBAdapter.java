@@ -10,9 +10,8 @@ import java.util.ArrayList;
  * Loads and saves the Reminder to the Database using the binary serialization that comes with java
  */
 public class BinaryDBAdapter implements DataBaseAdapter {
-    ReminderList reminders;
     protected String path = "reminders.ser";
-
+    ReminderList reminders;
 
     /**
      * Loads the Reminders from the database. The load() method expects to find  an ArrayList ofeminders

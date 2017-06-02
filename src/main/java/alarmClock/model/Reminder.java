@@ -65,21 +65,21 @@ public class Reminder implements Serializable {
     }
 
     /**
-     * Returns the tags property of the reminder, this is required by JavaFx
-     *
-     * @return the tag property of the reminder
-     */
-    public SimpleObjectProperty<Collection<String>> getTagsProperty() {
-        return new SimpleObjectProperty<>(tags);
-    }
-
-    /**
      * Sets the tags of the reminder
      *
      * @param tags The tags of the reminder
      */
     public void setTags(Collection<String> tags) {
         this.tags = tags;
+    }
+
+    /**
+     * Returns the tags property of the reminder, this is required by JavaFx
+     *
+     * @return the tag property of the reminder
+     */
+    public SimpleObjectProperty<Collection<String>> getTagsProperty() {
+        return new SimpleObjectProperty<>(tags);
     }
 
     /**
@@ -110,6 +110,15 @@ public class Reminder implements Serializable {
     }
 
     /**
+     * Sets the subject of the reminder
+     *
+     * @param subject the subject that the reminder should have
+     */
+    private void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    /**
      * Returns the subjectProperty, is required by JavaFx
      *
      * @return The subjectProperty
@@ -125,6 +134,15 @@ public class Reminder implements Serializable {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Sets the description of the reminder
+     *
+     * @param description the description that the reminder should have
+     */
+    private void setDescription(String description) {
+        this.description = description;
     }
 
     /**
@@ -146,39 +164,21 @@ public class Reminder implements Serializable {
     }
 
     /**
-     * Returns the dateProperty of the Reminder, is required by
-     *
-     * @return the dateProperty of the Reminder
-     */
-    public SimpleObjectProperty<LocalDateTime> getDateProperty() {
-        return new SimpleObjectProperty<>(date);
-    }
-
-    /**
-     * Sets the subject of the reminder
-     *
-     * @param subject the subject that the reminder should have
-     */
-    private void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    /**
-     * Sets the description of the reminder
-     *
-     * @param description the description that the reminder should have
-     */
-    private void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
      * Sets the date of the reminder
      *
      * @param date the date that the reminder should have
      */
     private void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    /**
+     * Returns the dateProperty of the Reminder, is required by
+     *
+     * @return the dateProperty of the Reminder
+     */
+    public SimpleObjectProperty<LocalDateTime> getDateProperty() {
+        return new SimpleObjectProperty<>(date);
     }
 
     /**

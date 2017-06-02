@@ -12,7 +12,6 @@ import java.util.Collection;
  * Created by pascal on 5/23/17.
  * This Class configures and handles the diffrent Notifications, it configures which criterias must be true, so that a notification is
  * sent.
- *
  */
 public class NotificationHandler {
     private ReminderList reminders;
@@ -32,8 +31,8 @@ public class NotificationHandler {
     }
 
     /**
-     *
      * ordinary setter
+     *
      * @param reminders is the ReminderList for which the notifications are handled
      */
     public void setReminders(ReminderList reminders) {
@@ -46,7 +45,7 @@ public class NotificationHandler {
      * The second is a Notification that pops up, at the time the Reminder occures.
      * It passes CiteriaTesters to the Reminders, so that each Reminder can test for them and eventually send the
      * according notification.
-     *
+     * <p>
      * Reminders who have sent a notification get stored in a list, to exclude them for further testing. Otherwise
      * the reminders would send a notification every time handle is called.
      */
@@ -55,23 +54,23 @@ public class NotificationHandler {
         for (Reminder reminder : reminderList) {
             Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth());
             if (!notifiedReminders.contains(reminder)) {
-                            /**
-                             *this passes the criteriaTesters to the Reminder itself, and lets the Reminder  send the notification if
-                             * the criterias are met.
-                             */
-                            boolean success = reminder.notifyIf(importantStuffThisMonth);
-                            if (success) notifiedReminders.add(reminder);
+                /**
+                 *this passes the criteriaTesters to the Reminder itself, and lets the Reminder  send the notification if
+                 * the criterias are met.
+                 */
+                boolean success = reminder.notifyIf(importantStuffThisMonth);
+                if (success) notifiedReminders.add(reminder);
             }
 
 
             Collection<CriteriaTester> imminent = Arrays.asList(new IsInNextSeconds(1));
             if (!notifiedRemindersImminent.contains(reminder)) {
-                            /**
-                             *this passes the criteriaTesters to the Reminder itself, and lets the Reminder  send the notification if
-                             * the criterias are met.
-                             */
-                            boolean success = reminder.notifyIf(imminent);
-                            if (success) notifiedRemindersImminent.add(reminder);
+                /**
+                 *this passes the criteriaTesters to the Reminder itself, and lets the Reminder  send the notification if
+                 * the criterias are met.
+                 */
+                boolean success = reminder.notifyIf(imminent);
+                if (success) notifiedRemindersImminent.add(reminder);
             }
         }
 
@@ -95,9 +94,9 @@ public class NotificationHandler {
             if (reminder.meetsCriteria(criteria))
                 passedReminders.add(reminder);
         }
-                    // gets sure that a Notification is only sent, if it is not void.
-                    if (passedReminders.size() != 0) {
-                        new MultiReminderNotification(passedReminders).send();
-                    }
+        // gets sure that a Notification is only sent, if it is not void.
+        if (passedReminders.size() != 0) {
+            new MultiReminderNotification(passedReminders).send();
+        }
     }
 }

@@ -9,15 +9,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 /**
  * Created by pascal on 5/2/17.
  */
 public class ReminderTest {
-        SimpleStringProperty descriptionProperty;
+    SimpleStringProperty descriptionProperty;
     SimpleObjectProperty<LocalDateTime> timeProperty;
     SimpleObjectProperty<LocalDate> dateProperty;
     SimpleStringProperty subjectProperty;
@@ -30,12 +28,13 @@ public class ReminderTest {
     String tag3 = "blib";
 
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         descriptionProperty = new SimpleStringProperty(description);
         timeProperty = new SimpleObjectProperty<>(time);
         subjectProperty = new SimpleStringProperty(subject);
         reminder = new Reminder(subject, description, time);
     }
+
     @Test
     public void getTags() throws Exception {
         String tag = "bla";
@@ -50,7 +49,7 @@ public class ReminderTest {
     @Test
     public void setTags() throws Exception {
         //TODO test for add tag double
-        Collection<String> tags=new ArrayList<String>();
+        Collection<String> tags = new ArrayList<String>();
         tags.add(tag);
         tags.add(tag2);
         tags.add(tag3);
@@ -91,16 +90,14 @@ public class ReminderTest {
     }
 
 
-
-
     @Test
     public void equalsTest() throws Exception {
-        reminder = new Reminder(subject,description,time);
-        Reminder equalReminder= new Reminder(subject,description,time);
-        Reminder diffrentReminder = new Reminder(subject+1,description,time);
-        Reminder diffrentReminder2 = new Reminder(subject,description+1,time);
-        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1));
-        Reminder diffrentReminder4 = new Reminder(subject,description+1,time);
+        reminder = new Reminder(subject, description, time);
+        Reminder equalReminder = new Reminder(subject, description, time);
+        Reminder diffrentReminder = new Reminder(subject + 1, description, time);
+        Reminder diffrentReminder2 = new Reminder(subject, description + 1, time);
+        Reminder diffrentReminder3 = new Reminder(subject, description, time.plusMinutes(1));
+        Reminder diffrentReminder4 = new Reminder(subject, description + 1, time);
 
         assertTrue(reminder.equals(reminder));
         assertTrue(reminder.equals(equalReminder));
@@ -121,11 +118,11 @@ public class ReminderTest {
 
     @Test
     public void hashCodeTest() throws Exception {
-        Reminder equalReminder = new Reminder(subject,description,time);
-        Reminder diffrentReminder = new Reminder(subject+1,description,time);
-        Reminder diffrentReminder2 = new Reminder(subject,description+1,time);
-        Reminder diffrentReminder3 = new Reminder(subject,description,time.plusMinutes(1));
-        Reminder diffrentReminder4 = new Reminder(subject,description+1,time.plusMonths(1));
+        Reminder equalReminder = new Reminder(subject, description, time);
+        Reminder diffrentReminder = new Reminder(subject + 1, description, time);
+        Reminder diffrentReminder2 = new Reminder(subject, description + 1, time);
+        Reminder diffrentReminder3 = new Reminder(subject, description, time.plusMinutes(1));
+        Reminder diffrentReminder4 = new Reminder(subject, description + 1, time.plusMonths(1));
 
         assertTrue(reminder.hashCode() == reminder.hashCode());
 
@@ -145,27 +142,28 @@ public class ReminderTest {
         assertFalse(diffrentReminder4.hashCode() == reminder.hashCode());
 
     }
+
     @Test
-    public void gettersReturnSameSubject(){
+    public void gettersReturnSameSubject() {
         String subjectFromPropertyGetter = reminder.getSubjectProperty().get();
         String subjectFromGetter = reminder.getSubject();
-        assertEquals(subjectFromGetter,subjectFromPropertyGetter);
+        assertEquals(subjectFromGetter, subjectFromPropertyGetter);
     }
 
 
     @Test
-    public void gettersReturnSameDescription(){
-        String getProperty= reminder.getDescriptionProperty().get();
-        String get= reminder.getDescription();
-        assertEquals(get,getProperty);
+    public void gettersReturnSameDescription() {
+        String getProperty = reminder.getDescriptionProperty().get();
+        String get = reminder.getDescription();
+        assertEquals(get, getProperty);
     }
 
 
     @Test
-    public void gettersReturnSameDate(){
-        LocalDateTime getProperty= reminder.getDateProperty().get();
-        LocalDateTime get= reminder.getDate();
-        assertEquals(get,getProperty);
+    public void gettersReturnSameDate() {
+        LocalDateTime getProperty = reminder.getDateProperty().get();
+        LocalDateTime get = reminder.getDate();
+        assertEquals(get, getProperty);
     }
 
     @Test
@@ -188,7 +186,6 @@ public class ReminderTest {
         assertTrue(dateFromPropertyGetter.get().isEqual(dateFromPropertyGetter.get()));
         //assertTrue(dateProperty.get().isEqual(dateFromPropertyGetter.get()));
     }
-
 
 
     @Test

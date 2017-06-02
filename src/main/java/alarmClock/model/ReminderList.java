@@ -385,6 +385,7 @@ public class ReminderList implements ObservableList {
 
     /**
      * Returns the reminders as ArrayList of reminders
+     *
      * @return reminders as ArrayList of reminders
      */
     public ArrayList<Reminder> getSerializable() {

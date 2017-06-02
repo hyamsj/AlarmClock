@@ -1,6 +1,6 @@
-package alarmClock.model;
+package alarmClock.notification;
 
-import alarmClock.notification.Notification;
+import alarmClock.model.Reminder;
 
 /**
  * Created by pascal on 5/3/17.

@@ -12,8 +12,8 @@ import java.io.Serializable;
  * Handles usage of the data. Data in this case would be the reminders
  */
 public class Model implements Serializable {
-    private ReminderList reminders; // list with all reminders
     DataBaseAdapter adapter = new BinaryDBAdapter();
+    private ReminderList reminders; // list with all reminders
 
     /**
      * Constructor loads the Data from the Database

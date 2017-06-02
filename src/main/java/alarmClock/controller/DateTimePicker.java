@@ -109,21 +109,21 @@ public class DateTimePicker extends DatePicker {
     }
 
     /**
-     * Returns the formatProperty
-     *
-     * @return formatProperty is needed by JavaFx
-     */
-    public ObjectProperty<String> formatProperty() {
-        return format;
-    }
-
-    /**
      * Sets the format
      *
      * @param format the desired format (eg. dd-MM-yyyy HH:mm)
      */
     public void setFormat(String format) {
         this.format.set(format);
+    }
+
+    /**
+     * Returns the formatProperty
+     *
+     * @return formatProperty is needed by JavaFx
+     */
+    public ObjectProperty<String> formatProperty() {
+        return format;
     }
 
     /**

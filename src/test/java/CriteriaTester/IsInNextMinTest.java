@@ -20,8 +20,9 @@ public class IsInNextMinTest {
     Reminder futureReminder;
 
     CriteriaTester isInNextMin;
+
     @Before
-    public void initialize(){
+    public void initialize() {
         String subject = "titel";
         String descritpion = "bla bla";
         LocalDateTime now = LocalDateTime.now();
@@ -29,30 +30,30 @@ public class IsInNextMinTest {
         LocalDateTime future = LocalDateTime.now().plusMinutes(70);
         LocalDateTime paste = LocalDateTime.now().minusMinutes(1);
 
-        thisMinReminder = new Reminder(subject,descritpion, now);
-        nextMinReminder = new Reminder(subject,descritpion, imminent);
-        futureReminder = new Reminder(subject,descritpion, future);
-        pastReminder = new Reminder(subject,descritpion, paste);
+        thisMinReminder = new Reminder(subject, descritpion, now);
+        nextMinReminder = new Reminder(subject, descritpion, imminent);
+        futureReminder = new Reminder(subject, descritpion, future);
+        pastReminder = new Reminder(subject, descritpion, paste);
         isInNextMin = new IsInNextSeconds();
     }
 
     @Test
-    public void isTrueReturnsFalseIfThisMin(){
+    public void isTrueReturnsFalseIfThisMin() {
         assertFalse(isInNextMin.isTrue(thisMinReminder));
     }
 
     @Test
-    public void isTrueRetunrsFalseIfReminderIsPassed(){
+    public void isTrueRetunrsFalseIfReminderIsPassed() {
         assertFalse(isInNextMin.isTrue(pastReminder));
     }
 
     @Test
-    public void isTrueInNextMin(){
+    public void isTrueInNextMin() {
         assertFalse(isInNextMin.isTrue(nextMinReminder));
     }
 
     @Test
-    public void isTrueRetunrsFalseIfReminderIsTooFareInTheFuture(){
+    public void isTrueRetunrsFalseIfReminderIsTooFareInTheFuture() {
         assertFalse(isInNextMin.isTrue(futureReminder));
     }
 }

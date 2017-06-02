@@ -8,15 +8,34 @@ import javafx.collections.ListChangeListener;
 /**
  * Created by pascal on 5/3/17.
  * Is a Singelton, see "Design Patterns. Elements of Reusable Object-Oriented Software"  by the Gang of Four
- *
+ * <p>
  * Calls the NotificationHandler, every time the ReminderList is updated, and additional on a regularly period.
  */
 public class Poller implements ListChangeListener {
     private static Poller instance = null;
+    private final int DELAY = 1000; // time between every poll in miliseconds
     private ReminderList reminders;
     private Thread thread;
-    private final int DELAY = 1000; // time between every poll in miliseconds
     private NotificationHandler notificationHandler;
+    private boolean notedPassed = false;
+
+    /**
+     * Starts the thread
+     */ {
+        thread = new Thread(() -> {
+            try {
+                while (true) {
+                    Thread.sleep(DELAY);
+                    poll();
+                }
+            } catch (InterruptedException v) {
+                v.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     /**
      * Constructor. Is private because it follows the singleton pattern.
@@ -41,26 +60,6 @@ public class Poller implements ListChangeListener {
         return instance;
     }
 
-
-    /**
-     * Starts the thread
-     */ {
-        thread = new Thread(() -> {
-            try {
-                while (true) {
-                    Thread.sleep(DELAY);
-                    poll();
-                }
-            } catch (InterruptedException v) {
-                v.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
-
-    private boolean notedPassed = false;
     /**
      * Wakes up the notificationHandler
      * Requests the notificationHandler to show passed events, only once

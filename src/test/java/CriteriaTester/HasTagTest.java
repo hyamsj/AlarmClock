@@ -26,15 +26,15 @@ public class HasTagTest {
     CriteriaTester hasTag3;
 
     @Before
-    public void initialize(){
+    public void initialize() {
         String subject = "titel";
         String descritpion = "bla bla";
         LocalDateTime now = LocalDateTime.now();
-        tag1 ="tag1";
-        tag2 ="tag2";
-        tag3 ="tag3";
+        tag1 = "tag1";
+        tag2 = "tag2";
+        tag3 = "tag3";
 
-        Reminder = new Reminder(subject,descritpion, now);
+        Reminder = new Reminder(subject, descritpion, now);
 
         Reminder.addTag(tag1);
         Reminder.addTag(tag2);
@@ -45,12 +45,12 @@ public class HasTagTest {
     }
 
     @Test
-    public void isTrueforSingleTag(){
+    public void isTrueforSingleTag() {
         assertTrue(hasTag1.isTrue(Reminder));
     }
 
     @Test
-    public void isTrueRetunsFalseIfTagIsMissing(){
+    public void isTrueRetunsFalseIfTagIsMissing() {
         assertFalse(hasTag3.isTrue(Reminder));
     }
 

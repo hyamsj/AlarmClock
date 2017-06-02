@@ -8,8 +8,6 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static javafx.scene.input.KeyCode.L;
-import static javafx.scene.input.KeyCode.R;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
@@ -20,34 +18,34 @@ public class IsTodayTest {
     Reminder todayReminder;
     Reminder yesterdayReminder;
     Reminder tomorrowReminder;
+    CriteriaTester isTodayTester;
+
     @Before
-    public void initialize(){
+    public void initialize() {
         String subject = "titel";
         String descritpion = "bla bla";
         LocalDateTime today = LocalDateTime.now();
         LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
         LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);
 
-        todayReminder = new Reminder(subject,descritpion,today);
-        yesterdayReminder= new Reminder(subject,descritpion,yesterday);
-        tomorrowReminder = new Reminder(subject,descritpion,tomorrow);
+        todayReminder = new Reminder(subject, descritpion, today);
+        yesterdayReminder = new Reminder(subject, descritpion, yesterday);
+        tomorrowReminder = new Reminder(subject, descritpion, tomorrow);
+        isTodayTester = new IsToday();
     }
 
     @Test
-    public void isTrueIfTodayIsToday(){
-        CriteriaTester isTodayTester = new IsToday();
+    public void isTrueIfTodayIsToday() {
         assertTrue(isTodayTester.isTrue(todayReminder));
     }
 
     @Test
-    public void isTrueRetunrsFalseIfReminderIsYesterday(){
-        CriteriaTester isTodayTester = new IsToday();
+    public void isTrueRetunrsFalseIfReminderIsYesterday() {
         assertFalse(isTodayTester.isTrue(yesterdayReminder));
     }
 
     @Test
-    public void isTrueRetunrsFalseIfReminderIsTomorrow(){
-        CriteriaTester isTodayTester = new IsToday();
+    public void isTrueRetunrsFalseIfReminderIsTomorrow() {
         assertFalse(isTodayTester.isTrue(tomorrowReminder));
     }
 
