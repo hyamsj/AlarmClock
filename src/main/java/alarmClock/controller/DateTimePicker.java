@@ -31,7 +31,7 @@ public class DateTimePicker extends DatePicker {
     };
 
     /**
-     * Constructor
+     * Adds a listener to the DateTimePicker to keep an acceptable format.
      */
     public DateTimePicker() {
         getStyleClass().add("datetime-picker");
@@ -66,7 +66,7 @@ public class DateTimePicker extends DatePicker {
     }
 
     /**
-     * Event Handler
+     * Event Handler for pressing enter
      */
     private void simulateEnterPressed() {
         getEditor().fireEvent(new KeyEvent(getEditor(), getEditor(), KeyEvent.KEY_PRESSED, null, null, KeyCode.ENTER, false, false, false, false));
@@ -75,7 +75,7 @@ public class DateTimePicker extends DatePicker {
     /**
      * Gets the DateTimeValue
      *
-     * @return tje dateTimeValue
+     * @return the dateTimeValue
      */
     public LocalDateTime getDateTimeValue() {
         return dateTimeValue.get();
@@ -120,7 +120,7 @@ public class DateTimePicker extends DatePicker {
     /**
      * Sets the format
      *
-     * @param format
+     * @param format the desired format (eg. dd-MM-yyyy HH:mm)
      */
     public void setFormat(String format) {
         this.format.set(format);
