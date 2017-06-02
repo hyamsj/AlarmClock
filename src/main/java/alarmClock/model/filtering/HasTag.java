@@ -20,11 +20,11 @@ public class HasTag implements CriteriaTester {
     }
 
     /**
-     * @param r The Reminder that gets tested.
-     * @return the Answer if the Reminder r has the tag that was specified in the constructor.
+     * @param reminder The Reminder that gets tested.
+     * @return the Answer if the Reminder reminder has the tag that was specified in the constructor.
      */
     @Override
-    public boolean isTrue(Reminder r) {
-        return r.getTags().contains(tag);
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getTags().contains(tag);
     }
 }

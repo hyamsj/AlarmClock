@@ -429,9 +429,9 @@ public class ReminderList implements ObservableList {
      */
     @Override
     public Object set(int index, Object element) {
-        Object o = reminders.set(index, element);
+        Object object = reminders.set(index, element);
         pushState();
-        return o;
+        return object;
     }
 
     /**
@@ -467,18 +467,18 @@ public class ReminderList implements ObservableList {
      */
     @Override
     public Object remove(int index) {
-        Object o = reminders.remove(index);
+        Object object = reminders.remove(index);
         pushState();
-        return o;
+        return object;
     }
 
     /**
-     * @param o Reminder forom which the index is returned.
+     * @param object Reminder forom which the index is returned.
      * @return an int that is the index of the passed reminder.
      */
     @Override
-    public int indexOf(Object o) {
-        return reminders.indexOf(o);
+    public int indexOf(Object object) {
+        return reminders.indexOf(object);
     }
 
 
@@ -486,10 +486,10 @@ public class ReminderList implements ObservableList {
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the highest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
+     * <tt>(object==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;object.equals(get(i)))</tt>,
      * or -1 if there is no such index.
      *
-     * @param o element to search for
+     * @param object element to search for
      * @return the index of the last occurrence of the specified element in
      * this list, or -1 if this list does not contain the element
      * @throws ClassCastException   if the type of the specified element
@@ -500,8 +500,8 @@ public class ReminderList implements ObservableList {
      *                              (<a href="Collection.html#optional-restrictions">optional</a>)
      */
     @Override
-    public int lastIndexOf(Object o) {
-        return reminders.lastIndexOf(o);
+    public int lastIndexOf(Object object) {
+        return reminders.lastIndexOf(object);
     }
 
     /**
@@ -622,9 +622,9 @@ public class ReminderList implements ObservableList {
      */
     @Override
     public boolean removeAll(Collection c) {
-        boolean b = reminders.removeAll(c);
+        boolean isSuccess = reminders.removeAll(c);
         pushState();
-        return b;
+        return isSuccess;
     }
 
     /**
@@ -750,18 +750,18 @@ public class ReminderList implements ObservableList {
      * general contract for the {@code hashCode} method, which states
      * that equal objects must have equal hash codes.
      *
-     * @param o the reference object with which to compare.
+     * @param object the reference object with which to compare.
      * @return {@code true} if this object is the same as the obj
      * argument; {@code false} otherwise.
      * @see #hashCode()
      * @see java.util.HashMap
      */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
 
-        ReminderList that = (ReminderList) o;
+        ReminderList that = (ReminderList) object;
 
         return reminders != null ? reminders.equals(that.reminders) : that.reminders == null;
     }

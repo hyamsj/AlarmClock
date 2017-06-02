@@ -37,12 +37,12 @@ public class IsInNextMin implements CriteriaTester {
     }
 
     /**
-     * @param r the Reminder that gets tested if its date is in the next Minutes
+     * @param reminder the Reminder that gets tested if its date is in the next Minutes
      * @return the Answer if the reminder date is in the next x Minutes
      */
     @Override
-    public boolean isTrue(Reminder r) {
-        return r.getDate().isAfter(LocalDateTime.now())
-                && r.getDate().isBefore(LocalDateTime.now().plusMinutes(nextMinutes));
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().isAfter(LocalDateTime.now())
+                && reminder.getDate().isBefore(LocalDateTime.now().plusMinutes(nextMinutes));
     }
 }

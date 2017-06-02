@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
  */
 public class IsThisYear implements CriteriaTester {
     /**
-     * @param r reminder that gets tested if its date is this year.
+     * @param reminder reminder that gets tested if its date is this year.
      * @return the answer if the reminder date is this year.
      */
 
     @Override
-    public boolean isTrue(Reminder r) {
-        return r.getDate().getYear() == LocalDateTime.now().getYear();
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().getYear() == LocalDateTime.now().getYear();
     }
 }

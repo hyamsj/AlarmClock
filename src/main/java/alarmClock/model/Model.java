@@ -51,6 +51,10 @@ public class Model implements Serializable {
         reminders.addListener((Observable obs) -> {
             adapter.save(reminders);
         });
+        /**
+         * this is the place where the Poller gets implicit constructed. Remember that it is a Singleton,
+         * therefor the getInstance methode has the role of the constructor.
+         */
         reminders.addListener(Poller.getInstance()::onChanged);
     }
 

@@ -93,7 +93,7 @@ public class DateTimePicker extends DatePicker {
     /**
      * Returns the dateTimeValueProperty
      *
-     * @return dateTimeValueProperty
+     * @return dateTimeValueProperty, is needed by JavaFx
      */
     public ObjectProperty<LocalDateTime> dateTimeValueProperty() {
         return dateTimeValue;
@@ -111,7 +111,7 @@ public class DateTimePicker extends DatePicker {
     /**
      * Returns the formatProperty
      *
-     * @return formatProperty
+     * @return formatProperty is needed by JavaFx
      */
     public ObjectProperty<String> formatProperty() {
         return format;

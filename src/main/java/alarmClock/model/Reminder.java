@@ -184,18 +184,18 @@ public class Reminder implements Serializable {
     /**
      * Equals method
      *
-     * @param o any object
+     * @param object any object
      * @return true if they are the same, false if they are not
      */
     @Override
-    public boolean equals(Object o) {
-        Reminder r;
-        if (o instanceof Reminder) {
-            r = (Reminder) o;
+    public boolean equals(Object object) {
+        Reminder reminder;
+        if (object instanceof Reminder) {
+            reminder = (Reminder) object;
             boolean isSame =
-                    r.getDescription().equals(this.getDescription())
-                            && r.getSubject().equals(this.getSubject())
-                            && r.getDate().equals(this.getDate());
+                    reminder.getDescription().equals(this.getDescription())
+                            && reminder.getSubject().equals(this.getSubject())
+                            && reminder.getDate().equals(this.getDate());
 
             return isSame;
         } else {
@@ -211,11 +211,11 @@ public class Reminder implements Serializable {
      */
     @Override
     public int hashCode() {
-        int h = 1;
-        h *= description.hashCode() * 13;
-        h *= subject.hashCode() * 17;
-        h *= date.hashCode() * 11;
-        return h;
+        int hash = 1;
+        hash *= description.hashCode() * 13;
+        hash *= subject.hashCode() * 17;
+        hash *= date.hashCode() * 11;
+        return hash;
     }
 
 
@@ -288,14 +288,14 @@ public class Reminder implements Serializable {
         //gets the notification Types from the config Reader / File
         ArrayList<Notification> notificationTypes = new ConfigReader().getNotificationTypes();
 
-        for (Notification n : notificationTypes) {
-            if (n instanceof JavaFxNotification) {
+        for (Notification notification : notificationTypes) {
+            if (notification instanceof JavaFxNotification) {
                 JavaFxNotification alert = new JavaFxNotification(this);
                 alert.setReminder(this);
                 alert.send();
             } else {
-                n.setReminder(this);
-                n.send();
+                notification.setReminder(this);
+                notification.send();
             }
 
         }

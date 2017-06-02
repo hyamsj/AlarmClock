@@ -45,10 +45,14 @@ public class JavaFxNotification implements Notification {
     }
 
     /**
-     * Creates the Reminder Popup
+     * Creates the Reminder Popup that uses JavaFx.
      */
     @Override
     public void send() {
+        /**
+         * the Platform Run Later call is needed by JavaFx to handle a Popup that runs independent a.k.a in a
+         * diffrent Thread than the "main"-window,
+         */
         Platform.runLater(
                 () -> {
                     Stage stage = new Stage();

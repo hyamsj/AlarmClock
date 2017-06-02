@@ -6,7 +6,7 @@ package alarmClock.model;
  */
 public interface DataBaseAdapter {
     /**
-     * Loads data from the DB
+     * Loads data from the DB, at this state, the Application only stores  the reminderList in the DB.
      *
      * @return a list with all reminders
      */

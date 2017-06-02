@@ -38,12 +38,12 @@ public class IsInNextSeconds implements CriteriaTester {
     }
 
     /**
-     * @param r the Reminder that gets tested if its date is in the next Seconds.
+     * @param reminder the Reminder that gets tested if its date is in the next Seconds.
      * @return the Answer if the reminder date is in the next x Seconds.
      */
     @Override
-    public boolean isTrue(Reminder r) {
-        return r.getDate().isAfter(LocalDateTime.now())
-                && r.getDate().isBefore(LocalDateTime.now().plusSeconds(nextSeconds));
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().isAfter(LocalDateTime.now())
+                && reminder.getDate().isBefore(LocalDateTime.now().plusSeconds(nextSeconds));
     }
 }

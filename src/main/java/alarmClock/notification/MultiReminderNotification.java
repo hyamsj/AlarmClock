@@ -61,6 +61,10 @@ public class MultiReminderNotification extends JavaFxNotification {
      */
     @Override
     public void send() {
+        /**
+         * the Platform Run Later call is needed by JavaFx to handle a Popup that runs independent a.k.a in a
+         * diffrent Thread than the "main"-window,
+         */
         Platform.runLater(
                 () -> {
                     String remindersText = "";

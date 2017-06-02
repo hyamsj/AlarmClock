@@ -10,10 +10,13 @@ import alarmClock.model.Reminder;
  * To replicate this behavior, we Created a object, that has exactly one Function. This way we can mimic
  * higher order functions.
  * Pleas read the documentation for further information.
+ * As a convention we named the classes like according to the boolean name convention. But with a Capital Letter,
+ * since they are classes.
  */
 public interface CriteriaTester {
     /**
+     * @param reminder the Reminder that gets tested. for the specific criteria.
      * @return boolean that answers the question if the  Criteria is met or not.
      */
-    boolean isTrue(Reminder r);
+    boolean isTrue(Reminder reminder);
 }

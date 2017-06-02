@@ -41,7 +41,7 @@ public class SpecificReminder extends Reminder {
      * @param subject       subject of the reminder
      * @param description   description of the reminder
      * @param date          date of the reminder
-     * @param tags          tags of the reminder
+     * @param tags          tags of the reminder, they help to add tags, or "keywords" to a  reminder.
      * @param notifications notifications of the reminder
      */
     public SpecificReminder(String subject, String description, LocalDateTime date, Set<String> tags, Set<Notification> notifications) {
@@ -52,19 +52,19 @@ public class SpecificReminder extends Reminder {
     /**
      * Add a notification to the reminder
      *
-     * @param n notification to be added to the reminder
+     * @param notification notification to be added to the reminder
      */
-    public void addNotification(Notification n) {
-        notifications.add(n);
+    public void addNotification(Notification notification) {
+        notifications.add(notification);
     }
 
     /**
      * Removes the Notification from the reminder
      *
-     * @param n notification to be removed from the reminder
+     * @param notification notification to be removed from the reminder
      */
-    public void removeNotification(Notification n) {
-        notifications.remove(n);
+    public void removeNotification(Notification notification) {
+        notifications.remove(notification);
     }
 
     /**
@@ -72,9 +72,9 @@ public class SpecificReminder extends Reminder {
      */
     @Override
     public void doNotify() {
-        for (Notification n : notifications) {
-            n.setReminder(this);
-            n.send();
+        for (Notification notification : notifications) {
+            notification.setReminder(this);
+            notification.send();
         }
     }
 

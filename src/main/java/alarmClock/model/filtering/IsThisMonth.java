@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
  */
 public class IsThisMonth implements CriteriaTester {
     /**
-     * @param r reminder that gets tested if its date is this month.
+     * @param reminder reminder that gets tested if its date is this month.
      * @return the Answer if the reminder date is this month.
      */
     @Override
-    public boolean isTrue(Reminder r) {
+    public boolean isTrue(Reminder reminder) {
         LocalDateTime today = LocalDateTime.now();
-        return r.getDate().getYear() == today.getYear()
-                && r.getDate().getMonth() == today.getMonth();
+        return reminder.getDate().getYear() == today.getYear()
+                && reminder.getDate().getMonth() == today.getMonth();
     }
 }

@@ -73,8 +73,6 @@ public class NotificationHandler {
                             boolean success = reminder.notifyIf(imminent);
                             if (success) notifiedRemindersImminent.add(reminder);
             }
-
-
         }
 
     }
@@ -87,6 +85,9 @@ public class NotificationHandler {
         ArrayList<Reminder> reminderList = reminders.getSerializable();
         ArrayList<Reminder> passedReminders = new ArrayList<>();
         Collection<CriteriaTester> criteria = new ArrayList<>();
+        /**
+         * the boths criterias filter the Reminders for Reminders, which are dated  in th past and dated this year.
+         */
         criteria.add(new IsPassed());
         criteria.add(new IsThisYear());
 

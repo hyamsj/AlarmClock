@@ -15,7 +15,7 @@ public class Poller implements ListChangeListener {
     private static Poller instance = null;
     private ReminderList reminders;
     private Thread thread;
-    private final int DELAY = 1000; // time between every poll
+    private final int DELAY = 1000; // time between every poll in miliseconds
     private NotificationHandler notificationHandler;
 
     /**

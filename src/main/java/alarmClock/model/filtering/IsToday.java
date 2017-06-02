@@ -11,13 +11,13 @@ import java.time.LocalDateTime;
 public class IsToday implements CriteriaTester {
 
     /**
-     * @param r reminder that gets tested if its date is today.
+     * @param reminder reminder that gets tested if its date is today.
      * @return the answer if the reminder is today.
      */
     @Override
-    public boolean isTrue(Reminder r) {
+    public boolean isTrue(Reminder reminder) {
         LocalDateTime today = LocalDateTime.now();
-        return r.getDate().getYear() == today.getYear()
-                && r.getDate().getDayOfYear() == today.getDayOfYear();
+        return reminder.getDate().getYear() == today.getYear()
+                && reminder.getDate().getDayOfYear() == today.getDayOfYear();
     }
 }

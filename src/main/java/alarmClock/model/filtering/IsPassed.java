@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
  */
 public class IsPassed implements CriteriaTester {
     /**
-     * @param r the reminder that gets tested if its date was in the past.
+     * @param reminder the reminder that gets tested if its date was in the past.
      * @return the Answer if the reminder was in the past.
      */
     @Override
-    public boolean isTrue(Reminder r) {
-        return r.getDate().isBefore(LocalDateTime.now());
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().isBefore(LocalDateTime.now());
     }
 }

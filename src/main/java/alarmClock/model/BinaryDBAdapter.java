@@ -15,7 +15,7 @@ public class BinaryDBAdapter implements DataBaseAdapter {
 
 
     /**
-     * Loads data from the database
+     * Loads the Reminders from the database. The load() method expects to find  an ArrayList ofeminders
      *
      * @return a ReminderList with all reminders
      */
