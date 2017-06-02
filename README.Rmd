@@ -1,4 +1,4 @@
-##AlarmClock
+#AlarmClock
 AlarmClock lets you store reminders, and notifies you about them.
 
 ##Project Status
@@ -7,11 +7,11 @@ The code documentation, the manual, and the description of the work-process is s
 
 ##Compile
 To compile, run the maven "install" command. It will create a under 
-`C:\Users\Alice\.m2\repository\ch\bfh\ti\Alarmclock\Alarmclock\1.0-SNAPSHOT\`
+C:\Users\Alice\.m2\repository\ch\bfh\ti\Alarmclock\Alarmclock\1.0-SNAPSHOT\
 on windows machines, or
-`/home/alice/.m2/repository/ch/bfh/ti/Alarmclock/Alarmclock/1.0-SNAPSHOT/`
+~/.m2/repository/ch/bfh/ti/Alarmclock/Alarmclock/1.0-SNAPSHOT/
 under Unix machines.
-Go to the 1.0-Snapshot folder in the terminal and write `java -jar Alarmclock-1.0-SNAPSHOT.jar` to launch the Alarm Clock.
+Go to the 1.0-Snapshot folder in the terminal and write "java -jar Alarmclock-1.0-SNAPSHOT.jar" (without the quotes) to launch the Alarm Clock.
 Have fun!
 
 
