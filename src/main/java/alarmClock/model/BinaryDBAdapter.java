@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class BinaryDBAdapter implements DataBaseAdapter {
     ReminderList reminders;
-    String path = "reminders.ser";
+    protected String path = "reminders.ser";
 
 
     /**

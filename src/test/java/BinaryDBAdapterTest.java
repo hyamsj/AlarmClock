@@ -19,7 +19,7 @@ public class BinaryDBAdapterTest {
     private BinaryDBAdapter adapter;
     @Before
     public void before() {
-        adapter = new BinaryDBAdapter();
+        adapter = new BinaryDBAdapterMock();
     }
 
     @Test
@@ -47,6 +47,18 @@ public class BinaryDBAdapterTest {
         assertFalse(reminders1.equals(reminders2));
         assertEquals(reminders1,loadedReminders);
 
+
+    }
+
+    /**
+     * extends BinaryDBAdpater so that we can give it another path to store the Reminders to a diffrent location.
+     * Otherwise the Entrys from the User would otherwise be overwritten.
+     */
+    public class BinaryDBAdapterMock extends BinaryDBAdapter{
+        public BinaryDBAdapterMock(){
+            super();
+            super.path = "testReminders.ser";
+        }
 
     }
 

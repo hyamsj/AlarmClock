@@ -1,7 +1,4 @@
-import alarmClock.model.filtering.CriteriaTester;
-import alarmClock.model.filtering.IsThisMonth;
 import alarmClock.model.Reminder;
-import alarmClock.model.filtering.hasTag;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.junit.Before;
@@ -10,7 +7,6 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import static junit.framework.TestCase.assertEquals;
