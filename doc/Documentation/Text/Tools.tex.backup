@@ -1,12 +1,8 @@
 Um die  Versionierung der Dokumentation automatisch generieren zu lassen, haben wir LaTeX so mit Scripts erweitert, so dass die git Head Versionsnummer
 direkt ins Dokument eingefügt wird. Somit bleibt diese Information auch auf einem Ausdruck akkurat. Gegenüber einer manuellen inkrementierung der Version, hat die automatisierung den Vorteil, dass sie auch im Stress nicht vergessen wird. Das Ergebniss sieht man am Ende des Dokuments.
 
-\LaTeX kann Code ausführen. wir haben den Code in Shellscripte ausgelagert, und lassen den compiler diese aufrufen. Damit dies funktioniert, muss dies aktiviert werden. 
-
-Im \LaTeX file steht nun folgender Code.
-Zuerst wird die Versionsinformation in eine Datei  geschrieben, welche anschliessend in die Dokumentation eingebunden wird.
-Am schluss wird die Datei zurückgesezt, so dass sie eine Fehlermeldung im Dokument erzeugt, falls die Ausführung von Shellscripten im \LaTeX compiler ausgeschaltet ist.
-Die automatisch generierte Datei wird nach der Generierung in das Dokument eingebunden.
+LaTeX kann code ausführen. wir haben den Code in Shellscripte ausgelagert, und lassen den compiler diese aufrufen.
+Im LaTeX file steht nun folgender Code.
 \begin{lstlisting}
  \noindent
 Automatische Versionierung:
@@ -35,3 +31,4 @@ Dann wird ein cleanup durchgeführt, dabei wird die Output Datei mit einer Fehle
 OUTPUT="../script/version.tex"
 echo "Fetching version information failed. Please enable shell-escape in your \LaTeX \~  compiler.">$OUTPUT
 \end{lstlisting}
+Die automatisch generierte Datei wird nach der Generierung in das Dokument eingebunden.
