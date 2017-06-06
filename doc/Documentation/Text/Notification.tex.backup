@@ -106,6 +106,7 @@ Der Code funktioniert sehr ähnlich. Es wird aber anstatt ein CriteriaTester.IsT
 
 Es gibt noch ein dritten Typ von Notifications diese zeigt eine Aggregation der Vergangenen Remindern.Sie werden in einer seperaten Methode abgearbeitet. Der showPastEvents() Methode. Diese löst eine Notification aus, welche mehrere Reminders zusammen darstellt. Desshabl haben wir uns von dem Paradigma gelöst, dass nur der Remidner die Notificaiton auslöst.
 Die Methode überprüft auf zwei Kriterien. Erstens ob der Reminder in der Vergangenheit angesiedelt ist  und ob  der Reminder in diesem Jahr war.
+Siehe Zeile 8 und 9. 
 Dies geschieht indem man über die ReminderList itteriert. und die passenden Reminders in eine seperate Liste namens passedReminders speichert.
 Diese wird dann der MultiReminderNotification übergeben, damit dies die aggregierte Notificaiton absenden kann.
 
