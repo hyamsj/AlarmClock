@@ -6,7 +6,36 @@
 \usepackage{fancyhdr}
 \usepackage{fancyref}
 \usepackage{lscape}
+\usepackage{color}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{lightgrey}{rgb}{0.97,0.97,0.97}
+\definecolor{grey}{rgb}{0.3,0.3,0.3}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+ 
 \usepackage{listings}
+\lstset{
+language=java,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numberstyle=\tiny\color{grey},
+numberfirstline=true,
+firstnumber=1,
+stepnumber=5,
+numbers=left,
+numbersep=10pt,
+tabsize=4,
+breaklines=true,
+showspaces=false,
+showstringspaces=false,
+backgroundcolor=\color{lightgrey}
+}
+
 
 %must be before gloassary stuff\usepackage{hyperref}
 \usepackage[toc]{glossaries}
@@ -28,7 +57,6 @@
 \rhead{\runauthor}
 \chead{\runtitle}
 %\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{img/bfh.png}} \end{picture}}
-
 
 
 \begin{document}
