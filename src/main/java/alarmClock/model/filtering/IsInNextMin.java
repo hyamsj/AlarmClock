@@ -21,10 +21,10 @@ public class IsInNextMin implements CriteriaTester {
     }
 
     /**
-     * default constructor looks 15 minutes ahead.
+     * default constructor looks 1 minutes ahead.
      */
     public IsInNextMin() {
-        setNextMinutes(15);
+        setNextMinutes(1);
     }
 
     /**

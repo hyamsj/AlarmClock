@@ -38,7 +38,7 @@ boolean isThisYear = IsThisYear.isTrue(reminder);
        
        
        \subsection{Implementierungen von Filtern}
-       Wir haben ettliche Filter implementiert, die meisten Filter ähneln sich stark. Wie bereits beschreiben steht vorallem die Criteria.isTrue() Methode im Vordergrund. Dementsprechend  beleuchten wir hier auch nur diese Methode.
+       Wir haben ettliche Filter implementiert, die meisten Filter sind sehr ähnlich.
        
        \subsubsection{hasTag}
        Dieser Filter prüft, ob ein Reminder ein bestimmten Tag hat. Somit kann man zum Beispiel Reminders verstecken, wie im Beispiel weiter oben gezeigt,
@@ -46,23 +46,24 @@ boolean isThisYear = IsThisYear.isTrue(reminder);
        
        Das Filtern auf den Tag geschieht auf einer einzelnen Zeile.
       \begin{lstlisting}
+      @Override
        public boolean isTrue(Reminder reminder) {
 	    return reminder.getTags().contains(tag);
       }
       \end{lstlisting}
       
       \subsubsection{IsInNextMin}
-      Dieser Filter testet, ob ein Reminde inerhalb der nächsten x Minuten stattfindet.
+      Dieser Filter testet ob ein Reminde inerhalb der nächsten x Minuten stattfindet.
       Der default Constructor setzt x auf 1, so dass ohne nähere Spezifikaiton darauf getestet wird, ob ein Reminder in der nächsten Minute stattfindet.
       Dies kommt auch nahe an den natürlichen Sprachgebrauch, was den Code beser lesbar macht.
-      Zuerst wird geprüft, ob der Reminder in der Zukunft liegt.
+      
       \begin{lstlisting}
+	@Override
         public boolean isTrue(Reminder reminder) {
         return reminder.getDate().isAfter(LocalDateTime.now())
                 && reminder.getDate().isBefore(LocalDateTime.now().plusMinutes(nextMinutes));
     }
       \end{lstlisting}
 
-      \subsubsection{IsInNextSecond}
       
  

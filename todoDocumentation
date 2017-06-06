@@ -27,6 +27,6 @@ Package: notification
 + JavaFxNotification
 + MultiReminderNotification
 + Notification
-- NotificationHandler
++ NotificationHandler
 
 + Main
