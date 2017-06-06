@@ -1,0 +1,81 @@
+\subsection{Interface: Notification}
+Das NotificationInterface gibt zwei Methoden vor:
+
+\begin{lstlisting}
+   void setReminder(Reminder reminder);
+\end{lstlisting}
+setReminder übergibt den Reminder, für den man eine Notifcation erstellen will.
+
+\begin{lstlisting}
+   void send();
+\end{lstlisting}
+send() wird vom Reminder aufgerufen, und zeigt dem User die Notification. Es gibt verschiene Arten von Notifications.
+JavaFxNotification ist das Popup das den Reminder aufzeigt, der gerade aktuell ist. MultireminderNotification
+zeigt alle schon vergangenen Reminders, und ConsoleReminder zeigt auf der Konsole (Shell) einen Reminder.
+All diese Notification-Klassen implemenetieren Notification.
+
+
+\subsection{Class: ConsoleNotification}
+ConsoleNotification hat einen leeren Konstruktor aus mehreren Gründen. Wir haben ihn ähnlich wie den JavaFxNotification aufebaut,
+und JavaFX verlangt einen leeren Konstuktor, also haben wir ihn hier beibehalten. Auch haben wir einen Konstruktor mit einem Reminder im Parameter gemacht,
+also war der DefaultKonstruktor überschrieben.
+Der ConfigReader benutzt diese Klasse auch (inklusive dem leeren Konstruktor) und benötigt keinen direkten Reminder, also haben wir ihn so stehen lassen.
+
+Der Konstruktor mit dem Reminder im Parameter und die setReminderMethode machen eingentlich genau das gleiche. setReminders wird noch vom Notication Interface verlangt.
+Die send() Methode wird vom Reminder aufgerufen wenn die Zeit soweit ist. Sie druckt einfach die toString() Methode des Reminders auf die Konsole.
+
+
+\subsection{Class: JavaFxNotification}
+Die JavaFxNotification Klasse ist identisch mit der ConsoleNotification, nur die send() Methode ist anders.
+Die send() Methode enthält die statische Methode:
+\begin{lstlisting}
+  Platform.runLater( () -> {...});
+\end{lstlisting}
+In den geschweiften Klammern wird ein Popup Fenster erstellt. Da wir mit Threads arbeiten, und diese Popups verspätet aufgerufen werden,
+müssen wir das GUI in das Platform.runlater einpacken. Die JavaDoc vom runlater() sagt 'Run the specified Runnable on the JavaFX Application
+Thread at some unspecified time in the future [...]',
+und das ist genau was wir brauchen. Lässt man es weg, bekommt man dutzende von Exceptions.
+
+\begin{lstlisting}
+  {
+Stage stage = new Stage();
+                    label = new Label("Hello: " + reminder.toString());
+                    Button okButton = new Button("Ok");
+                    okButton.setOnAction(e -> {
+                        stage.close();
+                    });
+                    VBox pane = new VBox(10, label, okButton);
+                    pane.setAlignment(Pos.CENTER);
+                    pane.setPadding(new Insets(10));
+                    Scene scene = new Scene(pane);
+                    stage.setTitle("Reminder");
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();
+    }
+\end{lstlisting}
+Der Code in den geschweiften Klammern macht ein simples JavaFX Fenster das den Reminder aufzeigt. Das Label wird mit der reminder.toString() Methode überschrieben. Dem okButton schliesst das Fenster wenn man ihn drückt. Die Komponenten Button und Label tun wir in ein VBox Behälter und machen ihn noch ein bisschen schöner mit setAlignment() und setPadding().
+
+
+\subsection{Class: MultiReminderNotification}
+MultiReminderNotification zeigt alle schon vergangenen Reminder in einem einzigen Fenster an. Der Aufbau der Klasse ist genau gleich wie in JavaFxNotification und ConsoleNotification, nur dass anstatt einem Reminder hat er eine Liste von Reminder.
+\begin{lstlisting}
+private Collection<Reminder> reminders;
+
+String remindersText = "";
+                    int i = 0;
+                    for (Reminder r : reminders) {
+                        remindersText += "Passed Event No " + ++i + ":\n";
+                        remindersText += r.toString() + "\n";
+                        System.out.print("added" + r.toString());
+                    }
+\end{lstlisting}
+Hier Iterieren wir durch alle Reminders in der Tabelle und fügen sie zum Label hinzu. Die Reminders sind in der reminders Liste. Damit wir nicht alle Reminders in diesem Popup habem, sonder nur die die bereits vergangen sind oder schon sehr bald erscheinen, werden diese im NotificationHandler noch gefiltert.
+Die Methoden dazu wären folgende:
+\begin{lstlisting}
+criteria.add(new IsPassed());
+criteria.add(new IsThisYear());
+\end{lstlisting}
+
+\subsection{Class: NotificationHandler}
+TODO

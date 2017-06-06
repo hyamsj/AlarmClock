@@ -1,6 +1,25 @@
- 
+\subsection{Class: Main}
 Dies ist die Klasse die die Main methode enthält. Sie erbt von der Klasse Application, da Sie das JavaFX-GUI launched.
+Application implementiert die start methode, die ein Stage als Parameter hat. Diese Stage ist das Hauptfenster mit der Tabelle von Reminders.
+
+\begin{lstlisting}
+  Platform.setImplicitExit(false);
+\end{lstlisting}
+Wenn Platform.setImplicitExit true ist, werden Befehle wie Platform.runlater() ignoriert, sobald alle JavaFX Fenster geschlossen sind.
+Das würde heissen,das wenn das Hauptfenster geschlossen wurde (und alle Popups), würden spätere Popups nicht mehr erscheinen.
+Dies wollen wir verhindern, also ist es auf false gesetzt.
+
 \begin{lstlisting}
    Parent root = FXMLLoader.load(getClass().getResource(windowName));
 \end{lstlisting}
 windowName ist der Name der fxml Datei (mainWindow.fxml), in der das Aussehen und der Controller definiert wird. "mainWindow.fxml" befindet sich im package "resources".
+
+
+\begin{lstlisting}
+    if (new ConfigReader().isEnableDarkMode()) {
+            scene.getStylesheets().add("dark.css");
+        } else {
+            scene.getStylesheets().add("styles.css");
+        }
+\end{lstlisting}
+Der ConfigReader kann so angepasst werden, das man hier das gewünsche CSS File bekommt.
