@@ -10,7 +10,7 @@ import java.util.Collection;
 
 /**
  * Created by pascal on 5/23/17.
- * This Class configures and handles the diffrent Notifications, it configures which criterias must be true, so that a notification is
+ * This Class configures and handles the different Notifications, it configures which criteria must be true, so that a notification is
  * sent.
  */
 public class NotificationHandler {
@@ -40,9 +40,9 @@ public class NotificationHandler {
     }
 
     /**
-     * configures the  diffrent kind of Notifications that will be used.
+     * configures the  different kind of Notifications that will be used.
      * The first is the early Notification.
-     * The second is a Notification that pops up, at the time the Reminder occures.
+     * The second is a Notification that pops up, at the time the Reminder occurres.
      * It passes CiteriaTesters to the Reminders, so that each Reminder can test for them and eventually send the
      * according notification.
      * <p>
@@ -56,7 +56,7 @@ public class NotificationHandler {
             if (!notifiedReminders.contains(reminder)) {
                 /**
                  *this passes the criteriaTesters to the Reminder itself, and lets the Reminder  send the notification if
-                 * the criterias are met.
+                 * the criteria are met.
                  */
                 boolean success = reminder.notifyIf(importantStuffThisMonth);
                 if (success) notifiedReminders.add(reminder);
@@ -77,7 +77,7 @@ public class NotificationHandler {
     }
 
     /**
-     * this method generats a summary of all Reminders, whos date is in the past of this year.
+     * this method generates a summary of all Reminders, who's date is in the past of this year.
      */
 
     public void showPastEvents() {
@@ -85,7 +85,7 @@ public class NotificationHandler {
         ArrayList<Reminder> passedReminders = new ArrayList<>();
         Collection<CriteriaTester> criteria = new ArrayList<>();
         /**
-         * the boths criterias filter the Reminders for Reminders, which are dated  in th past and dated this year.
+         * the both criteria filter the Reminders for Reminders, which are dated  in th past and dated this year.
          */
         criteria.add(new IsPassed());
         criteria.add(new IsThisYear());

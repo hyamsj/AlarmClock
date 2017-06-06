@@ -63,7 +63,7 @@ public class MultiReminderNotification extends JavaFxNotification {
     public void send() {
         /**
          * the Platform Run Later call is needed by JavaFx to handle a Popup that runs independent a.k.a in a
-         * diffrent Thread than the "main"-window,
+         * different Thread than the "main"-window,
          */
         Platform.runLater(
                 () -> {
@@ -85,7 +85,7 @@ public class MultiReminderNotification extends JavaFxNotification {
                     pane.setPadding(new Insets(10));
                     Scene scene = new Scene(pane);
                     stage.setScene(scene);
-                    stage.setTitle("Previously Occured Reminders: ");
+                    stage.setTitle("Previously occurred Reminders: ");
                     stage.setResizable(false);
                     stage.show();
                 }

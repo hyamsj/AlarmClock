@@ -23,10 +23,10 @@ Package: filtering
 - SpecificReminder
 
 Package: notification
-- ConsoleNotification
-- JavaFxNotification
-- MultiReminderNotification
-- Notification
++ ConsoleNotification
++ JavaFxNotification
++ MultiReminderNotification
++ Notification
 - NotificationHandler
 
 + Main

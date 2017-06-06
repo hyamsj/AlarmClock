@@ -51,7 +51,7 @@ public class JavaFxNotification implements Notification {
     public void send() {
         /**
          * the Platform Run Later call is needed by JavaFx to handle a Popup that runs independent a.k.a in a
-         * diffrent Thread than the "main"-window,
+         * different Thread than the "main"-window,
          */
         Platform.runLater(
                 () -> {
