@@ -1,0 +1,13 @@
+\subsection{Class: Model}
+Die Model Klasse ist für die Daten Zuständig. Sie hat eine Liste mit allen Remindern als Klassenvariable. Die Model Klasse ladet die gespeicherten Daten über den DataBaseAdapter.
+Dies macht sie im Konstruktor. Die Methode addReminder(), getReminders(), removeReminder() und removeReminders() sind relativ selbsterklärend.
+
+Die bindData() Methode ist ein bisschen interessanter. Da die reminders Liste eine ObservableList ist, kann man mit ihr ein Binding erstellen. Wir haben es so aufgebaut, dass sobald
+sich irgendetwas in der Liste ändert, die Methode adapter.save(reminders) aufgerufen wird. So gehen die Reminders nicht verloren.
+
+\begin{lstlisting}
+reminders.addListener(Poller.getInstance()::onChanged);
+\end{lstlisting}
+Dieses Statement macht zwei Sachen. Poller.getInstance gibt einen Poller zurück. Das onChanged macht, dass wenn sic etwas in der Reminder Liste ändert, der Poller notifiziert wird.
+
+Die redo() und undo() Methoden kann man die Letzte Aktion in der Liste rückgängig machen. Das GUI selbst hat diese Funktionalität noch nicht, aber die Methoden machen auch wirklich das, was sie sollen.

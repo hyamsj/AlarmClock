@@ -1,6 +1,6 @@
 Package: controller
-- Controller
-- DateTimePicker
++ Controller
+- DateTimePicker TODO how to use
 - Poller
 
 Package: model.filtering
@@ -17,7 +17,7 @@ Package: filtering
 - BinaryDBAdapter
 - ConfigReader
 - DataBaseAdapter
-- Model
++ Model
 - Reminder
 - ReminderList
 - SpecificReminder

@@ -53,7 +53,7 @@ public class Model implements Serializable {
         });
         /**
          * this is the place where the Poller gets implicit constructed. Remember that it is a Singleton,
-         * therefor the getInstance methode has the role of the constructor.
+         * therefor the getInstance method has the role of the constructor.
          */
         reminders.addListener(Poller.getInstance()::onChanged);
     }
