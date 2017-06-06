@@ -132,6 +132,49 @@ Diese wird dann der MultiReminderNotification übergeben, damit dies die aggregi
 \end{lstlisting}
 
 Um sicherzustellen, dass die showPastEvents nur einmal dargestellt weden, muss der Poller sich merken, ob die Methode schon einmal aufgerufen wurde. Falls dies zutrifft, wird auf ein weiterer Aufruf verzichtet.
+  \begin{lstlisting}
+         public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().isAfter(LocalDateTime.now())
+                && reminder.getDate().isBefore(LocalDateTime.now().plusSeconds(nextSeconds));
+    }
+    \end{lstlisting}
 
 
+subsubsection{IsPassed}
+    Diers Filter testet, ob ein Reminder in der Vergangenheit angesiedelt ist.Dazu wird die LocalDateTime.isBefore Methode benutzt um zu testen, ob der Reminder vor dem jetztigen Zeitpunkt stattfindet.
+    \begin{lstlisting}
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().isBefore(LocalDateTime.now());
+    }
+    \end{lstlisting}
+    
+     \subsection{IsThisYear}
+    Dieser Filter testet ob ein Reminder diesen Jahr stattfindet. Wir vergleichen dabei das Jahr des Reminders mit dem aktuellen Jahr.
+    
+    \begin{lstlisting}
+    public boolean isTrue(Reminder reminder) {
+        return reminder.getDate().getYear() == LocalDateTime.now().getYear();
+    }
+    \end{lstlisting}
 
+    
+    \subsection{IsThisMonth}
+    Dieser Filter testet ob ein Reminder diesen Monat stattfindet. Dazu  testen wir ob der Reminder im selben Jahr und in demselben Monat sattfindet.
+    \begin{lstlisting}
+         public boolean isTrue(Reminder reminder) {
+        LocalDateTime today = LocalDateTime.now();
+        return reminder.getDate().getYear() == today.getYear()
+                && reminder.getDate().getMonth() == today.getMonth();
+    }
+    \end{lstlisting}
+
+    \subsection{IsToday}
+    
+    Dieser Filter testet ob ein Reminder an diesem Tag stattfindet. Dazu  testen wir ob der Reminder im selben Jahr und in demselben Monat und am selben Tag sattfindet.
+    \begin{lstlisting}
+         public boolean isTrue(Reminder reminder) {
+        LocalDateTime today = LocalDateTime.now();
+        return reminder.getDate().getYear() == today.getYear()
+                && reminder.getDate().getMonth() == today.getMonth();
+    }
+    \end{lstlisting}
