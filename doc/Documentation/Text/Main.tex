@@ -1,6 +1,56 @@
- 
+
 Dies ist die Klasse die die Main methode enthält. Sie erbt von der Klasse Application, da Sie das JavaFX-GUI launched.
 \begin{lstlisting}
    Parent root = FXMLLoader.load(getClass().getResource(windowName));
 \end{lstlisting}
 windowName ist der Name der fxml Datei (mainWindow.fxml), in der das Aussehen und der Controller definiert wird. "mainWindow.fxml" befindet sich im package "resources".
+
+\begin{lstlisting}
+public class Main extends Application {
+    private String windowName = "/mainWindow.fxml";
+    private String title = "Alarm Clock";
+
+    /**
+     * Main method.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    /**
+     * The Application Class requires the start method.
+     * It launches the GUI and the programs beneath it
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // If set to false, Notification-Popup still come even after the main gui is stopped
+        Platform.setImplicitExit(false);
+        primaryStage.setResizable(false);
+        Parent root = FXMLLoader.load(getClass().getResource(windowName));
+        primaryStage.setTitle(title);
+        Scene scene = new Scene(root);
+        if (new ConfigReader().isEnableDarkMode())
+            scene.getStylesheets().add("dark.css");
+        if (new ConfigReader().isEnableDarkMode()) {
+            scene.getStylesheets().add("dark.css");
+        } else {
+            scene.getStylesheets().add("styles.css");
+        }
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+
+        try {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+\end{lstlisting}

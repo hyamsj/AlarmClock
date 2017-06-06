@@ -1,0 +1,32 @@
+Package: controller
+- Controller
+- DateTimePicker
+- Poller
+
+Package: model.filtering
+- CriteriaTester
+- HasTag
+- IsInNextMin
+- IsInNextSeconds
+- IsPassed
+- IsThisMonth
+- IsThisYear
+- IsToday
+
+Package: filtering
+- BinaryDBAdapter
+- ConfigReader
+- DataBaseAdapter
+- Model
+- Reminder
+- ReminderList
+- SpecificReminder
+
+Package: notification
+- ConsoleNotification
+- JavaFxNotification
+- MultiReminderNotification
+- Notification
+- NotificationHandler
+
++ Main
