@@ -1,0 +1,23 @@
+Um die  Versionierung der Dokumentation automatisch generieren zu lassen, haben wir LaTeX so mit Scripts erweitert, so dass die git Head Versionsnummer
+direkt ins Dokument eingefügt wird. Somit bleibt diese Information auch auf einem Ausdruck akkurat.
+
+
+
+\begin{lstlisting}
+#!/bin/sh
+OUTPUT="../script/version.tex"
+
+echo "Last compiled: ">$OUTPUT
+date >> $OUTPUT
+
+echo "\n">>$OUTPUT
+
+echo "Git HEAD Version: ">> $OUTPUT
+git rev-list --count --first-parent HEAD >>$OUTPUT
+\end{lstlisting}
+Dann wird ein cleanup durchgeführt
+\begin{lstlisting}
+#!/bin/sh
+OUTPUT="../script/version.tex"
+echo "Fetching version information failed. Please enable shell-escape in your \LaTeX \~  compiler.">$OUTPUT
+\end{lstlisting}

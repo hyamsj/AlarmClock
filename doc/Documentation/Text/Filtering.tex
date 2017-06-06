@@ -1,8 +1,16 @@
+\subsection{Architektur}
+Wir wollten nach dm Objektorientierten Paradigma den einzelnen Klassen möglichst wenig wissen über die Internas von anderen Klassen zumuten.
+Somit sollte der Reminder selber prüfen obe er eine bestimmte Bedinung erfüllt und eine Notification absenden soll, anstatt seine Innereine dem NotificationHandler zu offenbaren. 
+
+Es drängte sich also auf dem Reminder eine Funtkiont zum testen zu übergeben. Ähnlich wie im Comand Pattern haben wir dies gelöst, indem wir Ein Objekt um die Funktion gewrappt haben. Anstatt execute() haben wir die funktion aber isTrue genannt, was ein gut lesbaren Quellcode mit den Tests erzeugt.
+Wie zum Beispiel der Criteriatester IsThisYear welcher einen Remeinder darauf testet, ob er in diesem Jahr ist und die Antwort als boolean zurück gibt.
+\begin{lstlisting}
+boolean isThisYear = IsThisYear.isTrue(reminder);
+\end{lstlisting}
 \subsection{ Higher Order Functions}
   Die Marketingabteilung von Oracle behauptet gerne Java seie auch Funktional. Higer Order Functions werden aber nicht wirklich unterstützt. 
   TODO wikipedia Higer Order function. 
-  Funktionen als Return Values oo
-  
+  Funktionen als Return Values 	 
   Java unterstüzt leider keine Higher order functions. Man kann also keine Funktion als Inputparameter übergeben.
   Mittels Lambdas ist es lediglich möglich, die eine Funktion ausführen zu lassen und den Rückgabewert als Inputparameter weiter zu verwenden. Dies erlaubt eine kompaktere Notation. Dies reicht uns aber nicht, da wir den Remindern eine Funktion übergeben möchten, mit welcher jeder Reminder selber testet ob er eine Notification absenden soll. 
   
