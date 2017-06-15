@@ -1,0 +1,13 @@
+ 
+ Zeitaufteilung
+ 
+ Uns wurde naheglegt im Zuge der Projektarbeit das Buch Clea Code zu lesen und dessen Prinzipien anzuwenden.Das Buch hat ohne Anhänge 314 Seiten wenn man 4 Minuten pro Seite berechnet, kommt man auf etwas über 1200 Minuten für die Lektüre. Dies entpspricht 10\% des Projektaufwandes.
+ 
+ Es ist schade, dass sich gewisse Vorschläge aus dem Buch nicht umsetzen lassen. So wäre der Vorschlag pro  Datei nur eine einzige Programiersprache zu verweden interessant, eine Javadoc müsste man dann aber vom eigentlichen Programmcode abtrennen.
+ 
+ Der Wunsch nach einem Buildsystem wie Maven wurde durch den Betreuer währen der Entwicklungsphase geäussert. Zuerst haben wir das Buildsystem von Intellij genutzt. Die nachträgliche Einpflegung von Maven gestatlete sich aber als schwierig und zeitauwändig.
+ 
+ Die TODO 4 Treffen dauerten jeweil ca 45 Minuten.
+ 
+ 
+ Es gab   während er Entwicklungsphase zeitweise ein Missverständinss über unsere geleistete Arbeit. Wir haben unsere Arbeit in einem Development branche durchgeführt.  Diese änderungen werden aber bei Github nicht Graphisch als vortschritt dargestellt. Um diese Arbeit zu sehen, muss man sich dir
