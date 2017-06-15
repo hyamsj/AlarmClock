@@ -11,3 +11,14 @@ reminders.addListener(Poller.getInstance()::onChanged);
 Dieses Statement macht zwei Sachen. Poller.getInstance gibt einen Poller zurück. Das onChanged macht, dass wenn sic etwas in der Reminder Liste ändert, der Poller notifiziert wird.
 
 Die redo() und undo() Methoden kann man die Letzte Aktion in der Liste rückgängig machen. Das GUI selbst hat diese Funktionalität noch nicht, aber die Methoden machen auch wirklich das, was sie sollen.
+
+
+\subsection{Interface: DateBaseAdapter}
+Das DataBaseAdapter Interface stellt 2 Methoden zur Verfügung, die save() und die load() Methode. Save verlangt als Parameter die Liste von Reminders die Abggespeichert werden
+sollen.
+
+\subsection{Class: BinaryDBAdapter}
+Die BinaryDBAdapter Klasse implementiert das DataBaseAdapter Interface und Serialisiert die Binäre Datenbank unter dem Namen reminders.ser. Die load() Methode schaut zuerst ob die DB
+überhaupt existiert. Wenn nicht, wird eine neue erstellt. Dies machen wir mittels einem ObjectInputStream. Das Object das gespeichert wird (die Liste der Reminders),
+casten wir zu einer ArrayList, und diese ArrayListe wird dann in eine ReminderList gefüllt.
+Die save() Methode wird immer aufgerufen, sobald sich irgendetwas in der Tabelle vom GUI ändert. Das Abspeichern machen wir mittels einem ObjectOutputStream.

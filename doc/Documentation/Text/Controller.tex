@@ -67,4 +67,7 @@ Fügt beim Starten des Programms Reminders in die Tabelle, die in der DB gespeic
 
 \subsection{Class: DateTimePicker}
 Die DateTimePicker Klasse haben nicht wir geschrieben. Wir haben diese Klasse auf StackOverflow gefunden. Da JavaFX nur einen DatePicker zur Verfügung stellt, mussten wir diesen benutzen. Es handelt mit LocalDateTime Objekten, die auch die Uhrzeit mitgeben.
-TODO HOW TO USE
+Der DateTimePicker gibt zwei sehr praktische Felder zur Verfügung: Das dateTimeValue, das das Datum inklusiver Zeit enthält, und das valueProperty, welches nur das Datum enthält.
+Im Konstruktor wird ein Listener erstellt, welcher das dateTimeValue überschreibt, wenn der User des GUI etwas ändert.
+In der DateTimePicker Klasse wurde noch eine zweite Klasse hinzugefügt, der InternalConverter. Dieser holt den String aus dem DateTimePicker und parsed es zu einem LocalDateTime
+Objekt. 

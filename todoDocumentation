@@ -1,24 +1,24 @@
 Package: controller
 + Controller
-- DateTimePicker TODO how to use
++ DateTimePicker
 - Poller
 
 Package: model.filtering
-- CriteriaTester
-- HasTag
-- IsInNextMin
-- IsInNextSeconds
-- IsPassed
-- IsThisMonth
-- IsThisYear
-- IsToday
++ CriteriaTester
++ HasTag
++ IsInNextMin
++ IsInNextSeconds
++ IsPassed
++ IsThisMonth
++ IsThisYear
++ IsToday
 
 Package: filtering
-- BinaryDBAdapter
++ BinaryDBAdapter
 - ConfigReader
-- DataBaseAdapter
++ DataBaseAdapter
 + Model
-- Reminder
+- Reminder -> Joni
 - ReminderList
 - SpecificReminder
 
