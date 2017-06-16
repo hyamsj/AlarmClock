@@ -58,9 +58,6 @@ backgroundcolor=\color{lightgrey}
 \makeatletter
 \let\runauthor\@author
 \let\runtitle\@title
-\makeatother
-\rhead{\runauthor}
-\chead{\runtitle} todo
 %\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[scale=0.5]{img/bfh.png}} \end{picture}}
 
 
@@ -82,9 +79,9 @@ backgroundcolor=\color{lightgrey}
 \section{Zweck des Dokument}
 Dieses Dokument dient dem Leser zur Klarstellung, wie wir das Projekt angegangen sind, wie wir es geplant haben und wo wir Schwierigkeiten hatten.
 \subsection{Planung}
-Als erstes sind wir Zusammengesessen und haben uns Überlegt, was unser Projekt braucht, um ein anständigen AlarmClock zu werden. Dafür sind wir
-vor einer Wandtafel gestanden und haben Stichworte aufgeschriebe die wir dann in den Code einbauen wollen. Darunter waren Stichwörter wie
-Email, Datenbanken, Shellscripts und Cronjobs eingeflossen. Daraus haben wir dann ein UML designed das aufzeigt , wie wir das Ganze aufbauen wollen (Abbildung 1).
+Als erstes sind wir zusammengesessen und haben uns überlegt, was unser Projekt braucht, um einen anständigen AlarmClock zu werden. Dafür sind wir
+vor einer Wandtafel gestanden und haben Stichworte aufgeschrieben, die wir dann in den Code einbauen wollen. Darunter waren Stichwörter wie
+E-Mail, Datenbanken, Shellscripts und Cronjobs eingeflossen. Daraus haben wir dann ein UML designed, das aufzeigt, wie wir das Ganze aufbauen wollen (Abbildung 1).
 \begin{landscape}
 \begin{figure}
   \centering
@@ -93,9 +90,9 @@ Email, Datenbanken, Shellscripts und Cronjobs eingeflossen. Daraus haben wir dan
   \label{fig:overview}
 \end{figure}
 \end{landscape}
-Dieses UML-Diagramm haben wir dann auch Herr Prof. Fuhrer gezeigt, welcher es zwar eine Gute Idee fand, aber sagte dass wir das nie in der gegebenenen
-Zeit schaffen werden. Sachen wie Cronjobs, Shellscripts und verschiede Datenbanken daranzunängen wäre für uns unmöglich.
-Also haben wir nochmal von Vorne angefangen und sind mit einem überarbeitetem UML vorangegangen (Abbildung 2).
+Dieses UML-Diagramm haben wir dann auch Herrn Prof. Fuhrer gezeigt, welcher es zwar eine gute Idee fand, aber sagte, dass wir das nie in der gegebenenen
+Zeit schaffen würden. Sachen wie Cronjobs, Shellscripts und verschiedene Datenbanken daran zu hängen wäre für uns unmöglich.
+Also haben wir nochmals von vorne angefangen und sind mit einem überarbeiteten UML vorangegangen (Abbildung 2).
 
 \begin{figure}
   \centering
@@ -103,41 +100,40 @@ Also haben wir nochmal von Vorne angefangen und sind mit einem überarbeitetem U
   \caption{Systemübersicht Version 2}
   \label{fig:overview}
 \end{figure}
-Danach haben wir uns überlegt, was für Meilenstein wir uns setzen wollen:
+Danach haben wir uns überlegt, was für Meilensteine wir uns setzen wollen:
 \begin{enumerate}
   \item Ein GUI mit einer Tabelle von Reminders
   \item Abspeichern der Daten mittels einer Datenbank (wir haben uns für ein binäres Serialisieren entschieden)
-  \item Ein Poller der immer wieder überprüft ob ein Reminder eingetroffen ist
-  \item Notifications die den User über die Konsole zeigen das ein Reminder eingetroffen ist
-  \item JavaFX Popups die dem User zeigen das ein Reminder eingetroffen ist
+  \item Ein Poller, der immer wieder überprüft ob ein Reminder eingetroffen ist
+  \item Notifications, die den User über die Konsole zeigen, das ein Reminder eingetroffen ist
+  \item JavaFX Popups, die dem User zeigen, dass ein Reminder eingetroffen ist
 \end{enumerate}
-Anschliessend haben wir begonnen uns hinter das Codieren zu Setzen. 2 Wochen vor der Abgabe des Codes, haben mit der Dokumentation des Codes angefangen.
+Anschliessend haben wir begonnen, uns hinter das Codieren zu setzen. 2 Wochen vor der Abgabe des Codes haben mit der Dokumentation angefangen.
 \subsection{Deliverables}
 Von uns wurde verlangt, dass wir einen Betriebssystemunabhängigen Open Source Alarm Clock bauen, der wie kAlarm aufgebaut ist.
 Es sollte
 \begin{itemize}
-  \item Widerkehrende Events haben
+  \item Wiederkehrende Events haben
   \item Persistenz
   \item Externes konfigurations File
   \item Datenbank unabhängig
   \item Betriebssystem unabhängig
 \end{itemize}
 Wiederkehrende Events und Externes Konfigurations File haben wir leider nicht mehr geschafft. Jedoch eine interne Konfigurations Klasse haben wir gebaut.
-\begin{landscape}
+
 
 \subsection{Gantt-Chart}
 \label{sub:gantt_chart}
-
-
+\begin{landscape}
 \begin{center}
 
 \begin{ganttchart}[
   vgrid,
   hgrid,
-  bar/.append style = {fill = blue!50},
-  bar label node/.append style = {left = 5mm},
+  bar/.append style = {fill = red!50},
+  bar label node/.append style = {left = 2mm},
   milestone label text = \textbf{#1 },
-  milestone label node/.append style = {left = 5mm}
+  milestone label node/.append style = {left = 2mm}
   ]{1}{34}
 %labels
 \gantttitle{\textbf{Projekt 1}}{34} \\
@@ -178,26 +174,32 @@ Wiederkehrende Events und Externes Konfigurations File haben wir leider nicht me
 \end{ganttchart}
 \end{center}
 \end{landscape}
-Wir haben uns nicht im Voraus überlegt was wie lange dauern wird. Wir haben uns einfach aufgelisten was im Code alles drin sein muss.
+Wir haben uns nicht im voraus überlegt was wie lange dauern wird. Wir haben uns einfach aufgelistet was im Code alles drin sein muss.
 \section{Meilensteine}
 \subsection{GUI}
-Zuerst wollten wir ein brauchbares GUI als Interface haben, da es oftmals einfacher ist Ideen zu diskutieren, wenn man eine Bildilche Diskusionsgrundlage h at. Unser Ziel war es das GUI als optischen Prototypen zu benutzen zu können.
+Zuerst wollten wir ein brauchbares GUI als Interface haben, da es oftmals einfacher ist Ideen zu diskutieren, wenn man eine bildliche Diskussionsgrundlage hat. Unser Ziel war es
+das GUI als optischen Prototypen benutzen zu können.
 
 \subsection{Serialisieren}
-Der nächste Meilenstein war die Serialisierbarkeit. Wir wollten, dass wir die Reminders speichern könen. Damit kann man sie später wieder von der Festplatte laden.
+Der nächste Meilenstein war die Serialisierbarkeit. Wir wollten, dass wir die Reminders speichern können. Damit kann man sie später wieder von der Festplatte laden.
 \subsection{Poller}
 Mit dem Poller wollten wir sicherstellen, dass die Notifications auch abgesendet werden, wenn das Programm ``geschlossen'' wurde.
 \subsection{Notifications}
-Mit den Notifications wollten wir sehen, ob es Funktioniert nach einer vom User bestimmten Zeit eine Notification auf der Konsole zu erhalten.
+Mit den Notifications wollten wir sehen, ob es funktioniert nach einer vom User bestimmten Zeit eine Notification auf der Konsole zu erhalten.
 \subsection{Popups}
-Danach wollten wir, wenn die Notification eintrifft, ein JavaFX Popupt erhalten.
+Danach wollten wir, wenn die Notification eintrifft, ein JavaFX Popup erhalten.
 \section{Stolpersteine}
 \subsection{Gitignore}
-\LaTeX generiert beim compilieren recht viele Dateien neben dem gewollten PDF. Diese Dateien wollten wir nicht über git synchronisieren. Es wäre sonnst möglich,dass die Dateien nicht zusammenpassen und beim erneuten compilieren zu einem Fehler führen. Wir wollten die Dateein also ins gitignore file reinnehmen, in welchem man definieren kann, welche Dateien nicht mit git verwlatet werden.
-Der gitignore syntax ist aber etwas speziell man kann nicht einfach ein  Verzeichnis ignorieren und dann mittels einer whitelist bestimmte Dateien wieder in die Versionierung mit einbeziehen. Will man ein solches Vehalten erreichen, darf man lediglich den Inhalt der Verzeichnsse ausklammern, und dann mittels Whitelisting wieder in die Versionskontrolle mit einbeziehen. Diesen Sachverhalt genau zu eruieren hat viel Zeit Verschlungen. Als er einmal erkannt wurde, mussten wir trotzdem noch genau darauf achten, dass wir nur genau die Dateien synchronisieren, wleche wir auch synchronisieren wollten.
+\LaTeX generiert beim Kompilieren recht viele Dateien neben dem gewollten PDF. Diese Dateien wollten wir nicht über Git synchronisieren. Es wäre sonst möglich, dass die
+Dateien nicht zusammenpassen und beim erneuten Kompilieren zu einem Fehler führen. Wir wollten die Dateien also ins Gitignore file reinnehmen, in welchem man definieren kann,
+welche Dateien nicht mit Git verwaltet werden. Der Gitignore Syntax ist aber etwas speziell, man kann nicht einfach ein Verzeichnis ignorieren und dann mittels einer whitelist
+bestimmte Dateien wieder in die Versionierung mit einbeziehen. Will man ein solches Verhalten erreichen, darf man lediglich den Inhalt der Verzeichinsse ausklammern, und dann
+mittels Whitelisting wieder in die Versionskontrolle mit einbeziehen. Diesen Sachverhalt genau zu eruieren hat viel Zeit verschlungen. Als er einmal erkannt wurde,
+mussten wir trotzdem noch genau darauf achten, dass wir nur genau die Dateien synchronisieren, welche wir auch synchronisieren wollten.
+
 \subsection{JavaFX serialisieren}
-JavaFX Komponenten lassen sich nicht Serialisieren. Bis wir das herausgefunden haben, hat auch einige Stunden gedauert. Um dieses Problem zu umgehen haben wir herausgefunden, dass
-wenn man JavaFX Komponenten nicht direkt in der Klasse abspeichert, sonder sie nur zurückgibt, dann funktioniert es. Ein kurzes Beispiel:
+JavaFX Komponenten lassen sich nicht Serialisieren. Bis wir das herausgefunden haben, hat es auch einige Stunden gedauert. Um dieses Problem zu umgehen, haben wir herausgefunden, dass,
+wenn man JavaFX Komponenten nicht direkt in der Klasse abspeichert, sondern sie nur zurückgibt, dann funktioniert es. Ein kurzes Beispiel:
 Die Table im GUI verlangt nicht Strings, sondern SimpleStringProperties. Das Problem ist aber, dass diese SimpleStringProperties nicht serialisierbar sind.
 
 Falsch:
@@ -218,45 +220,46 @@ public SimpleStringProperty getSubjectProperty() {
 }
 \end{lstlisting}
 
-\subsection{PLatform.runlater}
-Ein weiteres Problem das wir hatten war das verspätete Erscheinen von Popups. Wenn man ein Popup z.B. eine Minute nach Programmstart aufruft, hat man effektiv mehrere Dutzend Exceptions bekommen.
-Der Grund war, dass Threads mit JavaFX sehr mühsam sind. Das Erste Problem das wir überhaupt hatten war, die richtige Exception zu finden. Die IllegalStateException hat uns dann auf den richtigen Pfad gebracht.
-Die Exception lautete: "IllegalStateException: Not an FX application thread; currentThread = Thread-4 [...]". Auf StackoverFlow haben wir dann gesehen, dass man um das neu Erstellte GUI ein
+\subsection{Platform.runlater}
+Ein weiteres Problem das wir hatten, war das verspätete Erscheinen von Popups. Wenn man ein Popup z.B. eine Minute nach Programmstart aufruft, hat man effektiv mehrere Dutzend Exceptions bekommen.
+Der Grund war, dass Threads mit JavaFX sehr mühsam sind. Das erste Problem, das wir überhaupt hatten, war, die richtige Exception zu finden. Die IllegalStateException hat uns dann auf den richtigen Pfad gebracht.
+Die Exception lautete: "IllegalStateException: Not an FX application thread; currentThread = Thread-4 [...]". Auf Stackoverflow haben wir dann gesehen, dass man um das neu erstellte GUI ein
 \begin{lstlisting}
 Platform.runlater(() -> {...});
 \end{lstlisting}
 wirft. Das neue GUI erstellt man dann in den geschweiften Klammern.
-Dieses Problem zu beheben hat ca eine Woche gedauert, da wir praktisch jede Exception genau analysiert haben und selten wirklich etwas brauchbares darauslesen konnten.
+Dieses Problem zu beheben hat ca eine Woche gedauert, da wir praktisch jede Exception genau analysiert haben und selten wirklich etwas Brauchbares darauslesen konnten.
 \subsection{PopUps}
-Ein sehr merkwürdiges Problem war, dass ab und zu einige Popups einfach nicht erschienen sind. Zum debuggen haben wir ConsoleNotifications gebraucht, die gleichzeitig gelaunched wurden wie die Popups. Das Komische war, dass die ConsoleNotifications immer erschienen sind, jedoch die JavaFX Popups manchmal nicht. Nach langem Suchen hat sich herausgestellt,
-dass das erstellte GUI, welches im Platform.runlater(() -> {...}); aufgerufen wird, nie ausgeführt wurden. Das heisst, jedes Stück Code darin wurde ignoriert, egal ob ein
-normales Print Statement oder das Erstellen eines GUI. Der Grund dazu war, dass sobald alle Stages, also alle JavaFX Fenster, geschlossen sind, wird vom Compiler automatisch
+Ein sehr merkwürdiges Problem war, dass ab und zu einige Popups einfach nicht erschienen sind. Zum debuggen haben wir ConsoleNotifications gebraucht, die gleichzeitig
+gelaunched wurden wie die Popups. Das Komische war, dass die ConsoleNotifications immer erschienen sind, jedoch die JavaFX Popups manchmal nicht. Nach langem Suchen hat sich
+herausgestellt, dass das erstellte GUI, welches im Platform.runlater(() -> {...}); aufgerufen wird, nie ausgeführt wurde. Das heisst, jedes Stück Code darin wurde ignoriert,
+egal ob ein normales Print Statement oder das Erstellen eines GUI darin ist. Der Grund dazu war, dass sobald alle Stages, also alle JavaFX Fenster geschlossen sind, wird vom Compiler automatisch
 Platform.exit() aufgerufen. Dies führt dazu, dass alles was im Platform.runlater(() -> {...}) ist, einfach ignoriert wird. Um dies zu umgehen, braucht man nur eine Zeile Code:
 \begin{lstlisting}
   Platform.setImplicitExit(false);
 \end{lstlisting}
-Auch das herauszufinden hat sehr lange gebraucht, da und nie in den Sinn gekommen ist, dass so etwas überhaupt notwendig wäre. Wir haben mehr an unserem Code gezweifelt als an eine Implizit aufgeworfene Methode von JavaFX.
+Auch das herauszufinden hat sehr lange gedauert, da uns nie in den Sinn gekommen ist, dass so etwas überhaupt notwendig wäre. Wir haben mehr an unserem Code gezweifelt als an eine implizit aufgeworfene Methode von JavaFX.
 \subsection{DateTimePicker}
 Eines der grössten Probleme war, die vom User ausgewählte Zeit auszulesen und diese von einem String in ein DateTime Objekt umzuwandeln. Das Problem war, dass JavaFX zwar einen
-DatePicker zur Verfügung stellt, aber keinen DateTimePicker oder etwas ähnliches. Als erstes haben wir versucht, eine weiteres Textfield hinzuzufügen in welches der User eine
-Uhrzeit schreiben kann. Dieses wurde dann mittels einem Regex überprüft. Dies zum laufen zu bringen hat schon länger gedauert als wir gehofft haben. Wo wir dann stecken geblieben sind
-war, als wir diesen String in ein DateTime Objekt umwandeln wollten. Dies wollte einfach nicht funktionieren. Beim Googeln wie wir das machen können, haben mir zufällig das
+DatePicker zur Verfügung stellt, aber keinen DateTimePicker oder etwas ähnliches. Als erstes haben wir versucht, ein weiteres Textfield hinzuzufügen in welches der User eine
+Uhrzeit schreiben kann. Dieses wurde dann mittels eines Regex überprüft. Dies zum laufen zu bringen hat schon länger gedauert als wir gehofft haben. Wo wir dann stecken geblieben sind,
+war, als wir diesen String in ein DateTime Objekt umwandeln wollten. Dies wollte einfach nicht funktionieren. Beim Googeln, wie wir das machen können, haben wir zufällig das
 TornadoFX-Controls Plugin gefunden, welches eben einen DateTimePicker zur Verfügung stellt. Das hat dann unsere Probleme gelöst.
 \subsection{Maven}
-Ein kleineres Problem, aber dennoch ein Problem für und war Maven. Unser Dozent wollte eine Möglichkeit die das Launchen des Programms sehr einfach macht. Da wir bereits im Software Engineering and Design mit Maven gearbeitet
-haben, haben wir uns dafür entschieden. Es aufzusetzen gab bei uns aber immer wieder Probleme. Wir hatten zuerst einfach nur den Java Code im unserem Programm Folder, ohne Maven. Um das Maven hinzuzufügen, mussten wir das Ganze
-auseinander nehmen, Maven aufsetzen, und den Code wieder an den richtigen Ort tun. Jedoch hat dann die ganze Zeit der Code, der vorher noch erfolgreich kompiliert hat, nicht mehr funktioniert. Wir haben es dann noch zwei mal neu
-versucht aufzusetzen, danach hat es Funktioniert. Leider wissen wir bis jetzt nicht, was wir anders gemacht haben.
+Ein kleineres Problem, aber dennoch ein Problem für uns war Maven. Unser Dozent wollte eine Möglichkeit, die das Launchen des Programms sehr einfach macht. Da wir bereits im Software Engineering and Design mit Maven gearbeitet
+haben, haben wir uns dafür entschieden. Es aufzusetzen gab bei uns aber immer wieder Probleme. Wir hatten zuerst einfach nur den Java Code im unserem Programm Folder ohne Maven. Um das Maven hinzuzufügen, mussten wir das Ganze
+auseinander nehmen, Maven aufsetzen und den Code wieder an den richtigen Ort tun. Jedoch hat dann die ganze Zeit der Code, der vorher noch erfolgreich kompiliert hat, nicht mehr funktioniert. Wir haben es dann noch zwei mal neu
+versucht aufzusetzen, danach hat es funktioniert. Leider wissen wir bis jetzt nicht, was wir anders gemacht haben.
 
 \section{Fazit}
-Wir haben unterschätzt wie viele kleinere Probleme wir hatten und wie lange es dauert diese zu beheben. Vorallem das Arbeiten mit Threads in JavaFX hat sich als sehr
-unangenehm und mühsam ergeben. Wir haben dort mit den obigen Probelem sehr viel Zeit verloren. Wir haben dort auch immer wieder neue ansätze Probiert. Beispielsweise als das
+Wir haben unterschätzt, wie viele kleinere Probleme wir hatten und wie lange es dauert diese zu beheben. Vor allem das Arbeiten mit Threads in JavaFX hat sich als sehr
+unangenehm und mühsam ergeben. Wir haben dort mit den obigen Problemen sehr viel Zeit verloren. Wir haben dort auch immer wieder neue Ansätze probiert. Beispielsweise als das
 Serialisieren nicht funktionierte, haben wir uns angefangen in JPA einzulesen. Während dem Einlesen kam uns dann eine Idee, wie wir das Serialisierungsproblem lösen konnten.
-Bei den JavaFX Problemen gab es dann leider keine anderen möglichkeiten diese zu umgehen, also mussten wir uns solange damit kämpfen, bis wir es dann endlich zum laufen
+Bei den JavaFX Problemen gab es dann leider keine anderen Möglichkeiten diese zu umgehen, also mussten wir solange damit kämpfen, bis wir es dann endlich zum Laufen
 gebracht haben.
-Da wir an solchen kleineren Problemen dann so viel Zeit verloren haben, hat es dann nicht mehr gereicht, wiederkehrende Events einzubauen oder ein schönes Konfigurationsfile
+Da wir an solchen kleineren Problemen so viel Zeit verloren haben, hat es nicht mehr gereicht, wiederkehrende Events einzubauen oder ein schönes Konfigurationsfile
 zu entwickeln.
-Trotzdem würden wir das Projekt, jedenfalls teilweise, als Erfolg betrachten, da wir nun einen Funktionierenden, wenn auch nicht perfekten, Alarm Clock gebaut haben.
+Trotzdem würden wir das Projekt jedenfalls teilweise als Erfolg betrachten, da wir nun einen funktionierenden, wenn auch nicht perfekten Alarm Clock gebaut haben.
 
 \section{Eigenständigkeitserklärung}
 
@@ -265,7 +268,17 @@ Trotzdem würden wir das Projekt, jedenfalls teilweise, als Erfolg betrachten, d
 
 Ich/wir bestätige/n, dass ich/wir die vorliegende Arbeit selbstständig und ohne Benutzung anderer als der im Literaturverzeichnis angegebenen Quellen und Hilfsmittel angefertigt habe/n. Sämtliche Textstellen, die nicht von mir/uns stammen, sind als Zitate gekennzeichnet und mit dem genauen Hinweis auf ihre Herkunft versehen.
 
-Pascal Schmalz, Johnatan Hyams
+\vspace*{10mm}
+
+Pascal Schmalz
+
+\vspace*{15mm}
+
+
+
+Jonathan Hyams
+
+
 
 
 %\vspace{15mm}
