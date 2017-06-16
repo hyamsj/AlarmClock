@@ -1,3 +1,4 @@
+\subsection{En Grande}
 Unse Programm implementiert ein MVC Pattern. Die Komponenten Model und Controller sind als Java Pakete schnell ersichtlich. Die View wird aber nicht in einem Java-Packet  ausprogramiert. Da wir JavaFx neutzen, wird die View durch JavaFx definiert. Die Implementierungsdetails findet man unter resources/mainWindow.fxml. Auch das Notification Packet könnte man zur View zählen.
 
 Die wichtigsten Komponenten sieht man in der Abbildung Systemübersicht. 
@@ -12,7 +13,6 @@ Die wichtigsten Komponenten sieht man in der Abbildung Systemübersicht.
 
 Spezielle Aufmerksamkeit bedarf das Auslösen eines Reminders. 
 \subsection{Auslösen einer Notification}
-
 Der Poller stösst regelmässig den NotificationHandler an.
 In diesem werden Kriterien definiert, nach welchen die Reminders gefiltert werden.  Zum Beispiel alle Reminders, welche in der nächsten Stunde beginnen.
 

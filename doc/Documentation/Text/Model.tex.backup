@@ -33,18 +33,11 @@ Durch das definieren einer eigenen Klasse, kann man nun das besser lesbare Remin
 Ausserdem bietet uns die ReminderList auch die Möglichkeit den Zustand der ReminderList  in einer History zu speichern, wenn man diese ändert.
 Somit kann man Änderungen an der liste später rückgänig machen. Durch das Hinzufügen einer undoneHistory, kann man nun auf der Zeitachse in beide Richtungen navigieren.
 
+
 Leider speilte das undo / redo nicht gut mit JavaFx zusammen, so dass Änderungen gar nicht im GUI übernommen werden. Die entsprechenden Buttons im GUI haben wir desshalbt wieder entfernt. Die Undo/Reod Funktionalität könnte aber in einem Nachfolgeprojekt Interessant werden.Desshalbe haben wir diese nicht  gelöscht.
 \subsection{Specific Reminder}
 
 Dies sind eine spezialiesierung der Superklasse Reminder. Der einzige Unterschied besteht darin, dass ``SpecifigReminder'' noch Tags speichern. Diese Tags können dann mit dn Filtern gefiltert werden.
 
 \subsection{Poller}
-Der Poller folgt dem Singelton Pattern. Er läuft in einem eigenen Thread und ruft regelmässig (eingestellt ist jede Sekunde) den NotificationHandler auf.
-Der Poller kann als Observer auf die ReminderList ``aufpassen'' somit kann er jede Änderung welche vorgenommen wird sofort verarbeiten, und gegebenenfalls  via NotificationHandler eine passende Notification absenden. Dies wird vorallem dann wichtig, wenn die Polling Zeit auf einen sehr grossen Wert gesetzt wird.
-
-\subsection{ConfigReader}
-
-\subsection{Konfiguration}
-Die Konfigurationsmöglichkeiten sind im ConfigReader File zentral gelöst. Damit wird es später auch leicht möglich, über diese Klasse ein Konfigurationsfile  einzulesen, und die entsprechenden Komponenten zu konfigurieren. Solange dies nicht  über ein Externes File eingelesen werden, wird die Konfiguration direkt in den Boolen Werten gesetzt.
-
-Bei den NotificationTypes muss man ein Objekt der gewünschten Notification eingeben, um einen neuen NotificationType  zu konfigurieren. Dies hat den Vorteil einer Typesicherheit. Ausserdem kann somit der Reminder im Reminder.doNotify() einfach über die verschiedenen Notifications ittereieren, welcher er benutzen soll.
+Der Poller folgt dem Singelton Pattern. Er 	

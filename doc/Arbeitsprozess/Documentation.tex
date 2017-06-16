@@ -78,24 +78,25 @@ backgroundcolor=\color{lightgrey}
 \section{Zweck des Dokument}
 \subsection{Planung}
 \input{Text/Planung}
-Pascal
 \subsection{Deliverables}
 \subsection{Aufwandschätzung und Kontrolle}
 \subsection{Überarbeitung des Planes}
 \subsection{Guntt Chart}
 \section{Meilensteine}
 \subsection{GUI}
-Pascal
+Zuerst wollten wir ein brauchbares GUI als Interface haben, da es oftmals einfacher ist Ideen zu diskutieren, wenn man eine Bildilche Diskusionsgrundlage h at. Unser Ziel war es das GUI als optischen Prototypen zu benutzen zu können.
+
 \subsection{Serialisieren}
-Pascal
+Der nächste Meilenstein war die Serialisierbarkeit. Wir wollten, dass wir die Reminders speichern könen. Damit kann man sie später wieder von der Festplatte laden.
 \subsection{Poller}
-Pascal
+Mit dem Poller wollten wir sicherstellen, dass die Notifications auch abgesendet werden, wenn das Programm ``geschlossen'' wurde.
 \subsection{Popups}
 Pascal
 \section{Tests}
 \section{Stolpersteine}
 \subsection{Gitignor}
-Pascal
+\LaTeX generiert beim compilieren recht viele Dateien neben dem gewollten PDF. Diese Dateien wollten wir nicht über git synchronisieren. Es wäre sonnst möglich,dass die Dateien nicht zusammenpassen und beim erneuten compilieren zu einem Fehler führen. Wir wollten die Dateein also ins gitignor file reinnehmen, in welchem man definieren kann, welche Dateien nicht mit git verwlatet werden.
+Der gitignor syntax ist aber etwas speziell man kann nicht einfach ein  Verzeichnis ignorieren und dann mittels einer whitelist bestimmte Dateien wieder in die Versionierung mit einbeziehen. Will man ein solches Vehalten erreichen, darf man lediglich den Inhalt der Verzeichnsse ausklammern, und dann mittels Whitelisting wieder in die Versionskontrolle mit einbeziehen. Diesen Sachverhalt genau zu eruieren hat viel Zeit Verschlungen. Als er einmal erkannt wurde, mussten wir trotzdem noch genau darauf achten, dass wir nur genau die Dateien synchronisieren, wleche wir auch synchronisieren wollten.
 \subsection{JavaFX serialisieren}
 \subsection{PLatform.runlater}
 \subsection{PopUps}
