@@ -1,31 +1,32 @@
 \subsection{Class: Model}
-Die Model Klasse ist für die Daten Zuständig. Sie hat eine Liste mit allen Remindern als Klassenvariable. Die Model Klasse ladet die gespeicherten Daten über den DataBaseAdapter.
-Dies macht sie im Konstruktor. Die Methode addReminder(), getReminders(), removeReminder() und removeReminders() sind relativ selbsterklärend.
+Die Model Klasse ist für die Daten zuständig. Sie hat eine Liste mit allen Remindern als Klassenvariable. Die Model Klasse ladet die gespeicherten Daten über den DataBaseAdapter.
+Dies macht sie im Konstruktor. Die Methoden addReminder(), getReminders(), removeReminder() und removeReminders() sind relativ selbsterklärend.
 
-Die bindData() Methode ist ein bisschen interessanter. Da die reminders Liste eine ObservableList ist, kann man mit ihr ein Binding erstellen. Wir haben es so aufgebaut, dass sobald
-sich irgendetwas in der Liste ändert, die Methode adapter.save(reminders) aufgerufen wird. So gehen die Reminders nicht verloren.
+Die bindData() Methode ist ein bisschen interessanter. Da die Reminderliste eine ObservableList ist, kann man mit ihr ein Binding erstellen. Wir haben es so aufgebaut, dass, sobald
+sich irgend etwas in der Liste ändert, die Methode adapter.save(reminders) aufgerufen wird. So gehen die Reminders nicht verloren.
 
 \begin{lstlisting}
 reminders.addListener(Poller.getInstance()::onChanged);
 \end{lstlisting}
-Dieses Statement macht zwei Sachen. Poller.getInstance gibt einen Poller zurück. Das onChanged macht, dass wenn sic etwas in der Reminder Liste ändert, der Poller notifiziert wird.
+Dieses Statement macht zwei Sachen. Poller.getInstance gibt einen Poller zurück. Das onChanged macht, dass, wenn sich etwas in der Reminder Liste ändert, der Poller notifiziert wird.
 
-Die redo() und undo() Methoden kann man die Letzte Aktion in der Liste rückgängig machen. Das GUI selbst hat diese Funktionalität noch nicht, aber die Methoden machen auch wirklich das, was sie sollen.
+Die redo() und undo() Methoden kann man die letzte Aktion in der Liste rückgängig machen. Das GUI selbst hat diese Funktionalität noch nicht, aber die Methoden machen auch wirklich
+das, was sie sollen.
 
 
 \subsection{Interface: DateBaseAdapter}
-Das DataBaseAdapter Interface stellt 2 Methoden zur Verfügung, die save() und die load() Methode. Save verlangt als Parameter die Liste von Reminders die Abggespeichert werden
+Das DataBaseAdapter Interface stellt 2 Methoden zur Verfügung, die save() und die load() Methode. Save verlangt als Parameter die Liste von Reminders die abgespeichert werden
 sollen.
 
 \subsection{Class: BinaryDBAdapter}
-Die BinaryDBAdapter Klasse implementiert das DataBaseAdapter Interface und Serialisiert die Binäre Datenbank unter dem Namen reminders.ser. Die load() Methode schaut zuerst ob die DB
-überhaupt existiert. Wenn nicht, wird eine neue erstellt. Dies machen wir mittels einem ObjectInputStream. Das Object das gespeichert wird (die Liste der Reminders),
+Die BinaryDBAdapter Klasse implementiert das DataBaseAdapter Interface und Serialisiert die Binäre Datenbank unter dem Namen reminders.ser. Die load() Methode schaut zuerst, ob die DB
+überhaupt existiert. Wenn nicht, wird eine neue erstellt. Dies machen wir mittels einem ObjectInputStream. Das Objekt das gespeichert wird (die Liste der Reminders),
 casten wir zu einer ArrayList, und diese ArrayListe wird dann in eine ReminderList gefüllt.
-Die save() Methode wird immer aufgerufen, sobald sich irgendetwas in der Tabelle vom GUI ändert. Das Abspeichern machen wir mittels einem ObjectOutputStream.
+Die save() Methode wird immer aufgerufen, sobald sich irgend etwas in der Tabelle vom GUI ändert. Das Abspeichern machen wir mittels einem ObjectOutputStream.
 
-\subsection{Reminder}
+\subsection{Class: Reminder}
 Der Reminder ist das Herzstück unseres Programms. Alles was in der Tabelle ist, ist ein Reminder. Ursprünglich waren die Klassenvariablen SimpleStringProperties, da die Tabelle
-solche verlangt. Das Problem war aber, das sich diese nicht Serialisieren lassen. Also haben wir die Klasse ein wenig ander Strukturiert. Anstatt SimpleStringProperties
+solche verlangt. Das Problem war aber, dass sich diese nicht serialisieren lassen. Also haben wir die Klasse ein wenig anders strukturiert. Anstatt SimpleStringProperties
 direkt in der Klasse zu Speichern, werden diese einfach von den Methoden zurückgegeben.
 Das heisst anstatt wie folgt:
 \begin{lstlisting}
@@ -46,45 +47,53 @@ public SimpleStringProperty getSubjectProperty() {
 \end{lstlisting}
 So hat man keine Probleme mehr mit dem Serialisieren.
 
-\subsubsection{notifyIf}
-Wie bereits in der Sektion  Architektur erwähnt, nimmt die notifyIf() Funktion einen einezlnen CriteriaTester oder eine  Liste von  CriteriaTester entgegen. Falls alle Kriterien, welche darin definiert wurden zutreffen, wird die this.doNotify aufgerufen. Als boolscher Wert, wird zurückgegeben, ob dies der Fall ist oder nicht.
-\subsubsection{meetsCriteria}
-Die meetsCritera() Funktion,  funktioniert wie die notifyIf Funktion. Mit dem Unterschied, dass this.doNOtify() nicht aufgerufen wird. Sie gibt lediglich einen boolschen Wert als Antwort zurück.
+\subsubsection{Class: notifyIf}
+Wie bereits in der Sektion  Architektur erwähnt, nimmt die notifyIf() Funktion einen einzelnen CriteriaTester oder eine  Liste von  CriteriaTester entgegen. Falls alle Kriterien,
+welche darin definiert wurden zutreffen, wird die this.doNotify aufgerufen. Als boolscher Wert wird zurückgegeben, ob dies der Fall ist oder nicht.
+\subsubsection{Class: meetsCriteria}
+Die meetsCritera() Funktion funktioniert wie die notifyIf() Funktion. Mit dem Unterschied, dass this.doNotify() nicht aufgerufen wird. Sie gibt lediglich einen boolschen Wert als
+Antwort zurück.
 
-\subsubsection{doNotify}
-Falls  doNotify aufgerufen wird, itteriert der Reminder durch alle vorkonfigurierten Notifications durch, und lässt jede mit der Funktion Notification.send() eine Notification absenden. Somit ist es möglich mehrere verschiedene Notifications absenden zu lassen.
+\subsubsection{Class: doNotify}
+Falls doNotify() aufgerufen wird, iteriert der Reminder durch alle vorkonfigurierten Notifications und lässt jede mit der Funktion Notification.send() eine Notification
+absenden. Somit ist es möglich mehrere verschiedene Notifications absenden zu lassen.
 
 
-\subsection{ReminderList}
+\subsection{Class: ReminderList}
 Die ReminderList ist aus zwei Gründen entstanden.
-Wir hatten sehr häuffig eine Beobachtbare (Observable) Liste von Reminden als inputparameter in FUnktionen zu definieren. Dies verschlechtert die Leserlichkeit, welche bei Code sehr wichtig ist.
-Durch das definieren einer eigenen Klasse, kann man nun das besser lesbare ReminderList schreiben.
+Wir hatten sehr häufig eine beobachtbare (Observable) Liste von Remindern als Inputparameter in Funktionen zu definieren. Dies verschlechtert die Leserlichkeit, welche beim Code
+sehr wichtig ist. Durch das definieren einer eigenen Klasse, kann man nun das besser lesbare ReminderList schreiben.
 
-Ausserdem bietet uns die ReminderList auch die Möglichkeit den Zustand der ReminderList  in einer History zu speichern, wenn man diese ändert.
-Somit kann man Änderungen an der liste später rückgänig machen. Durch das Hinzufügen einer undoneHistory, kann man nun auf der Zeitachse in beide Richtungen navigieren.
+Ausserdem bietet uns die ReminderList auch die Möglichkeit, den Zustand der ReminderList in einer History zu speichern, wenn man diese ändert.
+Somit kann man Änderungen an der Liste später rückgängig machen. Durch das Hinzufügen einer undoneHistory, kann man nun auf der Zeitachse in beide Richtungen navigieren.
 
-Leider speilte das undo / redo nicht gut mit JavaFx zusammen, so dass Änderungen gar nicht im GUI übernommen werden. Die entsprechenden Buttons im GUI haben wir desshalbt wieder entfernt. Die Undo/Reod Funktionalität könnte aber in einem Nachfolgeprojekt Interessant werden.Desshalbe haben wir diese nicht  gelöscht.
-\subsection{Specific Reminder}
+Leider spielte das undo/ redo nicht gut mit JavaFX zusammen, so dass Änderungen gar nicht im GUI übernommen wurden. Die entsprechenden Buttons im GUI haben wir deshalb wieder entfernt.
+Die Undo/Redo Funktionalität könnte aber in einem Nachfolgeprojekt interessant werden. Deshalb haben wir diese nicht gelöscht.
 
-Dies sind eine spezialiesierung der Superklasse Reminder. Der einzige Unterschied besteht darin, dass ``SpecificReminder'' noch Tags speichern. Diese Tags können dann mit dn Filtern gefiltert werden.
+\subsection{Class: Specific Reminder}
+Dies sind eine Spezialiesierung der Superklasse Reminder. Der einzige Unterschied besteht darin, dass ``SpecificReminder'' noch tags speichern. Diese tags können dann mit den
+Filtern gefiltert werden.
 
-\subsection{Poller}
-Der Poller folgt dem Singelton Pattern. Er läuft in einem eigenen Thread und ruft regelmässig (eingestellt ist jede Sekunde) den NotificationHandler auf.
-Der Poller kann als Observer auf die ReminderList ``aufpassen'' somit kann er jede Änderung welche vorgenommen wird sofort verarbeiten, und gegebenenfalls  via NotificationHandler eine passende Notification absenden. Dies wird vorallem dann wichtig, wenn die Polling Zeit auf einen sehr grossen Wert gesetzt wird.
+\subsection{Class: Poller}
+Der Poller folgt dem Singleton Pattern. Er läuft in einem eigenen Thread und ruft regelmässig (eingestellt ist jede Sekunde) den NotificationHandler auf.
+Der Poller kann als Observer auf die ReminderList ``aufpassen'', somit kann er jede Änderung, welche vorgenommen wird sofort verarbeiten und gegebenenfalls via NotificationHandler
+eine passende Notification absenden. Dies wird vor allem dann wichtig, wenn die Polling Zeit auf einen sehr grossen Wert gesetzt wird.
 
-\subsection{ConfigReader}
-Der ConfigReader müsste eigentlich von einer Config Datei lesen, die der User Anpassen kann. Dazu hat uns leider die Zeit nicht mehr gereicht.
+\subsection{Class: ConfigReader}
+Der ConfigReader müsste eigentlich von einer Config Datei lesen, die der User anpassen kann. Dazu hat uns leider die Zeit nicht mehr gereicht.
 Im ConfigReader kann man einstellen ob man
 \begin{itemize}
-  \item JavaFX Notifications überhaupt erhalten will,
-  \item Notifications auf der Konsole haben will,
-  \item ein Dark Mode haben will,
+  \item JavaFX Notifications überhaupt erhalten will
+  \item Notifications auf der Konsole haben will
+  \item ein Dark Mode haben will
   \item vergangene Reminders sehen will
   \item Reminder sehen will, die in der nächsten Sekunde eintreffen
   \item Reminder sehen will, die im nächsten Monat eintreffen
 \end{itemize}
 
 \subsubsection{Konfiguration}
-Die Konfigurationsmöglichkeiten sind im ConfigReader File zentral gelöst. Damit wird es später auch leicht möglich, über diese Klasse ein Konfigurationsfile  einzulesen, und die entsprechenden Komponenten zu konfigurieren. Solange dies nicht  über ein Externes File eingelesen werden, wird die Konfiguration direkt in den Boolen Werten gesetzt.
+Die Konfigurationsmöglichkeiten sind im ConfigReader File zentral gelöst. Damit wird es später auch leicht möglich, über diese Klasse ein Konfigurationsfile einzulesen und
+die entsprechenden Komponenten zu konfigurieren. Solange dies nicht über ein Externes File eingelesen wird, wird die Konfiguration direkt in den Boolschen Werten gesetzt.
 
-Bei den NotificationTypes muss man ein Objekt der gewünschten Notification eingeben, um einen neuen NotificationType  zu konfigurieren. Dies hat den Vorteil einer Typesicherheit. Ausserdem kann somit der Reminder im Reminder.doNotify() einfach über die verschiedenen Notifications ittereieren, welcher er benutzen soll.
+Bei den NotificationTypes muss man ein Objekt der gewünschten Notification eingeben, um einen neuen NotificationType zu konfigurieren. Dies hat den Vorteil einer Typesicherheit.
+Ausserdem kann somit der Reminder im Reminder.doNotify() einfach über die verschiedenen Notifications iterieren, welcher er benutzen soll.

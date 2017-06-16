@@ -1,26 +1,30 @@
 \subsection{Architektur}
-Wir wollten nach dm Objektorientierten Paradigma den einzelnen Klassen möglichst wenig wissen über die Internas von anderen Klassen zumuten.
-Somit sollte der Reminder selber prüfen obe er eine bestimmte Bedinung erfüllt und eine Notification absenden soll, anstatt seine Innereine dem NotificationHandler zu offenbaren. 
+Wir wollten nach dem objektorientierten Paradigma den einzelnen Klassen möglichst wenig Wissen über die Internas von anderen Klassen zumuten.
+Somit sollte der Reminder selber prüfen ob er eine bestimmte Bedingung erfüllt und eine Notification absenden soll, anstatt seine "Innereinen" dem NotificationHandler zu offenbaren.
 
-Es drängte sich also auf dem Reminder eine Funtkiont zum testen zu übergeben. Ähnlich wie im Comand Pattern haben wir dies gelöst, indem wir Ein Objekt um die Funktion gewrappt haben. Anstatt execute() haben wir die funktion aber isTrue genannt, was ein gut lesbaren Quellcode mit den Tests erzeugt.
-Wie zum Beispiel der Criteriatester IsThisYear welcher einen Remeinder darauf testet, ojb er in diesem Jahr ist und die Antwort als boolean zurück gibt.
+Es drängte sich also auf dem Reminder eine Funtkion zum Testen zu übergeben. Ähnlich wie im Command Pattern haben wir dies gelöst, indem wir ein Objekt um die Funktion gewrappt
+haben. Anstatt execute() haben wir die Funktion aber isTrue() genannt, was ein gut lesbarer Quellcode mit den Tests erzeugt,
+wie zum Beispiel der Criteriatester IsThisYear() welcher einen Reminder darauf testet, ob er in diesem Jahr ist und die Antwort als Boolean zurück gibt.
 \begin{lstlisting}
 boolean isThisYear = IsThisYear.isTrue(reminder);
 \end{lstlisting}
 \subsection{ Higher Order Functions}
-  Die Marketingabteilung von Oracle behauptet gerne Java seie auch Funktional. Higer Order Functions werden aber nicht wirklich unterstützt. 
+  Die Marketingabteilung von Oracle behauptet gerne Java sei auch Funktional. Higher Order Functions werden aber nicht wirklich unterstützt.
   \url{https://en.wikipedia.org/wiki/Higher-order_function}
-  Java unterstüzt leider keine ehcten Higher order functions. Man kann also nicht ohne weiteres eine Funktion als Inputparameter übergeben.
-  Mittels Lambdas ist es lediglich möglich, eine Funktion ausführen zu lassen und den Rückgabewert als Inputparameter weiter zu verwenden. Dies erlaubt eine kompaktere Notation. Dies reicht uns aber nicht, da wir den Remindern eine Funktion übergeben möchten, mit welcher jeder Reminder selber testet ob er eine Notification absenden soll. 
-  
-  \subsection{echte Higher Order Functions in Java}
-  Um dies zu erreichen haben wir eine Form von Higher Order Functions mit Objekten nachgebaut. 
-  Ein CriteraTester ist ein Objekt, welches als Wrapper für eine Funtion dient. Anstelle dieser Funktion übergibt man nun diesen FunktionsWrapper als Inputparameter. Somit konnten wir Funktionen als Inputparameter mittels Objektorientierten prinzipien nachbauen.
-  Man muss nun für jede Funktion ein Objekt erstellen, welches das Interface CriteraTester implementiert.Und die Filterfunktion isTrue implementieren.
+  Java unterstützt leider keine echten Higher Order Functions. Man kann also nicht ohne weiteres eine Funktion als Inputparameter übergeben.
+  Mittels Lambdas ist es lediglich möglich eine Funktion ausführen zu lassen und den Rückgabewert als Inputparameter weiter zu verwenden. Dies erlaubt eine kompaktere
+  Notation. Dies reicht uns aber nicht, da wir den Remindern eine Funktion übergeben möchten, mit welcher jeder Reminder selber testet, ob er eine Notification absenden soll.
+
+  \subsection{Echte Higher Order Functions in Java}
+  Um dies zu erreichen haben wir eine Form von Higher Order Functions mit Objekten nachgebaut.
+  Ein CriteraTester ist ein Objekt, welches als Wrapper für eine Funktion dient. Anstelle dieser Funktion übergibt man nun diesen FunktionsWrapper als Inputparameter. Somit
+  konnten wir Funktionen als Inputparameter mittels objektorientierten Prinzipien nachbauen.
+  Man muss nun für jede Funktion ein Objekt erstellen, welches das Interface CriteraTester implementiert und die Filterfunktion isTrue() implementieren.
   Funktionen als Rückgabewert kann man so aber noch nicht wirklich nachbauen. Für uns war das aber nicht nötig.
-  
-  Dank den oben erwähnten Lambdas kann man dies auch elegan on the Fly erledigen. Da es aber vorkommen kann dass man einen Filter mehrmals benutzt, habe wir uns entschieden die Filter jeweils als eigene Klassen zu implementieren.
-  
+
+  Dank den oben erwähnten Lambdas kann man dies auch elegant on the Fly erledigen. Da es aber vorkommen kann, dass man einen Filter mehrmals benutzt, haben wir uns entschieden,
+  die Filter jeweils als eigene Klassen zu implementieren.
+
   \subsection{Code Beispiel}
        \begin{lstlisting}[caption = on the fly criteria]
        Reminder reminder;
@@ -31,33 +35,34 @@ boolean isThisYear = IsThisYear.isTrue(reminder);
         criteria.add(
                 reminder -> (!reminder.getTags().contains("hidden"))
         );
-        //This lets the Reminder send a notification if the Reminder meets the criterias 
+        //This lets the Reminder send a notification if the Reminder meets the criterias
         //The first criteia it must pass it th IsPassed()
         reminder.notifyIf(criteria);
        \end{lstlisting}
-       
-       
+
+
        \subsection{Implementierungen von Filtern}
-       Wir haben ettliche Filter implementiert, die meisten Filter ähneln sich stark. Die Dokumentation ist dementsprechend ähnlich.
-       Für Klasen mit einer so grossen Ähnlichkeit wäre eine Programmierung mit Makros, wie sie beispielsweise C oder Lisp beitet eventuell angenehm. da ettliche Kriterien temporale gegebenheiten testen, benutzen wir häufig  LocalDateTime  Objekte mit ihren Methoden.
-       Wie bereits beschreiben steht vorallem die Criteria.isTrue() Methode im Vordergrund. Dementsprechend  beleuchten wir hier auch nur diese Methode.
-       
-       \subsubsection{hasTag}
-       Dieser Filter prüft, ob ein Reminder ein bestimmten Tag hat. Somit kann man zum Beispiel Reminders verstecken, wie im Beispiel weiter oben gezeigt,
-       ode mann kann Filter auch in andere Kategorien anordnen. 
-       
-       Das Filtern auf den Tag geschieht auf einer einzelnen Zeile.
+       Wir haben etliche Filter implementiert, die meisten Filter ähneln sich stark. Die Dokumentation ist dementsprechend ähnlich.
+       Für Klassen mit einer so grossen Ähnlichkeit wäre eine Programmierung mit Makros, wie sie beispielsweise C oder Lisp bietet eventuell angenehm. Da etliche Kriterien
+       temporale Gegebenheiten testen, benutzen wir häufig LocalDateTime Objekte mit ihren Methoden.
+       Wie bereits beschrieben steht vor allem die Criteria.isTrue() Methode im Vordergrund. Dementsprechend beleuchten wir hier auch nur diese Methode.
+
+       \subsubsection{Class: hasTag}
+       Dieser Filter prüft, ob ein Reminder einen bestimmten tag hat. Somit kann man zum Beispiel Reminders verstecken, wie im Beispiel weiter oben gezeigt,
+       oder man kann Filter auch in andere Kategorien anordnen.
+
+       Das Filtern auf den tag geschieht auf einer einzelnen Zeile.
       \begin{lstlisting}
        public boolean isTrue(Reminder reminder) {
 	    return reminder.getTags().contains(tag);
       }
       \end{lstlisting}
-      
-      \subsubsection{IsInNextMin}
-      Dieser Filter testet, ob ein Reminde inerhalb der nächsten x Minuten stattfindet.
-      Der default Constructor setzt x auf 1, so dass ohne nähere Spezifikaiton darauf getestet wird, ob ein Reminder in der nächsten Minute stattfindet.
-      Dies kommt auch nahe an den natürlichen Sprachgebrauch, was den Code beser lesbar macht.
-      Zuerst wird geprüft, ob der Reminder in der Zukunft liegt. Dann wird getestet, ob der Reminder innert den nächsten nextMinutes stattfindet.
+
+      \subsubsection{Class: IsInNextMin}
+      Dieser Filter testet, ob ein Reminder innerhalb der nächsten x Minuten stattfindet.
+      Der default Constructor setzt x auf 1, so dass ohne nähere Spezifikation darauf getestet wird, ob ein Reminder in der nächsten Minute stattfindet.
+      Dies kommt auch nahe an den natürlichen Sprachgebrauch, was den Code besser lesbar macht.
+      Zuerst wird geprüft, ob der Reminder in der Zukunft liegt. Dann wird getestet, ob der Reminder innert den nächsten Minuten stattfindet.
       \begin{lstlisting}
         public boolean isTrue(Reminder reminder) {
         return reminder.getDate().isAfter(LocalDateTime.now())
@@ -65,10 +70,8 @@ boolean isThisYear = IsThisYear.isTrue(reminder);
     }
       \end{lstlisting}
 
-      \subsubsection{IsInNextSecond}
-      Dieser Filter testet, ob ein Reminde inerhalb der nächsten x Sekunden stattfindet.
-      Der default Constructor setzt x auf 1, so dass ohne nähere Spezifikaiton darauf getestet wird, ob ein Reminder in der nächsten stattfindet.
-      Dies kommt auch nahe an den natürlichen Sprachgebrauch, was den Code beser lesbar macht.
+      \subsubsection{Class: IsInNextSecond}
+      Dieser Filter testet, ob ein Reminder innerhalb der nächsten x Sekunden stattfindet.
+      Der default Constructor setzt x auf 1, so dass ohne nähere Spezifikation darauf getestet wird, ob ein Reminder in der nächsten stattfindet.
+      Dies kommt auch nahe an den natürlichen Sprachgebrauch, was den Code besser lesbar macht.
       Zuerst wird geprüft, ob der Reminder in der Zukunft liegt. Dann wird getestet, ob der Reminder innert den nächsten nextSeconds stattfindet.
-      
- 

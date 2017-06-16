@@ -1,28 +1,30 @@
 \subsection{Class: Controller}
-Die Controller Klasse arbeit eng mit der mainWindow.fxml Datei zusammen. Würde man dieser Klasse den Namen ändern, so müsste man im fxml das Statement
+Die Controller Klasse arbeitet eng mit der mainWindow.fxml Datei zusammen. Würde man dieser Klasse den Namen ändern, so müsste man im fxml das Statement
 \begin{lstlisting}
 fx:controller="alarmClock.controller.Controller"
 \end{lstlisting}
-anpassen
+anpassen.
 
-In der fxml Datei hat jedes Item im GUI eine ID. Damit man im Java Code auf die jeweiligen Komponenten zugreifen kann, hängt man bei der Initialisierung ein @FXML Tag dran, damit das Programm weiss, mit welchen Komponenten ehr umgeht.
+In der FXML Datei hat jedes Item im GUI eine ID. Damit man im Java Code auf die jeweiligen Komponenten zugreifen kann, hängt man bei der Initialisierung ein @FXML tag dran,
+damit das Programm weiss, mit welchen Komponenten er umgeht.
 \begin{lstlisting}
     @FXML
     private TextField subjectField;
 \end{lstlisting}
 
 \begin{lstlisting}
-  <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject"\">TODO</TextField>
+  <TextField fx:id="subjectField" prefHeight="25.0" prefWidth="107.0" promptText="Subject"\"></TextField>
 \end{lstlisting}
 
 Da in beiden Dateien subjectField gleich heisst, kann man nun problemlos im Java Code auf das gewünschte Feld zugreifen.
-Man kann auch definieren, welche Methode aufgerufen werden soll, wenn man bsp einen Button drückt. Für addButtonPressed() und rmButtonPressed() haben wir das gemacht.
+Man kann auch definieren, welche Methode aufgerufen werden soll, wenn man bsp. einen Button drückt. Für addButtonPressed() und rmButtonPressed() haben wir das so gemacht.
 
 \begin{lstlisting}
 onAction="#addButtonPressed"
 \end{lstlisting}
 
-Im tag des AddButtons (in der fxml Datei) nennen wir die Methode die aufgerufen werden soll "addButtonPressed". Damit der Java-Compiler merkt, dass er eine FXML Kompenente suchen muss, fügen wir vor der Methode noch ein @FXML tag hinzu.
+Im tag des AddButtons (in der fxml Datei) nennen wir die Methode die aufgerufen werden soll "addButtonPressed". Damit der Java-Compiler merkt, dass er eine FXML Kompenente
+suchen muss, fügen wir vor der Methode noch ein @FXML tag hinzu.
 \begin{lstlisting}
     @FXML
         public void addButtonPressed() {
@@ -30,10 +32,11 @@ Im tag des AddButtons (in der fxml Datei) nennen wir die Methode die aufgerufen 
         }
 \end{lstlisting}
 
-Die addButtonPressed() Methode fügt Reminders in die Tabelle hinzu, solange der Input legal ist. Das heisst die Felder dürfen nicht leer sein (getValue != null). Wenn der Button gedrückt wird, werden die Felder wieder leer gemacht.
+Die addButtonPressed() Methode fügt Reminders in die Tabelle hinzu, solange der Input legal ist. Das heisst die Felder dürfen nicht leer sein (getValue != null).
+Wenn der Button gedrückt wird, werden die Felder wieder leer gemacht.
 
 
-Die rmButtonPressed() Methode löscht Reminders die man mit der Maus selektiert hat.
+Die rmButtonPressed() Methode löscht Reminders, die man mit der Maus selektiert hat.
 
 \begin{lstlisting}
     ReminderList reminderSelected;
@@ -44,7 +47,7 @@ Die rmButtonPressed() Methode löscht Reminders die man mit der Maus selektiert 
 Wir kreieren eine Liste und fügen alle selektierten Reminders hinzu, und löschen diese dann aus der Tabelle.
 
 
-Die Methode Initialize haben wir reingenommen, da JavaFX Komponenten erst nach dem Ausführen des Konstrukters erstellt werden. Sie dient als Konstruktor.
+Die Methode Initialize haben wir reingenommen, da JavaFX Komponenten erst nach dem Ausführen des Konstruktors erstellt werden. Sie dient als Konstruktor.
 \begin{lstlisting}
   BooleanBinding addBinding = subjectField.textProperty().isNotEmpty().and(datePickerField.valueProperty().isNotNull());
   addButton.disableProperty().bind(addBinding.not());
@@ -58,16 +61,17 @@ reminderTable.getSelectionModel().setSelectionMode(
 \end{lstlisting}
 Dies erlaubt dem User mehrere Items in der Tabelle zu markieren.
 
-Um die Initialisierung des Models mussten wir noch ein try/ catch Block hinzufügen, da das Model Exceptions werfen kann.
+Um die Initialisierung des Models mussten wir noch einen try/ catch Block hinzufügen, da das Model Exceptions werfen kann.
 
 \begin{lstlisting}
 reminderTable.setItems(model.getReminders());
 \end{lstlisting}
-Fügt beim Starten des Programms Reminders in die Tabelle, die in der DB gespeichert wurden.
+setItems() fügt beim Starten des Programms Reminders in die Tabelle, die in der DB gespeichert wurden.
 
 \subsection{Class: DateTimePicker}
-Die DateTimePicker Klasse haben nicht wir geschrieben. Wir haben diese Klasse auf StackOverflow gefunden. Da JavaFX nur einen DatePicker zur Verfügung stellt, mussten wir diesen benutzen. Es handelt mit LocalDateTime Objekten, die auch die Uhrzeit mitgeben.
-Der DateTimePicker gibt zwei sehr praktische Felder zur Verfügung: Das dateTimeValue, das das Datum inklusiver Zeit enthält, und das valueProperty, welches nur das Datum enthält.
-Im Konstruktor wird ein Listener erstellt, welcher das dateTimeValue überschreibt, wenn der User des GUI etwas ändert.
+Die DateTimePicker Klasse haben nicht wir geschrieben. Wir haben diese Klasse auf StackOverflow gefunden. Da JavaFX nur einen DatePicker zur Verfügung stellt, mussten wir
+diesen benutzen. Es handelt mit LocalDateTime Objekten, die auch die Uhrzeit mitgeben.
+Der DateTimePicker gibt zwei sehr praktische Felder zur Verfügung: Das dateTimeValue, welches das Datum inklusiver Zeit enthält, und das valueProperty, welches nur das Datum enthält.
+Im Konstruktor wird ein Listener erstellt, welcher das dateTimeValue überschreibt, wenn der User im GUI etwas ändert.
 In der DateTimePicker Klasse wurde noch eine zweite Klasse hinzugefügt, der InternalConverter. Dieser holt den String aus dem DateTimePicker und parsed es zu einem LocalDateTime
-Objekt. 
+Objekt.

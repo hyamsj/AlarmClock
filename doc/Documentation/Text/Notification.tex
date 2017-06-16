@@ -9,20 +9,20 @@ setReminder übergibt den Reminder, für den man eine Notifcation erstellen will
 \begin{lstlisting}
    void send();
 \end{lstlisting}
-send() wird vom Reminder aufgerufen, und zeigt dem User die Notification. Es gibt verschiene Arten von Notifications.
-JavaFxNotification ist das Popup das den Reminder aufzeigt, der gerade aktuell ist. MultireminderNotification
-zeigt alle schon vergangenen Reminders, und ConsoleReminder zeigt auf der Konsole (Shell) einen Reminder.
-All diese Notification-Klassen implemenetieren Notification.
+send() wird vom Reminder aufgerufen, und zeigt dem User die Notification. Es gibt verschiedene Arten von Notifications.
+JavaFxNotification ist das Popup, das den Reminder aufzeigt, der gerade aktuell ist. MultireminderNotification
+zeigt alle schon vergangenen Reminders und ConsoleReminder zeigt auf der Konsole (Shell) einen Reminder.
+All diese Notification-Klassen implementieren das Notification Interface.
 
 
 \subsection{Class: ConsoleNotification}
-ConsoleNotification hat einen leeren Konstruktor aus mehreren Gründen. Wir haben ihn ähnlich wie den JavaFxNotification aufebaut,
+ConsoleNotification hat einen leeren Konstruktor aus mehreren Gründen. Wir haben ihn ähnlich wie den JavaFxNotification aufgebaut,
 und JavaFX verlangt einen leeren Konstuktor, also haben wir ihn hier beibehalten. Auch haben wir einen Konstruktor mit einem Reminder im Parameter gemacht,
 also war der DefaultKonstruktor überschrieben.
 Der ConfigReader benutzt diese Klasse auch (inklusive dem leeren Konstruktor) und benötigt keinen direkten Reminder, also haben wir ihn so stehen lassen.
 
-Der Konstruktor mit dem Reminder im Parameter und die setReminderMethode machen eingentlich genau das gleiche. setReminders wird noch vom Notication Interface verlangt.
-Die send() Methode wird vom Reminder aufgerufen wenn die Zeit soweit ist. Sie druckt einfach die toString() Methode des Reminders auf die Konsole.
+Der Konstruktor mit dem Reminder im Parameter und die setReminder() Methode machen eigentlich genau das gleiche. setReminders() wird noch vom Notication Interface verlangt.
+Die send() Methode wird vom Reminder aufgerufen, wenn die Zeit soweit ist. Sie druckt einfach die toString() Methode des Reminders auf die Konsole.
 
 
 \subsection{Class: JavaFxNotification}
@@ -34,7 +34,7 @@ Die send() Methode enthält die statische Methode:
 In den geschweiften Klammern wird ein Popup Fenster erstellt. Da wir mit Threads arbeiten, und diese Popups verspätet aufgerufen werden,
 müssen wir das GUI in das Platform.runlater einpacken. Die JavaDoc vom runlater() sagt 'Run the specified Runnable on the JavaFX Application
 Thread at some unspecified time in the future [ \dots ]
-und das ist genau was wir brauchen. Lässt man es weg, bekommt man dutzende von Exceptions.
+und das ist genau was wir brauchen. Lässt man es weg, bekommt man Dutzende von Exceptions.
 
 \begin{lstlisting}
   {
@@ -54,11 +54,15 @@ Stage stage = new Stage();
 	  stage.show();
     }
 \end{lstlisting}
-Der Code in den geschweiften Klammern macht ein simples JavaFX Fenster das den Reminder aufzeigt. Das Label wird mit der reminder.toString() Methode überschrieben. Dem okButton schliesst das Fenster wenn man ihn drückt. Die Komponenten Button und Label tun wir in ein VBox Behälter und machen ihn noch ein bisschen schöner mit setAlignment() und setPadding().
+Der Code in den geschweiften Klammern macht ein simples JavaFX Fenster, das den Reminder aufzeigt. Das Label wird mit der reminder.toString() Methode überschrieben.
+Der okButton schliesst das Fenster wenn man ihn drückt. Die Komponenten Button und Label tun wir in ein VBox Behälter und machen ihn noch ein bisschen schöner mit
+setAlignment() und setPadding().
 
 
 \subsection{Class: MultiReminderNotification}
-MultiReminderNotification benutzen wir um alle schon vergangenen Reminder in einem einzigen Fenster darzustellen. Es ist aber auch möglich, eine andere aggrregation von  Remindern mit ihr darzustellen. Der Aufbau der Klasse ist genau gleich wie in JavaFxNotification und ConsoleNotification, nur dass anstatt einem Reminder hat er eine Liste von Reminder.
+MultiReminderNotification benutzen wir um alle schon vergangenen Reminder in einem einzigen Fenster darzustellen. Es ist aber auch möglich, eine andere aggregation von
+Remindern mit ihr darzustellen. Der Aufbau der Klasse ist genau gleich wie in JavaFxNotification und ConsoleNotification, nur dass er anstatt einem Reminder eine Liste
+von Remindern hat.
 \begin{lstlisting}
 private Collection<Reminder> reminders;
 
@@ -70,7 +74,8 @@ String remindersText = "";
                         System.out.print("added" + r.toString());
                     }
 \end{lstlisting}
-Hier Iterieren wir durch alle Reminders in der Tabelle und fügen sie zum Label hinzu. Die Reminders sind in der reminders Liste. Damit wir nicht alle Reminders in diesem Popup habem, sonder nur die die bereits vergangen sind oder schon sehr bald erscheinen, werden diese im NotificationHandler noch gefiltert.
+Hier iterieren wir durch alle Reminders in der Tabelle und fügen sie zum Label hinzu. Die Reminders sind in der Remindersliste. Damit wir nicht alle Reminders in diesem Popup
+haben, sondern nur die die bereits vergangen sind oder schon sehr bald erscheinen, werden diese im NotificationHandler noch gefiltert.
 Die Methoden dazu wären folgende:
 \begin{lstlisting}
 criteria.add(new IsPassed());
@@ -79,11 +84,11 @@ criteria.add(new IsThisYear());
 
 \subsection{Class: NotificationHandler}
 Der NotificationHandler handelt die Notifications. Dazu werden die einzelnen NotificationTypen mit den passenden CriteriaTesters konfiguriert.
-Im Konstruktur wird dem NotificationHandler eine ReminderList übergeben. Für diese Reminders werden beim aufruf der handel() methode die Notifications verwaltet.
+Im Konstruktor wird dem NotificationHandler eine ReminderList übergeben. Für diese Reminders werden beim Aufruf der handle() Methode die Notifications verwaltet.
 
 
-in der handle() Methode wird über die ReminderList itteriert. für jeden NotifiationTyp  werden nun die passenden CriteriaTester angegeben.
-Wir betrachten nun  lediglich den NotificationTyp, welcher sämtliche Reminders aufpoppen lässt, welche  diesen Monat sind. 
+in der handle() Methode wird über die ReminderList iteriert. Für jeden NotifiationTyp werden nun die passenden CriteriaTester angegeben.
+Wir betrachten nun lediglich den NotificationTyp, welcher sämtliche Reminders aufpoppen lässt, die diesen Monat sind.
 
 \begin{lstlisting}[caption = NotificationHandler.handle]
 Collection<CriteriaTester> importantStuffThisMonth = Arrays.asList(new IsThisMonth());
@@ -97,16 +102,18 @@ if (!notifiedReminders.contains(reminder)) {
 }
 \end{lstlisting}
 Dann wird für jeden Reminder, welcher noch keine Notification vom entsprechenden Typ abgesendet hat ein Reminder.notfyIf(CriteriaTester) aufgerufen.
-Der Reminder testet selbstständig, ob das Kriterium zutifft, und er der Notication den Befehl gibt eine Meldung azusende. Falls dies dies geschieht, meldet der Reminder ein sucess zurück. Der Handler nimmt ihn dann in die Liste der Reminder auf,welche bereits eine Notification abgesednet haben.
+Der Reminder testet selbstständig, ob das Kriterium zutrifft, und er der Notication den Befehl gibt, eine Meldung abzusenden. Falls dies geschieht, meldet der Reminder ein
+success zurück. Der Handler nimmt ihn dann in die Liste der Reminder auf, welche bereits eine Notification abgesendet hat.
 
-Kurz vor dem Datum eines Reminders, wird nochmals auf diesen Reminder hingewiesen.
+Kurz vor dem Datum eines Reminders wird nochmals auf diesen Reminder hingewiesen.
 Der Code funktioniert sehr ähnlich. Es wird aber anstatt ein CriteriaTester.IsThisMonth() ein CriteriaTester.IsNextSecond() übergeben.
 
-\subsubsection{Methode showPastEvents}
+\subsubsection{Methode showPastEvents()}
 
-Es gibt noch ein dritten Typ von Notifications diese zeigt eine Aggregation der Vergangenen Remindern.Sie werden in einer seperaten Methode abgearbeitet. Der showPastEvents() Methode. Diese löst eine Notification aus, welche mehrere Reminders zusammen darstellt. Desshabl haben wir uns von dem Paradigma gelöst, dass nur der Remidner die Notificaiton auslöst.
-Die Methode überprüft auf zwei Kriterien. Erstens ob der Reminder in der Vergangenheit angesiedelt ist  und ob  der Reminder in diesem Jahr war.
-Dies geschieht indem man über die ReminderList itteriert. und die passenden Reminders in eine seperate Liste namens passedReminders speichert.
+Es gibt noch einen dritten Typ von Notifications. Dieser zeigt eine Aggregation der vergangenen Remindern an. Sie werden in einer seperaten Methode abgearbeitet, der showPastEvents()
+Methode. Diese löst eine Notification aus, welche mehrere Reminders zusammen darstellt. Deshalb haben wir uns von dem Paradigma gelöst, damit nur der Remidner die Notificaiton auslöst.
+Die Methode überprüft zwei Kriterien. Erstens ob der Reminder in der Vergangenheit angesiedelt ist und ob der Reminder in diesem Jahr war.
+Dies geschieht, indem man über die ReminderList iteriert, und die passenden Reminders in eine seperate Liste namens passedReminders speichert.
 Diese wird dann der MultiReminderNotification übergeben, damit dies die aggregierte Notificaiton absenden kann.
 
 \begin{lstlisting}[caption = NotificationHandler.showPastEvents]
@@ -131,7 +138,8 @@ Diese wird dann der MultiReminderNotification übergeben, damit dies die aggregi
     }
 \end{lstlisting}
 
-Um sicherzustellen, dass die showPastEvents nur einmal dargestellt weden, muss der Poller sich merken, ob die Methode schon einmal aufgerufen wurde. Falls dies zutrifft, wird auf ein weiterer Aufruf verzichtet.
+Um sicherzustellen, dass die showPastEvents nur einmal dargestellt werden, muss der Poller sich merken, ob die Methode schon einmal aufgerufen wurde. Falls dies zutrifft, wird auf
+einen weiteren Aufruf verzichtet.
   \begin{lstlisting}
          public boolean isTrue(Reminder reminder) {
         return reminder.getDate().isAfter(LocalDateTime.now())
@@ -140,24 +148,25 @@ Um sicherzustellen, dass die showPastEvents nur einmal dargestellt weden, muss d
     \end{lstlisting}
 
 
-subsubsection{IsPassed}
-    Diers Filter testet, ob ein Reminder in der Vergangenheit angesiedelt ist.Dazu wird die LocalDateTime.isBefore Methode benutzt um zu testen, ob der Reminder vor dem jetztigen Zeitpunkt stattfindet.
+    \subsubsection{Class: IsPassed}
+    Dieser Filter testet, ob ein Reminder in der Vergangenheit angesiedelt ist. Dazu wird die LocalDateTime.isBefore() Methode benutzt um zu testen, ob der Reminder vor dem
+    jetzigen Zeitpunkt stattfindet.
     \begin{lstlisting}
     public boolean isTrue(Reminder reminder) {
         return reminder.getDate().isBefore(LocalDateTime.now());
     }
     \end{lstlisting}
-    
-     \subsection{IsThisYear}
-    Dieser Filter testet ob ein Reminder diesen Jahr stattfindet. Wir vergleichen dabei das Jahr des Reminders mit dem aktuellen Jahr.
-    
+
+     \subsection{Class: IsThisYear}
+    Dieser Filter testet ob ein Reminder in diesem Jahr stattfindet. Wir vergleichen dabei das Jahr des Reminders mit dem aktuellen Jahr.
+
     \begin{lstlisting}
     public boolean isTrue(Reminder reminder) {
         return reminder.getDate().getYear() == LocalDateTime.now().getYear();
     }
     \end{lstlisting}
 
-    
+
     \subsection{IsThisMonth}
     Dieser Filter testet ob ein Reminder diesen Monat stattfindet. Dazu  testen wir ob der Reminder im selben Jahr und in demselben Monat sattfindet.
     \begin{lstlisting}
@@ -169,8 +178,8 @@ subsubsection{IsPassed}
     \end{lstlisting}
 
     \subsection{IsToday}
-    
-    Dieser Filter testet ob ein Reminder an diesem Tag stattfindet. Dazu  testen wir ob der Reminder im selben Jahr und in demselben Monat und am selben Tag sattfindet.
+
+    Dieser Filter testet ob ein Reminder an diesem Tag stattfindet. Dazu testen wir ob der Reminder im selben Jahr und in demselben Monat und am selben Tag sattfindet.
     \begin{lstlisting}
          public boolean isTrue(Reminder reminder) {
         LocalDateTime today = LocalDateTime.now();

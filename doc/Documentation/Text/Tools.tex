@@ -1,11 +1,12 @@
 Um die  Versionierung der Dokumentation automatisch generieren zu lassen, haben wir LaTeX so mit Scripts erweitert, so dass die git Head Versionsnummer
-direkt ins Dokument eingefügt wird. Somit bleibt diese Information auch auf einem Ausdruck akkurat. Gegenüber einer manuellen inkrementierung der Version, hat die automatisierung den Vorteil, dass sie auch im Stress nicht vergessen wird. Das Ergebniss sieht man am Ende des Dokuments.
+direkt ins Dokument eingefügt wird. Somit bleibt diese Information auch auf einem Ausdruck akkurat. Gegenüber einer manuellen Inkrementierung der Version, hat die Automatisierung
+den Vorteil, dass sie auch im Stress nicht vergessen wird. Das Ergebniss sieht man am Ende des Dokuments.
 
-\LaTeX kann Code ausführen. Wir haben den Code in Shellscripte ausgelagert, und lassen den compiler diese aufrufen. Damit dies funktioniert, muss dies aktiviert werden. 
+\LaTeX kann Code ausführen. Wir haben den Code in Shellscripte ausgelagert, und lassen den compiler diese aufrufen. Damit dies funktioniert, muss dies aktiviert werden.
 
 Im \LaTeX file steht nun folgender Code.
-Zuerst wird die Versionsinformation in eine Datei  geschrieben, welche anschliessend in die Dokumentation eingebunden wird.
-Am schluss wird die Datei zurückgesezt, so dass sie eine Fehlermeldung im Dokument erzeugt, falls die Ausführung von Shellscripten im \LaTeX compiler ausgeschaltet ist.
+Zuerst wird die Versionsinformation in eine Datei geschrieben, welche anschliessend in die Dokumentation eingebunden wird.
+Am Schluss wird die Datei zurückgesetzt, so dass sie eine Fehlermeldung im Dokument erzeugt, falls die Ausführung von Shellscripten im \LaTeX compiler ausgeschaltet ist.
 Die automatisch generierte Datei wird nach der Generierung in das Dokument eingebunden.
 \begin{lstlisting}
  \noindent
@@ -16,7 +17,7 @@ Automatische Versionierung:
 \end{lstlisting}
 
 
-Wir schreiben den output in eine version.tex Datei.  Auf Zeile 9 lassen wir git HEAD nummer in die Datei speichern, welche beim pushen jeweils inkrementiert wird.
+Wir schreiben den output in eine version.tex Datei. Auf Zeile 9 lassen wir git HEAD Nummer in die Datei speichern, welche beim pushen jeweils inkrementiert wird.
 \begin{lstlisting}
 #!/bin/sh
 OUTPUT="../script/version.tex"
@@ -29,7 +30,7 @@ echo "\n">>$OUTPUT
 echo "Git HEAD Version: ">> $OUTPUT
 git rev-list --count --first-parent HEAD >>$OUTPUT
 \end{lstlisting}
-Dann wird ein cleanup durchgeführt, dabei wird die Output Datei mit einer Fehlermeldung versehen, so dass der User bemerkt, falls die Automatische Versionierung fehlschlägt.
+Dann wird ein cleanup durchgeführt, dabei wird die Output Datei mit einer Fehlermeldung versehen, so dass der User bemerkt, falls die automatische Versionierung fehlschlägt.
 \begin{lstlisting}
 #!/bin/sh
 OUTPUT="../script/version.tex"
