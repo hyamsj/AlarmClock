@@ -46,6 +46,15 @@ public SimpleStringProperty getSubjectProperty() {
 \end{lstlisting}
 So hat man keine Probleme mehr mit dem Serialisieren.
 
+\subsubsection{notifyIf}
+Wie bereits in der Sektion  Architektur erwähnt, nimmt die notifyIf() Funktion einen einezlnen CriteriaTester oder eine  Liste von  CriteriaTester entgegen. Falls alle Kriterien, welche darin definiert wurden zutreffen, wird die this.doNotify aufgerufen. Als boolscher Wert, wird zurückgegeben, ob dies der Fall ist oder nicht.
+\subsubsection{meetsCriteria}
+Die meetsCritera() Funktion,  funktioniert wie die notifyIf Funktion. Mit dem Unterschied, dass this.doNOtify() nicht aufgerufen wird. Sie gibt lediglich einen boolschen Wert als Antwort zurück.
+
+\subsubsection{doNotify}
+Falls  doNotify aufgerufen wird, itteriert der Reminder durch alle vorkonfigurierten Notifications durch, und lässt jede mit der Funktion Notification.send() eine Notification absenden. Somit ist es möglich mehrere verschiedene Notifications absenden zu lassen.
+
+
 \subsection{ReminderList}
 Die ReminderList ist aus zwei Gründen entstanden.
 Wir hatten sehr häuffig eine Beobachtbare (Observable) Liste von Reminden als inputparameter in FUnktionen zu definieren. Dies verschlechtert die Leserlichkeit, welche bei Code sehr wichtig ist.
@@ -75,7 +84,7 @@ Im ConfigReader kann man einstellen ob man
   \item Reminder sehen will, die im nächsten Monat eintreffen
 \end{itemize}
 
-\subsection{Konfiguration}
+\subsubsection{Konfiguration}
 Die Konfigurationsmöglichkeiten sind im ConfigReader File zentral gelöst. Damit wird es später auch leicht möglich, über diese Klasse ein Konfigurationsfile  einzulesen, und die entsprechenden Komponenten zu konfigurieren. Solange dies nicht  über ein Externes File eingelesen werden, wird die Konfiguration direkt in den Boolen Werten gesetzt.
 
 Bei den NotificationTypes muss man ein Objekt der gewünschten Notification eingeben, um einen neuen NotificationType  zu konfigurieren. Dies hat den Vorteil einer Typesicherheit. Ausserdem kann somit der Reminder im Reminder.doNotify() einfach über die verschiedenen Notifications ittereieren, welcher er benutzen soll.
