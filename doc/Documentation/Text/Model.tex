@@ -23,12 +23,33 @@ Die BinaryDBAdapter Klasse implementiert das DataBaseAdapter Interface und Seria
 casten wir zu einer ArrayList, und diese ArrayListe wird dann in eine ReminderList gefüllt.
 Die save() Methode wird immer aufgerufen, sobald sich irgendetwas in der Tabelle vom GUI ändert. Das Abspeichern machen wir mittels einem ObjectOutputStream.
 
-\subsection{ReminderList}
+\subsection{Reminder}
+Der Reminder ist das Herzstück unseres Programms. Alles was in der Tabelle ist, ist ein Reminder. Ursprünglich waren die Klassenvariablen SimpleStringProperties, da die Tabelle
+solche verlangt. Das Problem war aber, das sich diese nicht Serialisieren lassen. Also haben wir die Klasse ein wenig ander Strukturiert. Anstatt SimpleStringProperties
+direkt in der Klasse zu Speichern, werden diese einfach von den Methoden zurückgegeben.
+Das heisst anstatt wie folgt:
+\begin{lstlisting}
+private SimpleStringProperty subject = new SimpleStringProperty();
 
-Die ReminderList ist aus zwei Grüunden entstanden.
+public SimpleStringProperty getSubjectProperty() {
+  return subject;
+}
+\end{lstlisting}
+
+Machen wir es so:
+\begin{lstlisting}
+private String subject = "";
+
+public SimpleStringProperty getSubjectProperty() {
+  return new SimpleStringProperty(subject);
+}
+\end{lstlisting}
+So hat man keine Probleme mehr mit dem Serialisieren.
+
+\subsection{ReminderList}
+Die ReminderList ist aus zwei Gründen entstanden.
 Wir hatten sehr häuffig eine Beobachtbare (Observable) Liste von Reminden als inputparameter in FUnktionen zu definieren. Dies verschlechtert die Leserlichkeit, welche bei Code sehr wichtig ist.
 Durch das definieren einer eigenen Klasse, kann man nun das besser lesbare ReminderList schreiben.
-
 
 Ausserdem bietet uns die ReminderList auch die Möglichkeit den Zustand der ReminderList  in einer History zu speichern, wenn man diese ändert.
 Somit kann man Änderungen an der liste später rückgänig machen. Durch das Hinzufügen einer undoneHistory, kann man nun auf der Zeitachse in beide Richtungen navigieren.
@@ -36,13 +57,23 @@ Somit kann man Änderungen an der liste später rückgänig machen. Durch das Hi
 Leider speilte das undo / redo nicht gut mit JavaFx zusammen, so dass Änderungen gar nicht im GUI übernommen werden. Die entsprechenden Buttons im GUI haben wir desshalbt wieder entfernt. Die Undo/Reod Funktionalität könnte aber in einem Nachfolgeprojekt Interessant werden.Desshalbe haben wir diese nicht  gelöscht.
 \subsection{Specific Reminder}
 
-Dies sind eine spezialiesierung der Superklasse Reminder. Der einzige Unterschied besteht darin, dass ``SpecifigReminder'' noch Tags speichern. Diese Tags können dann mit dn Filtern gefiltert werden.
+Dies sind eine spezialiesierung der Superklasse Reminder. Der einzige Unterschied besteht darin, dass ``SpecificReminder'' noch Tags speichern. Diese Tags können dann mit dn Filtern gefiltert werden.
 
 \subsection{Poller}
 Der Poller folgt dem Singelton Pattern. Er läuft in einem eigenen Thread und ruft regelmässig (eingestellt ist jede Sekunde) den NotificationHandler auf.
 Der Poller kann als Observer auf die ReminderList ``aufpassen'' somit kann er jede Änderung welche vorgenommen wird sofort verarbeiten, und gegebenenfalls  via NotificationHandler eine passende Notification absenden. Dies wird vorallem dann wichtig, wenn die Polling Zeit auf einen sehr grossen Wert gesetzt wird.
 
 \subsection{ConfigReader}
+Der ConfigReader müsste eigentlich von einer Config Datei lesen, die der User Anpassen kann. Dazu hat uns leider die Zeit nicht mehr gereicht.
+Im ConfigReader kann man einstellen ob man
+\begin{itemize}
+  \item JavaFX Notifications überhaupt erhalten will,
+  \item Notifications auf der Konsole haben will,
+  \item ein Dark Mode haben will,
+  \item vergangene Reminders sehen will
+  \item Reminder sehen will, die in der nächsten Sekunde eintreffen
+  \item Reminder sehen will, die im nächsten Monat eintreffen
+\end{itemize}
 
 \subsection{Konfiguration}
 Die Konfigurationsmöglichkeiten sind im ConfigReader File zentral gelöst. Damit wird es später auch leicht möglich, über diese Klasse ein Konfigurationsfile  einzulesen, und die entsprechenden Komponenten zu konfigurieren. Solange dies nicht  über ein Externes File eingelesen werden, wird die Konfiguration direkt in den Boolen Werten gesetzt.
